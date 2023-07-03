@@ -1,6 +1,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
+using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
@@ -36,11 +38,13 @@ public unsafe partial struct uint4 :
 
     public ref uint RefX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in vector)), 0);
     }
 
     public readonly ref readonly uint RefRoX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in vector)), 0);
     }
 
@@ -54,11 +58,13 @@ public unsafe partial struct uint4 :
 
     public ref uint RefY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in vector)), 1);
     }
 
     public readonly ref readonly uint RefRoY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in vector)), 1);
     }
 
@@ -72,11 +78,13 @@ public unsafe partial struct uint4 :
 
     public ref uint RefZ 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in vector)), 2);
     }
 
     public readonly ref readonly uint RefRoZ 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in vector)), 2);
     }
 
@@ -90,11 +98,13 @@ public unsafe partial struct uint4 :
 
     public ref uint RefW 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in vector)), 3);
     }
 
     public readonly ref readonly uint RefRoW 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in vector)), 3);
     }
 
@@ -221,45 +231,51 @@ public unsafe partial struct uint4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 operator *(uint4 left, uint4 right) => new uint4(left.x * right.x, left.y * right.y, left.z * right.z, left.w * right.w);
+    public static uint4 operator *(uint4 left, uint4 right)
+    {
+        return new uint4(left.vector * right.vector);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 operator /(uint4 left, uint4 right) => new uint4(left.x / right.x, left.y / right.y, left.z / right.z, left.w / right.w);
+    public static uint4 operator /(uint4 left, uint4 right)
+    {
+        return new uint4(left.vector / right.vector);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint4 operator %(uint4 left, uint4 right) => new uint4(left.x % right.x, left.y % right.y, left.z % right.z, left.w % right.w);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 operator +(uint4 left, uint right) => new uint4(left.x + right, left.y + right, left.z + right, left.w + right);
+    public static uint4 operator +(uint4 left, uint right) => left + new uint4(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 operator -(uint4 left, uint right) => new uint4(left.x - right, left.y - right, left.z - right, left.w - right);
+    public static uint4 operator -(uint4 left, uint right) => left - new uint4(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 operator *(uint4 left, uint right) => new uint4(left.x * right, left.y * right, left.z * right, left.w * right);
+    public static uint4 operator *(uint4 left, uint right) => left * new uint4(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 operator /(uint4 left, uint right) => new uint4(left.x / right, left.y / right, left.z / right, left.w / right);
+    public static uint4 operator /(uint4 left, uint right) => left / new uint4(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 operator %(uint4 left, uint right) => new uint4(left.x % right, left.y % right, left.z % right, left.w % right);
+    public static uint4 operator %(uint4 left, uint right) => left % new uint4(right);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 operator +(uint left, uint4 right) => new uint4(left + right.x, left + right.y, left + right.z, left + right.w);
+    public static uint4 operator +(uint left, uint4 right) => new uint4(left) + right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 operator -(uint left, uint4 right) => new uint4(left - right.x, left - right.y, left - right.z, left - right.w);
+    public static uint4 operator -(uint left, uint4 right) => new uint4(left) - right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 operator *(uint left, uint4 right) => new uint4(left * right.x, left * right.y, left * right.z, left * right.w);
+    public static uint4 operator *(uint left, uint4 right) => new uint4(left) * right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 operator /(uint left, uint4 right) => new uint4(left / right.x, left / right.y, left / right.z, left / right.w);
+    public static uint4 operator /(uint left, uint4 right) => new uint4(left) / right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 operator %(uint left, uint4 right) => new uint4(left % right.x, left % right.y, left % right.z, left % right.w);
+    public static uint4 operator %(uint left, uint4 right) => new uint4(left) % right;
 
 
 

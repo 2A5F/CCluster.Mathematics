@@ -1,6 +1,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
+using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
@@ -27,11 +29,13 @@ public unsafe partial struct decimal4 :
 
     public ref decimal RefX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.AsRef(in x);
     }
 
     public readonly ref readonly decimal RefRoX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.AsRef(in x);
     }
 
@@ -39,11 +43,13 @@ public unsafe partial struct decimal4 :
 
     public ref decimal RefY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.AsRef(in y);
     }
 
     public readonly ref readonly decimal RefRoY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.AsRef(in y);
     }
 
@@ -51,11 +57,13 @@ public unsafe partial struct decimal4 :
 
     public ref decimal RefZ 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.AsRef(in z);
     }
 
     public readonly ref readonly decimal RefRoZ 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.AsRef(in z);
     }
 
@@ -63,11 +71,13 @@ public unsafe partial struct decimal4 :
 
     public ref decimal RefW 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.AsRef(in w);
     }
 
     public readonly ref readonly decimal RefRoW 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.AsRef(in w);
     }
 

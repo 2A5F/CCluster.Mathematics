@@ -1,6 +1,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
+using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
@@ -27,11 +29,13 @@ public unsafe partial struct decimal2 :
 
     public ref decimal RefX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.AsRef(in x);
     }
 
     public readonly ref readonly decimal RefRoX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.AsRef(in x);
     }
 
@@ -39,11 +43,13 @@ public unsafe partial struct decimal2 :
 
     public ref decimal RefY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.AsRef(in y);
     }
 
     public readonly ref readonly decimal RefRoY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.AsRef(in y);
     }
 

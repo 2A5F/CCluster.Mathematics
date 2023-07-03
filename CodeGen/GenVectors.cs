@@ -65,11 +65,13 @@ public class GenVectors : Base
 
     public ref {type} Ref{char.ToUpper(xyzw[i])} 
     {{
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector{bitSize}<{type}>, {type}>(ref Unsafe.AsRef(in vector)), {i});
     }}
 
     public readonly ref readonly {type} RefRo{char.ToUpper(xyzw[i])} 
     {{
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector{bitSize}<{type}>, {type}>(ref Unsafe.AsRef(in vector)), {i});
     }}
 ");
@@ -88,11 +90,13 @@ public class GenVectors : Base
 
     public ref {type} Ref{char.ToUpper(xyzw[i])} 
     {{
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.AsRef(in {xyzw[i]});
     }}
 
     public readonly ref readonly {type} RefRo{char.ToUpper(xyzw[i])} 
     {{
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.AsRef(in {xyzw[i]});
     }}
 ");
@@ -178,6 +182,8 @@ public class GenVectors : Base
                 var source = $@"using System;
 using System.Numerics;
 using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
+using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
@@ -335,45 +341,51 @@ public unsafe partial struct {type}{n} :
     }}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type}{n} operator *({type}{n} left, {type}{n} right) => new {type}{n}({oper_value("*")});
+    public static {type}{n} operator *({type}{n} left, {type}{n} right)
+    {{
+        return new {type}{n}(left.vector * right.vector);
+    }}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type}{n} operator /({type}{n} left, {type}{n} right) => new {type}{n}({oper_value("/")});
+    public static {type}{n} operator /({type}{n} left, {type}{n} right)
+    {{
+        return new {type}{n}(left.vector / right.vector);
+    }}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type}{n} operator %({type}{n} left, {type}{n} right) => new {type}{n}({oper_value("%")});
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type}{n} operator +({type}{n} left, {type} right) => new {type}{n}({oper_scalar_right_value("+")});
+    public static {type}{n} operator +({type}{n} left, {type} right) => left + new {type}{n}(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type}{n} operator -({type}{n} left, {type} right) => new {type}{n}({oper_scalar_right_value("-")});
+    public static {type}{n} operator -({type}{n} left, {type} right) => left - new {type}{n}(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type}{n} operator *({type}{n} left, {type} right) => new {type}{n}({oper_scalar_right_value("*")});
+    public static {type}{n} operator *({type}{n} left, {type} right) => left * new {type}{n}(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type}{n} operator /({type}{n} left, {type} right) => new {type}{n}({oper_scalar_right_value("/")});
+    public static {type}{n} operator /({type}{n} left, {type} right) => left / new {type}{n}(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type}{n} operator %({type}{n} left, {type} right) => new {type}{n}({oper_scalar_right_value("%")});
+    public static {type}{n} operator %({type}{n} left, {type} right) => left % new {type}{n}(right);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type}{n} operator +({type} left, {type}{n} right) => new {type}{n}({oper_scalar_left_value("+")});
+    public static {type}{n} operator +({type} left, {type}{n} right) => new {type}{n}(left) + right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type}{n} operator -({type} left, {type}{n} right) => new {type}{n}({oper_scalar_left_value("-")});
+    public static {type}{n} operator -({type} left, {type}{n} right) => new {type}{n}(left) - right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type}{n} operator *({type} left, {type}{n} right) => new {type}{n}({oper_scalar_left_value("*")});
+    public static {type}{n} operator *({type} left, {type}{n} right) => new {type}{n}(left) * right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type}{n} operator /({type} left, {type}{n} right) => new {type}{n}({oper_scalar_left_value("/")});
+    public static {type}{n} operator /({type} left, {type}{n} right) => new {type}{n}(left) / right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type}{n} operator %({type} left, {type}{n} right) => new {type}{n}({oper_scalar_left_value("%")});
+    public static {type}{n} operator %({type} left, {type}{n} right) => new {type}{n}(left) % right;
 
 
 {(meta.Unsigned ? "" : $@"    

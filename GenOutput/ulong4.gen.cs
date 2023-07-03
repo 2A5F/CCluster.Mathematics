@@ -1,6 +1,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
+using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
@@ -36,11 +38,13 @@ public unsafe partial struct ulong4 :
 
     public ref ulong RefX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<ulong>, ulong>(ref Unsafe.AsRef(in vector)), 0);
     }
 
     public readonly ref readonly ulong RefRoX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<ulong>, ulong>(ref Unsafe.AsRef(in vector)), 0);
     }
 
@@ -54,11 +58,13 @@ public unsafe partial struct ulong4 :
 
     public ref ulong RefY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<ulong>, ulong>(ref Unsafe.AsRef(in vector)), 1);
     }
 
     public readonly ref readonly ulong RefRoY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<ulong>, ulong>(ref Unsafe.AsRef(in vector)), 1);
     }
 
@@ -72,11 +78,13 @@ public unsafe partial struct ulong4 :
 
     public ref ulong RefZ 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<ulong>, ulong>(ref Unsafe.AsRef(in vector)), 2);
     }
 
     public readonly ref readonly ulong RefRoZ 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<ulong>, ulong>(ref Unsafe.AsRef(in vector)), 2);
     }
 
@@ -90,11 +98,13 @@ public unsafe partial struct ulong4 :
 
     public ref ulong RefW 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<ulong>, ulong>(ref Unsafe.AsRef(in vector)), 3);
     }
 
     public readonly ref readonly ulong RefRoW 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<ulong>, ulong>(ref Unsafe.AsRef(in vector)), 3);
     }
 
@@ -221,45 +231,51 @@ public unsafe partial struct ulong4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator *(ulong4 left, ulong4 right) => new ulong4(left.x * right.x, left.y * right.y, left.z * right.z, left.w * right.w);
+    public static ulong4 operator *(ulong4 left, ulong4 right)
+    {
+        return new ulong4(left.vector * right.vector);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator /(ulong4 left, ulong4 right) => new ulong4(left.x / right.x, left.y / right.y, left.z / right.z, left.w / right.w);
+    public static ulong4 operator /(ulong4 left, ulong4 right)
+    {
+        return new ulong4(left.vector / right.vector);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ulong4 operator %(ulong4 left, ulong4 right) => new ulong4(left.x % right.x, left.y % right.y, left.z % right.z, left.w % right.w);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator +(ulong4 left, ulong right) => new ulong4(left.x + right, left.y + right, left.z + right, left.w + right);
+    public static ulong4 operator +(ulong4 left, ulong right) => left + new ulong4(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator -(ulong4 left, ulong right) => new ulong4(left.x - right, left.y - right, left.z - right, left.w - right);
+    public static ulong4 operator -(ulong4 left, ulong right) => left - new ulong4(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator *(ulong4 left, ulong right) => new ulong4(left.x * right, left.y * right, left.z * right, left.w * right);
+    public static ulong4 operator *(ulong4 left, ulong right) => left * new ulong4(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator /(ulong4 left, ulong right) => new ulong4(left.x / right, left.y / right, left.z / right, left.w / right);
+    public static ulong4 operator /(ulong4 left, ulong right) => left / new ulong4(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator %(ulong4 left, ulong right) => new ulong4(left.x % right, left.y % right, left.z % right, left.w % right);
+    public static ulong4 operator %(ulong4 left, ulong right) => left % new ulong4(right);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator +(ulong left, ulong4 right) => new ulong4(left + right.x, left + right.y, left + right.z, left + right.w);
+    public static ulong4 operator +(ulong left, ulong4 right) => new ulong4(left) + right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator -(ulong left, ulong4 right) => new ulong4(left - right.x, left - right.y, left - right.z, left - right.w);
+    public static ulong4 operator -(ulong left, ulong4 right) => new ulong4(left) - right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator *(ulong left, ulong4 right) => new ulong4(left * right.x, left * right.y, left * right.z, left * right.w);
+    public static ulong4 operator *(ulong left, ulong4 right) => new ulong4(left) * right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator /(ulong left, ulong4 right) => new ulong4(left / right.x, left / right.y, left / right.z, left / right.w);
+    public static ulong4 operator /(ulong left, ulong4 right) => new ulong4(left) / right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator %(ulong left, ulong4 right) => new ulong4(left % right.x, left % right.y, left % right.z, left % right.w);
+    public static ulong4 operator %(ulong left, ulong4 right) => new ulong4(left) % right;
 
 
 

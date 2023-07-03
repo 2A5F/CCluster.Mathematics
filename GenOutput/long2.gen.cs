@@ -1,6 +1,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
+using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
@@ -36,11 +38,13 @@ public unsafe partial struct long2 :
 
     public ref long RefX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector128<long>, long>(ref Unsafe.AsRef(in vector)), 0);
     }
 
     public readonly ref readonly long RefRoX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector128<long>, long>(ref Unsafe.AsRef(in vector)), 0);
     }
 
@@ -54,11 +58,13 @@ public unsafe partial struct long2 :
 
     public ref long RefY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector128<long>, long>(ref Unsafe.AsRef(in vector)), 1);
     }
 
     public readonly ref readonly long RefRoY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector128<long>, long>(ref Unsafe.AsRef(in vector)), 1);
     }
 
@@ -185,45 +191,51 @@ public unsafe partial struct long2 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator *(long2 left, long2 right) => new long2(left.x * right.x, left.y * right.y);
+    public static long2 operator *(long2 left, long2 right)
+    {
+        return new long2(left.vector * right.vector);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator /(long2 left, long2 right) => new long2(left.x / right.x, left.y / right.y);
+    public static long2 operator /(long2 left, long2 right)
+    {
+        return new long2(left.vector / right.vector);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long2 operator %(long2 left, long2 right) => new long2(left.x % right.x, left.y % right.y);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator +(long2 left, long right) => new long2(left.x + right, left.y + right);
+    public static long2 operator +(long2 left, long right) => left + new long2(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator -(long2 left, long right) => new long2(left.x - right, left.y - right);
+    public static long2 operator -(long2 left, long right) => left - new long2(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator *(long2 left, long right) => new long2(left.x * right, left.y * right);
+    public static long2 operator *(long2 left, long right) => left * new long2(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator /(long2 left, long right) => new long2(left.x / right, left.y / right);
+    public static long2 operator /(long2 left, long right) => left / new long2(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator %(long2 left, long right) => new long2(left.x % right, left.y % right);
+    public static long2 operator %(long2 left, long right) => left % new long2(right);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator +(long left, long2 right) => new long2(left + right.x, left + right.y);
+    public static long2 operator +(long left, long2 right) => new long2(left) + right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator -(long left, long2 right) => new long2(left - right.x, left - right.y);
+    public static long2 operator -(long left, long2 right) => new long2(left) - right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator *(long left, long2 right) => new long2(left * right.x, left * right.y);
+    public static long2 operator *(long left, long2 right) => new long2(left) * right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator /(long left, long2 right) => new long2(left / right.x, left / right.y);
+    public static long2 operator /(long left, long2 right) => new long2(left) / right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator %(long left, long2 right) => new long2(left % right.x, left % right.y);
+    public static long2 operator %(long left, long2 right) => new long2(left) % right;
 
 
     

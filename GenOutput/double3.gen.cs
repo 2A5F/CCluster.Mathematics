@@ -1,6 +1,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
+using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
@@ -36,11 +38,13 @@ public unsafe partial struct double3 :
 
     public ref double RefX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 0);
     }
 
     public readonly ref readonly double RefRoX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 0);
     }
 
@@ -54,11 +58,13 @@ public unsafe partial struct double3 :
 
     public ref double RefY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 1);
     }
 
     public readonly ref readonly double RefRoY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 1);
     }
 
@@ -72,11 +78,13 @@ public unsafe partial struct double3 :
 
     public ref double RefZ 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 2);
     }
 
     public readonly ref readonly double RefRoZ 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 2);
     }
 
@@ -203,45 +211,51 @@ public unsafe partial struct double3 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator *(double3 left, double3 right) => new double3(left.x * right.x, left.y * right.y, left.z * right.z);
+    public static double3 operator *(double3 left, double3 right)
+    {
+        return new double3(left.vector * right.vector);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator /(double3 left, double3 right) => new double3(left.x / right.x, left.y / right.y, left.z / right.z);
+    public static double3 operator /(double3 left, double3 right)
+    {
+        return new double3(left.vector / right.vector);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double3 operator %(double3 left, double3 right) => new double3(left.x % right.x, left.y % right.y, left.z % right.z);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator +(double3 left, double right) => new double3(left.x + right, left.y + right, left.z + right);
+    public static double3 operator +(double3 left, double right) => left + new double3(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator -(double3 left, double right) => new double3(left.x - right, left.y - right, left.z - right);
+    public static double3 operator -(double3 left, double right) => left - new double3(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator *(double3 left, double right) => new double3(left.x * right, left.y * right, left.z * right);
+    public static double3 operator *(double3 left, double right) => left * new double3(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator /(double3 left, double right) => new double3(left.x / right, left.y / right, left.z / right);
+    public static double3 operator /(double3 left, double right) => left / new double3(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator %(double3 left, double right) => new double3(left.x % right, left.y % right, left.z % right);
+    public static double3 operator %(double3 left, double right) => left % new double3(right);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator +(double left, double3 right) => new double3(left + right.x, left + right.y, left + right.z);
+    public static double3 operator +(double left, double3 right) => new double3(left) + right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator -(double left, double3 right) => new double3(left - right.x, left - right.y, left - right.z);
+    public static double3 operator -(double left, double3 right) => new double3(left) - right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator *(double left, double3 right) => new double3(left * right.x, left * right.y, left * right.z);
+    public static double3 operator *(double left, double3 right) => new double3(left) * right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator /(double left, double3 right) => new double3(left / right.x, left / right.y, left / right.z);
+    public static double3 operator /(double left, double3 right) => new double3(left) / right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator %(double left, double3 right) => new double3(left % right.x, left % right.y, left % right.z);
+    public static double3 operator %(double left, double3 right) => new double3(left) % right;
 
 
     

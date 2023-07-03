@@ -1,6 +1,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
+using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
@@ -36,11 +38,13 @@ public unsafe partial struct float2 :
 
     public ref float RefX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector64<float>, float>(ref Unsafe.AsRef(in vector)), 0);
     }
 
     public readonly ref readonly float RefRoX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector64<float>, float>(ref Unsafe.AsRef(in vector)), 0);
     }
 
@@ -54,11 +58,13 @@ public unsafe partial struct float2 :
 
     public ref float RefY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector64<float>, float>(ref Unsafe.AsRef(in vector)), 1);
     }
 
     public readonly ref readonly float RefRoY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector64<float>, float>(ref Unsafe.AsRef(in vector)), 1);
     }
 
@@ -185,45 +191,51 @@ public unsafe partial struct float2 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator *(float2 left, float2 right) => new float2(left.x * right.x, left.y * right.y);
+    public static float2 operator *(float2 left, float2 right)
+    {
+        return new float2(left.vector * right.vector);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator /(float2 left, float2 right) => new float2(left.x / right.x, left.y / right.y);
+    public static float2 operator /(float2 left, float2 right)
+    {
+        return new float2(left.vector / right.vector);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float2 operator %(float2 left, float2 right) => new float2(left.x % right.x, left.y % right.y);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator +(float2 left, float right) => new float2(left.x + right, left.y + right);
+    public static float2 operator +(float2 left, float right) => left + new float2(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator -(float2 left, float right) => new float2(left.x - right, left.y - right);
+    public static float2 operator -(float2 left, float right) => left - new float2(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator *(float2 left, float right) => new float2(left.x * right, left.y * right);
+    public static float2 operator *(float2 left, float right) => left * new float2(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator /(float2 left, float right) => new float2(left.x / right, left.y / right);
+    public static float2 operator /(float2 left, float right) => left / new float2(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator %(float2 left, float right) => new float2(left.x % right, left.y % right);
+    public static float2 operator %(float2 left, float right) => left % new float2(right);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator +(float left, float2 right) => new float2(left + right.x, left + right.y);
+    public static float2 operator +(float left, float2 right) => new float2(left) + right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator -(float left, float2 right) => new float2(left - right.x, left - right.y);
+    public static float2 operator -(float left, float2 right) => new float2(left) - right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator *(float left, float2 right) => new float2(left * right.x, left * right.y);
+    public static float2 operator *(float left, float2 right) => new float2(left) * right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator /(float left, float2 right) => new float2(left / right.x, left / right.y);
+    public static float2 operator /(float left, float2 right) => new float2(left) / right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator %(float left, float2 right) => new float2(left % right.x, left % right.y);
+    public static float2 operator %(float left, float2 right) => new float2(left) % right;
 
 
     

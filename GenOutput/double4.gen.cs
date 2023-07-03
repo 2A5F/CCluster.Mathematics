@@ -1,6 +1,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
+using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
@@ -36,11 +38,13 @@ public unsafe partial struct double4 :
 
     public ref double RefX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 0);
     }
 
     public readonly ref readonly double RefRoX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 0);
     }
 
@@ -54,11 +58,13 @@ public unsafe partial struct double4 :
 
     public ref double RefY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 1);
     }
 
     public readonly ref readonly double RefRoY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 1);
     }
 
@@ -72,11 +78,13 @@ public unsafe partial struct double4 :
 
     public ref double RefZ 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 2);
     }
 
     public readonly ref readonly double RefRoZ 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 2);
     }
 
@@ -90,11 +98,13 @@ public unsafe partial struct double4 :
 
     public ref double RefW 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 3);
     }
 
     public readonly ref readonly double RefRoW 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 3);
     }
 
@@ -221,45 +231,51 @@ public unsafe partial struct double4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator *(double4 left, double4 right) => new double4(left.x * right.x, left.y * right.y, left.z * right.z, left.w * right.w);
+    public static double4 operator *(double4 left, double4 right)
+    {
+        return new double4(left.vector * right.vector);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator /(double4 left, double4 right) => new double4(left.x / right.x, left.y / right.y, left.z / right.z, left.w / right.w);
+    public static double4 operator /(double4 left, double4 right)
+    {
+        return new double4(left.vector / right.vector);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double4 operator %(double4 left, double4 right) => new double4(left.x % right.x, left.y % right.y, left.z % right.z, left.w % right.w);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator +(double4 left, double right) => new double4(left.x + right, left.y + right, left.z + right, left.w + right);
+    public static double4 operator +(double4 left, double right) => left + new double4(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator -(double4 left, double right) => new double4(left.x - right, left.y - right, left.z - right, left.w - right);
+    public static double4 operator -(double4 left, double right) => left - new double4(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator *(double4 left, double right) => new double4(left.x * right, left.y * right, left.z * right, left.w * right);
+    public static double4 operator *(double4 left, double right) => left * new double4(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator /(double4 left, double right) => new double4(left.x / right, left.y / right, left.z / right, left.w / right);
+    public static double4 operator /(double4 left, double right) => left / new double4(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator %(double4 left, double right) => new double4(left.x % right, left.y % right, left.z % right, left.w % right);
+    public static double4 operator %(double4 left, double right) => left % new double4(right);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator +(double left, double4 right) => new double4(left + right.x, left + right.y, left + right.z, left + right.w);
+    public static double4 operator +(double left, double4 right) => new double4(left) + right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator -(double left, double4 right) => new double4(left - right.x, left - right.y, left - right.z, left - right.w);
+    public static double4 operator -(double left, double4 right) => new double4(left) - right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator *(double left, double4 right) => new double4(left * right.x, left * right.y, left * right.z, left * right.w);
+    public static double4 operator *(double left, double4 right) => new double4(left) * right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator /(double left, double4 right) => new double4(left / right.x, left / right.y, left / right.z, left / right.w);
+    public static double4 operator /(double left, double4 right) => new double4(left) / right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator %(double left, double4 right) => new double4(left % right.x, left % right.y, left % right.z, left % right.w);
+    public static double4 operator %(double left, double4 right) => new double4(left) % right;
 
 
     

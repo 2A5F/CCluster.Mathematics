@@ -1,6 +1,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
+using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 
@@ -36,11 +38,13 @@ public unsafe partial struct long3 :
 
     public ref long RefX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in vector)), 0);
     }
 
     public readonly ref readonly long RefRoX 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in vector)), 0);
     }
 
@@ -54,11 +58,13 @@ public unsafe partial struct long3 :
 
     public ref long RefY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in vector)), 1);
     }
 
     public readonly ref readonly long RefRoY 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in vector)), 1);
     }
 
@@ -72,11 +78,13 @@ public unsafe partial struct long3 :
 
     public ref long RefZ 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in vector)), 2);
     }
 
     public readonly ref readonly long RefRoZ 
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in vector)), 2);
     }
 
@@ -203,45 +211,51 @@ public unsafe partial struct long3 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator *(long3 left, long3 right) => new long3(left.x * right.x, left.y * right.y, left.z * right.z);
+    public static long3 operator *(long3 left, long3 right)
+    {
+        return new long3(left.vector * right.vector);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator /(long3 left, long3 right) => new long3(left.x / right.x, left.y / right.y, left.z / right.z);
+    public static long3 operator /(long3 left, long3 right)
+    {
+        return new long3(left.vector / right.vector);
+    }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long3 operator %(long3 left, long3 right) => new long3(left.x % right.x, left.y % right.y, left.z % right.z);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator +(long3 left, long right) => new long3(left.x + right, left.y + right, left.z + right);
+    public static long3 operator +(long3 left, long right) => left + new long3(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator -(long3 left, long right) => new long3(left.x - right, left.y - right, left.z - right);
+    public static long3 operator -(long3 left, long right) => left - new long3(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator *(long3 left, long right) => new long3(left.x * right, left.y * right, left.z * right);
+    public static long3 operator *(long3 left, long right) => left * new long3(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator /(long3 left, long right) => new long3(left.x / right, left.y / right, left.z / right);
+    public static long3 operator /(long3 left, long right) => left / new long3(right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator %(long3 left, long right) => new long3(left.x % right, left.y % right, left.z % right);
+    public static long3 operator %(long3 left, long right) => left % new long3(right);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator +(long left, long3 right) => new long3(left + right.x, left + right.y, left + right.z);
+    public static long3 operator +(long left, long3 right) => new long3(left) + right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator -(long left, long3 right) => new long3(left - right.x, left - right.y, left - right.z);
+    public static long3 operator -(long left, long3 right) => new long3(left) - right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator *(long left, long3 right) => new long3(left * right.x, left * right.y, left * right.z);
+    public static long3 operator *(long left, long3 right) => new long3(left) * right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator /(long left, long3 right) => new long3(left / right.x, left / right.y, left / right.z);
+    public static long3 operator /(long left, long3 right) => new long3(left) / right;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator %(long left, long3 right) => new long3(left % right.x, left % right.y, left % right.z);
+    public static long3 operator %(long left, long3 right) => new long3(left) % right;
 
 
     
