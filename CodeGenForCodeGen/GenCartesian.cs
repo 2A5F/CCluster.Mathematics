@@ -115,7 +115,7 @@ public class GenCartesian : ISourceGenerator
         var source = SourceText.From($@"using System.Collections.Generic;
 using System.Linq;
 
-namespace CCluster.Mathematics.Gen;
+namespace CodeGen;
 
 public abstract partial class Base
 {{

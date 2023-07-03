@@ -1,16 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.Text;
+using System.Threading.Tasks;
 
-namespace CCluster.Mathematics.Gen;
+namespace CodeGen;
 
-[Generator]
-public class GenVectors : ISourceGenerator
+public class GenVectors : Base
 {
-    public static readonly char[] xyzw = { 'x', 'y', 'z', 'w' };
-
     private record TypeMeta(int Size, string Zero, string One)
     {
         public bool Number { get; set; }
@@ -34,9 +31,7 @@ public class GenVectors : ISourceGenerator
         { "ulong", new(sizeof(ulong), "0UL", "1UL") { Number = true, Unsigned = true, Simd = true, } },
     };
 
-    public void Initialize(GeneratorInitializationContext context) { }
-
-    public void Execute(GeneratorExecutionContext context)
+    public override async Task Gen()
     {
         foreach (var tm in types)
         {
@@ -180,7 +175,7 @@ public class GenVectors : ISourceGenerator
                 var sin_cos_part2_sin = string.Join(", ", Enumerable.Range(0, n).Select(i => $"s{i}"));
                 var sin_cos_part2_cos = string.Join(", ", Enumerable.Range(0, n).Select(i => $"c{i}"));
 
-                var source = SourceText.From($@"using System;
+                var source = $@"using System;
 using System.Numerics;
 using System.Runtime.Intrinsics;
 using System.Runtime.InteropServices;
@@ -672,9 +667,10 @@ public static unsafe partial class math
 " : "")}
 
 }}
-", Encoding.UTF8);
-                context.AddSource($"{type}{n}.gen.cs", source);
+";
+                await SaveCode($"{type}{n}.gen.cs", source);
             }
         }
+
     }
 }

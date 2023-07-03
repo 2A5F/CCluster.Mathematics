@@ -5,11 +5,9 @@ VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCluster.Mathematics", "CCluster.Mathematics\CCluster.Mathematics.csproj", "{FA1DA4AC-18E9-4B31-B0A6-DEEC0E36039E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCluster.Mathematics.Gen", "CCluster.Mathematics.Gen\CCluster.Mathematics.Gen.csproj", "{4F335599-6C16-4F16-989A-FC85AAFAE4B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenForCodeGen", "CodeGenForCodeGen\CodeGenForCodeGen.csproj", "{ADCD6AEA-D39E-4B84-A041-E704F74E461B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CCluster.Mathematics.Gen.Gen", "CCluster.Mathematics.Gen.Gen\CCluster.Mathematics.Gen.Gen.csproj", "{ADCD6AEA-D39E-4B84-A041-E704F74E461B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCluster.Mathematics.GenCart", "CCluster.Mathematics.GenCart\CCluster.Mathematics.GenCart.csproj", "{A860EFD3-F55F-4B62-A63B-EA63A842A2B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGen", "CodeGen\CodeGen.csproj", "{24159DC5-8A2F-49E2-8E7D-79CFF1E02555}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +19,14 @@ Global
 		{FA1DA4AC-18E9-4B31-B0A6-DEEC0E36039E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA1DA4AC-18E9-4B31-B0A6-DEEC0E36039E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA1DA4AC-18E9-4B31-B0A6-DEEC0E36039E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4F335599-6C16-4F16-989A-FC85AAFAE4B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F335599-6C16-4F16-989A-FC85AAFAE4B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F335599-6C16-4F16-989A-FC85AAFAE4B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F335599-6C16-4F16-989A-FC85AAFAE4B5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ADCD6AEA-D39E-4B84-A041-E704F74E461B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ADCD6AEA-D39E-4B84-A041-E704F74E461B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADCD6AEA-D39E-4B84-A041-E704F74E461B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADCD6AEA-D39E-4B84-A041-E704F74E461B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A860EFD3-F55F-4B62-A63B-EA63A842A2B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A860EFD3-F55F-4B62-A63B-EA63A842A2B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A860EFD3-F55F-4B62-A63B-EA63A842A2B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A860EFD3-F55F-4B62-A63B-EA63A842A2B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24159DC5-8A2F-49E2-8E7D-79CFF1E02555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24159DC5-8A2F-49E2-8E7D-79CFF1E02555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24159DC5-8A2F-49E2-8E7D-79CFF1E02555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24159DC5-8A2F-49E2-8E7D-79CFF1E02555}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

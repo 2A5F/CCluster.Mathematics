@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CodeGen": {
+      "commandName": "Project",
+      "workingDirectory": "$(SolutionDir)\\GenOutput"
+    }
+  }
+}

@@ -1,43 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.CodeAnalysis.Text;
-
-namespace CCluster.Mathematics.Gen;
-
-[Generator]
-public class GenScalarNumbers : ISourceGenerator
-{
-    private record TypeMeta(string Zero, string One)
-    {
-        public bool Float { get; set; }
-        public bool Decimal { get; set; }
-        public bool Unsigned { get; set; }
-    }
-
-    private static Dictionary<string, TypeMeta> types = new()
-    {
-        { "Half", new("Half.Zero", "Half.One") { Float = true, } },
-        { "float", new("0f", "1f") { Float = true, } },
-        { "double", new("0d", "1d") { Float = true, } },
-        { "decimal", new("0m", "1m") { Decimal = true, } },
-        { "int", new("0", "1") { } },
-        { "uint", new("0u", "1u") { Unsigned = true, } },
-        { "long", new("0L", "1L") { } },
-        { "ulong", new("0UL", "1UL") { Unsigned = true, } },
-    };
-
-    public void Initialize(GeneratorInitializationContext context) { }
-
-    public void Execute(GeneratorExecutionContext context)
-    {
-        foreach (var tm in types)
-        {
-            var type = tm.Key;
-            var meta = tm.Value;
-
-            var source = SourceText.From($@"using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
@@ -47,207 +8,202 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 public static partial class math
-{{
+{
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} min({type} x, {type} y) => {type}.Min(x, y);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} max({type} x, {type} y) => {type}.Max(x, y);
-
-{(meta.Float || meta.Decimal ? $@"
+    public static float min(float x, float y) => float.Min(x, y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} lerp({type} s, {type} x, {type} y) => x + s * (y - x);
+    public static float max(float x, float y) => float.Max(x, y);
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} unlerp({type} x, {type} a, {type} b) => (x - a) / (b - a);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} remap({type} x, {type} a, {type} b, {type} c, {type} d) => lerp(c, d, unlerp(a, b, x));
-
-" : "")}
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} mad({type} a, {type} b, {type} c) => a * b + c;
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} clamp({type} x, {type} a, {type} b) => max(a, min(b, x));
-
-{(meta.Float || meta.Decimal ? $@"
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} saturate({type} x) => clamp(x, {meta.Zero}, {meta.One});
-
-" : "")}
-
-{(meta.Unsigned ? "" : $@"
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} abs({type} x) => {type}.Abs(x);
-
-")}
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} dot({type} x, {type} y) => x * y;
-
-{(meta.Float ? $@"
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} tan({type} x) => {type}.Tan(x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} tanh({type} x) => {type}.Tanh(x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} atan({type} x) => {type}.Atan(x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} atanh({type} x) => {type}.Atanh(x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} atan2({type} y, {type} x) => {type}.Atan2(y, x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} tanPi({type} x) => {type}.TanPi(x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} atanPi({type} x) => {type}.AtanPi(x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} atan2Pi({type} y, {type} x) => {type}.Atan2Pi(y, x);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} cos({type} x) => {type}.Cos(x);
+    public static float lerp(float s, float x, float y) => x + s * (y - x);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} cosh({type} x) => {type}.Cosh(x);
+    public static float unlerp(float x, float a, float b) => (x - a) / (b - a);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} acos({type} x) => {type}.Acos(x);
+    public static float remap(float x, float a, float b, float c, float d) => lerp(c, d, unlerp(a, b, x));
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} acosh({type} x) => {type}.Acosh(x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} cosPi({type} x) => {type}.CosPi(x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} acosPi({type} x) => {type}.AcosPi(x);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} sin({type} x) => {type}.Sin(x);
+    public static float mad(float a, float b, float c) => a * b + c;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} sinh({type} x) => {type}.Sinh(x);
+    public static float clamp(float x, float a, float b) => max(a, min(b, x));
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} asin({type} x) => {type}.Asin(x);
+    public static float saturate(float x) => clamp(x, 0f, 1f);
+
+
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} asinh({type} x) => {type}.Asinh(x);
+    public static float abs(float x) => float.Abs(x);
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} sinPi({type} x) => {type}.SinPi(x);
+    public static float dot(float x, float y) => x * y;
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} asinPi({type} x) => {type}.AsinPi(x);
+    public static float tan(float x) => float.Tan(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float tanh(float x) => float.Tanh(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float atan(float x) => float.Atan(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float atanh(float x) => float.Atanh(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float atan2(float y, float x) => float.Atan2(y, x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float tanPi(float x) => float.TanPi(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float atanPi(float x) => float.AtanPi(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float atan2Pi(float y, float x) => float.Atan2Pi(y, x);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float cos(float x) => float.Cos(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float cosh(float x) => float.Cosh(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float acos(float x) => float.Acos(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float acosh(float x) => float.Acosh(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float cosPi(float x) => float.CosPi(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float acosPi(float x) => float.AcosPi(x);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float sin(float x) => float.Sin(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float sinh(float x) => float.Sinh(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float asin(float x) => float.Asin(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float asinh(float x) => float.Asinh(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float sinPi(float x) => float.SinPi(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float asinPi(float x) => float.AsinPi(x);
 
     
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static void sincos({type} x, out {type} sin, out {type} cos) => (sin, cos) = {type}.SinCos(x);
+    public static void sincos(float x, out float sin, out float cos) => (sin, cos) = float.SinCos(x);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ({type} sin, {type} cos) sincos({type} x) => {type}.SinCos(x);
+    public static (float sin, float cos) sincos(float x) => float.SinCos(x);
 
-" : "")}
 
-{(meta.Float || meta.Decimal ? $@"
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} floor({type} x) => {type}.Floor(x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} ceil({type} x) => {type}.Ceiling(x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} round({type} x) => {type}.Round(x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} trunc({type} x) => {type}.Truncate(x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} frac({type} x) => x - floor(x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} rcp({type} x) => {meta.One} / x;
-
-" : "")}
-
-{(meta.Unsigned ? "" : $@"
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} sign({type} x) => (x > {meta.Zero} ? {meta.One} : {meta.Zero}) - (x < {meta.Zero} ? {meta.One} : {meta.Zero});
-
-")}
-
-{(meta.Float ? $@"
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} pow({type} x, {type} y) => {type}.Pow(x, y);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} exp({type} x) => {type}.Exp(x);
+    public static float floor(float x) => float.Floor(x);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} exp2({type} x) => {type}.Exp2(x);
+    public static float ceil(float x) => float.Ceiling(x);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} exp10({type} x) => {type}.Exp10(x);
+    public static float round(float x) => float.Round(x);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} expM1({type} x) => {type}.ExpM1(x);
+    public static float trunc(float x) => float.Truncate(x);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} exp2M1({type} x) => {type}.Exp2M1(x);
+    public static float frac(float x) => x - floor(x);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} exp10M1({type} x) => {type}.Exp10M1(x);
+    public static float rcp(float x) => 1f / x;
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float sign(float x) => (x > 0f ? 1f : 0f) - (x < 0f ? 1f : 0f);
+
+
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} log({type} x) => {type}.Log(x);
+    public static float pow(float x, float y) => float.Pow(x, y);
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} log2({type} x) => {type}.Log2(x);
+    public static float exp(float x) => float.Exp(x);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} log10({type} x) => {type}.Log10(x);
+    public static float exp2(float x) => float.Exp2(x);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} logP1({type} x) => {type}.LogP1(x);
+    public static float exp10(float x) => float.Exp10(x);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} log2P1({type} x) => {type}.Log2P1(x);
+    public static float expM1(float x) => float.ExpM1(x);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} log10P1({type} x) => {type}.Log10P1(x);
+    public static float exp2M1(float x) => float.Exp2M1(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float exp10M1(float x) => float.Exp10M1(x);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float log(float x) => float.Log(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float log2(float x) => float.Log2(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float log10(float x) => float.Log10(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float logP1(float x) => float.LogP1(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float log2P1(float x) => float.Log2P1(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float log10P1(float x) => float.Log10P1(x);
 
     
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} modf({type} x, out {type} i) 
-    {{ 
+    public static float modf(float x, out float i) 
+    { 
         i = trunc(x);
         return x - i;
-    }}
-
-" : "")}
-
-}}
-", Encoding.UTF8);
-            context.AddSource($"{type}.gen.cs", source);
-        }
     }
+
+
+
 }
