@@ -133,6 +133,22 @@ public unsafe partial struct decimal2 :
     public bool2 VNe(decimal2 other) => new bool2(this.x != other.x, this.y != other.y);
 
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator >(decimal2 left, decimal2 right) => new bool2(left.x > right.x, left.y > right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator <(decimal2 left, decimal2 right) => new bool2(left.x < right.x, left.y < right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator >=(decimal2 left, decimal2 right) => new bool2(left.x >= right.x, left.y >= right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator <=(decimal2 left, decimal2 right) => new bool2(left.x <= right.x, left.y <= right.y);
+
+
+
+
     public static decimal2 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -207,6 +223,9 @@ public unsafe partial struct decimal2 :
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $"decimal2({this.x}, {this.y})";
+
 }
 
 public static unsafe partial class math
@@ -263,8 +282,13 @@ public static unsafe partial class math
 
 
 
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal dot(decimal2 x, decimal2 y) => x.x * y.x + x.y * y.y;
+
+
+
 
 
 
@@ -277,6 +301,8 @@ public static unsafe partial class math
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal2 ceil(decimal2 x) => new decimal2(ceil(x.x), ceil(x.y));
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal2 round(decimal2 x) => new decimal2(round(x.x), round(x.y));
@@ -296,6 +322,63 @@ public static unsafe partial class math
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal2 sign(decimal2 x) => new decimal2(sign(x.x), sign(x.y));
+
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 lengthsq(decimal2 x) => dot(x, x);
+
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 distancesq(decimal2 x, decimal2 y) => lengthsq(y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 select(decimal2 a, decimal2 b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 select(decimal2 a, decimal2 b, bool2 c) => new decimal2(c.x ? b.x : a.x, c.y ? b.y : a.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 step(decimal2 y, decimal2 x) => select(new decimal2(0m), new decimal2(1m), x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 reflect(decimal2 i, decimal2 n) => i - 2m * n * dot(i, n);
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 project(decimal2 a, decimal2 b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 faceforward(decimal2 n, decimal2 i, decimal2 ng) => select(n, -n, dot(ng, i) >= 0m);
+
+
+
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 radians(decimal2 x) => x * 0.0174532925199432957692369076848861271344287188854172545609719144m;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 degrees(decimal2 x) => x * 57.295779513082320876798154814105170332405472466564321549160243861m;
+
 
 
 

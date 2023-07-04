@@ -204,6 +204,70 @@ public static partial class math
         return x - i;
     }
 
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half sqrt(Half x) => Half.Sqrt(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half rsqrt(Half x) => Half.One / sqrt(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half normalize(Half x) => rsqrt(dot(x, x)) * x;
+
+    // todo normalizesafe
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half length(Half x) => abs(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half lengthsq(Half x) => x * x;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half distance(Half x, Half y) => abs(y - x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half distancesq(Half x, Half y) => (y - x) * (y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half select(Half a, Half b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half step(Half y, Half x) => select(Half.Zero, Half.One, x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half reflect(Half i, Half n) => i - (Half.One + Half.One) * n * dot(i, n);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half reflect(Half i, Half n, Half eta)
+    {
+        var ni = dot(n, i);
+        var k = Half.One - eta * eta * (Half.One - ni * ni);
+        return select(Half.Zero, eta * i - (eta * ni + sqrt(k)) * n, k >= Half.Zero);
+    }
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half project(Half a, Half b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
+
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half radians(Half x) => x * (Half)0.0174532925199432957692369076848861271344287188854172545609719144;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half degrees(Half x) => x * (Half)57.295779513082320876798154814105170332405472466564321549160243861;
+
+
 
 
 }

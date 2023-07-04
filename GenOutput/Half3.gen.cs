@@ -149,6 +149,22 @@ public unsafe partial struct Half3 :
     public bool3 VNe(Half3 other) => new bool3(this.x != other.x, this.y != other.y, this.z != other.z);
 
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator >(Half3 left, Half3 right) => new bool3(left.x > right.x, left.y > right.y, left.z > right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator <(Half3 left, Half3 right) => new bool3(left.x < right.x, left.y < right.y, left.z < right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator >=(Half3 left, Half3 right) => new bool3(left.x >= right.x, left.y >= right.y, left.z >= right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator <=(Half3 left, Half3 right) => new bool3(left.x <= right.x, left.y <= right.y, left.z <= right.z);
+
+
+
+
     public static Half3 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -223,6 +239,9 @@ public unsafe partial struct Half3 :
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $"Half3({this.x}, {this.y}, {this.z})";
+
 }
 
 public static unsafe partial class math
@@ -285,8 +304,11 @@ public static unsafe partial class math
     public static Half3 cross(Half3 x, Half3 y) => (x * y.yzx - x.yzx * y).yzx;
 
 
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half dot(Half3 x, Half3 y) => x.x * y.x + x.y * y.y + x.z * y.z;
+
 
 
 
@@ -372,11 +394,15 @@ public static unsafe partial class math
 
 
 
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half3 floor(Half3 x) => new Half3(floor(x.x), floor(x.y), floor(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half3 ceil(Half3 x) => new Half3(ceil(x.x), ceil(x.y), ceil(x.z));
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half3 round(Half3 x) => new Half3(round(x.x), round(x.y), round(x.z));
@@ -449,6 +475,96 @@ public static unsafe partial class math
         i = trunc(x);
         return x - i;
     }
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 sqrt(Half3 x) => new Half3(sqrt(x.x), sqrt(x.y), sqrt(x.z));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 rsqrt(Half3 x) => Half.One / sqrt(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 normalize(Half3 x) => rsqrt(dot(x, x)) * x;
+
+    // todo normalizesafe
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 length(Half3 x) => sqrt(dot(x, x));
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 lengthsq(Half3 x) => dot(x, x);
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 distance(Half3 x, Half3 y) => length(y - x);
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 distancesq(Half3 x, Half3 y) => lengthsq(y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 select(Half3 a, Half3 b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 select(Half3 a, Half3 b, bool3 c) => new Half3(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 step(Half3 y, Half3 x) => select(new Half3(Half.Zero), new Half3(Half.One), x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 reflect(Half3 i, Half3 n) => i - (Half.One + Half.One) * n * dot(i, n);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 reflect(Half3 i, Half3 n, Half eta)
+    {
+        var ni = dot(n, i);
+        var k = Half.One - eta * eta * (Half.One - ni * ni);
+        return select(Half.Zero, eta * i - (eta * ni + sqrt(k)) * n, k >= Half.Zero);
+    }
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 project(Half3 a, Half3 b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 faceforward(Half3 n, Half3 i, Half3 ng) => select(n, -n, dot(ng, i) >= Half.Zero);
+
+
+
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 radians(Half3 x) => x * (Half)0.0174532925199432957692369076848861271344287188854172545609719144;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 degrees(Half3 x) => x * (Half)57.295779513082320876798154814105170332405472466564321549160243861;
+
+
+
 
 
 

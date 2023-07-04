@@ -204,6 +204,70 @@ public static partial class math
         return x - i;
     }
 
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double sqrt(double x) => double.Sqrt(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double rsqrt(double x) => 1d / sqrt(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double normalize(double x) => rsqrt(dot(x, x)) * x;
+
+    // todo normalizesafe
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double length(double x) => abs(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double lengthsq(double x) => x * x;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double distance(double x, double y) => abs(y - x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double distancesq(double x, double y) => (y - x) * (y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double select(double a, double b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double step(double y, double x) => select(0d, 1d, x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double reflect(double i, double n) => i - 2d * n * dot(i, n);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double reflect(double i, double n, double eta)
+    {
+        var ni = dot(n, i);
+        var k = 1d - eta * eta * (1d - ni * ni);
+        return select(0d, eta * i - (eta * ni + sqrt(k)) * n, k >= 0d);
+    }
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double project(double a, double b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
+
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double radians(double x) => x * 0.0174532925199432957692369076848861271344287188854172545609719144d;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double degrees(double x) => x * 57.295779513082320876798154814105170332405472466564321549160243861d;
+
+
 
 
 }

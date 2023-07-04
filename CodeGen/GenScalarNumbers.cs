@@ -8,8 +8,9 @@ namespace CodeGen;
 
 public class GenScalarNumbers : Base
 {
-    private record TypeMeta(string Zero, string One)
+    private record TypeMeta(string suffix, string Zero, string One, string Two)
     {
+        public bool Half { get; set; }
         public bool Float { get; set; }
         public bool Decimal { get; set; }
         public bool Unsigned { get; set; }
@@ -17,14 +18,14 @@ public class GenScalarNumbers : Base
 
     private static Dictionary<string, TypeMeta> types = new()
     {
-        { "Half", new("Half.Zero", "Half.One") { Float = true, } },
-        { "float", new("0f", "1f") { Float = true, } },
-        { "double", new("0d", "1d") { Float = true, } },
-        { "decimal", new("0m", "1m") { Decimal = true, } },
-        { "int", new("0", "1") { } },
-        { "uint", new("0u", "1u") { Unsigned = true, } },
-        { "long", new("0L", "1L") { } },
-        { "ulong", new("0UL", "1UL") { Unsigned = true, } },
+        { "Half", new("", "Half.Zero", "Half.One", "(Half.One + Half.One)") { Float = true, Half = true, } },
+        { "float", new("f", "0f", "1f", "2f") { Float = true, } },
+        { "double", new("d", "0d", "1d", "2d") { Float = true, } },
+        { "decimal", new("m", "0m", "1m", "2m") { Decimal = true, } },
+        { "int", new("", "0", "1", "2") { } },
+        { "uint", new("u", "0u", "1u", "2u") { Unsigned = true, } },
+        { "long", new("L", "0L", "1L", "2L") { } },
+        { "ulong", new("UL", "0UL", "1UL", "2UL") { Unsigned = true, } },
     };
 
     public override async Task Gen()
@@ -77,7 +78,12 @@ public static partial class math
 
 " : "")}
 
-{(meta.Unsigned ? "" : $@"
+{(meta.Unsigned ? $@"
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} abs({type} x) => x;
+
+" : $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} abs({type} x) => {type}.Abs(x);
@@ -239,6 +245,70 @@ public static partial class math
         i = trunc(x);
         return x - i;
     }}
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} sqrt({type} x) => {type}.Sqrt(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} rsqrt({type} x) => {meta.One} / sqrt(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} normalize({type} x) => rsqrt(dot(x, x)) * x;
+
+    // todo normalizesafe
+
+" : "")}
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} length({type} x) => abs(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} lengthsq({type} x) => x * x;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} distance({type} x, {type} y) => abs(y - x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} distancesq({type} x, {type} y) => (y - x) * (y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} select({type} a, {type} b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} step({type} y, {type} x) => select({meta.Zero}, {meta.One}, x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} reflect({type} i, {type} n) => i - {meta.Two} * n * dot(i, n);
+
+{(meta.Float ? $@"
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} reflect({type} i, {type} n, {type} eta)
+    {{
+        var ni = dot(n, i);
+        var k = {meta.One} - eta * eta * ({meta.One} - ni * ni);
+        return select({meta.Zero}, eta * i - (eta * ni + sqrt(k)) * n, k >= {meta.Zero});
+    }}
+
+" : "")}
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} project({type} a, {type} b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
+
+{(meta.Float || meta.Decimal ? $@"
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} radians({type} x) => x * {(meta.Half ? "(Half)" : "")}0.0174532925199432957692369076848861271344287188854172545609719144{meta.suffix};
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} degrees({type} x) => x * {(meta.Half ? "(Half)" : "")}57.295779513082320876798154814105170332405472466564321549160243861{meta.suffix};
+
 
 " : "")}
 

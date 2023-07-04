@@ -128,6 +128,11 @@ public unsafe partial struct bool2 :
 
 
 
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $"bool2({this.x}, {this.y})";
+
 }
 
 public static unsafe partial class math
@@ -139,6 +144,12 @@ public static unsafe partial class math
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ref bool RefY(bool2* self) => ref Unsafe.AsRef(in self->y);
+
+
+
+
+
+
 
 
 

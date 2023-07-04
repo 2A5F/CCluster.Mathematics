@@ -204,6 +204,22 @@ public unsafe partial struct int4 :
     public bool4 VNe(int4 other) => new bool4(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
 
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 operator >(int4 left, int4 right) => new bool4(left.x > right.x, left.y > right.y, left.z > right.z, left.w > right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 operator <(int4 left, int4 right) => new bool4(left.x < right.x, left.y < right.y, left.z < right.z, left.w < right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 operator >=(int4 left, int4 right) => new bool4(left.x >= right.x, left.y >= right.y, left.z >= right.z, left.w >= right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 operator <=(int4 left, int4 right) => new bool4(left.x <= right.x, left.y <= right.y, left.z <= right.z, left.w <= right.w);
+
+
+
+
     public static int4 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -290,6 +306,9 @@ public unsafe partial struct int4 :
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $"int4({this.x}, {this.y}, {this.z}, {this.w})";
+
 }
 
 public static unsafe partial class math
@@ -336,8 +355,11 @@ public static unsafe partial class math
 
 
 
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int dot(int4 x, int4 y) => x.x * y.x + x.y * y.y + x.z * y.z + x.w * y.w;
+    public static int dot(int4 x, int4 y) => Vector128.Dot(x.vector, y.vector);
+
 
 
 
@@ -349,6 +371,54 @@ public static unsafe partial class math
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static int4 sign(int4 x) => new int4(sign(x.x), sign(x.y), sign(x.z), sign(x.w));
+
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4 lengthsq(int4 x) => dot(x, x);
+
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4 distancesq(int4 x, int4 y) => lengthsq(y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4 select(int4 a, int4 b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4 select(int4 a, int4 b, bool4 c) => new int4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4 step(int4 y, int4 x) => select(new int4(0), new int4(1), x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4 reflect(int4 i, int4 n) => i - 2 * n * dot(i, n);
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4 project(int4 a, int4 b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4 faceforward(int4 n, int4 i, int4 ng) => select(n, -n, dot(ng, i) >= 0);
+
+
 
 
 

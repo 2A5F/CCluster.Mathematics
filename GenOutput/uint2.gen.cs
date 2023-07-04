@@ -164,6 +164,22 @@ public unsafe partial struct uint2 :
     public bool2 VNe(uint2 other) => new bool2(this.x != other.x, this.y != other.y);
 
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator >(uint2 left, uint2 right) => new bool2(left.x > right.x, left.y > right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator <(uint2 left, uint2 right) => new bool2(left.x < right.x, left.y < right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator >=(uint2 left, uint2 right) => new bool2(left.x >= right.x, left.y >= right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator <=(uint2 left, uint2 right) => new bool2(left.x <= right.x, left.y <= right.y);
+
+
+
+
     public static uint2 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -247,6 +263,9 @@ public unsafe partial struct uint2 :
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $"uint2({this.x}, {this.y})";
+
 }
 
 public static unsafe partial class math
@@ -280,13 +299,64 @@ public static unsafe partial class math
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint2 abs(uint2 x) => x;
+
+
+
+
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint dot(uint2 x, uint2 y) => x.x * y.x + x.y * y.y;
+    public static uint dot(uint2 x, uint2 y) => Vector64.Dot(x.vector, y.vector);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint2 lengthsq(uint2 x) => dot(x, x);
+
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint2 distancesq(uint2 x, uint2 y) => lengthsq(y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint2 select(uint2 a, uint2 b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint2 select(uint2 a, uint2 b, bool2 c) => new uint2(c.x ? b.x : a.x, c.y ? b.y : a.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint2 step(uint2 y, uint2 x) => select(new uint2(0u), new uint2(1u), x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint2 reflect(uint2 i, uint2 n) => i - 2u * n * dot(i, n);
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint2 project(uint2 a, uint2 b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
 
 
 

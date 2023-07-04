@@ -164,6 +164,22 @@ public unsafe partial struct float2 :
     public bool2 VNe(float2 other) => new bool2(this.x != other.x, this.y != other.y);
 
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator >(float2 left, float2 right) => new bool2(left.x > right.x, left.y > right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator <(float2 left, float2 right) => new bool2(left.x < right.x, left.y < right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator >=(float2 left, float2 right) => new bool2(left.x >= right.x, left.y >= right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator <=(float2 left, float2 right) => new bool2(left.x <= right.x, left.y <= right.y);
+
+
+
+
     public static float2 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -250,6 +266,9 @@ public unsafe partial struct float2 :
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $"float2({this.x}, {this.y})";
+
 }
 
 public static unsafe partial class math
@@ -306,8 +325,11 @@ public static unsafe partial class math
 
 
 
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float dot(float2 x, float2 y) => x.x * y.x + x.y * y.y;
+    public static float dot(float2 x, float2 y) => Vector64.Dot(x.vector, y.vector);
+
 
 
 
@@ -393,11 +415,15 @@ public static unsafe partial class math
 
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 floor(float2 x) => new float2(floor(x.x), floor(x.y));
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 ceil(float2 x) => new float2(ceil(x.x), ceil(x.y));
+    public static float2 floor(float2 x) => new float2(Vector64.Floor(x.vector));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 ceil(float2 x) => new float2(Vector64.Ceiling(x.vector));
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float2 round(float2 x) => new float2(round(x.x), round(x.y));
@@ -470,6 +496,96 @@ public static unsafe partial class math
         i = trunc(x);
         return x - i;
     }
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 sqrt(float2 x) => new float2(Vector64.Sqrt(x.vector));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 rsqrt(float2 x) => 1f / sqrt(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 normalize(float2 x) => rsqrt(dot(x, x)) * x;
+
+    // todo normalizesafe
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 length(float2 x) => sqrt(dot(x, x));
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 lengthsq(float2 x) => dot(x, x);
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 distance(float2 x, float2 y) => length(y - x);
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 distancesq(float2 x, float2 y) => lengthsq(y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 select(float2 a, float2 b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 select(float2 a, float2 b, bool2 c) => new float2(c.x ? b.x : a.x, c.y ? b.y : a.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 step(float2 y, float2 x) => select(new float2(0f), new float2(1f), x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 reflect(float2 i, float2 n) => i - 2f * n * dot(i, n);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 reflect(float2 i, float2 n, float eta)
+    {
+        var ni = dot(n, i);
+        var k = 1f - eta * eta * (1f - ni * ni);
+        return select(0f, eta * i - (eta * ni + sqrt(k)) * n, k >= 0f);
+    }
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 project(float2 a, float2 b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 faceforward(float2 n, float2 i, float2 ng) => select(n, -n, dot(ng, i) >= 0f);
+
+
+
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 radians(float2 x) => x * 0.0174532925199432957692369076848861271344287188854172545609719144f;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 degrees(float2 x) => x * 57.295779513082320876798154814105170332405472466564321549160243861f;
+
+
+
 
 
 

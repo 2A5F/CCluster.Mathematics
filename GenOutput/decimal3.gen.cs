@@ -149,6 +149,22 @@ public unsafe partial struct decimal3 :
     public bool3 VNe(decimal3 other) => new bool3(this.x != other.x, this.y != other.y, this.z != other.z);
 
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator >(decimal3 left, decimal3 right) => new bool3(left.x > right.x, left.y > right.y, left.z > right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator <(decimal3 left, decimal3 right) => new bool3(left.x < right.x, left.y < right.y, left.z < right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator >=(decimal3 left, decimal3 right) => new bool3(left.x >= right.x, left.y >= right.y, left.z >= right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator <=(decimal3 left, decimal3 right) => new bool3(left.x <= right.x, left.y <= right.y, left.z <= right.z);
+
+
+
+
     public static decimal3 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -223,6 +239,9 @@ public unsafe partial struct decimal3 :
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $"decimal3({this.x}, {this.y}, {this.z})";
+
 }
 
 public static unsafe partial class math
@@ -285,8 +304,13 @@ public static unsafe partial class math
     public static decimal3 cross(decimal3 x, decimal3 y) => (x * y.yzx - x.yzx * y).yzx;
 
 
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal dot(decimal3 x, decimal3 y) => x.x * y.x + x.y * y.y + x.z * y.z;
+
+
+
 
 
 
@@ -299,6 +323,8 @@ public static unsafe partial class math
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal3 ceil(decimal3 x) => new decimal3(ceil(x.x), ceil(x.y), ceil(x.z));
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal3 round(decimal3 x) => new decimal3(round(x.x), round(x.y), round(x.z));
@@ -318,6 +344,63 @@ public static unsafe partial class math
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal3 sign(decimal3 x) => new decimal3(sign(x.x), sign(x.y), sign(x.z));
+
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3 lengthsq(decimal3 x) => dot(x, x);
+
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3 distancesq(decimal3 x, decimal3 y) => lengthsq(y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3 select(decimal3 a, decimal3 b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3 select(decimal3 a, decimal3 b, bool3 c) => new decimal3(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3 step(decimal3 y, decimal3 x) => select(new decimal3(0m), new decimal3(1m), x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3 reflect(decimal3 i, decimal3 n) => i - 2m * n * dot(i, n);
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3 project(decimal3 a, decimal3 b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3 faceforward(decimal3 n, decimal3 i, decimal3 ng) => select(n, -n, dot(ng, i) >= 0m);
+
+
+
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3 radians(decimal3 x) => x * 0.0174532925199432957692369076848861271344287188854172545609719144m;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3 degrees(decimal3 x) => x * 57.295779513082320876798154814105170332405472466564321549160243861m;
+
 
 
 

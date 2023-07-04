@@ -204,6 +204,22 @@ public unsafe partial struct double4 :
     public bool4 VNe(double4 other) => new bool4(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
 
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 operator >(double4 left, double4 right) => new bool4(left.x > right.x, left.y > right.y, left.z > right.z, left.w > right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 operator <(double4 left, double4 right) => new bool4(left.x < right.x, left.y < right.y, left.z < right.z, left.w < right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 operator >=(double4 left, double4 right) => new bool4(left.x >= right.x, left.y >= right.y, left.z >= right.z, left.w >= right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 operator <=(double4 left, double4 right) => new bool4(left.x <= right.x, left.y <= right.y, left.z <= right.z, left.w <= right.w);
+
+
+
+
     public static double4 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -290,6 +306,9 @@ public unsafe partial struct double4 :
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $"double4({this.x}, {this.y}, {this.z}, {this.w})";
+
 }
 
 public static unsafe partial class math
@@ -352,8 +371,11 @@ public static unsafe partial class math
 
 
 
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double dot(double4 x, double4 y) => x.x * y.x + x.y * y.y + x.z * y.z + x.w * y.w;
+    public static double dot(double4 x, double4 y) => Vector256.Dot(x.vector, y.vector);
+
 
 
 
@@ -439,11 +461,15 @@ public static unsafe partial class math
 
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 floor(double4 x) => new double4(floor(x.x), floor(x.y), floor(x.z), floor(x.w));
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 ceil(double4 x) => new double4(ceil(x.x), ceil(x.y), ceil(x.z), ceil(x.w));
+    public static double4 floor(double4 x) => new double4(Vector256.Floor(x.vector));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 ceil(double4 x) => new double4(Vector256.Ceiling(x.vector));
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double4 round(double4 x) => new double4(round(x.x), round(x.y), round(x.z), round(x.w));
@@ -516,6 +542,96 @@ public static unsafe partial class math
         i = trunc(x);
         return x - i;
     }
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 sqrt(double4 x) => new double4(Vector256.Sqrt(x.vector));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 rsqrt(double4 x) => 1d / sqrt(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 normalize(double4 x) => rsqrt(dot(x, x)) * x;
+
+    // todo normalizesafe
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 length(double4 x) => sqrt(dot(x, x));
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 lengthsq(double4 x) => dot(x, x);
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 distance(double4 x, double4 y) => length(y - x);
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 distancesq(double4 x, double4 y) => lengthsq(y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 select(double4 a, double4 b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 select(double4 a, double4 b, bool4 c) => new double4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 step(double4 y, double4 x) => select(new double4(0d), new double4(1d), x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 reflect(double4 i, double4 n) => i - 2d * n * dot(i, n);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 reflect(double4 i, double4 n, double eta)
+    {
+        var ni = dot(n, i);
+        var k = 1d - eta * eta * (1d - ni * ni);
+        return select(0d, eta * i - (eta * ni + sqrt(k)) * n, k >= 0d);
+    }
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 project(double4 a, double4 b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 faceforward(double4 n, double4 i, double4 ng) => select(n, -n, dot(ng, i) >= 0d);
+
+
+
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 radians(double4 x) => x * 0.0174532925199432957692369076848861271344287188854172545609719144d;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 degrees(double4 x) => x * 57.295779513082320876798154814105170332405472466564321549160243861d;
+
+
+
 
 
 

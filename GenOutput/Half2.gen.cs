@@ -133,6 +133,22 @@ public unsafe partial struct Half2 :
     public bool2 VNe(Half2 other) => new bool2(this.x != other.x, this.y != other.y);
 
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator >(Half2 left, Half2 right) => new bool2(left.x > right.x, left.y > right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator <(Half2 left, Half2 right) => new bool2(left.x < right.x, left.y < right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator >=(Half2 left, Half2 right) => new bool2(left.x >= right.x, left.y >= right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator <=(Half2 left, Half2 right) => new bool2(left.x <= right.x, left.y <= right.y);
+
+
+
+
     public static Half2 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -207,6 +223,9 @@ public unsafe partial struct Half2 :
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $"Half2({this.x}, {this.y})";
+
 }
 
 public static unsafe partial class math
@@ -263,8 +282,11 @@ public static unsafe partial class math
 
 
 
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half dot(Half2 x, Half2 y) => x.x * y.x + x.y * y.y;
+
 
 
 
@@ -350,11 +372,15 @@ public static unsafe partial class math
 
 
 
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half2 floor(Half2 x) => new Half2(floor(x.x), floor(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half2 ceil(Half2 x) => new Half2(ceil(x.x), ceil(x.y));
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half2 round(Half2 x) => new Half2(round(x.x), round(x.y));
@@ -427,6 +453,96 @@ public static unsafe partial class math
         i = trunc(x);
         return x - i;
     }
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 sqrt(Half2 x) => new Half2(sqrt(x.x), sqrt(x.y));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 rsqrt(Half2 x) => Half.One / sqrt(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 normalize(Half2 x) => rsqrt(dot(x, x)) * x;
+
+    // todo normalizesafe
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 length(Half2 x) => sqrt(dot(x, x));
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 lengthsq(Half2 x) => dot(x, x);
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 distance(Half2 x, Half2 y) => length(y - x);
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 distancesq(Half2 x, Half2 y) => lengthsq(y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 select(Half2 a, Half2 b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 select(Half2 a, Half2 b, bool2 c) => new Half2(c.x ? b.x : a.x, c.y ? b.y : a.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 step(Half2 y, Half2 x) => select(new Half2(Half.Zero), new Half2(Half.One), x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 reflect(Half2 i, Half2 n) => i - (Half.One + Half.One) * n * dot(i, n);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 reflect(Half2 i, Half2 n, Half eta)
+    {
+        var ni = dot(n, i);
+        var k = Half.One - eta * eta * (Half.One - ni * ni);
+        return select(Half.Zero, eta * i - (eta * ni + sqrt(k)) * n, k >= Half.Zero);
+    }
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 project(Half2 a, Half2 b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 faceforward(Half2 n, Half2 i, Half2 ng) => select(n, -n, dot(ng, i) >= Half.Zero);
+
+
+
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 radians(Half2 x) => x * (Half)0.0174532925199432957692369076848861271344287188854172545609719144;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 degrees(Half2 x) => x * (Half)57.295779513082320876798154814105170332405472466564321549160243861;
+
+
+
 
 
 

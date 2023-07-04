@@ -184,6 +184,22 @@ public unsafe partial struct long3 :
     public bool3 VNe(long3 other) => new bool3(this.x != other.x, this.y != other.y, this.z != other.z);
 
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator >(long3 left, long3 right) => new bool3(left.x > right.x, left.y > right.y, left.z > right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator <(long3 left, long3 right) => new bool3(left.x < right.x, left.y < right.y, left.z < right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator >=(long3 left, long3 right) => new bool3(left.x >= right.x, left.y >= right.y, left.z >= right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator <=(long3 left, long3 right) => new bool3(left.x <= right.x, left.y <= right.y, left.z <= right.z);
+
+
+
+
     public static long3 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -270,6 +286,9 @@ public unsafe partial struct long3 :
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $"long3({this.x}, {this.y}, {this.z})";
+
 }
 
 public static unsafe partial class math
@@ -316,8 +335,11 @@ public static unsafe partial class math
     public static long3 cross(long3 x, long3 y) => (x * y.yzx - x.yzx * y).yzx;
 
 
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long dot(long3 x, long3 y) => x.x * y.x + x.y * y.y + x.z * y.z;
+    public static long dot(long3 x, long3 y) => Vector256.Dot(x.vector, y.vector);
+
 
 
 
@@ -329,6 +351,54 @@ public static unsafe partial class math
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long3 sign(long3 x) => new long3(sign(x.x), sign(x.y), sign(x.z));
+
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 lengthsq(long3 x) => dot(x, x);
+
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 distancesq(long3 x, long3 y) => lengthsq(y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 select(long3 a, long3 b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 select(long3 a, long3 b, bool3 c) => new long3(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 step(long3 y, long3 x) => select(new long3(0L), new long3(1L), x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 reflect(long3 i, long3 n) => i - 2L * n * dot(i, n);
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 project(long3 a, long3 b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 faceforward(long3 n, long3 i, long3 ng) => select(n, -n, dot(ng, i) >= 0L);
+
+
 
 
 

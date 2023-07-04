@@ -164,6 +164,22 @@ public unsafe partial struct ulong2 :
     public bool2 VNe(ulong2 other) => new bool2(this.x != other.x, this.y != other.y);
 
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator >(ulong2 left, ulong2 right) => new bool2(left.x > right.x, left.y > right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator <(ulong2 left, ulong2 right) => new bool2(left.x < right.x, left.y < right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator >=(ulong2 left, ulong2 right) => new bool2(left.x >= right.x, left.y >= right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2 operator <=(ulong2 left, ulong2 right) => new bool2(left.x <= right.x, left.y <= right.y);
+
+
+
+
     public static ulong2 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -247,6 +263,9 @@ public unsafe partial struct ulong2 :
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $"ulong2({this.x}, {this.y})";
+
 }
 
 public static unsafe partial class math
@@ -280,13 +299,64 @@ public static unsafe partial class math
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong2 abs(ulong2 x) => x;
+
+
+
+
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong dot(ulong2 x, ulong2 y) => x.x * y.x + x.y * y.y;
+    public static ulong dot(ulong2 x, ulong2 y) => Vector128.Dot(x.vector, y.vector);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong2 lengthsq(ulong2 x) => dot(x, x);
+
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong2 distancesq(ulong2 x, ulong2 y) => lengthsq(y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong2 select(ulong2 a, ulong2 b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong2 select(ulong2 a, ulong2 b, bool2 c) => new ulong2(c.x ? b.x : a.x, c.y ? b.y : a.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong2 step(ulong2 y, ulong2 x) => select(new ulong2(0UL), new ulong2(1UL), x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong2 reflect(ulong2 i, ulong2 n) => i - 2UL * n * dot(i, n);
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong2 project(ulong2 a, ulong2 b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
 
 
 

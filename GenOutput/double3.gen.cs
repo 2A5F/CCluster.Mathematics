@@ -184,6 +184,22 @@ public unsafe partial struct double3 :
     public bool3 VNe(double3 other) => new bool3(this.x != other.x, this.y != other.y, this.z != other.z);
 
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator >(double3 left, double3 right) => new bool3(left.x > right.x, left.y > right.y, left.z > right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator <(double3 left, double3 right) => new bool3(left.x < right.x, left.y < right.y, left.z < right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator >=(double3 left, double3 right) => new bool3(left.x >= right.x, left.y >= right.y, left.z >= right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3 operator <=(double3 left, double3 right) => new bool3(left.x <= right.x, left.y <= right.y, left.z <= right.z);
+
+
+
+
     public static double3 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -270,6 +286,9 @@ public unsafe partial struct double3 :
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $"double3({this.x}, {this.y}, {this.z})";
+
 }
 
 public static unsafe partial class math
@@ -332,8 +351,11 @@ public static unsafe partial class math
     public static double3 cross(double3 x, double3 y) => (x * y.yzx - x.yzx * y).yzx;
 
 
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double dot(double3 x, double3 y) => x.x * y.x + x.y * y.y + x.z * y.z;
+    public static double dot(double3 x, double3 y) => Vector256.Dot(x.vector, y.vector);
+
 
 
 
@@ -419,11 +441,15 @@ public static unsafe partial class math
 
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 floor(double3 x) => new double3(floor(x.x), floor(x.y), floor(x.z));
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 ceil(double3 x) => new double3(ceil(x.x), ceil(x.y), ceil(x.z));
+    public static double3 floor(double3 x) => new double3(Vector256.Floor(x.vector));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 ceil(double3 x) => new double3(Vector256.Ceiling(x.vector));
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double3 round(double3 x) => new double3(round(x.x), round(x.y), round(x.z));
@@ -496,6 +522,96 @@ public static unsafe partial class math
         i = trunc(x);
         return x - i;
     }
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 sqrt(double3 x) => new double3(Vector256.Sqrt(x.vector));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 rsqrt(double3 x) => 1d / sqrt(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 normalize(double3 x) => rsqrt(dot(x, x)) * x;
+
+    // todo normalizesafe
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 length(double3 x) => sqrt(dot(x, x));
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 lengthsq(double3 x) => dot(x, x);
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 distance(double3 x, double3 y) => length(y - x);
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 distancesq(double3 x, double3 y) => lengthsq(y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 select(double3 a, double3 b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 select(double3 a, double3 b, bool3 c) => new double3(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 step(double3 y, double3 x) => select(new double3(0d), new double3(1d), x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 reflect(double3 i, double3 n) => i - 2d * n * dot(i, n);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 reflect(double3 i, double3 n, double eta)
+    {
+        var ni = dot(n, i);
+        var k = 1d - eta * eta * (1d - ni * ni);
+        return select(0d, eta * i - (eta * ni + sqrt(k)) * n, k >= 0d);
+    }
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 project(double3 a, double3 b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 faceforward(double3 n, double3 i, double3 ng) => select(n, -n, dot(ng, i) >= 0d);
+
+
+
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 radians(double3 x) => x * 0.0174532925199432957692369076848861271344287188854172545609719144d;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 degrees(double3 x) => x * 57.295779513082320876798154814105170332405472466564321549160243861d;
+
+
+
 
 
 

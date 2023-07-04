@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Intrinsics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,9 +9,10 @@ namespace CodeGen;
 
 public class GenVectors : Base
 {
-    private record TypeMeta(int Size, string Zero, string One)
+    private record TypeMeta(int Size, string suffix, string Zero, string One, string Two)
     {
         public bool Number { get; set; }
+        public bool Half { get; set; }
         public bool Float { get; set; }
         public bool Decimal { get; set; }
         public bool Bool { get; set; }
@@ -20,15 +22,18 @@ public class GenVectors : Base
 
     private static Dictionary<string, TypeMeta> types = new()
     {
-        { "bool", new(sizeof(bool), "false", "true") { Bool = true, Unsigned = true, } },
-        { "Half", new(sizeof(short), "Half.Zero", "Half.One") { Number = true, Float = true, } },
-        { "float", new(sizeof(float), "0f", "1f") { Number = true, Float = true, Simd = true, } },
-        { "double", new(sizeof(double), "0d", "1d") { Number = true, Float = true, Simd = true, } },
-        { "decimal", new(sizeof(decimal), "0m", "1m") { Number = true, Decimal = true, } },
-        { "int", new(sizeof(int), "0", "1") { Number = true, Simd = true, } },
-        { "uint", new(sizeof(uint), "0u", "1u") { Number = true, Unsigned = true, Simd = true, } },
-        { "long", new(sizeof(long), "0L", "1L") { Number = true, Simd = true, } },
-        { "ulong", new(sizeof(ulong), "0UL", "1UL") { Number = true, Unsigned = true, Simd = true, } },
+        { "bool", new(sizeof(bool), "", "false", "true", "") { Bool = true, Unsigned = true, } },
+        {
+            "Half",
+            new(sizeof(short), "", "Half.Zero", "Half.One", "(Half.One + Half.One)") { Number = true, Float = true, Half = true, }
+        },
+        { "float", new(sizeof(float), "f", "0f", "1f", "2f") { Number = true, Float = true, Simd = true, } },
+        { "double", new(sizeof(double), "d", "0d", "1d", "2d") { Number = true, Float = true, Simd = true, } },
+        { "decimal", new(sizeof(decimal), "m", "0m", "1m", "2m") { Number = true, Decimal = true, } },
+        { "int", new(sizeof(int), "", "0", "1", "2") { Number = true, Simd = true, } },
+        { "uint", new(sizeof(uint), "u", "0u", "1u", "2u") { Number = true, Unsigned = true, Simd = true, } },
+        { "long", new(sizeof(long), "L", "0L", "1L", "2L") { Number = true, Simd = true, } },
+        { "ulong", new(sizeof(ulong), "UL", "0UL", "1UL", "2UL") { Number = true, Unsigned = true, Simd = true, } },
     };
 
     public override async Task Gen()
@@ -111,6 +116,7 @@ public class GenVectors : Base
                 var xyzw_arg = string.Join(", ", Enumerable.Range(0, n).Select(i => $"{type} {xyzw[i]}"));
                 var xyzw_value = string.Join(", ", Enumerable.Range(0, n).Select(i => $"{xyzw[i]}"));
                 var xyzw_this_value = string.Join(", ", Enumerable.Range(0, n).Select(i => $"this.{xyzw[i]}"));
+                var xyzw_this_value_to_str = string.Join(", ", Enumerable.Range(0, n).Select(i => $"{{this.{xyzw[i]}}}"));
                 var ctor = new StringBuilder();
                 if (simd)
                 {
@@ -172,12 +178,16 @@ public class GenVectors : Base
                 var dot = string.Join(" + ", Enumerable.Range(0, n).Select(i => $"x.{xyzw[i]} * y.{xyzw[i]}"));
 
                 var sin_cos = string.Join(" ",
-                    Enumerable.Range(0, n).Select(i => $@"sincos(x.{xyzw[i]}, out sin.Ref{char.ToUpper(xyzw[i])}, out cos.Ref{char.ToUpper(xyzw[i])});"));
+                    Enumerable.Range(0, n).Select(i =>
+                        $@"sincos(x.{xyzw[i]}, out sin.Ref{char.ToUpper(xyzw[i])}, out cos.Ref{char.ToUpper(xyzw[i])});"));
 
                 var sin_cos_part1 = string.Join(" ",
                     Enumerable.Range(0, n).Select(i => $"var (s{i}, c{i}) = sincos(x.{xyzw[i]});"));
                 var sin_cos_part2_sin = string.Join(", ", Enumerable.Range(0, n).Select(i => $"s{i}"));
                 var sin_cos_part2_cos = string.Join(", ", Enumerable.Range(0, n).Select(i => $"c{i}"));
+
+                var select = string.Join(", ",
+                    Enumerable.Range(0, n).Select(i => $"c.{xyzw[i]} ? b.{xyzw[i]} : a.{xyzw[i]}"));
 
                 var source = $@"using System;
 using System.Numerics;
@@ -312,6 +322,22 @@ public unsafe partial struct {type}{n} :
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool{n} VNe({type}{n} other) => new bool{n}({this_oper_value("!=")});
+
+{(meta.Number ? $@"
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool{n} operator >({type}{n} left, {type}{n} right) => new bool{n}({oper_value(">")});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool{n} operator <({type}{n} left, {type}{n} right) => new bool{n}({oper_value("<")});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool{n} operator >=({type}{n} left, {type}{n} right) => new bool{n}({oper_value(">=")});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool{n} operator <=({type}{n} left, {type}{n} right) => new bool{n}({oper_value("<=")});
+
+" : "")}
 
 {(meta.Number ? $@"
     public static {type}{n} AdditiveIdentity 
@@ -458,6 +484,9 @@ public unsafe partial struct {type}{n} :
 
 " : "")}
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $""{type}{n}({xyzw_this_value_to_str})"";
+
 }}
 
 public static unsafe partial class math
@@ -499,7 +528,12 @@ public static unsafe partial class math
 
 " : "")}
 
-{(meta.Unsigned ? "" : $@"
+{(meta.Unsigned ? $@"
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} abs({type}{n} x) => x;
+
+" : $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type}{n} abs({type}{n} x) => new {type}{n}({fn_value_x("abs")});
@@ -511,8 +545,14 @@ public static unsafe partial class math
     public static {type}{n} cross({type}{n} x, {type}{n} y) => (x * y.yzx - x.yzx * y).yzx;
 " : "")}
 
+
+{(simd ? $@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} dot({type}{n} x, {type}{n} y) => Vector{bitSize}.Dot(x.vector, y.vector);
+" : $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} dot({type}{n} x, {type}{n} y) => {dot};
+")}
 
 " : "")}
 
@@ -598,11 +638,23 @@ public static unsafe partial class math
 
 {(meta.Float || meta.Decimal ? $@"
 
+{(meta.Simd ? $@"
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} floor({type}{n} x) => new {type}{n}(Vector{bitSize}.Floor(x.vector));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} ceil({type}{n} x) => new {type}{n}(Vector{bitSize}.Ceiling(x.vector));
+
+" : $@"
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type}{n} floor({type}{n} x) => new {type}{n}({fn_value_x("floor")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type}{n} ceil({type}{n} x) => new {type}{n}({fn_value_x("ceil")});
+
+")}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type}{n} round({type}{n} x) => new {type}{n}({fn_value_x("round")});
@@ -676,6 +728,99 @@ public static unsafe partial class math
         return x - i;
     }}
 
+
+{(simd ? $@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} sqrt({type}{n} x) => new {type}{n}(Vector{bitSize}.Sqrt(x.vector));
+" : $@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} sqrt({type}{n} x) => new {type}{n}({fn_value_x("sqrt")});
+")}
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} rsqrt({type}{n} x) => {meta.One} / sqrt(x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} normalize({type}{n} x) => rsqrt(dot(x, x)) * x;
+
+    // todo normalizesafe
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} length({type}{n} x) => sqrt(dot(x, x));
+
+
+" : "")}
+
+{(meta.Number ? $@"
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} lengthsq({type}{n} x) => dot(x, x);
+
+" : "")}
+
+{(meta.Float ? $@"
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} distance({type}{n} x, {type}{n} y) => length(y - x);
+
+" : "")}
+
+{(meta.Number ? $@"
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} distancesq({type}{n} x, {type}{n} y) => lengthsq(y - x);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} select({type}{n} a, {type}{n} b, bool c) => c ? b : a;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} select({type}{n} a, {type}{n} b, bool{n} c) => new {type}{n}({select});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} step({type}{n} y, {type}{n} x) => select(new {type}{n}({meta.Zero}), new {type}{n}({meta.One}), x >= y);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} reflect({type}{n} i, {type}{n} n) => i - {meta.Two} * n * dot(i, n);
+
+{(meta.Float ? $@"
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} reflect({type}{n} i, {type}{n} n, {type} eta)
+    {{
+        var ni = dot(n, i);
+        var k = {meta.One} - eta * eta * ({meta.One} - ni * ni);
+        return select({meta.Zero}, eta * i - (eta * ni + sqrt(k)) * n, k >= {meta.Zero});
+    }}
+
+" : "")}
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} project({type}{n} a, {type}{n} b) => (dot(a, b) / dot(b, b)) * b;
+
+    // todo projectsafe
+
+
+{(meta.Unsigned ? "" : $@"
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} faceforward({type}{n} n, {type}{n} i, {type}{n} ng) => select(n, -n, dot(ng, i) >= {meta.Zero});
+
+")}
+
+{(meta.Float || meta.Decimal ? $@"
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} radians({type}{n} x) => x * {(meta.Half ? "(Half)" : "")}0.0174532925199432957692369076848861271344287188854172545609719144{meta.suffix};
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{n} degrees({type}{n} x) => x * {(meta.Half ? "(Half)" : "")}57.295779513082320876798154814105170332405472466564321549160243861{meta.suffix};
+
+
+" : "")}
+
 " : "")}
 
 }}
@@ -683,6 +828,5 @@ public static unsafe partial class math
                 await SaveCode($"{type}{n}.gen.cs", source);
             }
         }
-
     }
 }
