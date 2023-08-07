@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
-[StructLayout(LayoutKind.Sequential, Size = 32)]
+[StructLayout(LayoutKind.Explicit, Size = 32)]
 public unsafe partial struct decimal2 : 
     IEquatable<decimal2>, IEqualityOperators<decimal2, decimal2, bool>, IEqualityOperators<decimal2, decimal2, bool2>,
 
@@ -25,33 +25,17 @@ public unsafe partial struct decimal2 :
     IVector, IVector2, IVector<decimal>, IVector2<decimal>
 {
 
+    [FieldOffset(0)]
     public decimal x;
 
-    public ref decimal RefX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in x);
-    }
-
-    public readonly ref readonly decimal RefRoX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in x);
-    }
-
+    [FieldOffset(16)]
     public decimal y;
 
-    public ref decimal RefY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in y);
-    }
+    [FieldOffset(0)]
+    public decimal r;
 
-    public readonly ref readonly decimal RefRoY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in y);
-    }
+    [FieldOffset(16)]
+    public decimal g;
 
 
     public static int ByteSize 
@@ -230,14 +214,6 @@ public unsafe partial struct decimal2 :
 
 public static unsafe partial class math
 {
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref decimal RefX(decimal2* self) => ref Unsafe.AsRef(in self->x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref decimal RefY(decimal2* self) => ref Unsafe.AsRef(in self->y);
-
 
 
 

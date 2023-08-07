@@ -34,6 +34,30 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new double2(this.y, this.y);
     }
+    public double2 rr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double2(this.r, this.r);
+    }
+    public double2 rg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double2(this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; }
+    }
+    public double2 gr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double2(this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; }
+    }
+    public double2 gg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double2(this.g, this.g);
+    }
     public double3 xxx
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -73,6 +97,46 @@ public partial struct double2
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new double3(this.y, this.y, this.y);
+    }
+    public double3 rrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double3(this.r, this.r, this.r);
+    }
+    public double3 rrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double3(this.r, this.r, this.g);
+    }
+    public double3 rgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double3(this.r, this.g, this.r);
+    }
+    public double3 rgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double3(this.r, this.g, this.g);
+    }
+    public double3 grr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double3(this.g, this.r, this.r);
+    }
+    public double3 grg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double3(this.g, this.r, this.g);
+    }
+    public double3 ggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double3(this.g, this.g, this.r);
+    }
+    public double3 ggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double3(this.g, this.g, this.g);
     }
     public double4 xxxx
     {
@@ -153,6 +217,86 @@ public partial struct double2
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new double4(this.y, this.y, this.y, this.y);
+    }
+    public double4 rrrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.r, this.r, this.r, this.r);
+    }
+    public double4 rrrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.r, this.r, this.r, this.g);
+    }
+    public double4 rrgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.r, this.r, this.g, this.r);
+    }
+    public double4 rrgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.r, this.r, this.g, this.g);
+    }
+    public double4 rgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.r, this.g, this.r, this.r);
+    }
+    public double4 rgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.r, this.g, this.r, this.g);
+    }
+    public double4 rggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.r, this.g, this.g, this.r);
+    }
+    public double4 rggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.r, this.g, this.g, this.g);
+    }
+    public double4 grrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.g, this.r, this.r, this.r);
+    }
+    public double4 grrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.g, this.r, this.r, this.g);
+    }
+    public double4 grgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.g, this.r, this.g, this.r);
+    }
+    public double4 grgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.g, this.r, this.g, this.g);
+    }
+    public double4 ggrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.g, this.g, this.r, this.r);
+    }
+    public double4 ggrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.g, this.g, this.r, this.g);
+    }
+    public double4 gggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.g, this.g, this.g, this.r);
+    }
+    public double4 gggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new double4(this.g, this.g, this.g, this.g);
     }
 
 

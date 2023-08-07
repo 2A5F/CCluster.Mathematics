@@ -67,6 +67,63 @@ public partial struct float3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new float2(this.z, this.z);
     }
+    public float2 rr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float2(this.r, this.r);
+    }
+    public float2 rg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float2(this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; }
+    }
+    public float2 rb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float2(this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; }
+    }
+    public float2 gr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float2(this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; }
+    }
+    public float2 gg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float2(this.g, this.g);
+    }
+    public float2 gb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float2(this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; }
+    }
+    public float2 br
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float2(this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; }
+    }
+    public float2 bg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float2(this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; }
+    }
+    public float2 bb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float2(this.b, this.b);
+    }
     public float3 xxx
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -213,6 +270,153 @@ public partial struct float3
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new float3(this.z, this.z, this.z);
+    }
+    public float3 rrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.r, this.r, this.r);
+    }
+    public float3 rrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.r, this.r, this.g);
+    }
+    public float3 rrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.r, this.r, this.b);
+    }
+    public float3 rgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.r, this.g, this.r);
+    }
+    public float3 rgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.r, this.g, this.g);
+    }
+    public float3 rgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.r, this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; this.b = value.z; }
+    }
+    public float3 rbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.r, this.b, this.r);
+    }
+    public float3 rbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.r, this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; this.g = value.z; }
+    }
+    public float3 rbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.r, this.b, this.b);
+    }
+    public float3 grr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.g, this.r, this.r);
+    }
+    public float3 grg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.g, this.r, this.g);
+    }
+    public float3 grb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.g, this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; this.b = value.z; }
+    }
+    public float3 ggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.g, this.g, this.r);
+    }
+    public float3 ggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.g, this.g, this.g);
+    }
+    public float3 ggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.g, this.g, this.b);
+    }
+    public float3 gbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.g, this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; this.r = value.z; }
+    }
+    public float3 gbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.g, this.b, this.g);
+    }
+    public float3 gbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.g, this.b, this.b);
+    }
+    public float3 brr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.b, this.r, this.r);
+    }
+    public float3 brg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.b, this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; this.g = value.z; }
+    }
+    public float3 brb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.b, this.r, this.b);
+    }
+    public float3 bgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.b, this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; this.r = value.z; }
+    }
+    public float3 bgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.b, this.g, this.g);
+    }
+    public float3 bgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.b, this.g, this.b);
+    }
+    public float3 bbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.b, this.b, this.r);
+    }
+    public float3 bbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.b, this.b, this.g);
+    }
+    public float3 bbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float3(this.b, this.b, this.b);
     }
     public float4 xxxx
     {
@@ -618,6 +822,411 @@ public partial struct float3
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new float4(this.z, this.z, this.z, this.z);
+    }
+    public float4 rrrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.r, this.r, this.r);
+    }
+    public float4 rrrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.r, this.r, this.g);
+    }
+    public float4 rrrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.r, this.r, this.b);
+    }
+    public float4 rrgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.r, this.g, this.r);
+    }
+    public float4 rrgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.r, this.g, this.g);
+    }
+    public float4 rrgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.r, this.g, this.b);
+    }
+    public float4 rrbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.r, this.b, this.r);
+    }
+    public float4 rrbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.r, this.b, this.g);
+    }
+    public float4 rrbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.r, this.b, this.b);
+    }
+    public float4 rgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.g, this.r, this.r);
+    }
+    public float4 rgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.g, this.r, this.g);
+    }
+    public float4 rgrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.g, this.r, this.b);
+    }
+    public float4 rggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.g, this.g, this.r);
+    }
+    public float4 rggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.g, this.g, this.g);
+    }
+    public float4 rggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.g, this.g, this.b);
+    }
+    public float4 rgbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.g, this.b, this.r);
+    }
+    public float4 rgbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.g, this.b, this.g);
+    }
+    public float4 rgbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.g, this.b, this.b);
+    }
+    public float4 rbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.b, this.r, this.r);
+    }
+    public float4 rbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.b, this.r, this.g);
+    }
+    public float4 rbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.b, this.r, this.b);
+    }
+    public float4 rbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.b, this.g, this.r);
+    }
+    public float4 rbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.b, this.g, this.g);
+    }
+    public float4 rbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.b, this.g, this.b);
+    }
+    public float4 rbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.b, this.b, this.r);
+    }
+    public float4 rbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.b, this.b, this.g);
+    }
+    public float4 rbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.r, this.b, this.b, this.b);
+    }
+    public float4 grrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.r, this.r, this.r);
+    }
+    public float4 grrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.r, this.r, this.g);
+    }
+    public float4 grrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.r, this.r, this.b);
+    }
+    public float4 grgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.r, this.g, this.r);
+    }
+    public float4 grgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.r, this.g, this.g);
+    }
+    public float4 grgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.r, this.g, this.b);
+    }
+    public float4 grbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.r, this.b, this.r);
+    }
+    public float4 grbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.r, this.b, this.g);
+    }
+    public float4 grbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.r, this.b, this.b);
+    }
+    public float4 ggrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.g, this.r, this.r);
+    }
+    public float4 ggrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.g, this.r, this.g);
+    }
+    public float4 ggrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.g, this.r, this.b);
+    }
+    public float4 gggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.g, this.g, this.r);
+    }
+    public float4 gggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.g, this.g, this.g);
+    }
+    public float4 gggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.g, this.g, this.b);
+    }
+    public float4 ggbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.g, this.b, this.r);
+    }
+    public float4 ggbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.g, this.b, this.g);
+    }
+    public float4 ggbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.g, this.b, this.b);
+    }
+    public float4 gbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.b, this.r, this.r);
+    }
+    public float4 gbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.b, this.r, this.g);
+    }
+    public float4 gbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.b, this.r, this.b);
+    }
+    public float4 gbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.b, this.g, this.r);
+    }
+    public float4 gbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.b, this.g, this.g);
+    }
+    public float4 gbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.b, this.g, this.b);
+    }
+    public float4 gbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.b, this.b, this.r);
+    }
+    public float4 gbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.b, this.b, this.g);
+    }
+    public float4 gbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.g, this.b, this.b, this.b);
+    }
+    public float4 brrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.r, this.r, this.r);
+    }
+    public float4 brrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.r, this.r, this.g);
+    }
+    public float4 brrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.r, this.r, this.b);
+    }
+    public float4 brgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.r, this.g, this.r);
+    }
+    public float4 brgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.r, this.g, this.g);
+    }
+    public float4 brgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.r, this.g, this.b);
+    }
+    public float4 brbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.r, this.b, this.r);
+    }
+    public float4 brbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.r, this.b, this.g);
+    }
+    public float4 brbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.r, this.b, this.b);
+    }
+    public float4 bgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.g, this.r, this.r);
+    }
+    public float4 bgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.g, this.r, this.g);
+    }
+    public float4 bgrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.g, this.r, this.b);
+    }
+    public float4 bggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.g, this.g, this.r);
+    }
+    public float4 bggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.g, this.g, this.g);
+    }
+    public float4 bggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.g, this.g, this.b);
+    }
+    public float4 bgbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.g, this.b, this.r);
+    }
+    public float4 bgbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.g, this.b, this.g);
+    }
+    public float4 bgbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.g, this.b, this.b);
+    }
+    public float4 bbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.b, this.r, this.r);
+    }
+    public float4 bbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.b, this.r, this.g);
+    }
+    public float4 bbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.b, this.r, this.b);
+    }
+    public float4 bbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.b, this.g, this.r);
+    }
+    public float4 bbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.b, this.g, this.g);
+    }
+    public float4 bbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.b, this.g, this.b);
+    }
+    public float4 bbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.b, this.b, this.r);
+    }
+    public float4 bbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.b, this.b, this.g);
+    }
+    public float4 bbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new float4(this.b, this.b, this.b, this.b);
     }
 
 

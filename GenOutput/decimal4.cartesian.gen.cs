@@ -114,6 +114,110 @@ public partial struct decimal4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new decimal2(this.w, this.w);
     }
+    public decimal2 rr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.r, this.r);
+    }
+    public decimal2 rg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; }
+    }
+    public decimal2 rb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; }
+    }
+    public decimal2 ra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; }
+    }
+    public decimal2 gr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; }
+    }
+    public decimal2 gg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.g, this.g);
+    }
+    public decimal2 gb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; }
+    }
+    public decimal2 ga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; }
+    }
+    public decimal2 br
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; }
+    }
+    public decimal2 bg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; }
+    }
+    public decimal2 bb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.b, this.b);
+    }
+    public decimal2 ba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; }
+    }
+    public decimal2 ar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; }
+    }
+    public decimal2 ag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; }
+    }
+    public decimal2 ab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; }
+    }
+    public decimal2 aa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal2(this.a, this.a);
+    }
     public decimal3 xxx
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -481,6 +585,374 @@ public partial struct decimal4
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new decimal3(this.w, this.w, this.w);
+    }
+    public decimal3 rrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.r, this.r);
+    }
+    public decimal3 rrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.r, this.g);
+    }
+    public decimal3 rrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.r, this.b);
+    }
+    public decimal3 rra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.r, this.a);
+    }
+    public decimal3 rgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.g, this.r);
+    }
+    public decimal3 rgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.g, this.g);
+    }
+    public decimal3 rgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; this.b = value.z; }
+    }
+    public decimal3 rga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; this.a = value.z; }
+    }
+    public decimal3 rbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.b, this.r);
+    }
+    public decimal3 rbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; this.g = value.z; }
+    }
+    public decimal3 rbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.b, this.b);
+    }
+    public decimal3 rba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; this.a = value.z; }
+    }
+    public decimal3 rar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.a, this.r);
+    }
+    public decimal3 rag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; this.g = value.z; }
+    }
+    public decimal3 rab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; this.b = value.z; }
+    }
+    public decimal3 raa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.r, this.a, this.a);
+    }
+    public decimal3 grr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.r, this.r);
+    }
+    public decimal3 grg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.r, this.g);
+    }
+    public decimal3 grb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; this.b = value.z; }
+    }
+    public decimal3 gra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; this.a = value.z; }
+    }
+    public decimal3 ggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.g, this.r);
+    }
+    public decimal3 ggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.g, this.g);
+    }
+    public decimal3 ggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.g, this.b);
+    }
+    public decimal3 gga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.g, this.a);
+    }
+    public decimal3 gbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; this.r = value.z; }
+    }
+    public decimal3 gbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.b, this.g);
+    }
+    public decimal3 gbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.b, this.b);
+    }
+    public decimal3 gba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; this.a = value.z; }
+    }
+    public decimal3 gar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; this.r = value.z; }
+    }
+    public decimal3 gag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.a, this.g);
+    }
+    public decimal3 gab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; this.b = value.z; }
+    }
+    public decimal3 gaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.g, this.a, this.a);
+    }
+    public decimal3 brr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.r, this.r);
+    }
+    public decimal3 brg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; this.g = value.z; }
+    }
+    public decimal3 brb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.r, this.b);
+    }
+    public decimal3 bra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; this.a = value.z; }
+    }
+    public decimal3 bgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; this.r = value.z; }
+    }
+    public decimal3 bgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.g, this.g);
+    }
+    public decimal3 bgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.g, this.b);
+    }
+    public decimal3 bga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; this.a = value.z; }
+    }
+    public decimal3 bbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.b, this.r);
+    }
+    public decimal3 bbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.b, this.g);
+    }
+    public decimal3 bbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.b, this.b);
+    }
+    public decimal3 bba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.b, this.a);
+    }
+    public decimal3 bar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; this.r = value.z; }
+    }
+    public decimal3 bag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; this.g = value.z; }
+    }
+    public decimal3 bab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.a, this.b);
+    }
+    public decimal3 baa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.b, this.a, this.a);
+    }
+    public decimal3 arr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.r, this.r);
+    }
+    public decimal3 arg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; this.g = value.z; }
+    }
+    public decimal3 arb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; this.b = value.z; }
+    }
+    public decimal3 ara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.r, this.a);
+    }
+    public decimal3 agr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; this.r = value.z; }
+    }
+    public decimal3 agg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.g, this.g);
+    }
+    public decimal3 agb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; this.b = value.z; }
+    }
+    public decimal3 aga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.g, this.a);
+    }
+    public decimal3 abr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; this.r = value.z; }
+    }
+    public decimal3 abg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; this.g = value.z; }
+    }
+    public decimal3 abb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.b, this.b);
+    }
+    public decimal3 aba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.b, this.a);
+    }
+    public decimal3 aar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.a, this.r);
+    }
+    public decimal3 aag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.a, this.g);
+    }
+    public decimal3 aab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.a, this.b);
+    }
+    public decimal3 aaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal3(this.a, this.a, this.a);
     }
     public decimal4 xxxx
     {
@@ -1809,6 +2281,1334 @@ public partial struct decimal4
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new decimal4(this.w, this.w, this.w, this.w);
+    }
+    public decimal4 rrrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.r, this.r);
+    }
+    public decimal4 rrrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.r, this.g);
+    }
+    public decimal4 rrrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.r, this.b);
+    }
+    public decimal4 rrra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.r, this.a);
+    }
+    public decimal4 rrgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.g, this.r);
+    }
+    public decimal4 rrgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.g, this.g);
+    }
+    public decimal4 rrgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.g, this.b);
+    }
+    public decimal4 rrga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.g, this.a);
+    }
+    public decimal4 rrbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.b, this.r);
+    }
+    public decimal4 rrbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.b, this.g);
+    }
+    public decimal4 rrbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.b, this.b);
+    }
+    public decimal4 rrba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.b, this.a);
+    }
+    public decimal4 rrar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.a, this.r);
+    }
+    public decimal4 rrag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.a, this.g);
+    }
+    public decimal4 rrab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.a, this.b);
+    }
+    public decimal4 rraa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.r, this.a, this.a);
+    }
+    public decimal4 rgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.r, this.r);
+    }
+    public decimal4 rgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.r, this.g);
+    }
+    public decimal4 rgrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.r, this.b);
+    }
+    public decimal4 rgra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.r, this.a);
+    }
+    public decimal4 rggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.g, this.r);
+    }
+    public decimal4 rggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.g, this.g);
+    }
+    public decimal4 rggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.g, this.b);
+    }
+    public decimal4 rgga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.g, this.a);
+    }
+    public decimal4 rgbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.b, this.r);
+    }
+    public decimal4 rgbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.b, this.g);
+    }
+    public decimal4 rgbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.b, this.b);
+    }
+    public decimal4 rgba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; this.b = value.z; this.a = value.w; }
+    }
+    public decimal4 rgar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.a, this.r);
+    }
+    public decimal4 rgag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.a, this.g);
+    }
+    public decimal4 rgab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; this.a = value.z; this.b = value.w; }
+    }
+    public decimal4 rgaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.g, this.a, this.a);
+    }
+    public decimal4 rbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.r, this.r);
+    }
+    public decimal4 rbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.r, this.g);
+    }
+    public decimal4 rbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.r, this.b);
+    }
+    public decimal4 rbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.r, this.a);
+    }
+    public decimal4 rbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.g, this.r);
+    }
+    public decimal4 rbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.g, this.g);
+    }
+    public decimal4 rbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.g, this.b);
+    }
+    public decimal4 rbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; this.g = value.z; this.a = value.w; }
+    }
+    public decimal4 rbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.b, this.r);
+    }
+    public decimal4 rbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.b, this.g);
+    }
+    public decimal4 rbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.b, this.b);
+    }
+    public decimal4 rbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.b, this.a);
+    }
+    public decimal4 rbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.a, this.r);
+    }
+    public decimal4 rbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; this.a = value.z; this.g = value.w; }
+    }
+    public decimal4 rbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.a, this.b);
+    }
+    public decimal4 rbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.b, this.a, this.a);
+    }
+    public decimal4 rarr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.r, this.r);
+    }
+    public decimal4 rarg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.r, this.g);
+    }
+    public decimal4 rarb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.r, this.b);
+    }
+    public decimal4 rara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.r, this.a);
+    }
+    public decimal4 ragr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.g, this.r);
+    }
+    public decimal4 ragg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.g, this.g);
+    }
+    public decimal4 ragb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; this.g = value.z; this.b = value.w; }
+    }
+    public decimal4 raga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.g, this.a);
+    }
+    public decimal4 rabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.b, this.r);
+    }
+    public decimal4 rabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; this.b = value.z; this.g = value.w; }
+    }
+    public decimal4 rabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.b, this.b);
+    }
+    public decimal4 raba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.b, this.a);
+    }
+    public decimal4 raar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.a, this.r);
+    }
+    public decimal4 raag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.a, this.g);
+    }
+    public decimal4 raab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.a, this.b);
+    }
+    public decimal4 raaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.r, this.a, this.a, this.a);
+    }
+    public decimal4 grrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.r, this.r);
+    }
+    public decimal4 grrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.r, this.g);
+    }
+    public decimal4 grrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.r, this.b);
+    }
+    public decimal4 grra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.r, this.a);
+    }
+    public decimal4 grgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.g, this.r);
+    }
+    public decimal4 grgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.g, this.g);
+    }
+    public decimal4 grgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.g, this.b);
+    }
+    public decimal4 grga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.g, this.a);
+    }
+    public decimal4 grbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.b, this.r);
+    }
+    public decimal4 grbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.b, this.g);
+    }
+    public decimal4 grbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.b, this.b);
+    }
+    public decimal4 grba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; this.b = value.z; this.a = value.w; }
+    }
+    public decimal4 grar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.a, this.r);
+    }
+    public decimal4 grag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.a, this.g);
+    }
+    public decimal4 grab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; this.a = value.z; this.b = value.w; }
+    }
+    public decimal4 graa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.r, this.a, this.a);
+    }
+    public decimal4 ggrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.r, this.r);
+    }
+    public decimal4 ggrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.r, this.g);
+    }
+    public decimal4 ggrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.r, this.b);
+    }
+    public decimal4 ggra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.r, this.a);
+    }
+    public decimal4 gggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.g, this.r);
+    }
+    public decimal4 gggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.g, this.g);
+    }
+    public decimal4 gggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.g, this.b);
+    }
+    public decimal4 ggga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.g, this.a);
+    }
+    public decimal4 ggbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.b, this.r);
+    }
+    public decimal4 ggbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.b, this.g);
+    }
+    public decimal4 ggbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.b, this.b);
+    }
+    public decimal4 ggba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.b, this.a);
+    }
+    public decimal4 ggar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.a, this.r);
+    }
+    public decimal4 ggag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.a, this.g);
+    }
+    public decimal4 ggab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.a, this.b);
+    }
+    public decimal4 ggaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.g, this.a, this.a);
+    }
+    public decimal4 gbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.r, this.r);
+    }
+    public decimal4 gbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.r, this.g);
+    }
+    public decimal4 gbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.r, this.b);
+    }
+    public decimal4 gbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; this.r = value.z; this.a = value.w; }
+    }
+    public decimal4 gbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.g, this.r);
+    }
+    public decimal4 gbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.g, this.g);
+    }
+    public decimal4 gbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.g, this.b);
+    }
+    public decimal4 gbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.g, this.a);
+    }
+    public decimal4 gbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.b, this.r);
+    }
+    public decimal4 gbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.b, this.g);
+    }
+    public decimal4 gbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.b, this.b);
+    }
+    public decimal4 gbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.b, this.a);
+    }
+    public decimal4 gbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; this.a = value.z; this.r = value.w; }
+    }
+    public decimal4 gbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.a, this.g);
+    }
+    public decimal4 gbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.a, this.b);
+    }
+    public decimal4 gbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.b, this.a, this.a);
+    }
+    public decimal4 garr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.r, this.r);
+    }
+    public decimal4 garg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.r, this.g);
+    }
+    public decimal4 garb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; this.r = value.z; this.b = value.w; }
+    }
+    public decimal4 gara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.r, this.a);
+    }
+    public decimal4 gagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.g, this.r);
+    }
+    public decimal4 gagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.g, this.g);
+    }
+    public decimal4 gagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.g, this.b);
+    }
+    public decimal4 gaga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.g, this.a);
+    }
+    public decimal4 gabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; this.b = value.z; this.r = value.w; }
+    }
+    public decimal4 gabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.b, this.g);
+    }
+    public decimal4 gabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.b, this.b);
+    }
+    public decimal4 gaba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.b, this.a);
+    }
+    public decimal4 gaar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.a, this.r);
+    }
+    public decimal4 gaag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.a, this.g);
+    }
+    public decimal4 gaab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.a, this.b);
+    }
+    public decimal4 gaaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.g, this.a, this.a, this.a);
+    }
+    public decimal4 brrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.r, this.r);
+    }
+    public decimal4 brrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.r, this.g);
+    }
+    public decimal4 brrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.r, this.b);
+    }
+    public decimal4 brra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.r, this.a);
+    }
+    public decimal4 brgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.g, this.r);
+    }
+    public decimal4 brgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.g, this.g);
+    }
+    public decimal4 brgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.g, this.b);
+    }
+    public decimal4 brga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; this.g = value.z; this.a = value.w; }
+    }
+    public decimal4 brbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.b, this.r);
+    }
+    public decimal4 brbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.b, this.g);
+    }
+    public decimal4 brbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.b, this.b);
+    }
+    public decimal4 brba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.b, this.a);
+    }
+    public decimal4 brar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.a, this.r);
+    }
+    public decimal4 brag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; this.a = value.z; this.g = value.w; }
+    }
+    public decimal4 brab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.a, this.b);
+    }
+    public decimal4 braa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.r, this.a, this.a);
+    }
+    public decimal4 bgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.r, this.r);
+    }
+    public decimal4 bgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.r, this.g);
+    }
+    public decimal4 bgrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.r, this.b);
+    }
+    public decimal4 bgra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; this.r = value.z; this.a = value.w; }
+    }
+    public decimal4 bggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.g, this.r);
+    }
+    public decimal4 bggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.g, this.g);
+    }
+    public decimal4 bggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.g, this.b);
+    }
+    public decimal4 bgga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.g, this.a);
+    }
+    public decimal4 bgbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.b, this.r);
+    }
+    public decimal4 bgbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.b, this.g);
+    }
+    public decimal4 bgbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.b, this.b);
+    }
+    public decimal4 bgba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.b, this.a);
+    }
+    public decimal4 bgar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; this.a = value.z; this.r = value.w; }
+    }
+    public decimal4 bgag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.a, this.g);
+    }
+    public decimal4 bgab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.a, this.b);
+    }
+    public decimal4 bgaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.g, this.a, this.a);
+    }
+    public decimal4 bbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.r, this.r);
+    }
+    public decimal4 bbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.r, this.g);
+    }
+    public decimal4 bbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.r, this.b);
+    }
+    public decimal4 bbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.r, this.a);
+    }
+    public decimal4 bbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.g, this.r);
+    }
+    public decimal4 bbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.g, this.g);
+    }
+    public decimal4 bbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.g, this.b);
+    }
+    public decimal4 bbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.g, this.a);
+    }
+    public decimal4 bbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.b, this.r);
+    }
+    public decimal4 bbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.b, this.g);
+    }
+    public decimal4 bbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.b, this.b);
+    }
+    public decimal4 bbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.b, this.a);
+    }
+    public decimal4 bbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.a, this.r);
+    }
+    public decimal4 bbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.a, this.g);
+    }
+    public decimal4 bbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.a, this.b);
+    }
+    public decimal4 bbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.b, this.a, this.a);
+    }
+    public decimal4 barr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.r, this.r);
+    }
+    public decimal4 barg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; this.r = value.z; this.g = value.w; }
+    }
+    public decimal4 barb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.r, this.b);
+    }
+    public decimal4 bara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.r, this.a);
+    }
+    public decimal4 bagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; this.g = value.z; this.r = value.w; }
+    }
+    public decimal4 bagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.g, this.g);
+    }
+    public decimal4 bagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.g, this.b);
+    }
+    public decimal4 baga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.g, this.a);
+    }
+    public decimal4 babr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.b, this.r);
+    }
+    public decimal4 babg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.b, this.g);
+    }
+    public decimal4 babb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.b, this.b);
+    }
+    public decimal4 baba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.b, this.a);
+    }
+    public decimal4 baar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.a, this.r);
+    }
+    public decimal4 baag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.a, this.g);
+    }
+    public decimal4 baab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.a, this.b);
+    }
+    public decimal4 baaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.b, this.a, this.a, this.a);
+    }
+    public decimal4 arrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.r, this.r);
+    }
+    public decimal4 arrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.r, this.g);
+    }
+    public decimal4 arrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.r, this.b);
+    }
+    public decimal4 arra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.r, this.a);
+    }
+    public decimal4 argr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.g, this.r);
+    }
+    public decimal4 argg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.g, this.g);
+    }
+    public decimal4 argb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; this.g = value.z; this.b = value.w; }
+    }
+    public decimal4 arga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.g, this.a);
+    }
+    public decimal4 arbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.b, this.r);
+    }
+    public decimal4 arbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; this.b = value.z; this.g = value.w; }
+    }
+    public decimal4 arbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.b, this.b);
+    }
+    public decimal4 arba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.b, this.a);
+    }
+    public decimal4 arar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.a, this.r);
+    }
+    public decimal4 arag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.a, this.g);
+    }
+    public decimal4 arab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.a, this.b);
+    }
+    public decimal4 araa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.r, this.a, this.a);
+    }
+    public decimal4 agrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.r, this.r);
+    }
+    public decimal4 agrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.r, this.g);
+    }
+    public decimal4 agrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; this.r = value.z; this.b = value.w; }
+    }
+    public decimal4 agra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.r, this.a);
+    }
+    public decimal4 aggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.g, this.r);
+    }
+    public decimal4 aggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.g, this.g);
+    }
+    public decimal4 aggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.g, this.b);
+    }
+    public decimal4 agga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.g, this.a);
+    }
+    public decimal4 agbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; this.b = value.z; this.r = value.w; }
+    }
+    public decimal4 agbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.b, this.g);
+    }
+    public decimal4 agbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.b, this.b);
+    }
+    public decimal4 agba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.b, this.a);
+    }
+    public decimal4 agar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.a, this.r);
+    }
+    public decimal4 agag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.a, this.g);
+    }
+    public decimal4 agab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.a, this.b);
+    }
+    public decimal4 agaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.g, this.a, this.a);
+    }
+    public decimal4 abrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.r, this.r);
+    }
+    public decimal4 abrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; this.r = value.z; this.g = value.w; }
+    }
+    public decimal4 abrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.r, this.b);
+    }
+    public decimal4 abra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.r, this.a);
+    }
+    public decimal4 abgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; this.g = value.z; this.r = value.w; }
+    }
+    public decimal4 abgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.g, this.g);
+    }
+    public decimal4 abgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.g, this.b);
+    }
+    public decimal4 abga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.g, this.a);
+    }
+    public decimal4 abbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.b, this.r);
+    }
+    public decimal4 abbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.b, this.g);
+    }
+    public decimal4 abbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.b, this.b);
+    }
+    public decimal4 abba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.b, this.a);
+    }
+    public decimal4 abar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.a, this.r);
+    }
+    public decimal4 abag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.a, this.g);
+    }
+    public decimal4 abab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.a, this.b);
+    }
+    public decimal4 abaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.b, this.a, this.a);
+    }
+    public decimal4 aarr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.r, this.r);
+    }
+    public decimal4 aarg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.r, this.g);
+    }
+    public decimal4 aarb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.r, this.b);
+    }
+    public decimal4 aara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.r, this.a);
+    }
+    public decimal4 aagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.g, this.r);
+    }
+    public decimal4 aagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.g, this.g);
+    }
+    public decimal4 aagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.g, this.b);
+    }
+    public decimal4 aaga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.g, this.a);
+    }
+    public decimal4 aabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.b, this.r);
+    }
+    public decimal4 aabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.b, this.g);
+    }
+    public decimal4 aabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.b, this.b);
+    }
+    public decimal4 aaba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.b, this.a);
+    }
+    public decimal4 aaar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.a, this.r);
+    }
+    public decimal4 aaag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.a, this.g);
+    }
+    public decimal4 aaab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.a, this.b);
+    }
+    public decimal4 aaaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new decimal4(this.a, this.a, this.a, this.a);
     }
 
 

@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
-[StructLayout(LayoutKind.Sequential, Size = 16)]
+[StructLayout(LayoutKind.Explicit, Size = 16)]
 public unsafe partial struct int4 : 
     IEquatable<int4>, IEqualityOperators<int4, int4, bool>, IEqualityOperators<int4, int4, bool4>,
 
@@ -25,88 +25,33 @@ public unsafe partial struct int4 :
     IVector, IVector4, IVector<int>, IVector4<int>
 {
 
+    [FieldOffset(0)]
     public Vector128<int> vector;
 
 
-    public int x
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoX;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefX = value;
-    }
+    [FieldOffset(0)]
+    public int x;
 
-    public ref int RefX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<int>, int>(ref Unsafe.AsRef(in vector)), 0);
-    }
+    [FieldOffset(4)]
+    public int y;
 
-    public readonly ref readonly int RefRoX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<int>, int>(ref Unsafe.AsRef(in vector)), 0);
-    }
+    [FieldOffset(8)]
+    public int z;
 
-    public int y
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoY;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefY = value;
-    }
+    [FieldOffset(12)]
+    public int w;
 
-    public ref int RefY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<int>, int>(ref Unsafe.AsRef(in vector)), 1);
-    }
+    [FieldOffset(0)]
+    public int r;
 
-    public readonly ref readonly int RefRoY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<int>, int>(ref Unsafe.AsRef(in vector)), 1);
-    }
+    [FieldOffset(4)]
+    public int g;
 
-    public int z
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoZ;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefZ = value;
-    }
+    [FieldOffset(8)]
+    public int b;
 
-    public ref int RefZ 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<int>, int>(ref Unsafe.AsRef(in vector)), 2);
-    }
-
-    public readonly ref readonly int RefRoZ 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<int>, int>(ref Unsafe.AsRef(in vector)), 2);
-    }
-
-    public int w
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoW;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefW = value;
-    }
-
-    public ref int RefW 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<int>, int>(ref Unsafe.AsRef(in vector)), 3);
-    }
-
-    public readonly ref readonly int RefRoW 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<int>, int>(ref Unsafe.AsRef(in vector)), 3);
-    }
+    [FieldOffset(12)]
+    public int a;
 
 
     public static int ByteSize 
@@ -313,20 +258,6 @@ public unsafe partial struct int4 :
 
 public static unsafe partial class math
 {
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref int RefX(int4* self) => ref Unsafe.Add(ref Unsafe.As<Vector128<int>, int>(ref Unsafe.AsRef(in self->vector)), 0);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref int RefY(int4* self) => ref Unsafe.Add(ref Unsafe.As<Vector128<int>, int>(ref Unsafe.AsRef(in self->vector)), 1);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref int RefZ(int4* self) => ref Unsafe.Add(ref Unsafe.As<Vector128<int>, int>(ref Unsafe.AsRef(in self->vector)), 2);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref int RefW(int4* self) => ref Unsafe.Add(ref Unsafe.As<Vector128<int>, int>(ref Unsafe.AsRef(in self->vector)), 3);
-
 
 
 

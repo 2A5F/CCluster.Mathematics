@@ -12,40 +12,24 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
-[StructLayout(LayoutKind.Sequential, Size = 2)]
+[StructLayout(LayoutKind.Explicit, Size = 2)]
 public unsafe partial struct bool2 : 
     IEquatable<bool2>, IEqualityOperators<bool2, bool2, bool>, IEqualityOperators<bool2, bool2, bool2>,
 
     IVector, IVector2, IVector<bool>, IVector2<bool>
 {
 
+    [FieldOffset(0)]
     public bool x;
 
-    public ref bool RefX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in x);
-    }
-
-    public readonly ref readonly bool RefRoX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in x);
-    }
-
+    [FieldOffset(1)]
     public bool y;
 
-    public ref bool RefY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in y);
-    }
+    [FieldOffset(0)]
+    public bool r;
 
-    public readonly ref readonly bool RefRoY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in y);
-    }
+    [FieldOffset(1)]
+    public bool g;
 
 
     public static int ByteSize 
@@ -137,14 +121,6 @@ public unsafe partial struct bool2 :
 
 public static unsafe partial class math
 {
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref bool RefX(bool2* self) => ref Unsafe.AsRef(in self->x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref bool RefY(bool2* self) => ref Unsafe.AsRef(in self->y);
-
 
 
 

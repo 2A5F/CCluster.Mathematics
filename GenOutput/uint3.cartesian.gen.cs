@@ -67,6 +67,63 @@ public partial struct uint3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new uint2(this.z, this.z);
     }
+    public uint2 rr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint2(this.r, this.r);
+    }
+    public uint2 rg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint2(this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; }
+    }
+    public uint2 rb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint2(this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; }
+    }
+    public uint2 gr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint2(this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; }
+    }
+    public uint2 gg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint2(this.g, this.g);
+    }
+    public uint2 gb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint2(this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; }
+    }
+    public uint2 br
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint2(this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; }
+    }
+    public uint2 bg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint2(this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; }
+    }
+    public uint2 bb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint2(this.b, this.b);
+    }
     public uint3 xxx
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -213,6 +270,153 @@ public partial struct uint3
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new uint3(this.z, this.z, this.z);
+    }
+    public uint3 rrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.r, this.r, this.r);
+    }
+    public uint3 rrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.r, this.r, this.g);
+    }
+    public uint3 rrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.r, this.r, this.b);
+    }
+    public uint3 rgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.r, this.g, this.r);
+    }
+    public uint3 rgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.r, this.g, this.g);
+    }
+    public uint3 rgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.r, this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; this.b = value.z; }
+    }
+    public uint3 rbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.r, this.b, this.r);
+    }
+    public uint3 rbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.r, this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; this.g = value.z; }
+    }
+    public uint3 rbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.r, this.b, this.b);
+    }
+    public uint3 grr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.g, this.r, this.r);
+    }
+    public uint3 grg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.g, this.r, this.g);
+    }
+    public uint3 grb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.g, this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; this.b = value.z; }
+    }
+    public uint3 ggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.g, this.g, this.r);
+    }
+    public uint3 ggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.g, this.g, this.g);
+    }
+    public uint3 ggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.g, this.g, this.b);
+    }
+    public uint3 gbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.g, this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; this.r = value.z; }
+    }
+    public uint3 gbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.g, this.b, this.g);
+    }
+    public uint3 gbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.g, this.b, this.b);
+    }
+    public uint3 brr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.b, this.r, this.r);
+    }
+    public uint3 brg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.b, this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; this.g = value.z; }
+    }
+    public uint3 brb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.b, this.r, this.b);
+    }
+    public uint3 bgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.b, this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; this.r = value.z; }
+    }
+    public uint3 bgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.b, this.g, this.g);
+    }
+    public uint3 bgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.b, this.g, this.b);
+    }
+    public uint3 bbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.b, this.b, this.r);
+    }
+    public uint3 bbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.b, this.b, this.g);
+    }
+    public uint3 bbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint3(this.b, this.b, this.b);
     }
     public uint4 xxxx
     {
@@ -618,6 +822,411 @@ public partial struct uint3
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new uint4(this.z, this.z, this.z, this.z);
+    }
+    public uint4 rrrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.r, this.r, this.r);
+    }
+    public uint4 rrrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.r, this.r, this.g);
+    }
+    public uint4 rrrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.r, this.r, this.b);
+    }
+    public uint4 rrgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.r, this.g, this.r);
+    }
+    public uint4 rrgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.r, this.g, this.g);
+    }
+    public uint4 rrgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.r, this.g, this.b);
+    }
+    public uint4 rrbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.r, this.b, this.r);
+    }
+    public uint4 rrbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.r, this.b, this.g);
+    }
+    public uint4 rrbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.r, this.b, this.b);
+    }
+    public uint4 rgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.g, this.r, this.r);
+    }
+    public uint4 rgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.g, this.r, this.g);
+    }
+    public uint4 rgrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.g, this.r, this.b);
+    }
+    public uint4 rggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.g, this.g, this.r);
+    }
+    public uint4 rggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.g, this.g, this.g);
+    }
+    public uint4 rggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.g, this.g, this.b);
+    }
+    public uint4 rgbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.g, this.b, this.r);
+    }
+    public uint4 rgbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.g, this.b, this.g);
+    }
+    public uint4 rgbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.g, this.b, this.b);
+    }
+    public uint4 rbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.b, this.r, this.r);
+    }
+    public uint4 rbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.b, this.r, this.g);
+    }
+    public uint4 rbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.b, this.r, this.b);
+    }
+    public uint4 rbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.b, this.g, this.r);
+    }
+    public uint4 rbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.b, this.g, this.g);
+    }
+    public uint4 rbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.b, this.g, this.b);
+    }
+    public uint4 rbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.b, this.b, this.r);
+    }
+    public uint4 rbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.b, this.b, this.g);
+    }
+    public uint4 rbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.r, this.b, this.b, this.b);
+    }
+    public uint4 grrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.r, this.r, this.r);
+    }
+    public uint4 grrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.r, this.r, this.g);
+    }
+    public uint4 grrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.r, this.r, this.b);
+    }
+    public uint4 grgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.r, this.g, this.r);
+    }
+    public uint4 grgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.r, this.g, this.g);
+    }
+    public uint4 grgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.r, this.g, this.b);
+    }
+    public uint4 grbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.r, this.b, this.r);
+    }
+    public uint4 grbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.r, this.b, this.g);
+    }
+    public uint4 grbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.r, this.b, this.b);
+    }
+    public uint4 ggrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.g, this.r, this.r);
+    }
+    public uint4 ggrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.g, this.r, this.g);
+    }
+    public uint4 ggrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.g, this.r, this.b);
+    }
+    public uint4 gggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.g, this.g, this.r);
+    }
+    public uint4 gggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.g, this.g, this.g);
+    }
+    public uint4 gggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.g, this.g, this.b);
+    }
+    public uint4 ggbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.g, this.b, this.r);
+    }
+    public uint4 ggbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.g, this.b, this.g);
+    }
+    public uint4 ggbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.g, this.b, this.b);
+    }
+    public uint4 gbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.b, this.r, this.r);
+    }
+    public uint4 gbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.b, this.r, this.g);
+    }
+    public uint4 gbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.b, this.r, this.b);
+    }
+    public uint4 gbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.b, this.g, this.r);
+    }
+    public uint4 gbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.b, this.g, this.g);
+    }
+    public uint4 gbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.b, this.g, this.b);
+    }
+    public uint4 gbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.b, this.b, this.r);
+    }
+    public uint4 gbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.b, this.b, this.g);
+    }
+    public uint4 gbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.g, this.b, this.b, this.b);
+    }
+    public uint4 brrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.r, this.r, this.r);
+    }
+    public uint4 brrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.r, this.r, this.g);
+    }
+    public uint4 brrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.r, this.r, this.b);
+    }
+    public uint4 brgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.r, this.g, this.r);
+    }
+    public uint4 brgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.r, this.g, this.g);
+    }
+    public uint4 brgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.r, this.g, this.b);
+    }
+    public uint4 brbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.r, this.b, this.r);
+    }
+    public uint4 brbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.r, this.b, this.g);
+    }
+    public uint4 brbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.r, this.b, this.b);
+    }
+    public uint4 bgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.g, this.r, this.r);
+    }
+    public uint4 bgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.g, this.r, this.g);
+    }
+    public uint4 bgrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.g, this.r, this.b);
+    }
+    public uint4 bggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.g, this.g, this.r);
+    }
+    public uint4 bggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.g, this.g, this.g);
+    }
+    public uint4 bggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.g, this.g, this.b);
+    }
+    public uint4 bgbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.g, this.b, this.r);
+    }
+    public uint4 bgbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.g, this.b, this.g);
+    }
+    public uint4 bgbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.g, this.b, this.b);
+    }
+    public uint4 bbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.b, this.r, this.r);
+    }
+    public uint4 bbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.b, this.r, this.g);
+    }
+    public uint4 bbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.b, this.r, this.b);
+    }
+    public uint4 bbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.b, this.g, this.r);
+    }
+    public uint4 bbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.b, this.g, this.g);
+    }
+    public uint4 bbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.b, this.g, this.b);
+    }
+    public uint4 bbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.b, this.b, this.r);
+    }
+    public uint4 bbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.b, this.b, this.g);
+    }
+    public uint4 bbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new uint4(this.b, this.b, this.b, this.b);
     }
 
 

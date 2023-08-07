@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
-[StructLayout(LayoutKind.Sequential, Size = 32)]
+[StructLayout(LayoutKind.Explicit, Size = 32)]
 public unsafe partial struct long3 : 
     IEquatable<long3>, IEqualityOperators<long3, long3, bool>, IEqualityOperators<long3, long3, bool3>,
 
@@ -25,68 +25,27 @@ public unsafe partial struct long3 :
     IVector, IVector3, IVector<long>, IVector3<long>
 {
 
+    [FieldOffset(0)]
     public Vector256<long> vector;
 
 
-    public long x
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoX;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefX = value;
-    }
+    [FieldOffset(0)]
+    public long x;
 
-    public ref long RefX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in vector)), 0);
-    }
+    [FieldOffset(8)]
+    public long y;
 
-    public readonly ref readonly long RefRoX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in vector)), 0);
-    }
+    [FieldOffset(16)]
+    public long z;
 
-    public long y
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoY;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefY = value;
-    }
+    [FieldOffset(0)]
+    public long r;
 
-    public ref long RefY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in vector)), 1);
-    }
+    [FieldOffset(8)]
+    public long g;
 
-    public readonly ref readonly long RefRoY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in vector)), 1);
-    }
-
-    public long z
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoZ;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefZ = value;
-    }
-
-    public ref long RefZ 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in vector)), 2);
-    }
-
-    public readonly ref readonly long RefRoZ 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in vector)), 2);
-    }
+    [FieldOffset(16)]
+    public long b;
 
 
     public static int ByteSize 
@@ -293,17 +252,6 @@ public unsafe partial struct long3 :
 
 public static unsafe partial class math
 {
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref long RefX(long3* self) => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in self->vector)), 0);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref long RefY(long3* self) => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in self->vector)), 1);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref long RefZ(long3* self) => ref Unsafe.Add(ref Unsafe.As<Vector256<long>, long>(ref Unsafe.AsRef(in self->vector)), 2);
-
 
 
 

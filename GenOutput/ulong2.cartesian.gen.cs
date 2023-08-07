@@ -34,6 +34,30 @@ public partial struct ulong2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new ulong2(this.y, this.y);
     }
+    public ulong2 rr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.r, this.r);
+    }
+    public ulong2 rg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; }
+    }
+    public ulong2 gr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; }
+    }
+    public ulong2 gg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.g, this.g);
+    }
     public ulong3 xxx
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -73,6 +97,46 @@ public partial struct ulong2
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new ulong3(this.y, this.y, this.y);
+    }
+    public ulong3 rrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.r, this.r);
+    }
+    public ulong3 rrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.r, this.g);
+    }
+    public ulong3 rgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.g, this.r);
+    }
+    public ulong3 rgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.g, this.g);
+    }
+    public ulong3 grr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.r, this.r);
+    }
+    public ulong3 grg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.r, this.g);
+    }
+    public ulong3 ggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.g, this.r);
+    }
+    public ulong3 ggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.g, this.g);
     }
     public ulong4 xxxx
     {
@@ -153,6 +217,86 @@ public partial struct ulong2
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new ulong4(this.y, this.y, this.y, this.y);
+    }
+    public ulong4 rrrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.r, this.r);
+    }
+    public ulong4 rrrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.r, this.g);
+    }
+    public ulong4 rrgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.g, this.r);
+    }
+    public ulong4 rrgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.g, this.g);
+    }
+    public ulong4 rgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.r, this.r);
+    }
+    public ulong4 rgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.r, this.g);
+    }
+    public ulong4 rggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.g, this.r);
+    }
+    public ulong4 rggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.g, this.g);
+    }
+    public ulong4 grrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.r, this.r);
+    }
+    public ulong4 grrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.r, this.g);
+    }
+    public ulong4 grgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.g, this.r);
+    }
+    public ulong4 grgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.g, this.g);
+    }
+    public ulong4 ggrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.r, this.r);
+    }
+    public ulong4 ggrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.r, this.g);
+    }
+    public ulong4 gggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.g, this.r);
+    }
+    public ulong4 gggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.g, this.g);
     }
 
 

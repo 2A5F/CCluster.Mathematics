@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
-[StructLayout(LayoutKind.Sequential, Size = 4)]
+[StructLayout(LayoutKind.Explicit, Size = 4)]
 public unsafe partial struct Half2 : 
     IEquatable<Half2>, IEqualityOperators<Half2, Half2, bool>, IEqualityOperators<Half2, Half2, bool2>,
 
@@ -25,33 +25,17 @@ public unsafe partial struct Half2 :
     IVector, IVector2, IVector<Half>, IVector2<Half>
 {
 
+    [FieldOffset(0)]
     public Half x;
 
-    public ref Half RefX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in x);
-    }
-
-    public readonly ref readonly Half RefRoX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in x);
-    }
-
+    [FieldOffset(2)]
     public Half y;
 
-    public ref Half RefY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in y);
-    }
+    [FieldOffset(0)]
+    public Half r;
 
-    public readonly ref readonly Half RefRoY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in y);
-    }
+    [FieldOffset(2)]
+    public Half g;
 
 
     public static int ByteSize 
@@ -232,14 +216,6 @@ public static unsafe partial class math
 {
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref Half RefX(Half2* self) => ref Unsafe.AsRef(in self->x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref Half RefY(Half2* self) => ref Unsafe.AsRef(in self->y);
-
-
-
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half2 min(Half2 x, Half2 y) => new Half2(min(x.x, y.x), min(x.y, y.y));
@@ -359,7 +335,7 @@ public static unsafe partial class math
     {
         Unsafe.SkipInit(out sin);
         Unsafe.SkipInit(out cos);
-        sincos(x.x, out sin.RefX, out cos.RefX); sincos(x.y, out sin.RefY, out cos.RefY);
+        sincos(x.x, out sin.x, out cos.x); sincos(x.y, out sin.y, out cos.y);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]

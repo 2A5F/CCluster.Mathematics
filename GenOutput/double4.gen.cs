@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
-[StructLayout(LayoutKind.Sequential, Size = 32)]
+[StructLayout(LayoutKind.Explicit, Size = 32)]
 public unsafe partial struct double4 : 
     IEquatable<double4>, IEqualityOperators<double4, double4, bool>, IEqualityOperators<double4, double4, bool4>,
 
@@ -25,88 +25,33 @@ public unsafe partial struct double4 :
     IVector, IVector4, IVector<double>, IVector4<double>
 {
 
+    [FieldOffset(0)]
     public Vector256<double> vector;
 
 
-    public double x
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoX;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefX = value;
-    }
+    [FieldOffset(0)]
+    public double x;
 
-    public ref double RefX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 0);
-    }
+    [FieldOffset(8)]
+    public double y;
 
-    public readonly ref readonly double RefRoX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 0);
-    }
+    [FieldOffset(16)]
+    public double z;
 
-    public double y
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoY;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefY = value;
-    }
+    [FieldOffset(24)]
+    public double w;
 
-    public ref double RefY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 1);
-    }
+    [FieldOffset(0)]
+    public double r;
 
-    public readonly ref readonly double RefRoY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 1);
-    }
+    [FieldOffset(8)]
+    public double g;
 
-    public double z
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoZ;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefZ = value;
-    }
+    [FieldOffset(16)]
+    public double b;
 
-    public ref double RefZ 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 2);
-    }
-
-    public readonly ref readonly double RefRoZ 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 2);
-    }
-
-    public double w
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoW;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefW = value;
-    }
-
-    public ref double RefW 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 3);
-    }
-
-    public readonly ref readonly double RefRoW 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in vector)), 3);
-    }
+    [FieldOffset(24)]
+    public double a;
 
 
     public static int ByteSize 
@@ -315,20 +260,6 @@ public static unsafe partial class math
 {
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref double RefX(double4* self) => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in self->vector)), 0);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref double RefY(double4* self) => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in self->vector)), 1);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref double RefZ(double4* self) => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in self->vector)), 2);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref double RefW(double4* self) => ref Unsafe.Add(ref Unsafe.As<Vector256<double>, double>(ref Unsafe.AsRef(in self->vector)), 3);
-
-
-
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double4 min(double4 x, double4 y) => new double4(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z), min(x.w, y.w));
@@ -448,7 +379,7 @@ public static unsafe partial class math
     {
         Unsafe.SkipInit(out sin);
         Unsafe.SkipInit(out cos);
-        sincos(x.x, out sin.RefX, out cos.RefX); sincos(x.y, out sin.RefY, out cos.RefY); sincos(x.z, out sin.RefZ, out cos.RefZ); sincos(x.w, out sin.RefW, out cos.RefW);
+        sincos(x.x, out sin.x, out cos.x); sincos(x.y, out sin.y, out cos.y); sincos(x.z, out sin.z, out cos.z); sincos(x.w, out sin.w, out cos.w);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]

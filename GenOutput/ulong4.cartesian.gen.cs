@@ -114,6 +114,110 @@ public partial struct ulong4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new ulong2(this.w, this.w);
     }
+    public ulong2 rr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.r, this.r);
+    }
+    public ulong2 rg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; }
+    }
+    public ulong2 rb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; }
+    }
+    public ulong2 ra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; }
+    }
+    public ulong2 gr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; }
+    }
+    public ulong2 gg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.g, this.g);
+    }
+    public ulong2 gb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; }
+    }
+    public ulong2 ga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; }
+    }
+    public ulong2 br
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; }
+    }
+    public ulong2 bg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; }
+    }
+    public ulong2 bb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.b, this.b);
+    }
+    public ulong2 ba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; }
+    }
+    public ulong2 ar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; }
+    }
+    public ulong2 ag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; }
+    }
+    public ulong2 ab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; }
+    }
+    public ulong2 aa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong2(this.a, this.a);
+    }
     public ulong3 xxx
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -481,6 +585,374 @@ public partial struct ulong4
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new ulong3(this.w, this.w, this.w);
+    }
+    public ulong3 rrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.r, this.r);
+    }
+    public ulong3 rrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.r, this.g);
+    }
+    public ulong3 rrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.r, this.b);
+    }
+    public ulong3 rra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.r, this.a);
+    }
+    public ulong3 rgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.g, this.r);
+    }
+    public ulong3 rgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.g, this.g);
+    }
+    public ulong3 rgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; this.b = value.z; }
+    }
+    public ulong3 rga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; this.a = value.z; }
+    }
+    public ulong3 rbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.b, this.r);
+    }
+    public ulong3 rbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; this.g = value.z; }
+    }
+    public ulong3 rbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.b, this.b);
+    }
+    public ulong3 rba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; this.a = value.z; }
+    }
+    public ulong3 rar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.a, this.r);
+    }
+    public ulong3 rag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; this.g = value.z; }
+    }
+    public ulong3 rab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; this.b = value.z; }
+    }
+    public ulong3 raa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.r, this.a, this.a);
+    }
+    public ulong3 grr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.r, this.r);
+    }
+    public ulong3 grg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.r, this.g);
+    }
+    public ulong3 grb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; this.b = value.z; }
+    }
+    public ulong3 gra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; this.a = value.z; }
+    }
+    public ulong3 ggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.g, this.r);
+    }
+    public ulong3 ggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.g, this.g);
+    }
+    public ulong3 ggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.g, this.b);
+    }
+    public ulong3 gga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.g, this.a);
+    }
+    public ulong3 gbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; this.r = value.z; }
+    }
+    public ulong3 gbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.b, this.g);
+    }
+    public ulong3 gbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.b, this.b);
+    }
+    public ulong3 gba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; this.a = value.z; }
+    }
+    public ulong3 gar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; this.r = value.z; }
+    }
+    public ulong3 gag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.a, this.g);
+    }
+    public ulong3 gab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; this.b = value.z; }
+    }
+    public ulong3 gaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.g, this.a, this.a);
+    }
+    public ulong3 brr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.r, this.r);
+    }
+    public ulong3 brg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; this.g = value.z; }
+    }
+    public ulong3 brb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.r, this.b);
+    }
+    public ulong3 bra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; this.a = value.z; }
+    }
+    public ulong3 bgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; this.r = value.z; }
+    }
+    public ulong3 bgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.g, this.g);
+    }
+    public ulong3 bgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.g, this.b);
+    }
+    public ulong3 bga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; this.a = value.z; }
+    }
+    public ulong3 bbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.b, this.r);
+    }
+    public ulong3 bbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.b, this.g);
+    }
+    public ulong3 bbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.b, this.b);
+    }
+    public ulong3 bba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.b, this.a);
+    }
+    public ulong3 bar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; this.r = value.z; }
+    }
+    public ulong3 bag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; this.g = value.z; }
+    }
+    public ulong3 bab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.a, this.b);
+    }
+    public ulong3 baa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.b, this.a, this.a);
+    }
+    public ulong3 arr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.r, this.r);
+    }
+    public ulong3 arg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; this.g = value.z; }
+    }
+    public ulong3 arb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; this.b = value.z; }
+    }
+    public ulong3 ara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.r, this.a);
+    }
+    public ulong3 agr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; this.r = value.z; }
+    }
+    public ulong3 agg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.g, this.g);
+    }
+    public ulong3 agb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; this.b = value.z; }
+    }
+    public ulong3 aga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.g, this.a);
+    }
+    public ulong3 abr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; this.r = value.z; }
+    }
+    public ulong3 abg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; this.g = value.z; }
+    }
+    public ulong3 abb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.b, this.b);
+    }
+    public ulong3 aba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.b, this.a);
+    }
+    public ulong3 aar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.a, this.r);
+    }
+    public ulong3 aag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.a, this.g);
+    }
+    public ulong3 aab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.a, this.b);
+    }
+    public ulong3 aaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong3(this.a, this.a, this.a);
     }
     public ulong4 xxxx
     {
@@ -1809,6 +2281,1334 @@ public partial struct ulong4
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new ulong4(this.w, this.w, this.w, this.w);
+    }
+    public ulong4 rrrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.r, this.r);
+    }
+    public ulong4 rrrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.r, this.g);
+    }
+    public ulong4 rrrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.r, this.b);
+    }
+    public ulong4 rrra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.r, this.a);
+    }
+    public ulong4 rrgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.g, this.r);
+    }
+    public ulong4 rrgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.g, this.g);
+    }
+    public ulong4 rrgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.g, this.b);
+    }
+    public ulong4 rrga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.g, this.a);
+    }
+    public ulong4 rrbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.b, this.r);
+    }
+    public ulong4 rrbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.b, this.g);
+    }
+    public ulong4 rrbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.b, this.b);
+    }
+    public ulong4 rrba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.b, this.a);
+    }
+    public ulong4 rrar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.a, this.r);
+    }
+    public ulong4 rrag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.a, this.g);
+    }
+    public ulong4 rrab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.a, this.b);
+    }
+    public ulong4 rraa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.r, this.a, this.a);
+    }
+    public ulong4 rgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.r, this.r);
+    }
+    public ulong4 rgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.r, this.g);
+    }
+    public ulong4 rgrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.r, this.b);
+    }
+    public ulong4 rgra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.r, this.a);
+    }
+    public ulong4 rggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.g, this.r);
+    }
+    public ulong4 rggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.g, this.g);
+    }
+    public ulong4 rggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.g, this.b);
+    }
+    public ulong4 rgga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.g, this.a);
+    }
+    public ulong4 rgbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.b, this.r);
+    }
+    public ulong4 rgbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.b, this.g);
+    }
+    public ulong4 rgbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.b, this.b);
+    }
+    public ulong4 rgba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; this.b = value.z; this.a = value.w; }
+    }
+    public ulong4 rgar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.a, this.r);
+    }
+    public ulong4 rgag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.a, this.g);
+    }
+    public ulong4 rgab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; this.a = value.z; this.b = value.w; }
+    }
+    public ulong4 rgaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.g, this.a, this.a);
+    }
+    public ulong4 rbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.r, this.r);
+    }
+    public ulong4 rbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.r, this.g);
+    }
+    public ulong4 rbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.r, this.b);
+    }
+    public ulong4 rbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.r, this.a);
+    }
+    public ulong4 rbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.g, this.r);
+    }
+    public ulong4 rbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.g, this.g);
+    }
+    public ulong4 rbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.g, this.b);
+    }
+    public ulong4 rbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; this.g = value.z; this.a = value.w; }
+    }
+    public ulong4 rbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.b, this.r);
+    }
+    public ulong4 rbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.b, this.g);
+    }
+    public ulong4 rbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.b, this.b);
+    }
+    public ulong4 rbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.b, this.a);
+    }
+    public ulong4 rbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.a, this.r);
+    }
+    public ulong4 rbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; this.a = value.z; this.g = value.w; }
+    }
+    public ulong4 rbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.a, this.b);
+    }
+    public ulong4 rbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.b, this.a, this.a);
+    }
+    public ulong4 rarr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.r, this.r);
+    }
+    public ulong4 rarg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.r, this.g);
+    }
+    public ulong4 rarb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.r, this.b);
+    }
+    public ulong4 rara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.r, this.a);
+    }
+    public ulong4 ragr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.g, this.r);
+    }
+    public ulong4 ragg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.g, this.g);
+    }
+    public ulong4 ragb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; this.g = value.z; this.b = value.w; }
+    }
+    public ulong4 raga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.g, this.a);
+    }
+    public ulong4 rabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.b, this.r);
+    }
+    public ulong4 rabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; this.b = value.z; this.g = value.w; }
+    }
+    public ulong4 rabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.b, this.b);
+    }
+    public ulong4 raba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.b, this.a);
+    }
+    public ulong4 raar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.a, this.r);
+    }
+    public ulong4 raag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.a, this.g);
+    }
+    public ulong4 raab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.a, this.b);
+    }
+    public ulong4 raaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.r, this.a, this.a, this.a);
+    }
+    public ulong4 grrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.r, this.r);
+    }
+    public ulong4 grrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.r, this.g);
+    }
+    public ulong4 grrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.r, this.b);
+    }
+    public ulong4 grra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.r, this.a);
+    }
+    public ulong4 grgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.g, this.r);
+    }
+    public ulong4 grgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.g, this.g);
+    }
+    public ulong4 grgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.g, this.b);
+    }
+    public ulong4 grga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.g, this.a);
+    }
+    public ulong4 grbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.b, this.r);
+    }
+    public ulong4 grbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.b, this.g);
+    }
+    public ulong4 grbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.b, this.b);
+    }
+    public ulong4 grba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; this.b = value.z; this.a = value.w; }
+    }
+    public ulong4 grar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.a, this.r);
+    }
+    public ulong4 grag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.a, this.g);
+    }
+    public ulong4 grab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; this.a = value.z; this.b = value.w; }
+    }
+    public ulong4 graa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.r, this.a, this.a);
+    }
+    public ulong4 ggrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.r, this.r);
+    }
+    public ulong4 ggrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.r, this.g);
+    }
+    public ulong4 ggrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.r, this.b);
+    }
+    public ulong4 ggra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.r, this.a);
+    }
+    public ulong4 gggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.g, this.r);
+    }
+    public ulong4 gggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.g, this.g);
+    }
+    public ulong4 gggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.g, this.b);
+    }
+    public ulong4 ggga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.g, this.a);
+    }
+    public ulong4 ggbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.b, this.r);
+    }
+    public ulong4 ggbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.b, this.g);
+    }
+    public ulong4 ggbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.b, this.b);
+    }
+    public ulong4 ggba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.b, this.a);
+    }
+    public ulong4 ggar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.a, this.r);
+    }
+    public ulong4 ggag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.a, this.g);
+    }
+    public ulong4 ggab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.a, this.b);
+    }
+    public ulong4 ggaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.g, this.a, this.a);
+    }
+    public ulong4 gbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.r, this.r);
+    }
+    public ulong4 gbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.r, this.g);
+    }
+    public ulong4 gbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.r, this.b);
+    }
+    public ulong4 gbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; this.r = value.z; this.a = value.w; }
+    }
+    public ulong4 gbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.g, this.r);
+    }
+    public ulong4 gbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.g, this.g);
+    }
+    public ulong4 gbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.g, this.b);
+    }
+    public ulong4 gbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.g, this.a);
+    }
+    public ulong4 gbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.b, this.r);
+    }
+    public ulong4 gbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.b, this.g);
+    }
+    public ulong4 gbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.b, this.b);
+    }
+    public ulong4 gbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.b, this.a);
+    }
+    public ulong4 gbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; this.a = value.z; this.r = value.w; }
+    }
+    public ulong4 gbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.a, this.g);
+    }
+    public ulong4 gbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.a, this.b);
+    }
+    public ulong4 gbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.b, this.a, this.a);
+    }
+    public ulong4 garr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.r, this.r);
+    }
+    public ulong4 garg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.r, this.g);
+    }
+    public ulong4 garb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; this.r = value.z; this.b = value.w; }
+    }
+    public ulong4 gara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.r, this.a);
+    }
+    public ulong4 gagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.g, this.r);
+    }
+    public ulong4 gagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.g, this.g);
+    }
+    public ulong4 gagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.g, this.b);
+    }
+    public ulong4 gaga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.g, this.a);
+    }
+    public ulong4 gabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; this.b = value.z; this.r = value.w; }
+    }
+    public ulong4 gabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.b, this.g);
+    }
+    public ulong4 gabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.b, this.b);
+    }
+    public ulong4 gaba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.b, this.a);
+    }
+    public ulong4 gaar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.a, this.r);
+    }
+    public ulong4 gaag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.a, this.g);
+    }
+    public ulong4 gaab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.a, this.b);
+    }
+    public ulong4 gaaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.g, this.a, this.a, this.a);
+    }
+    public ulong4 brrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.r, this.r);
+    }
+    public ulong4 brrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.r, this.g);
+    }
+    public ulong4 brrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.r, this.b);
+    }
+    public ulong4 brra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.r, this.a);
+    }
+    public ulong4 brgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.g, this.r);
+    }
+    public ulong4 brgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.g, this.g);
+    }
+    public ulong4 brgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.g, this.b);
+    }
+    public ulong4 brga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; this.g = value.z; this.a = value.w; }
+    }
+    public ulong4 brbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.b, this.r);
+    }
+    public ulong4 brbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.b, this.g);
+    }
+    public ulong4 brbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.b, this.b);
+    }
+    public ulong4 brba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.b, this.a);
+    }
+    public ulong4 brar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.a, this.r);
+    }
+    public ulong4 brag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; this.a = value.z; this.g = value.w; }
+    }
+    public ulong4 brab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.a, this.b);
+    }
+    public ulong4 braa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.r, this.a, this.a);
+    }
+    public ulong4 bgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.r, this.r);
+    }
+    public ulong4 bgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.r, this.g);
+    }
+    public ulong4 bgrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.r, this.b);
+    }
+    public ulong4 bgra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; this.r = value.z; this.a = value.w; }
+    }
+    public ulong4 bggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.g, this.r);
+    }
+    public ulong4 bggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.g, this.g);
+    }
+    public ulong4 bggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.g, this.b);
+    }
+    public ulong4 bgga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.g, this.a);
+    }
+    public ulong4 bgbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.b, this.r);
+    }
+    public ulong4 bgbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.b, this.g);
+    }
+    public ulong4 bgbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.b, this.b);
+    }
+    public ulong4 bgba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.b, this.a);
+    }
+    public ulong4 bgar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; this.a = value.z; this.r = value.w; }
+    }
+    public ulong4 bgag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.a, this.g);
+    }
+    public ulong4 bgab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.a, this.b);
+    }
+    public ulong4 bgaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.g, this.a, this.a);
+    }
+    public ulong4 bbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.r, this.r);
+    }
+    public ulong4 bbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.r, this.g);
+    }
+    public ulong4 bbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.r, this.b);
+    }
+    public ulong4 bbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.r, this.a);
+    }
+    public ulong4 bbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.g, this.r);
+    }
+    public ulong4 bbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.g, this.g);
+    }
+    public ulong4 bbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.g, this.b);
+    }
+    public ulong4 bbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.g, this.a);
+    }
+    public ulong4 bbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.b, this.r);
+    }
+    public ulong4 bbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.b, this.g);
+    }
+    public ulong4 bbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.b, this.b);
+    }
+    public ulong4 bbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.b, this.a);
+    }
+    public ulong4 bbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.a, this.r);
+    }
+    public ulong4 bbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.a, this.g);
+    }
+    public ulong4 bbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.a, this.b);
+    }
+    public ulong4 bbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.b, this.a, this.a);
+    }
+    public ulong4 barr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.r, this.r);
+    }
+    public ulong4 barg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; this.r = value.z; this.g = value.w; }
+    }
+    public ulong4 barb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.r, this.b);
+    }
+    public ulong4 bara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.r, this.a);
+    }
+    public ulong4 bagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; this.g = value.z; this.r = value.w; }
+    }
+    public ulong4 bagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.g, this.g);
+    }
+    public ulong4 bagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.g, this.b);
+    }
+    public ulong4 baga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.g, this.a);
+    }
+    public ulong4 babr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.b, this.r);
+    }
+    public ulong4 babg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.b, this.g);
+    }
+    public ulong4 babb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.b, this.b);
+    }
+    public ulong4 baba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.b, this.a);
+    }
+    public ulong4 baar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.a, this.r);
+    }
+    public ulong4 baag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.a, this.g);
+    }
+    public ulong4 baab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.a, this.b);
+    }
+    public ulong4 baaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.b, this.a, this.a, this.a);
+    }
+    public ulong4 arrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.r, this.r);
+    }
+    public ulong4 arrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.r, this.g);
+    }
+    public ulong4 arrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.r, this.b);
+    }
+    public ulong4 arra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.r, this.a);
+    }
+    public ulong4 argr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.g, this.r);
+    }
+    public ulong4 argg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.g, this.g);
+    }
+    public ulong4 argb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; this.g = value.z; this.b = value.w; }
+    }
+    public ulong4 arga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.g, this.a);
+    }
+    public ulong4 arbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.b, this.r);
+    }
+    public ulong4 arbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; this.b = value.z; this.g = value.w; }
+    }
+    public ulong4 arbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.b, this.b);
+    }
+    public ulong4 arba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.b, this.a);
+    }
+    public ulong4 arar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.a, this.r);
+    }
+    public ulong4 arag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.a, this.g);
+    }
+    public ulong4 arab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.a, this.b);
+    }
+    public ulong4 araa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.r, this.a, this.a);
+    }
+    public ulong4 agrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.r, this.r);
+    }
+    public ulong4 agrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.r, this.g);
+    }
+    public ulong4 agrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; this.r = value.z; this.b = value.w; }
+    }
+    public ulong4 agra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.r, this.a);
+    }
+    public ulong4 aggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.g, this.r);
+    }
+    public ulong4 aggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.g, this.g);
+    }
+    public ulong4 aggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.g, this.b);
+    }
+    public ulong4 agga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.g, this.a);
+    }
+    public ulong4 agbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; this.b = value.z; this.r = value.w; }
+    }
+    public ulong4 agbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.b, this.g);
+    }
+    public ulong4 agbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.b, this.b);
+    }
+    public ulong4 agba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.b, this.a);
+    }
+    public ulong4 agar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.a, this.r);
+    }
+    public ulong4 agag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.a, this.g);
+    }
+    public ulong4 agab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.a, this.b);
+    }
+    public ulong4 agaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.g, this.a, this.a);
+    }
+    public ulong4 abrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.r, this.r);
+    }
+    public ulong4 abrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; this.r = value.z; this.g = value.w; }
+    }
+    public ulong4 abrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.r, this.b);
+    }
+    public ulong4 abra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.r, this.a);
+    }
+    public ulong4 abgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; this.g = value.z; this.r = value.w; }
+    }
+    public ulong4 abgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.g, this.g);
+    }
+    public ulong4 abgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.g, this.b);
+    }
+    public ulong4 abga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.g, this.a);
+    }
+    public ulong4 abbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.b, this.r);
+    }
+    public ulong4 abbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.b, this.g);
+    }
+    public ulong4 abbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.b, this.b);
+    }
+    public ulong4 abba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.b, this.a);
+    }
+    public ulong4 abar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.a, this.r);
+    }
+    public ulong4 abag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.a, this.g);
+    }
+    public ulong4 abab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.a, this.b);
+    }
+    public ulong4 abaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.b, this.a, this.a);
+    }
+    public ulong4 aarr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.r, this.r);
+    }
+    public ulong4 aarg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.r, this.g);
+    }
+    public ulong4 aarb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.r, this.b);
+    }
+    public ulong4 aara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.r, this.a);
+    }
+    public ulong4 aagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.g, this.r);
+    }
+    public ulong4 aagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.g, this.g);
+    }
+    public ulong4 aagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.g, this.b);
+    }
+    public ulong4 aaga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.g, this.a);
+    }
+    public ulong4 aabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.b, this.r);
+    }
+    public ulong4 aabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.b, this.g);
+    }
+    public ulong4 aabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.b, this.b);
+    }
+    public ulong4 aaba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.b, this.a);
+    }
+    public ulong4 aaar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.a, this.r);
+    }
+    public ulong4 aaag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.a, this.g);
+    }
+    public ulong4 aaab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.a, this.b);
+    }
+    public ulong4 aaaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new ulong4(this.a, this.a, this.a, this.a);
     }
 
 

@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
-[StructLayout(LayoutKind.Sequential, Size = 64)]
+[StructLayout(LayoutKind.Explicit, Size = 64)]
 public unsafe partial struct decimal3 : 
     IEquatable<decimal3>, IEqualityOperators<decimal3, decimal3, bool>, IEqualityOperators<decimal3, decimal3, bool3>,
 
@@ -25,47 +25,23 @@ public unsafe partial struct decimal3 :
     IVector, IVector3, IVector<decimal>, IVector3<decimal>
 {
 
+    [FieldOffset(0)]
     public decimal x;
 
-    public ref decimal RefX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in x);
-    }
-
-    public readonly ref readonly decimal RefRoX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in x);
-    }
-
+    [FieldOffset(16)]
     public decimal y;
 
-    public ref decimal RefY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in y);
-    }
-
-    public readonly ref readonly decimal RefRoY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in y);
-    }
-
+    [FieldOffset(32)]
     public decimal z;
 
-    public ref decimal RefZ 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in z);
-    }
+    [FieldOffset(0)]
+    public decimal r;
 
-    public readonly ref readonly decimal RefRoZ 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in z);
-    }
+    [FieldOffset(16)]
+    public decimal g;
+
+    [FieldOffset(32)]
+    public decimal b;
 
 
     public static int ByteSize 
@@ -246,17 +222,6 @@ public unsafe partial struct decimal3 :
 
 public static unsafe partial class math
 {
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref decimal RefX(decimal3* self) => ref Unsafe.AsRef(in self->x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref decimal RefY(decimal3* self) => ref Unsafe.AsRef(in self->y);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref decimal RefZ(decimal3* self) => ref Unsafe.AsRef(in self->z);
-
 
 
 

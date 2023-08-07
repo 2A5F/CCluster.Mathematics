@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
-[StructLayout(LayoutKind.Sequential, Size = 8)]
+[StructLayout(LayoutKind.Explicit, Size = 8)]
 public unsafe partial struct Half3 : 
     IEquatable<Half3>, IEqualityOperators<Half3, Half3, bool>, IEqualityOperators<Half3, Half3, bool3>,
 
@@ -25,47 +25,23 @@ public unsafe partial struct Half3 :
     IVector, IVector3, IVector<Half>, IVector3<Half>
 {
 
+    [FieldOffset(0)]
     public Half x;
 
-    public ref Half RefX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in x);
-    }
-
-    public readonly ref readonly Half RefRoX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in x);
-    }
-
+    [FieldOffset(2)]
     public Half y;
 
-    public ref Half RefY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in y);
-    }
-
-    public readonly ref readonly Half RefRoY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in y);
-    }
-
+    [FieldOffset(4)]
     public Half z;
 
-    public ref Half RefZ 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in z);
-    }
+    [FieldOffset(0)]
+    public Half r;
 
-    public readonly ref readonly Half RefRoZ 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in z);
-    }
+    [FieldOffset(2)]
+    public Half g;
+
+    [FieldOffset(4)]
+    public Half b;
 
 
     public static int ByteSize 
@@ -248,17 +224,6 @@ public static unsafe partial class math
 {
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref Half RefX(Half3* self) => ref Unsafe.AsRef(in self->x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref Half RefY(Half3* self) => ref Unsafe.AsRef(in self->y);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref Half RefZ(Half3* self) => ref Unsafe.AsRef(in self->z);
-
-
-
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half3 min(Half3 x, Half3 y) => new Half3(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z));
@@ -381,7 +346,7 @@ public static unsafe partial class math
     {
         Unsafe.SkipInit(out sin);
         Unsafe.SkipInit(out cos);
-        sincos(x.x, out sin.RefX, out cos.RefX); sincos(x.y, out sin.RefY, out cos.RefY); sincos(x.z, out sin.RefZ, out cos.RefZ);
+        sincos(x.x, out sin.x, out cos.x); sincos(x.y, out sin.y, out cos.y); sincos(x.z, out sin.z, out cos.z);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]

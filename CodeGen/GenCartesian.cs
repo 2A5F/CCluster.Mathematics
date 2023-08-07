@@ -15,11 +15,23 @@ public class GenCartesian : Base
     {
         foreach (var type in types)
         {
-            foreach (var n in Enumerable.Range(2, 3))
+            foreach (var _n in Enumerable.Range(2, 4))
             {
+                var n = _n;
+                var no_align = false;
+                if (n == 5)
+                {
+                    n = 3;
+                    no_align = true;
+                }
+                var align_name = no_align ? "a" : string.Empty;
+                var vname = $"{type}{n}{align_name}";
+                
                 var cartesian = new StringBuilder();
+                var xyzw1 = ParallelEnumerable.Range(0, n * n).AsOrdered().Select(i => GetXyzwCartesian2(n, i));
+                var rgba1 = ParallelEnumerable.Range(0, n * n).AsOrdered().Select(i => GetRgbaCartesian2(n, i));
                 cartesian.Append(string.Join("",
-                    ParallelEnumerable.Range(0, n * n).AsOrdered().Select(i => GetXyzwCartesian2(n, i)).Select(ab =>
+                    xyzw1.Concat(rgba1).Select(ab =>
                         $@"    public {type}{2} {ab.a}{ab.b}
     {{
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -28,20 +40,28 @@ public class GenCartesian : Base
         set {{ this.{ab.a} = value.x; this.{ab.b} = value.y; }}" : "")}
     }}
 ").ToArray()));
+                var xyzw2 = ParallelEnumerable.Range(0, n * n * n).AsParallel().AsOrdered()
+                    .Select(i => GetXyzwCartesian3(n, i));
+                var rgba2 = ParallelEnumerable.Range(0, n * n * n).AsParallel().AsOrdered()
+                    .Select(i => GetRgbaCartesian3(n, i));
                 cartesian.Append(string.Join("",
-                    ParallelEnumerable.Range(0, n * n * n).AsParallel().AsOrdered().Select(i => GetXyzwCartesian3(n, i))
+                    xyzw2.Concat(rgba2)
                         .Select(abc =>
-                            $@"    public {type}{3} {abc.a}{abc.b}{abc.c}
+                            $@"    public {type}{3}{align_name} {abc.a}{abc.b}{abc.c}
     {{
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new {type}{3}(this.{abc.a}, this.{abc.b}, this.{abc.c});{(abc.u ? $@"
+        get => new {type}{3}{align_name}(this.{abc.a}, this.{abc.b}, this.{abc.c});{(abc.u ? $@"
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set {{ this.{abc.a} = value.x; this.{abc.b} = value.y; this.{abc.c} = value.z; }}" : "")}
     }}
 ").ToArray()));
+                var xyzw3 = ParallelEnumerable.Range(0, n * n * n * n).AsParallel().AsOrdered()
+                    .Select(i => GetXyzwCartesian4(n, i));
+                var rgba3 = ParallelEnumerable.Range(0, n * n * n * n).AsParallel().AsOrdered()
+                    .Select(i => GetRgbaCartesian4(n, i));
                 cartesian.Append(string.Join("",
-                    ParallelEnumerable.Range(0, n * n * n * n).AsParallel().AsOrdered()
-                        .Select(i => GetXyzwCartesian4(n, i)).Select(abcd =>
+                    xyzw3.Concat(rgba3)
+                        .Select(abcd =>
                             $@"    public {type}{4} {abcd.a}{abcd.b}{abcd.c}{abcd.d}
     {{
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -60,14 +80,14 @@ using System.Runtime.CompilerServices;
 
 namespace CCluster.Mathematics;
 
-public partial struct {type}{n} 
+public partial struct {vname} 
 {{
 
 {cartesian}
 
 }}
 ";
-                await SaveCode($"{type}{n}.cartesian.gen.cs", source);
+                await SaveCode($"{vname}.cartesian.gen.cs", source);
             }
         }
     }

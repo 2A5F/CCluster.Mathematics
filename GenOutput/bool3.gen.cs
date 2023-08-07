@@ -12,54 +12,30 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
-[StructLayout(LayoutKind.Sequential, Size = 4)]
+[StructLayout(LayoutKind.Explicit, Size = 4)]
 public unsafe partial struct bool3 : 
     IEquatable<bool3>, IEqualityOperators<bool3, bool3, bool>, IEqualityOperators<bool3, bool3, bool3>,
 
     IVector, IVector3, IVector<bool>, IVector3<bool>
 {
 
+    [FieldOffset(0)]
     public bool x;
 
-    public ref bool RefX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in x);
-    }
-
-    public readonly ref readonly bool RefRoX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in x);
-    }
-
+    [FieldOffset(1)]
     public bool y;
 
-    public ref bool RefY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in y);
-    }
-
-    public readonly ref readonly bool RefRoY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in y);
-    }
-
+    [FieldOffset(2)]
     public bool z;
 
-    public ref bool RefZ 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in z);
-    }
+    [FieldOffset(0)]
+    public bool r;
 
-    public readonly ref readonly bool RefRoZ 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.AsRef(in z);
-    }
+    [FieldOffset(1)]
+    public bool g;
+
+    [FieldOffset(2)]
+    public bool b;
 
 
     public static int ByteSize 
@@ -153,17 +129,6 @@ public unsafe partial struct bool3 :
 
 public static unsafe partial class math
 {
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref bool RefX(bool3* self) => ref Unsafe.AsRef(in self->x);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref bool RefY(bool3* self) => ref Unsafe.AsRef(in self->y);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref bool RefZ(bool3* self) => ref Unsafe.AsRef(in self->z);
-
 
 
 

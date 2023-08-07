@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
-[StructLayout(LayoutKind.Sequential, Size = 16)]
+[StructLayout(LayoutKind.Explicit, Size = 16)]
 public unsafe partial struct uint3 : 
     IEquatable<uint3>, IEqualityOperators<uint3, uint3, bool>, IEqualityOperators<uint3, uint3, bool3>,
 
@@ -25,68 +25,27 @@ public unsafe partial struct uint3 :
     IVector, IVector3, IVector<uint>, IVector3<uint>
 {
 
+    [FieldOffset(0)]
     public Vector128<uint> vector;
 
 
-    public uint x
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoX;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefX = value;
-    }
+    [FieldOffset(0)]
+    public uint x;
 
-    public ref uint RefX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in vector)), 0);
-    }
+    [FieldOffset(4)]
+    public uint y;
 
-    public readonly ref readonly uint RefRoX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in vector)), 0);
-    }
+    [FieldOffset(8)]
+    public uint z;
 
-    public uint y
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoY;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefY = value;
-    }
+    [FieldOffset(0)]
+    public uint r;
 
-    public ref uint RefY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in vector)), 1);
-    }
+    [FieldOffset(4)]
+    public uint g;
 
-    public readonly ref readonly uint RefRoY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in vector)), 1);
-    }
-
-    public uint z
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoZ;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefZ = value;
-    }
-
-    public ref uint RefZ 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in vector)), 2);
-    }
-
-    public readonly ref readonly uint RefRoZ 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in vector)), 2);
-    }
+    [FieldOffset(8)]
+    public uint b;
 
 
     public static int ByteSize 
@@ -290,17 +249,6 @@ public unsafe partial struct uint3 :
 
 public static unsafe partial class math
 {
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref uint RefX(uint3* self) => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in self->vector)), 0);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref uint RefY(uint3* self) => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in self->vector)), 1);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref uint RefZ(uint3* self) => ref Unsafe.Add(ref Unsafe.As<Vector128<uint>, uint>(ref Unsafe.AsRef(in self->vector)), 2);
-
 
 
 

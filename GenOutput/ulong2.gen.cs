@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
-[StructLayout(LayoutKind.Sequential, Size = 16)]
+[StructLayout(LayoutKind.Explicit, Size = 16)]
 public unsafe partial struct ulong2 : 
     IEquatable<ulong2>, IEqualityOperators<ulong2, ulong2, bool>, IEqualityOperators<ulong2, ulong2, bool2>,
 
@@ -25,48 +25,21 @@ public unsafe partial struct ulong2 :
     IVector, IVector2, IVector<ulong>, IVector2<ulong>
 {
 
+    [FieldOffset(0)]
     public Vector128<ulong> vector;
 
 
-    public ulong x
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoX;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefX = value;
-    }
+    [FieldOffset(0)]
+    public ulong x;
 
-    public ref ulong RefX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<ulong>, ulong>(ref Unsafe.AsRef(in vector)), 0);
-    }
+    [FieldOffset(8)]
+    public ulong y;
 
-    public readonly ref readonly ulong RefRoX 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<ulong>, ulong>(ref Unsafe.AsRef(in vector)), 0);
-    }
+    [FieldOffset(0)]
+    public ulong r;
 
-    public ulong y
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        readonly get => RefRoY;
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        set => RefY = value;
-    }
-
-    public ref ulong RefY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<ulong>, ulong>(ref Unsafe.AsRef(in vector)), 1);
-    }
-
-    public readonly ref readonly ulong RefRoY 
-    {
-        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => ref Unsafe.Add(ref Unsafe.As<Vector128<ulong>, ulong>(ref Unsafe.AsRef(in vector)), 1);
-    }
+    [FieldOffset(8)]
+    public ulong g;
 
 
     public static int ByteSize 
@@ -270,14 +243,6 @@ public unsafe partial struct ulong2 :
 
 public static unsafe partial class math
 {
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref ulong RefX(ulong2* self) => ref Unsafe.Add(ref Unsafe.As<Vector128<ulong>, ulong>(ref Unsafe.AsRef(in self->vector)), 0);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ref ulong RefY(ulong2* self) => ref Unsafe.Add(ref Unsafe.As<Vector128<ulong>, ulong>(ref Unsafe.AsRef(in self->vector)), 1);
-
 
 
 

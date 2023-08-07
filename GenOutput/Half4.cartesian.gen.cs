@@ -114,6 +114,110 @@ public partial struct Half4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new Half2(this.w, this.w);
     }
+    public Half2 rr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.r, this.r);
+    }
+    public Half2 rg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; }
+    }
+    public Half2 rb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; }
+    }
+    public Half2 ra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; }
+    }
+    public Half2 gr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; }
+    }
+    public Half2 gg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.g, this.g);
+    }
+    public Half2 gb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; }
+    }
+    public Half2 ga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; }
+    }
+    public Half2 br
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; }
+    }
+    public Half2 bg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; }
+    }
+    public Half2 bb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.b, this.b);
+    }
+    public Half2 ba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; }
+    }
+    public Half2 ar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; }
+    }
+    public Half2 ag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; }
+    }
+    public Half2 ab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; }
+    }
+    public Half2 aa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half2(this.a, this.a);
+    }
     public Half3 xxx
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -481,6 +585,374 @@ public partial struct Half4
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new Half3(this.w, this.w, this.w);
+    }
+    public Half3 rrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.r, this.r);
+    }
+    public Half3 rrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.r, this.g);
+    }
+    public Half3 rrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.r, this.b);
+    }
+    public Half3 rra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.r, this.a);
+    }
+    public Half3 rgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.g, this.r);
+    }
+    public Half3 rgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.g, this.g);
+    }
+    public Half3 rgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; this.b = value.z; }
+    }
+    public Half3 rga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; this.a = value.z; }
+    }
+    public Half3 rbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.b, this.r);
+    }
+    public Half3 rbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; this.g = value.z; }
+    }
+    public Half3 rbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.b, this.b);
+    }
+    public Half3 rba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; this.a = value.z; }
+    }
+    public Half3 rar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.a, this.r);
+    }
+    public Half3 rag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; this.g = value.z; }
+    }
+    public Half3 rab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; this.b = value.z; }
+    }
+    public Half3 raa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.r, this.a, this.a);
+    }
+    public Half3 grr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.r, this.r);
+    }
+    public Half3 grg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.r, this.g);
+    }
+    public Half3 grb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; this.b = value.z; }
+    }
+    public Half3 gra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; this.a = value.z; }
+    }
+    public Half3 ggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.g, this.r);
+    }
+    public Half3 ggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.g, this.g);
+    }
+    public Half3 ggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.g, this.b);
+    }
+    public Half3 gga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.g, this.a);
+    }
+    public Half3 gbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; this.r = value.z; }
+    }
+    public Half3 gbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.b, this.g);
+    }
+    public Half3 gbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.b, this.b);
+    }
+    public Half3 gba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; this.a = value.z; }
+    }
+    public Half3 gar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; this.r = value.z; }
+    }
+    public Half3 gag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.a, this.g);
+    }
+    public Half3 gab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; this.b = value.z; }
+    }
+    public Half3 gaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.g, this.a, this.a);
+    }
+    public Half3 brr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.r, this.r);
+    }
+    public Half3 brg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; this.g = value.z; }
+    }
+    public Half3 brb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.r, this.b);
+    }
+    public Half3 bra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; this.a = value.z; }
+    }
+    public Half3 bgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; this.r = value.z; }
+    }
+    public Half3 bgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.g, this.g);
+    }
+    public Half3 bgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.g, this.b);
+    }
+    public Half3 bga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; this.a = value.z; }
+    }
+    public Half3 bbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.b, this.r);
+    }
+    public Half3 bbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.b, this.g);
+    }
+    public Half3 bbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.b, this.b);
+    }
+    public Half3 bba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.b, this.a);
+    }
+    public Half3 bar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; this.r = value.z; }
+    }
+    public Half3 bag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; this.g = value.z; }
+    }
+    public Half3 bab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.a, this.b);
+    }
+    public Half3 baa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.b, this.a, this.a);
+    }
+    public Half3 arr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.r, this.r);
+    }
+    public Half3 arg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; this.g = value.z; }
+    }
+    public Half3 arb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; this.b = value.z; }
+    }
+    public Half3 ara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.r, this.a);
+    }
+    public Half3 agr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; this.r = value.z; }
+    }
+    public Half3 agg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.g, this.g);
+    }
+    public Half3 agb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; this.b = value.z; }
+    }
+    public Half3 aga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.g, this.a);
+    }
+    public Half3 abr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; this.r = value.z; }
+    }
+    public Half3 abg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; this.g = value.z; }
+    }
+    public Half3 abb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.b, this.b);
+    }
+    public Half3 aba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.b, this.a);
+    }
+    public Half3 aar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.a, this.r);
+    }
+    public Half3 aag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.a, this.g);
+    }
+    public Half3 aab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.a, this.b);
+    }
+    public Half3 aaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half3(this.a, this.a, this.a);
     }
     public Half4 xxxx
     {
@@ -1809,6 +2281,1334 @@ public partial struct Half4
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get => new Half4(this.w, this.w, this.w, this.w);
+    }
+    public Half4 rrrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.r, this.r);
+    }
+    public Half4 rrrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.r, this.g);
+    }
+    public Half4 rrrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.r, this.b);
+    }
+    public Half4 rrra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.r, this.a);
+    }
+    public Half4 rrgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.g, this.r);
+    }
+    public Half4 rrgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.g, this.g);
+    }
+    public Half4 rrgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.g, this.b);
+    }
+    public Half4 rrga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.g, this.a);
+    }
+    public Half4 rrbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.b, this.r);
+    }
+    public Half4 rrbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.b, this.g);
+    }
+    public Half4 rrbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.b, this.b);
+    }
+    public Half4 rrba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.b, this.a);
+    }
+    public Half4 rrar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.a, this.r);
+    }
+    public Half4 rrag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.a, this.g);
+    }
+    public Half4 rrab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.a, this.b);
+    }
+    public Half4 rraa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.r, this.a, this.a);
+    }
+    public Half4 rgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.r, this.r);
+    }
+    public Half4 rgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.r, this.g);
+    }
+    public Half4 rgrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.r, this.b);
+    }
+    public Half4 rgra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.r, this.a);
+    }
+    public Half4 rggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.g, this.r);
+    }
+    public Half4 rggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.g, this.g);
+    }
+    public Half4 rggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.g, this.b);
+    }
+    public Half4 rgga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.g, this.a);
+    }
+    public Half4 rgbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.b, this.r);
+    }
+    public Half4 rgbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.b, this.g);
+    }
+    public Half4 rgbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.b, this.b);
+    }
+    public Half4 rgba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; this.b = value.z; this.a = value.w; }
+    }
+    public Half4 rgar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.a, this.r);
+    }
+    public Half4 rgag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.a, this.g);
+    }
+    public Half4 rgab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.g = value.y; this.a = value.z; this.b = value.w; }
+    }
+    public Half4 rgaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.g, this.a, this.a);
+    }
+    public Half4 rbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.r, this.r);
+    }
+    public Half4 rbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.r, this.g);
+    }
+    public Half4 rbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.r, this.b);
+    }
+    public Half4 rbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.r, this.a);
+    }
+    public Half4 rbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.g, this.r);
+    }
+    public Half4 rbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.g, this.g);
+    }
+    public Half4 rbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.g, this.b);
+    }
+    public Half4 rbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; this.g = value.z; this.a = value.w; }
+    }
+    public Half4 rbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.b, this.r);
+    }
+    public Half4 rbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.b, this.g);
+    }
+    public Half4 rbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.b, this.b);
+    }
+    public Half4 rbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.b, this.a);
+    }
+    public Half4 rbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.a, this.r);
+    }
+    public Half4 rbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.b = value.y; this.a = value.z; this.g = value.w; }
+    }
+    public Half4 rbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.a, this.b);
+    }
+    public Half4 rbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.b, this.a, this.a);
+    }
+    public Half4 rarr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.r, this.r);
+    }
+    public Half4 rarg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.r, this.g);
+    }
+    public Half4 rarb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.r, this.b);
+    }
+    public Half4 rara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.r, this.a);
+    }
+    public Half4 ragr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.g, this.r);
+    }
+    public Half4 ragg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.g, this.g);
+    }
+    public Half4 ragb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; this.g = value.z; this.b = value.w; }
+    }
+    public Half4 raga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.g, this.a);
+    }
+    public Half4 rabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.b, this.r);
+    }
+    public Half4 rabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.r = value.x; this.a = value.y; this.b = value.z; this.g = value.w; }
+    }
+    public Half4 rabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.b, this.b);
+    }
+    public Half4 raba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.b, this.a);
+    }
+    public Half4 raar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.a, this.r);
+    }
+    public Half4 raag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.a, this.g);
+    }
+    public Half4 raab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.a, this.b);
+    }
+    public Half4 raaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.r, this.a, this.a, this.a);
+    }
+    public Half4 grrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.r, this.r);
+    }
+    public Half4 grrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.r, this.g);
+    }
+    public Half4 grrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.r, this.b);
+    }
+    public Half4 grra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.r, this.a);
+    }
+    public Half4 grgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.g, this.r);
+    }
+    public Half4 grgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.g, this.g);
+    }
+    public Half4 grgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.g, this.b);
+    }
+    public Half4 grga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.g, this.a);
+    }
+    public Half4 grbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.b, this.r);
+    }
+    public Half4 grbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.b, this.g);
+    }
+    public Half4 grbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.b, this.b);
+    }
+    public Half4 grba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.b, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; this.b = value.z; this.a = value.w; }
+    }
+    public Half4 grar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.a, this.r);
+    }
+    public Half4 grag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.a, this.g);
+    }
+    public Half4 grab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.a, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.r = value.y; this.a = value.z; this.b = value.w; }
+    }
+    public Half4 graa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.r, this.a, this.a);
+    }
+    public Half4 ggrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.r, this.r);
+    }
+    public Half4 ggrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.r, this.g);
+    }
+    public Half4 ggrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.r, this.b);
+    }
+    public Half4 ggra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.r, this.a);
+    }
+    public Half4 gggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.g, this.r);
+    }
+    public Half4 gggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.g, this.g);
+    }
+    public Half4 gggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.g, this.b);
+    }
+    public Half4 ggga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.g, this.a);
+    }
+    public Half4 ggbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.b, this.r);
+    }
+    public Half4 ggbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.b, this.g);
+    }
+    public Half4 ggbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.b, this.b);
+    }
+    public Half4 ggba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.b, this.a);
+    }
+    public Half4 ggar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.a, this.r);
+    }
+    public Half4 ggag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.a, this.g);
+    }
+    public Half4 ggab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.a, this.b);
+    }
+    public Half4 ggaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.g, this.a, this.a);
+    }
+    public Half4 gbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.r, this.r);
+    }
+    public Half4 gbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.r, this.g);
+    }
+    public Half4 gbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.r, this.b);
+    }
+    public Half4 gbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; this.r = value.z; this.a = value.w; }
+    }
+    public Half4 gbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.g, this.r);
+    }
+    public Half4 gbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.g, this.g);
+    }
+    public Half4 gbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.g, this.b);
+    }
+    public Half4 gbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.g, this.a);
+    }
+    public Half4 gbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.b, this.r);
+    }
+    public Half4 gbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.b, this.g);
+    }
+    public Half4 gbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.b, this.b);
+    }
+    public Half4 gbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.b, this.a);
+    }
+    public Half4 gbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.b = value.y; this.a = value.z; this.r = value.w; }
+    }
+    public Half4 gbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.a, this.g);
+    }
+    public Half4 gbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.a, this.b);
+    }
+    public Half4 gbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.b, this.a, this.a);
+    }
+    public Half4 garr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.r, this.r);
+    }
+    public Half4 garg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.r, this.g);
+    }
+    public Half4 garb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; this.r = value.z; this.b = value.w; }
+    }
+    public Half4 gara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.r, this.a);
+    }
+    public Half4 gagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.g, this.r);
+    }
+    public Half4 gagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.g, this.g);
+    }
+    public Half4 gagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.g, this.b);
+    }
+    public Half4 gaga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.g, this.a);
+    }
+    public Half4 gabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.g = value.x; this.a = value.y; this.b = value.z; this.r = value.w; }
+    }
+    public Half4 gabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.b, this.g);
+    }
+    public Half4 gabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.b, this.b);
+    }
+    public Half4 gaba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.b, this.a);
+    }
+    public Half4 gaar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.a, this.r);
+    }
+    public Half4 gaag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.a, this.g);
+    }
+    public Half4 gaab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.a, this.b);
+    }
+    public Half4 gaaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.g, this.a, this.a, this.a);
+    }
+    public Half4 brrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.r, this.r);
+    }
+    public Half4 brrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.r, this.g);
+    }
+    public Half4 brrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.r, this.b);
+    }
+    public Half4 brra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.r, this.a);
+    }
+    public Half4 brgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.g, this.r);
+    }
+    public Half4 brgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.g, this.g);
+    }
+    public Half4 brgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.g, this.b);
+    }
+    public Half4 brga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.g, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; this.g = value.z; this.a = value.w; }
+    }
+    public Half4 brbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.b, this.r);
+    }
+    public Half4 brbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.b, this.g);
+    }
+    public Half4 brbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.b, this.b);
+    }
+    public Half4 brba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.b, this.a);
+    }
+    public Half4 brar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.a, this.r);
+    }
+    public Half4 brag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.a, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.r = value.y; this.a = value.z; this.g = value.w; }
+    }
+    public Half4 brab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.a, this.b);
+    }
+    public Half4 braa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.r, this.a, this.a);
+    }
+    public Half4 bgrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.r, this.r);
+    }
+    public Half4 bgrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.r, this.g);
+    }
+    public Half4 bgrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.r, this.b);
+    }
+    public Half4 bgra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.r, this.a);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; this.r = value.z; this.a = value.w; }
+    }
+    public Half4 bggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.g, this.r);
+    }
+    public Half4 bggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.g, this.g);
+    }
+    public Half4 bggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.g, this.b);
+    }
+    public Half4 bgga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.g, this.a);
+    }
+    public Half4 bgbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.b, this.r);
+    }
+    public Half4 bgbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.b, this.g);
+    }
+    public Half4 bgbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.b, this.b);
+    }
+    public Half4 bgba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.b, this.a);
+    }
+    public Half4 bgar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.a, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.g = value.y; this.a = value.z; this.r = value.w; }
+    }
+    public Half4 bgag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.a, this.g);
+    }
+    public Half4 bgab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.a, this.b);
+    }
+    public Half4 bgaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.g, this.a, this.a);
+    }
+    public Half4 bbrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.r, this.r);
+    }
+    public Half4 bbrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.r, this.g);
+    }
+    public Half4 bbrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.r, this.b);
+    }
+    public Half4 bbra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.r, this.a);
+    }
+    public Half4 bbgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.g, this.r);
+    }
+    public Half4 bbgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.g, this.g);
+    }
+    public Half4 bbgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.g, this.b);
+    }
+    public Half4 bbga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.g, this.a);
+    }
+    public Half4 bbbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.b, this.r);
+    }
+    public Half4 bbbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.b, this.g);
+    }
+    public Half4 bbbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.b, this.b);
+    }
+    public Half4 bbba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.b, this.a);
+    }
+    public Half4 bbar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.a, this.r);
+    }
+    public Half4 bbag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.a, this.g);
+    }
+    public Half4 bbab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.a, this.b);
+    }
+    public Half4 bbaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.b, this.a, this.a);
+    }
+    public Half4 barr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.r, this.r);
+    }
+    public Half4 barg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; this.r = value.z; this.g = value.w; }
+    }
+    public Half4 barb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.r, this.b);
+    }
+    public Half4 bara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.r, this.a);
+    }
+    public Half4 bagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.b = value.x; this.a = value.y; this.g = value.z; this.r = value.w; }
+    }
+    public Half4 bagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.g, this.g);
+    }
+    public Half4 bagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.g, this.b);
+    }
+    public Half4 baga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.g, this.a);
+    }
+    public Half4 babr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.b, this.r);
+    }
+    public Half4 babg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.b, this.g);
+    }
+    public Half4 babb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.b, this.b);
+    }
+    public Half4 baba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.b, this.a);
+    }
+    public Half4 baar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.a, this.r);
+    }
+    public Half4 baag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.a, this.g);
+    }
+    public Half4 baab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.a, this.b);
+    }
+    public Half4 baaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.b, this.a, this.a, this.a);
+    }
+    public Half4 arrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.r, this.r);
+    }
+    public Half4 arrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.r, this.g);
+    }
+    public Half4 arrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.r, this.b);
+    }
+    public Half4 arra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.r, this.a);
+    }
+    public Half4 argr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.g, this.r);
+    }
+    public Half4 argg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.g, this.g);
+    }
+    public Half4 argb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.g, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; this.g = value.z; this.b = value.w; }
+    }
+    public Half4 arga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.g, this.a);
+    }
+    public Half4 arbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.b, this.r);
+    }
+    public Half4 arbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.b, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.r = value.y; this.b = value.z; this.g = value.w; }
+    }
+    public Half4 arbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.b, this.b);
+    }
+    public Half4 arba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.b, this.a);
+    }
+    public Half4 arar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.a, this.r);
+    }
+    public Half4 arag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.a, this.g);
+    }
+    public Half4 arab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.a, this.b);
+    }
+    public Half4 araa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.r, this.a, this.a);
+    }
+    public Half4 agrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.r, this.r);
+    }
+    public Half4 agrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.r, this.g);
+    }
+    public Half4 agrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.r, this.b);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; this.r = value.z; this.b = value.w; }
+    }
+    public Half4 agra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.r, this.a);
+    }
+    public Half4 aggr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.g, this.r);
+    }
+    public Half4 aggg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.g, this.g);
+    }
+    public Half4 aggb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.g, this.b);
+    }
+    public Half4 agga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.g, this.a);
+    }
+    public Half4 agbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.b, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.g = value.y; this.b = value.z; this.r = value.w; }
+    }
+    public Half4 agbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.b, this.g);
+    }
+    public Half4 agbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.b, this.b);
+    }
+    public Half4 agba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.b, this.a);
+    }
+    public Half4 agar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.a, this.r);
+    }
+    public Half4 agag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.a, this.g);
+    }
+    public Half4 agab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.a, this.b);
+    }
+    public Half4 agaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.g, this.a, this.a);
+    }
+    public Half4 abrr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.r, this.r);
+    }
+    public Half4 abrg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.r, this.g);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; this.r = value.z; this.g = value.w; }
+    }
+    public Half4 abrb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.r, this.b);
+    }
+    public Half4 abra
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.r, this.a);
+    }
+    public Half4 abgr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.g, this.r);
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        set { this.a = value.x; this.b = value.y; this.g = value.z; this.r = value.w; }
+    }
+    public Half4 abgg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.g, this.g);
+    }
+    public Half4 abgb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.g, this.b);
+    }
+    public Half4 abga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.g, this.a);
+    }
+    public Half4 abbr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.b, this.r);
+    }
+    public Half4 abbg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.b, this.g);
+    }
+    public Half4 abbb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.b, this.b);
+    }
+    public Half4 abba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.b, this.a);
+    }
+    public Half4 abar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.a, this.r);
+    }
+    public Half4 abag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.a, this.g);
+    }
+    public Half4 abab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.a, this.b);
+    }
+    public Half4 abaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.b, this.a, this.a);
+    }
+    public Half4 aarr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.r, this.r);
+    }
+    public Half4 aarg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.r, this.g);
+    }
+    public Half4 aarb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.r, this.b);
+    }
+    public Half4 aara
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.r, this.a);
+    }
+    public Half4 aagr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.g, this.r);
+    }
+    public Half4 aagg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.g, this.g);
+    }
+    public Half4 aagb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.g, this.b);
+    }
+    public Half4 aaga
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.g, this.a);
+    }
+    public Half4 aabr
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.b, this.r);
+    }
+    public Half4 aabg
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.b, this.g);
+    }
+    public Half4 aabb
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.b, this.b);
+    }
+    public Half4 aaba
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.b, this.a);
+    }
+    public Half4 aaar
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.a, this.r);
+    }
+    public Half4 aaag
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.a, this.g);
+    }
+    public Half4 aaab
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.a, this.b);
+    }
+    public Half4 aaaa
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new Half4(this.a, this.a, this.a, this.a);
     }
 
 
