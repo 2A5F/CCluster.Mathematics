@@ -18,8 +18,8 @@ public class GenVectors : Base
         public bool Bool { get; set; }
         public bool Unsigned { get; set; }
         public bool Simd { get; set; }
-        public string JsonRead { get; set; }
-        public Func<string, string> JsonWrite { get; set; }
+        public string JsonRead { get; set; } = null!;
+        public Func<string, string> JsonWrite { get; set; } = null!;
     }
 
     private static Dictionary<string, TypeMeta> types = new()
@@ -246,7 +246,7 @@ using System.Text.Json.Serialization;
 namespace CCluster.Mathematics;
 
 [Serializable]
-[JsonConverter(typeof({json_name}Converter))]
+[JsonConverter(typeof({json_name}JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = {byteSize})]
 public unsafe partial struct {vname} : 
     IEquatable<{vname}>, IEqualityOperators<{vname}, {vname}, bool>, IEqualityOperators<{vname}, {vname}, bool{n}>,
@@ -867,7 +867,7 @@ public static unsafe partial class math
 
 }}
 
-public class {json_name}Converter : JsonConverter<{vname}>
+public class {json_name}JsonConverter : JsonConverter<{vname}>
 {{
     public override {vname} Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {{
