@@ -5,6 +5,9 @@ using System.Runtime.Intrinsics.X86;
 using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 #nullable enable
 #pragma warning disable CS8981
@@ -12,6 +15,7 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
+[JsonConverter(typeof(Long4Converter))]
 [StructLayout(LayoutKind.Explicit, Size = 32)]
 public unsafe partial struct long4 : 
     IEquatable<long4>, IEqualityOperators<long4, long4, bool>, IEqualityOperators<long4, long4, bool4>,
@@ -355,4 +359,34 @@ public static unsafe partial class math
 
 
 
+}
+
+public class Long4Converter : JsonConverter<long4>
+{
+    public override long4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        Unsafe.SkipInit(out long4 result);
+        if (reader.TokenType is not JsonTokenType.StartArray) throw new JsonException();
+        reader.Read();
+        result.x = reader.GetInt64();
+        reader.Read();
+        result.y = reader.GetInt64();
+        reader.Read();
+        result.z = reader.GetInt64();
+        reader.Read();
+        result.w = reader.GetInt64();
+        reader.Read();
+        if (reader.TokenType is not JsonTokenType.EndArray) throw new JsonException();
+        return result;
+    }
+
+    public override void Write(Utf8JsonWriter writer, long4 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.x);
+        writer.WriteNumberValue(value.y);
+        writer.WriteNumberValue(value.z);
+        writer.WriteNumberValue(value.w);
+        writer.WriteEndArray();
+    }
 }

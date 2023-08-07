@@ -5,6 +5,9 @@ using System.Runtime.Intrinsics.X86;
 using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 #nullable enable
 #pragma warning disable CS8981
@@ -12,6 +15,7 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
+[JsonConverter(typeof(Int3AConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 12)]
 public unsafe partial struct int3a : 
     IEquatable<int3a>, IEqualityOperators<int3a, int3a, bool>, IEqualityOperators<int3a, int3a, bool3>,
@@ -322,4 +326,31 @@ public static unsafe partial class math
 
 
 
+}
+
+public class Int3AConverter : JsonConverter<int3a>
+{
+    public override int3a Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        Unsafe.SkipInit(out int3a result);
+        if (reader.TokenType is not JsonTokenType.StartArray) throw new JsonException();
+        reader.Read();
+        result.x = reader.GetInt32();
+        reader.Read();
+        result.y = reader.GetInt32();
+        reader.Read();
+        result.z = reader.GetInt32();
+        reader.Read();
+        if (reader.TokenType is not JsonTokenType.EndArray) throw new JsonException();
+        return result;
+    }
+
+    public override void Write(Utf8JsonWriter writer, int3a value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteNumberValue(value.x);
+        writer.WriteNumberValue(value.y);
+        writer.WriteNumberValue(value.z);
+        writer.WriteEndArray();
+    }
 }

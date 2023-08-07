@@ -5,6 +5,9 @@ using System.Runtime.Intrinsics.X86;
 using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 #nullable enable
 #pragma warning disable CS8981
@@ -12,6 +15,7 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
+[JsonConverter(typeof(Bool4Converter))]
 [StructLayout(LayoutKind.Explicit, Size = 4)]
 public unsafe partial struct bool4 : 
     IEquatable<bool4>, IEqualityOperators<bool4, bool4, bool>, IEqualityOperators<bool4, bool4, bool4>,
@@ -154,4 +158,34 @@ public static unsafe partial class math
 
 
 
+}
+
+public class Bool4Converter : JsonConverter<bool4>
+{
+    public override bool4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        Unsafe.SkipInit(out bool4 result);
+        if (reader.TokenType is not JsonTokenType.StartArray) throw new JsonException();
+        reader.Read();
+        result.x = reader.GetBoolean();
+        reader.Read();
+        result.y = reader.GetBoolean();
+        reader.Read();
+        result.z = reader.GetBoolean();
+        reader.Read();
+        result.w = reader.GetBoolean();
+        reader.Read();
+        if (reader.TokenType is not JsonTokenType.EndArray) throw new JsonException();
+        return result;
+    }
+
+    public override void Write(Utf8JsonWriter writer, bool4 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteBooleanValue(value.x);
+        writer.WriteBooleanValue(value.y);
+        writer.WriteBooleanValue(value.z);
+        writer.WriteBooleanValue(value.w);
+        writer.WriteEndArray();
+    }
 }

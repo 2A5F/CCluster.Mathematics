@@ -18,23 +18,76 @@ public class GenVectors : Base
         public bool Bool { get; set; }
         public bool Unsigned { get; set; }
         public bool Simd { get; set; }
+        public string JsonRead { get; set; }
+        public Func<string, string> JsonWrite { get; set; }
     }
 
     private static Dictionary<string, TypeMeta> types = new()
     {
-        { "bool", new(sizeof(bool), "", "false", "true", "") { Bool = true, Unsigned = true, } },
+        {
+            "bool", new(sizeof(bool), "", "false", "true", "")
+            {
+                Bool = true, Unsigned = true,
+                JsonRead = "reader.GetBoolean()", JsonWrite = n => $"writer.WriteBooleanValue({n})",
+            }
+        },
         {
             "Half",
             new(sizeof(short), "", "Half.Zero", "Half.One", "(Half.One + Half.One)")
-                { Number = true, Float = true, Half = true, }
+            {
+                Number = true, Float = true, Half = true,
+                JsonRead = "(Half)reader.GetSingle()", JsonWrite = n => $"writer.WriteNumberValue((float){n})",
+            }
         },
-        { "float", new(sizeof(float), "f", "0f", "1f", "2f") { Number = true, Float = true, Simd = true, } },
-        { "double", new(sizeof(double), "d", "0d", "1d", "2d") { Number = true, Float = true, Simd = true, } },
-        { "decimal", new(sizeof(decimal), "m", "0m", "1m", "2m") { Number = true, Decimal = true, } },
-        { "int", new(sizeof(int), "", "0", "1", "2") { Number = true, Simd = true, } },
-        { "uint", new(sizeof(uint), "u", "0u", "1u", "2u") { Number = true, Unsigned = true, Simd = true, } },
-        { "long", new(sizeof(long), "L", "0L", "1L", "2L") { Number = true, Simd = true, } },
-        { "ulong", new(sizeof(ulong), "UL", "0UL", "1UL", "2UL") { Number = true, Unsigned = true, Simd = true, } },
+        {
+            "float", new(sizeof(float), "f", "0f", "1f", "2f")
+            {
+                Number = true, Float = true, Simd = true,
+                JsonRead = "reader.GetSingle()", JsonWrite = n => $"writer.WriteNumberValue({n})",
+            }
+        },
+        {
+            "double", new(sizeof(double), "d", "0d", "1d", "2d")
+            {
+                Number = true, Float = true, Simd = true,
+                JsonRead = "reader.GetDouble()", JsonWrite = n => $"writer.WriteNumberValue({n})",
+            }
+        },
+        {
+            "decimal", new(sizeof(decimal), "m", "0m", "1m", "2m")
+            {
+                Number = true, Decimal = true,
+                JsonRead = "reader.GetDecimal()", JsonWrite = n => $"writer.WriteNumberValue({n})",
+            }
+        },
+        {
+            "int", new(sizeof(int), "", "0", "1", "2")
+            {
+                Number = true, Simd = true,
+                JsonRead = "reader.GetInt32()", JsonWrite = n => $"writer.WriteNumberValue({n})",
+            }
+        },
+        {
+            "uint", new(sizeof(uint), "u", "0u", "1u", "2u")
+            {
+                Number = true, Unsigned = true, Simd = true,
+                JsonRead = "reader.GetUInt32()", JsonWrite = n => $"writer.WriteNumberValue({n})",
+            }
+        },
+        {
+            "long", new(sizeof(long), "L", "0L", "1L", "2L")
+            {
+                Number = true, Simd = true,
+                JsonRead = "reader.GetInt64()", JsonWrite = n => $"writer.WriteNumberValue({n})",
+            }
+        },
+        {
+            "ulong", new(sizeof(ulong), "UL", "0UL", "1UL", "2UL")
+            {
+                Number = true, Unsigned = true, Simd = true,
+                JsonRead = "reader.GetUInt64()", JsonWrite = n => $"writer.WriteNumberValue({n})",
+            }
+        },
     };
 
     public override async Task Gen()
@@ -54,6 +107,8 @@ public class GenVectors : Base
                 }
                 var align_name = no_align ? "a" : string.Empty;
                 var vname = $"{type}{n}{align_name}";
+
+                var json_name = $"{type[0].ToString().ToUpper()}{type[1..]}{n}{align_name.ToUpper()}";
 
                 var byteSize = meta.Size * (n == 3 && !no_align ? 4 : n);
                 var bitSize = byteSize * 8;
@@ -163,6 +218,17 @@ public class GenVectors : Base
                 var select = string.Join(", ",
                     Enumerable.Range(0, n).Select(i => $"c.{xyzw[i]} ? b.{xyzw[i]} : a.{xyzw[i]}"));
 
+                var json_read = new StringBuilder();
+                var json_write = new StringBuilder();
+                foreach (var v in Enumerable.Range(0, n).Select(i => xyzw[i]))
+                {
+                    json_read.Append($@"
+        reader.Read();
+        result.{v} = {meta.JsonRead};");
+                    json_write.Append($@"
+        {meta.JsonWrite($"value.{v}")};");
+                }
+
                 var source = $@"using System;
 using System.Numerics;
 using System.Runtime.Intrinsics;
@@ -170,6 +236,9 @@ using System.Runtime.Intrinsics.X86;
 using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 #nullable enable
 #pragma warning disable CS8981
@@ -177,6 +246,7 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
+[JsonConverter(typeof({json_name}Converter))]
 [StructLayout(LayoutKind.Explicit, Size = {byteSize})]
 public unsafe partial struct {vname} : 
     IEquatable<{vname}>, IEqualityOperators<{vname}, {vname}, bool>, IEqualityOperators<{vname}, {vname}, bool{n}>,
@@ -795,6 +865,24 @@ public static unsafe partial class math
 
 " : "")}
 
+}}
+
+public class {json_name}Converter : JsonConverter<{vname}>
+{{
+    public override {vname} Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {{
+        Unsafe.SkipInit(out {vname} result);
+        if (reader.TokenType is not JsonTokenType.StartArray) throw new JsonException();{json_read}
+        reader.Read();
+        if (reader.TokenType is not JsonTokenType.EndArray) throw new JsonException();
+        return result;
+    }}
+
+    public override void Write(Utf8JsonWriter writer, {vname} value, JsonSerializerOptions options)
+    {{
+        writer.WriteStartArray();{json_write}
+        writer.WriteEndArray();
+    }}
 }}
 ";
                 await SaveCode($"{vname}.gen.cs", source);

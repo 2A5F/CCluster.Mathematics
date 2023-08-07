@@ -5,6 +5,9 @@ using System.Runtime.Intrinsics.X86;
 using System.Runtime.Intrinsics.Arm;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 #nullable enable
 #pragma warning disable CS8981
@@ -12,6 +15,7 @@ using System.Runtime.CompilerServices;
 namespace CCluster.Mathematics;
 
 [Serializable]
+[JsonConverter(typeof(Bool2Converter))]
 [StructLayout(LayoutKind.Explicit, Size = 2)]
 public unsafe partial struct bool2 : 
     IEquatable<bool2>, IEqualityOperators<bool2, bool2, bool>, IEqualityOperators<bool2, bool2, bool2>,
@@ -138,4 +142,28 @@ public static unsafe partial class math
 
 
 
+}
+
+public class Bool2Converter : JsonConverter<bool2>
+{
+    public override bool2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        Unsafe.SkipInit(out bool2 result);
+        if (reader.TokenType is not JsonTokenType.StartArray) throw new JsonException();
+        reader.Read();
+        result.x = reader.GetBoolean();
+        reader.Read();
+        result.y = reader.GetBoolean();
+        reader.Read();
+        if (reader.TokenType is not JsonTokenType.EndArray) throw new JsonException();
+        return result;
+    }
+
+    public override void Write(Utf8JsonWriter writer, bool2 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        writer.WriteBooleanValue(value.x);
+        writer.WriteBooleanValue(value.y);
+        writer.WriteEndArray();
+    }
 }
