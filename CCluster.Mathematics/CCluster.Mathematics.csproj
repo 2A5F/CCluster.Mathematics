@@ -4,7 +4,7 @@
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <Version>0.1.0</Version>
+        <Version>0.2.0</Version>
         <Description>Simple hlsl-like linear algebra math library</Description>
         <RepositoryUrl>https://github.com/2A5F/CCluster.Mathematics</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
