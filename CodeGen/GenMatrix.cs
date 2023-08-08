@@ -262,7 +262,7 @@ namespace CCluster.Mathematics;
 
 /// <summary>A {nv}x{nm} matrix of {type}</summary>
 [Serializable]
-[StructLayout(LayoutKind.Explicit, Size = {byteSize * nm})]
+[StructLayout(LayoutKind.Explicit, Size = {byteSize * nm}, Pack = {meta.Size})]
 public unsafe partial struct {mname} :
     IEquatable<{mname}>, IEqualityOperators<{mname}, {mname}, bool>, IEqualityOperators<{mname}, {mname}, bool{nma}>,
 {(meta.Number ? $@"

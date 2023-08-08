@@ -280,7 +280,7 @@ namespace CCluster.Mathematics;
 /// <summary>A {n} component vector of {type}{(no_align ? $", with no aligned" : string.Empty)}</summary>
 [Serializable]
 [JsonConverter(typeof({json_name}JsonConverter))]
-[StructLayout(LayoutKind.Explicit, Size = {byteSize})]
+[StructLayout(LayoutKind.Explicit, Size = {byteSize}, Pack = {meta.Size})]
 public unsafe partial struct {vname} : 
     IEquatable<{vname}>, IEqualityOperators<{vname}, {vname}, bool>, IEqualityOperators<{vname}, {vname}, bool{na}>,
 {(meta.Number ? $@"

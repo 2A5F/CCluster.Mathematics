@@ -16,7 +16,7 @@ namespace CCluster.Mathematics;
 
 /// <summary>A 4x4 matrix of decimal</summary>
 [Serializable]
-[StructLayout(LayoutKind.Explicit, Size = 256)]
+[StructLayout(LayoutKind.Explicit, Size = 256, Pack = 16)]
 public unsafe partial struct decimal4x4 :
     IEquatable<decimal4x4>, IEqualityOperators<decimal4x4, decimal4x4, bool>, IEqualityOperators<decimal4x4, decimal4x4, bool4x4>,
 

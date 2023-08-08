@@ -17,7 +17,7 @@ namespace CCluster.Mathematics;
 /// <summary>A 3 component vector of Half, with no aligned</summary>
 [Serializable]
 [JsonConverter(typeof(Half3AJsonConverter))]
-[StructLayout(LayoutKind.Explicit, Size = 6)]
+[StructLayout(LayoutKind.Explicit, Size = 6, Pack = 2)]
 public unsafe partial struct Half3a : 
     IEquatable<Half3a>, IEqualityOperators<Half3a, Half3a, bool>, IEqualityOperators<Half3a, Half3a, bool3a>,
 

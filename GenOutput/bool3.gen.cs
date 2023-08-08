@@ -17,7 +17,7 @@ namespace CCluster.Mathematics;
 /// <summary>A 3 component vector of bool</summary>
 [Serializable]
 [JsonConverter(typeof(Bool3JsonConverter))]
-[StructLayout(LayoutKind.Explicit, Size = 4)]
+[StructLayout(LayoutKind.Explicit, Size = 4, Pack = 1)]
 public unsafe partial struct bool3 : 
     IEquatable<bool3>, IEqualityOperators<bool3, bool3, bool>, IEqualityOperators<bool3, bool3, bool3>,
 

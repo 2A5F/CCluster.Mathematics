@@ -17,7 +17,7 @@ namespace CCluster.Mathematics;
 /// <summary>A 2 component vector of float</summary>
 [Serializable]
 [JsonConverter(typeof(Float2JsonConverter))]
-[StructLayout(LayoutKind.Explicit, Size = 8)]
+[StructLayout(LayoutKind.Explicit, Size = 8, Pack = 4)]
 public unsafe partial struct float2 : 
     IEquatable<float2>, IEqualityOperators<float2, float2, bool>, IEqualityOperators<float2, float2, bool2>,
 

@@ -17,7 +17,7 @@ namespace CCluster.Mathematics;
 /// <summary>A 3 component vector of ulong</summary>
 [Serializable]
 [JsonConverter(typeof(Ulong3JsonConverter))]
-[StructLayout(LayoutKind.Explicit, Size = 32)]
+[StructLayout(LayoutKind.Explicit, Size = 32, Pack = 8)]
 public unsafe partial struct ulong3 : 
     IEquatable<ulong3>, IEqualityOperators<ulong3, ulong3, bool>, IEqualityOperators<ulong3, ulong3, bool3>,
 

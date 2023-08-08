@@ -17,7 +17,7 @@ namespace CCluster.Mathematics;
 /// <summary>A 2 component vector of decimal</summary>
 [Serializable]
 [JsonConverter(typeof(Decimal2JsonConverter))]
-[StructLayout(LayoutKind.Explicit, Size = 32)]
+[StructLayout(LayoutKind.Explicit, Size = 32, Pack = 16)]
 public unsafe partial struct decimal2 : 
     IEquatable<decimal2>, IEqualityOperators<decimal2, decimal2, bool>, IEqualityOperators<decimal2, decimal2, bool2>,
 

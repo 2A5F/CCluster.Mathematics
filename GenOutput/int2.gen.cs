@@ -17,7 +17,7 @@ namespace CCluster.Mathematics;
 /// <summary>A 2 component vector of int</summary>
 [Serializable]
 [JsonConverter(typeof(Int2JsonConverter))]
-[StructLayout(LayoutKind.Explicit, Size = 8)]
+[StructLayout(LayoutKind.Explicit, Size = 8, Pack = 4)]
 public unsafe partial struct int2 : 
     IEquatable<int2>, IEqualityOperators<int2, int2, bool>, IEqualityOperators<int2, int2, bool2>,
 

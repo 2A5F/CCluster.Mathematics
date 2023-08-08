@@ -17,7 +17,7 @@ namespace CCluster.Mathematics;
 /// <summary>A 4 component vector of uint</summary>
 [Serializable]
 [JsonConverter(typeof(Uint4JsonConverter))]
-[StructLayout(LayoutKind.Explicit, Size = 16)]
+[StructLayout(LayoutKind.Explicit, Size = 16, Pack = 4)]
 public unsafe partial struct uint4 : 
     IEquatable<uint4>, IEqualityOperators<uint4, uint4, bool>, IEqualityOperators<uint4, uint4, bool4>,
 

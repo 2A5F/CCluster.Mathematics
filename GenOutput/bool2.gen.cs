@@ -17,7 +17,7 @@ namespace CCluster.Mathematics;
 /// <summary>A 2 component vector of bool</summary>
 [Serializable]
 [JsonConverter(typeof(Bool2JsonConverter))]
-[StructLayout(LayoutKind.Explicit, Size = 2)]
+[StructLayout(LayoutKind.Explicit, Size = 2, Pack = 1)]
 public unsafe partial struct bool2 : 
     IEquatable<bool2>, IEqualityOperators<bool2, bool2, bool>, IEqualityOperators<bool2, bool2, bool2>,
 

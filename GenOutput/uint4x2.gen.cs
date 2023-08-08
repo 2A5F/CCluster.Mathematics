@@ -16,7 +16,7 @@ namespace CCluster.Mathematics;
 
 /// <summary>A 4x2 matrix of uint</summary>
 [Serializable]
-[StructLayout(LayoutKind.Explicit, Size = 32)]
+[StructLayout(LayoutKind.Explicit, Size = 32, Pack = 4)]
 public unsafe partial struct uint4x2 :
     IEquatable<uint4x2>, IEqualityOperators<uint4x2, uint4x2, bool>, IEqualityOperators<uint4x2, uint4x2, bool4x2>,
 

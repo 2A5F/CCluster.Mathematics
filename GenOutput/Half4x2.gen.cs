@@ -16,7 +16,7 @@ namespace CCluster.Mathematics;
 
 /// <summary>A 4x2 matrix of Half</summary>
 [Serializable]
-[StructLayout(LayoutKind.Explicit, Size = 16)]
+[StructLayout(LayoutKind.Explicit, Size = 16, Pack = 2)]
 public unsafe partial struct Half4x2 :
     IEquatable<Half4x2>, IEqualityOperators<Half4x2, Half4x2, bool>, IEqualityOperators<Half4x2, Half4x2, bool4x2>,
 

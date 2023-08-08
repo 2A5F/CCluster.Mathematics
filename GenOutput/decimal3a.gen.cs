@@ -17,7 +17,7 @@ namespace CCluster.Mathematics;
 /// <summary>A 3 component vector of decimal, with no aligned</summary>
 [Serializable]
 [JsonConverter(typeof(Decimal3AJsonConverter))]
-[StructLayout(LayoutKind.Explicit, Size = 48)]
+[StructLayout(LayoutKind.Explicit, Size = 48, Pack = 16)]
 public unsafe partial struct decimal3a : 
     IEquatable<decimal3a>, IEqualityOperators<decimal3a, decimal3a, bool>, IEqualityOperators<decimal3a, decimal3a, bool3a>,
 

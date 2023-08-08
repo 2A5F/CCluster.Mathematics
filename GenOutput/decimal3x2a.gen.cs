@@ -16,7 +16,7 @@ namespace CCluster.Mathematics;
 
 /// <summary>A 3x2 matrix of decimal</summary>
 [Serializable]
-[StructLayout(LayoutKind.Explicit, Size = 96)]
+[StructLayout(LayoutKind.Explicit, Size = 96, Pack = 16)]
 public unsafe partial struct decimal3x2a :
     IEquatable<decimal3x2a>, IEqualityOperators<decimal3x2a, decimal3x2a, bool>, IEqualityOperators<decimal3x2a, decimal3x2a, bool3x2a>,
 

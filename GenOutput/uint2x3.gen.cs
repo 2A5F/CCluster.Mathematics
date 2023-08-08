@@ -16,7 +16,7 @@ namespace CCluster.Mathematics;
 
 /// <summary>A 2x3 matrix of uint</summary>
 [Serializable]
-[StructLayout(LayoutKind.Explicit, Size = 24)]
+[StructLayout(LayoutKind.Explicit, Size = 24, Pack = 4)]
 public unsafe partial struct uint2x3 :
     IEquatable<uint2x3>, IEqualityOperators<uint2x3, uint2x3, bool>, IEqualityOperators<uint2x3, uint2x3, bool2x3>,
 

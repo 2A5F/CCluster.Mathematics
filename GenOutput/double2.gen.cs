@@ -17,7 +17,7 @@ namespace CCluster.Mathematics;
 /// <summary>A 2 component vector of double</summary>
 [Serializable]
 [JsonConverter(typeof(Double2JsonConverter))]
-[StructLayout(LayoutKind.Explicit, Size = 16)]
+[StructLayout(LayoutKind.Explicit, Size = 16, Pack = 8)]
 public unsafe partial struct double2 : 
     IEquatable<double2>, IEqualityOperators<double2, double2, bool>, IEqualityOperators<double2, double2, bool2>,
 

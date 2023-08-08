@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGenForCodeGen", "CodeGe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeGen", "CodeGen\CodeGen.csproj", "{24159DC5-8A2F-49E2-8E7D-79CFF1E02555}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{A4986AE4-AEFA-4D57-BC24-37D3EA7E2EEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{24159DC5-8A2F-49E2-8E7D-79CFF1E02555}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24159DC5-8A2F-49E2-8E7D-79CFF1E02555}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24159DC5-8A2F-49E2-8E7D-79CFF1E02555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4986AE4-AEFA-4D57-BC24-37D3EA7E2EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4986AE4-AEFA-4D57-BC24-37D3EA7E2EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4986AE4-AEFA-4D57-BC24-37D3EA7E2EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4986AE4-AEFA-4D57-BC24-37D3EA7E2EEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

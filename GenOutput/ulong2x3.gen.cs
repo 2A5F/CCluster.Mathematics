@@ -16,7 +16,7 @@ namespace CCluster.Mathematics;
 
 /// <summary>A 2x3 matrix of ulong</summary>
 [Serializable]
-[StructLayout(LayoutKind.Explicit, Size = 48)]
+[StructLayout(LayoutKind.Explicit, Size = 48, Pack = 8)]
 public unsafe partial struct ulong2x3 :
     IEquatable<ulong2x3>, IEqualityOperators<ulong2x3, ulong2x3, bool>, IEqualityOperators<ulong2x3, ulong2x3, bool2x3>,
 

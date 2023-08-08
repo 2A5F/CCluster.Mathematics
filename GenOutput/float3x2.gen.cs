@@ -16,7 +16,7 @@ namespace CCluster.Mathematics;
 
 /// <summary>A 3x2 matrix of float</summary>
 [Serializable]
-[StructLayout(LayoutKind.Explicit, Size = 32)]
+[StructLayout(LayoutKind.Explicit, Size = 32, Pack = 4)]
 public unsafe partial struct float3x2 :
     IEquatable<float3x2>, IEqualityOperators<float3x2, float3x2, bool>, IEqualityOperators<float3x2, float3x2, bool3x2>,
 

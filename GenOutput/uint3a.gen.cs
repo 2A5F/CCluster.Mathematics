@@ -17,7 +17,7 @@ namespace CCluster.Mathematics;
 /// <summary>A 3 component vector of uint, with no aligned</summary>
 [Serializable]
 [JsonConverter(typeof(Uint3AJsonConverter))]
-[StructLayout(LayoutKind.Explicit, Size = 12)]
+[StructLayout(LayoutKind.Explicit, Size = 12, Pack = 4)]
 public unsafe partial struct uint3a : 
     IEquatable<uint3a>, IEqualityOperators<uint3a, uint3a, bool>, IEqualityOperators<uint3a, uint3a, bool3a>,
 

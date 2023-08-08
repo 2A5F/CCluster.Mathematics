@@ -16,7 +16,7 @@ namespace CCluster.Mathematics;
 
 /// <summary>A 3x4 matrix of int</summary>
 [Serializable]
-[StructLayout(LayoutKind.Explicit, Size = 48)]
+[StructLayout(LayoutKind.Explicit, Size = 48, Pack = 4)]
 public unsafe partial struct int3x4a :
     IEquatable<int3x4a>, IEqualityOperators<int3x4a, int3x4a, bool>, IEqualityOperators<int3x4a, int3x4a, bool3x4a>,
 

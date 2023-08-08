@@ -17,7 +17,7 @@ namespace CCluster.Mathematics;
 /// <summary>A 3 component vector of double, with no aligned</summary>
 [Serializable]
 [JsonConverter(typeof(Double3AJsonConverter))]
-[StructLayout(LayoutKind.Explicit, Size = 24)]
+[StructLayout(LayoutKind.Explicit, Size = 24, Pack = 8)]
 public unsafe partial struct double3a : 
     IEquatable<double3a>, IEqualityOperators<double3a, double3a, bool>, IEqualityOperators<double3a, double3a, bool3a>,
 

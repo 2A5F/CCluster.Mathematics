@@ -16,7 +16,7 @@ namespace CCluster.Mathematics;
 
 /// <summary>A 3x3 matrix of bool</summary>
 [Serializable]
-[StructLayout(LayoutKind.Explicit, Size = 9)]
+[StructLayout(LayoutKind.Explicit, Size = 9, Pack = 1)]
 public unsafe partial struct bool3x3a :
     IEquatable<bool3x3a>, IEqualityOperators<bool3x3a, bool3x3a, bool>, IEqualityOperators<bool3x3a, bool3x3a, bool3x3a>,
 

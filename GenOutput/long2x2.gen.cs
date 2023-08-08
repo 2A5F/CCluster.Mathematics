@@ -16,7 +16,7 @@ namespace CCluster.Mathematics;
 
 /// <summary>A 2x2 matrix of long</summary>
 [Serializable]
-[StructLayout(LayoutKind.Explicit, Size = 32)]
+[StructLayout(LayoutKind.Explicit, Size = 32, Pack = 8)]
 public unsafe partial struct long2x2 :
     IEquatable<long2x2>, IEqualityOperators<long2x2, long2x2, bool>, IEqualityOperators<long2x2, long2x2, bool2x2>,
 
