@@ -14,8 +14,9 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 2 component vector of decimal</summary>
 [Serializable]
-[JsonConverter(typeof(Decimal2Converter))]
+[JsonConverter(typeof(Decimal2JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 32)]
 public unsafe partial struct decimal2 : 
     IEquatable<decimal2>, IEqualityOperators<decimal2, decimal2, bool>, IEqualityOperators<decimal2, decimal2, bool2>,
@@ -26,18 +27,23 @@ public unsafe partial struct decimal2 :
     IDivisionOperators<decimal2, decimal2, decimal2>,
     IModulusOperators<decimal2, decimal2, decimal2>,
 
-    IVector, IVector2, IVector<decimal>, IVector2<decimal>
+    IVector2<decimal>, IVectorSelf<decimal2>
 {
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public decimal x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(16)]
     public decimal y;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public decimal r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(16)]
     public decimal g;
 
@@ -54,16 +60,20 @@ public unsafe partial struct decimal2 :
         get => 256;
     }
 
-    public static decimal2 Zero
+    public static readonly decimal2 zero = new(0m);
+
+    public static readonly decimal2 one = new(1m);
+
+    static decimal2 IVectorSelf<decimal2>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new decimal2(0m);
+        get => zero;
     }
 
-    public static decimal2 One
+    static decimal2 IVectorSelf<decimal2>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new decimal2(1m);
+        get => one;
     }
 
 
@@ -82,7 +92,7 @@ public unsafe partial struct decimal2 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator decimal2(decimal value) => new decimal2(value);
+    public static implicit operator decimal2(decimal value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -106,33 +116,33 @@ public unsafe partial struct decimal2 :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int2 Hash() => new int2(this.x.GetHashCode(), this.y.GetHashCode());
+    public int2 Hash() => new(this.x.GetHashCode(), this.y.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool2 IEqualityOperators<decimal2, decimal2, bool2>.operator ==(decimal2 left, decimal2 right) => new bool2(left.x == right.x, left.y == right.y);
+    static bool2 IEqualityOperators<decimal2, decimal2, bool2>.operator ==(decimal2 left, decimal2 right) => new(left.x == right.x, left.y == right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool2 IEqualityOperators<decimal2, decimal2, bool2>.operator !=(decimal2 left, decimal2 right) => new bool2(left.x != right.x, left.y != right.y);
+    static bool2 IEqualityOperators<decimal2, decimal2, bool2>.operator !=(decimal2 left, decimal2 right) => new(left.x != right.x, left.y != right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool2 VEq(decimal2 other) => new bool2(this.x == other.x, this.y == other.y);
+    public bool2 VEq(decimal2 other) => new(this.x == other.x, this.y == other.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool2 VNe(decimal2 other) => new bool2(this.x != other.x, this.y != other.y);
+    public bool2 VNe(decimal2 other) => new(this.x != other.x, this.y != other.y);
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator >(decimal2 left, decimal2 right) => new bool2(left.x > right.x, left.y > right.y);
+    public static bool2 operator >(decimal2 left, decimal2 right) => new(left.x > right.x, left.y > right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator <(decimal2 left, decimal2 right) => new bool2(left.x < right.x, left.y < right.y);
+    public static bool2 operator <(decimal2 left, decimal2 right) => new(left.x < right.x, left.y < right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator >=(decimal2 left, decimal2 right) => new bool2(left.x >= right.x, left.y >= right.y);
+    public static bool2 operator >=(decimal2 left, decimal2 right) => new(left.x >= right.x, left.y >= right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator <=(decimal2 left, decimal2 right) => new bool2(left.x <= right.x, left.y <= right.y);
+    public static bool2 operator <=(decimal2 left, decimal2 right) => new(left.x <= right.x, left.y <= right.y);
 
 
 
@@ -140,72 +150,72 @@ public unsafe partial struct decimal2 :
     public static decimal2 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new decimal2(0m);
+        get => new(0m);
     }
 
     public static decimal2 MultiplicativeIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new decimal2(1m);
+        get => new(1m);
     }
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator +(decimal2 left, decimal2 right) => new decimal2(left.x + right.x, left.y + right.y);
+    public static decimal2 operator +(decimal2 left, decimal2 right) => new(left.x + right.x, left.y + right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator -(decimal2 left, decimal2 right) => new decimal2(left.x - right.x, left.y - right.y);
+    public static decimal2 operator -(decimal2 left, decimal2 right) => new(left.x - right.x, left.y - right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator *(decimal2 left, decimal2 right) => new decimal2(left.x * right.x, left.y * right.y);
+    public static decimal2 operator *(decimal2 left, decimal2 right) => new(left.x * right.x, left.y * right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator /(decimal2 left, decimal2 right) => new decimal2(left.x / right.x, left.y / right.y);
+    public static decimal2 operator /(decimal2 left, decimal2 right) => new(left.x / right.x, left.y / right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator %(decimal2 left, decimal2 right) => new decimal2(left.x % right.x, left.y % right.y);
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator +(decimal2 left, decimal right) => new decimal2(left.x + right, left.y + right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator -(decimal2 left, decimal right) => new decimal2(left.x - right, left.y - right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator *(decimal2 left, decimal right) => new decimal2(left.x * right, left.y * right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator /(decimal2 left, decimal right) => new decimal2(left.x / right, left.y / right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator %(decimal2 left, decimal right) => new decimal2(left.x % right, left.y % right);
+    public static decimal2 operator %(decimal2 left, decimal2 right) => new(left.x % right.x, left.y % right.y);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator +(decimal left, decimal2 right) => new decimal2(left + right.x, left + right.y);
+    public static decimal2 operator +(decimal2 left, decimal right) => new(left.x + right, left.y + right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator -(decimal left, decimal2 right) => new decimal2(left - right.x, left - right.y);
+    public static decimal2 operator -(decimal2 left, decimal right) => new(left.x - right, left.y - right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator *(decimal left, decimal2 right) => new decimal2(left * right.x, left * right.y);
+    public static decimal2 operator *(decimal2 left, decimal right) => new(left.x * right, left.y * right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator /(decimal left, decimal2 right) => new decimal2(left / right.x, left / right.y);
+    public static decimal2 operator /(decimal2 left, decimal right) => new(left.x / right, left.y / right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator %(decimal left, decimal2 right) => new decimal2(left % right.x, left % right.y);
+    public static decimal2 operator %(decimal2 left, decimal right) => new(left.x % right, left.y % right);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 operator +(decimal left, decimal2 right) => new(left + right.x, left + right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 operator -(decimal left, decimal2 right) => new(left - right.x, left - right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 operator *(decimal left, decimal2 right) => new(left * right.x, left * right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 operator /(decimal left, decimal2 right) => new(left / right.x, left / right.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 operator %(decimal left, decimal2 right) => new(left % right.x, left % right.y);
 
 
     
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator -(decimal2 self) => new decimal2(-self.x, -self.y);
+    public static decimal2 operator -(decimal2 self) => new(-self.x, -self.y);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 operator +(decimal2 self) => new decimal2(+self.x, +self.y);
+    public static decimal2 operator +(decimal2 self) => new(+self.x, +self.y);
 
 
 
@@ -222,10 +232,10 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 min(decimal2 x, decimal2 y) => new decimal2(min(x.x, y.x), min(x.y, y.y));
+    public static decimal2 min(decimal2 x, decimal2 y) => new(min(x.x, y.x), min(x.y, y.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 max(decimal2 x, decimal2 y) => new decimal2(max(x.x, y.x), max(x.y, y.y));
+    public static decimal2 max(decimal2 x, decimal2 y) => new(max(x.x, y.x), max(x.y, y.y));
 
 
 
@@ -249,14 +259,14 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 saturate(decimal2 x) => clamp(x, decimal2.Zero, decimal2.One);
+    public static decimal2 saturate(decimal2 x) => clamp(x, decimal2.zero, decimal2.one);
 
 
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 abs(decimal2 x) => new decimal2(abs(x.x), abs(x.y));
+    public static decimal2 abs(decimal2 x) => new(abs(x.x), abs(x.y));
 
 
 
@@ -277,18 +287,18 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 floor(decimal2 x) => new decimal2(floor(x.x), floor(x.y));
+    public static decimal2 floor(decimal2 x) => new(floor(x.x), floor(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 ceil(decimal2 x) => new decimal2(ceil(x.x), ceil(x.y));
+    public static decimal2 ceil(decimal2 x) => new(ceil(x.x), ceil(x.y));
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 round(decimal2 x) => new decimal2(round(x.x), round(x.y));
+    public static decimal2 round(decimal2 x) => new(round(x.x), round(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 trunc(decimal2 x) => new decimal2(trunc(x.x), trunc(x.y));
+    public static decimal2 trunc(decimal2 x) => new(trunc(x.x), trunc(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal2 frac(decimal2 x) => x - floor(x);
@@ -301,7 +311,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 sign(decimal2 x) => new decimal2(sign(x.x), sign(x.y));
+    public static decimal2 sign(decimal2 x) => new(sign(x.x), sign(x.y));
 
 
 
@@ -326,7 +336,7 @@ public static unsafe partial class math
     public static decimal2 select(decimal2 a, decimal2 b, bool c) => c ? b : a;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2 select(decimal2 a, decimal2 b, bool2 c) => new decimal2(c.x ? b.x : a.x, c.y ? b.y : a.y);
+    public static decimal2 select(decimal2 a, decimal2 b, bool2 c) => new(c.x ? b.x : a.x, c.y ? b.y : a.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal2 step(decimal2 y, decimal2 x) => select(new decimal2(0m), new decimal2(1m), x >= y);
@@ -366,7 +376,7 @@ public static unsafe partial class math
 
 }
 
-public class Decimal2Converter : JsonConverter<decimal2>
+public class Decimal2JsonConverter : JsonConverter<decimal2>
 {
     public override decimal2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

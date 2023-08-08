@@ -1,0 +1,293 @@
+using System;
+using System.Numerics;
+using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
+using System.Runtime.Intrinsics.Arm;
+using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+#nullable enable
+#pragma warning disable CS8981
+
+namespace CCluster.Mathematics;
+
+/// <summary>A 3x2 matrix of float</summary>
+[Serializable]
+[StructLayout(LayoutKind.Explicit, Size = 32)]
+public unsafe partial struct float3x2 :
+    IEquatable<float3x2>, IEqualityOperators<float3x2, float3x2, bool>, IEqualityOperators<float3x2, float3x2, bool3x2>,
+
+    IAdditionOperators<float3x2, float3x2, float3x2>, IAdditiveIdentity<float3x2, float3x2>, IUnaryPlusOperators<float3x2, float3x2>,
+    ISubtractionOperators<float3x2, float3x2, float3x2>, IUnaryNegationOperators<float3x2, float3x2>,
+    IMultiplyOperators<float3x2, float3x2, float3x2>, IMultiplicativeIdentity<float3x2, float3x2>,
+    IDivisionOperators<float3x2, float3x2, float3x2>,
+    IModulusOperators<float3x2, float3x2, float3x2>,
+
+    IMatrix3x2<float>, IMatrixSelf<float3x2>
+{
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
+
+    /// <summary>Column 0 of the matrix</summary>
+    [FieldOffset(0)]
+    public float3 c0;
+
+    /// <summary>Column 1 of the matrix</summary>
+    [FieldOffset(16)]
+    public float3 c1;
+
+
+    /// <summary>Row 0 column 0 of the matrix</summary>
+    [FieldOffset(0)]
+    public float m00;
+
+    /// <summary>Row 1 column 0 of the matrix</summary>
+    [FieldOffset(4)]
+    public float m10;
+
+    /// <summary>Row 2 column 0 of the matrix</summary>
+    [FieldOffset(8)]
+    public float m20;
+
+    /// <summary>Row 0 column 1 of the matrix</summary>
+    [FieldOffset(16)]
+    public float m01;
+
+    /// <summary>Row 1 column 1 of the matrix</summary>
+    [FieldOffset(20)]
+    public float m11;
+
+    /// <summary>Row 2 column 1 of the matrix</summary>
+    [FieldOffset(24)]
+    public float m21;
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
+
+    public static readonly float3x2 zero = new(0f);
+
+    public static readonly float3x2 one = new(1f);
+
+    static float3x2 IMatrixSelf<float3x2>.Zero 
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => zero;
+    }
+
+    static float3x2 IMatrixSelf<float3x2>.One 
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => one;
+    }
+
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
+
+    #region Ctor
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public float3x2(float3 c0, float3 c1)
+    {
+        Unsafe.SkipInit(out this);
+        this.c0.vector = c0.vector;
+        this.c1.vector = c1.vector;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public float3x2(float m00, float m10, float m20, float m01, float m11, float m21)
+    {
+        Unsafe.SkipInit(out this);
+        this.c0.vector = Vector128.Create(m00, m10, m20, 0f);
+        this.c1.vector = Vector128.Create(m01, m11, m21, 0f);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public float3x2(float value)
+    {
+        Unsafe.SkipInit(out this);
+        this.c0.vector = Vector128.Create(value);
+        this.c1.vector = Vector128.Create(value);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator float3x2(float value) => new(value);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool operator ==(float3x2 left, float3x2 right) 
+        => left.c0 == right.c0 && left.c1 == right.c1;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool operator !=(float3x2 left, float3x2 right) 
+        => left.c0 != right.c0 || left.c1 != right.c1;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool Equals(float3x2 other) 
+        => this == other;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override bool Equals(object? o) 
+        => o is float3x2 other && Equals(other);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override int GetHashCode() 
+        => HashCode.Combine(this.c0, this.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public int3x2 Hash() 
+        => new(this.c0.GetHashCode(), this.c1.GetHashCode());
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    static bool3x2 IEqualityOperators<float3x2, float3x2, bool3x2>.operator ==(float3x2 left, float3x2 right) 
+        => new(left.c0 == right.c0, left.c1 == right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    static bool3x2 IEqualityOperators<float3x2, float3x2, bool3x2>.operator !=(float3x2 left, float3x2 right) 
+        => new(left.c0 != right.c0, left.c1 != right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool3x2 VEq(float3x2 other) 
+        => new(this.c0 == other.c0, this.c1 == other.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool3x2 VNe(float3x2 other) 
+        => new(this.c0 != other.c0, this.c1 != other.c1);
+
+    #endregion
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Arithmetic
+
+    #region Arithmetic
+
+    public static float3x2 AdditiveIdentity 
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new(0f);
+    }
+
+    public static float3x2 MultiplicativeIdentity 
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new(1f);
+    }
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator +(float3x2 left, float3x2 right) 
+        => new(left.c0 + right.c0, left.c1 + right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator -(float3x2 left, float3x2 right) 
+        => new(left.c0 - right.c0, left.c1 - right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator *(float3x2 left, float3x2 right) 
+        => new(left.c0 * right.c0, left.c1 * right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator /(float3x2 left, float3x2 right) 
+        => new(left.c0 / right.c0, left.c1 / right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator %(float3x2 left, float3x2 right) 
+        => new(left.c0 % right.c0, left.c1 % right.c1);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator +(float3x2 left, float3 right) => new(left.c0 + right, left.c1 + right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator -(float3x2 left, float3 right) => new(left.c0 - right, left.c1 - right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator *(float3x2 left, float3 right) => new(left.c0 * right, left.c1 * right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator /(float3x2 left, float3 right) => new(left.c0 / right, left.c1 / right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator %(float3x2 left, float3 right) => new(left.c0 % right, left.c1 % right);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator +(float3 left, float3x2 right) => new(left + right.c0, left + right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator -(float3 left, float3x2 right) => new(left - right.c0, left - right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator *(float3 left, float3x2 right) => new(left * right.c0, left * right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator /(float3 left, float3x2 right) => new(left / right.c0, left / right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator %(float3 left, float3x2 right) => new(left % right.c0, left % right.c1);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator +(float3x2 left, float right) => new(left.c0 + right, left.c1 + right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator -(float3x2 left, float right) => new(left.c0 - right, left.c1 - right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator *(float3x2 left, float right) => new(left.c0 * right, left.c1 * right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator /(float3x2 left, float right) => new(left.c0 / right, left.c1 / right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator %(float3x2 left, float right) => new(left.c0 % right, left.c1 % right);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator +(float left, float3x2 right) => new(left + right.c0, left + right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator -(float left, float3x2 right) => new(left - right.c0, left - right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator *(float left, float3x2 right) => new(left * right.c0, left * right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator /(float left, float3x2 right) => new(left / right.c0, left / right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator %(float left, float3x2 right) => new(left % right.c0, left % right.c1);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator -(float3x2 self) => new(-self.c0, -self.c1);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3x2 operator +(float3x2 self) => new(+self.c0, +self.c1);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $"float3x2({this.c0}, {this.c1})";
+
+    #endregion
+}

@@ -14,8 +14,9 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 4 component vector of uint</summary>
 [Serializable]
-[JsonConverter(typeof(Uint4Converter))]
+[JsonConverter(typeof(Uint4JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 16)]
 public unsafe partial struct uint4 : 
     IEquatable<uint4>, IEqualityOperators<uint4, uint4, bool>, IEqualityOperators<uint4, uint4, bool4>,
@@ -26,34 +27,44 @@ public unsafe partial struct uint4 :
     IDivisionOperators<uint4, uint4, uint4>,
     IModulusOperators<uint4, uint4, uint4>,
 
-    IVector, IVector4, IVector<uint>, IVector4<uint>
+    IVector4<uint>, IVectorSelf<uint4>
 {
 
+    /// <summary>Raw simd vector</summary>
     [FieldOffset(0)]
     public Vector128<uint> vector;
 
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public uint x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(4)]
     public uint y;
 
+    /// <summary>Z component of the vector</summary>
     [FieldOffset(8)]
     public uint z;
 
+    /// <summary>W component of the vector</summary>
     [FieldOffset(12)]
     public uint w;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public uint r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(4)]
     public uint g;
 
+    /// <summary>B component of the vector</summary>
     [FieldOffset(8)]
     public uint b;
 
+    /// <summary>A component of the vector</summary>
     [FieldOffset(12)]
     public uint a;
 
@@ -70,16 +81,20 @@ public unsafe partial struct uint4 :
         get => 128;
     }
 
-    public static uint4 Zero
+    public static readonly uint4 zero = new(0u);
+
+    public static readonly uint4 one = new(1u);
+
+    static uint4 IVectorSelf<uint4>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new uint4(0u);
+        get => zero;
     }
 
-    public static uint4 One
+    static uint4 IVectorSelf<uint4>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new uint4(1u);
+        get => one;
     }
 
 
@@ -105,7 +120,7 @@ public unsafe partial struct uint4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator uint4(uint value) => new uint4(value);
+    public static implicit operator uint4(uint value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -138,33 +153,33 @@ public unsafe partial struct uint4 :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y, this.z, this.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int4 Hash() => new int4(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode(), this.w.GetHashCode());
+    public int4 Hash() => new(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode(), this.w.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool4 IEqualityOperators<uint4, uint4, bool4>.operator ==(uint4 left, uint4 right) => new bool4(left.x == right.x, left.y == right.y, left.z == right.z, left.w == right.w);
+    static bool4 IEqualityOperators<uint4, uint4, bool4>.operator ==(uint4 left, uint4 right) => new(left.x == right.x, left.y == right.y, left.z == right.z, left.w == right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool4 IEqualityOperators<uint4, uint4, bool4>.operator !=(uint4 left, uint4 right) => new bool4(left.x != right.x, left.y != right.y, left.z != right.z, left.w != right.w);
+    static bool4 IEqualityOperators<uint4, uint4, bool4>.operator !=(uint4 left, uint4 right) => new(left.x != right.x, left.y != right.y, left.z != right.z, left.w != right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool4 VEq(uint4 other) => new bool4(this.x == other.x, this.y == other.y, this.z == other.z, this.w == other.w);
+    public bool4 VEq(uint4 other) => new(this.x == other.x, this.y == other.y, this.z == other.z, this.w == other.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool4 VNe(uint4 other) => new bool4(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
+    public bool4 VNe(uint4 other) => new(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator >(uint4 left, uint4 right) => new bool4(left.x > right.x, left.y > right.y, left.z > right.z, left.w > right.w);
+    public static bool4 operator >(uint4 left, uint4 right) => new(left.x > right.x, left.y > right.y, left.z > right.z, left.w > right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator <(uint4 left, uint4 right) => new bool4(left.x < right.x, left.y < right.y, left.z < right.z, left.w < right.w);
+    public static bool4 operator <(uint4 left, uint4 right) => new(left.x < right.x, left.y < right.y, left.z < right.z, left.w < right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator >=(uint4 left, uint4 right) => new bool4(left.x >= right.x, left.y >= right.y, left.z >= right.z, left.w >= right.w);
+    public static bool4 operator >=(uint4 left, uint4 right) => new(left.x >= right.x, left.y >= right.y, left.z >= right.z, left.w >= right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator <=(uint4 left, uint4 right) => new bool4(left.x <= right.x, left.y <= right.y, left.z <= right.z, left.w <= right.w);
+    public static bool4 operator <=(uint4 left, uint4 right) => new(left.x <= right.x, left.y <= right.y, left.z <= right.z, left.w <= right.w);
 
 
 
@@ -172,13 +187,13 @@ public unsafe partial struct uint4 :
     public static uint4 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new uint4(0u);
+        get => new(0u);
     }
 
     public static uint4 MultiplicativeIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new uint4(1u);
+        get => new(1u);
     }
 
 
@@ -186,29 +201,29 @@ public unsafe partial struct uint4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint4 operator +(uint4 left, uint4 right)
     {
-        return new uint4(left.vector + right.vector);
+        return new(left.vector + right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint4 operator -(uint4 left, uint4 right)
     {
-        return new uint4(left.vector - right.vector);
+        return new(left.vector - right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint4 operator *(uint4 left, uint4 right)
     {
-        return new uint4(left.vector * right.vector);
+        return new(left.vector * right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint4 operator /(uint4 left, uint4 right)
     {
-        return new uint4(left.vector / right.vector);
+        return new(left.vector / right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 operator %(uint4 left, uint4 right) => new uint4(left.x % right.x, left.y % right.y, left.z % right.z, left.w % right.w);
+    public static uint4 operator %(uint4 left, uint4 right) => new(left.x % right.x, left.y % right.y, left.z % right.z, left.w % right.w);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -246,7 +261,7 @@ public unsafe partial struct uint4 :
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 operator +(uint4 self) => new uint4(+self.x, +self.y, +self.z, +self.w);
+    public static uint4 operator +(uint4 self) => new(+self.x, +self.y, +self.z, +self.w);
 
 
 
@@ -263,10 +278,10 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 min(uint4 x, uint4 y) => new uint4(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z), min(x.w, y.w));
+    public static uint4 min(uint4 x, uint4 y) => new(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z), min(x.w, y.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 max(uint4 x, uint4 y) => new uint4(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z), max(x.w, y.w));
+    public static uint4 max(uint4 x, uint4 y) => new(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z), max(x.w, y.w));
 
 
 
@@ -322,7 +337,7 @@ public static unsafe partial class math
     public static uint4 select(uint4 a, uint4 b, bool c) => c ? b : a;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint4 select(uint4 a, uint4 b, bool4 c) => new uint4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w);
+    public static uint4 select(uint4 a, uint4 b, bool4 c) => new(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint4 step(uint4 y, uint4 x) => select(new uint4(0u), new uint4(1u), x >= y);
@@ -348,7 +363,7 @@ public static unsafe partial class math
 
 }
 
-public class Uint4Converter : JsonConverter<uint4>
+public class Uint4JsonConverter : JsonConverter<uint4>
 {
     public override uint4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

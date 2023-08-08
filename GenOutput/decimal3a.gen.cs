@@ -14,11 +14,12 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 3 component vector of decimal, with no aligned</summary>
 [Serializable]
-[JsonConverter(typeof(Decimal3AConverter))]
+[JsonConverter(typeof(Decimal3AJsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 48)]
 public unsafe partial struct decimal3a : 
-    IEquatable<decimal3a>, IEqualityOperators<decimal3a, decimal3a, bool>, IEqualityOperators<decimal3a, decimal3a, bool3>,
+    IEquatable<decimal3a>, IEqualityOperators<decimal3a, decimal3a, bool>, IEqualityOperators<decimal3a, decimal3a, bool3a>,
 
     IAdditionOperators<decimal3a, decimal3a, decimal3a>, IAdditiveIdentity<decimal3a, decimal3a>, IUnaryPlusOperators<decimal3a, decimal3a>,
     ISubtractionOperators<decimal3a, decimal3a, decimal3a>, IUnaryNegationOperators<decimal3a, decimal3a>,
@@ -26,24 +27,31 @@ public unsafe partial struct decimal3a :
     IDivisionOperators<decimal3a, decimal3a, decimal3a>,
     IModulusOperators<decimal3a, decimal3a, decimal3a>,
 
-    IVector, IVector3, IVector<decimal>, IVector3<decimal>
+    IVector3<decimal>, IVectorSelf<decimal3a>
 {
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public decimal x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(16)]
     public decimal y;
 
+    /// <summary>Z component of the vector</summary>
     [FieldOffset(32)]
     public decimal z;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public decimal r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(16)]
     public decimal g;
 
+    /// <summary>B component of the vector</summary>
     [FieldOffset(32)]
     public decimal b;
 
@@ -60,16 +68,20 @@ public unsafe partial struct decimal3a :
         get => 384;
     }
 
-    public static decimal3a Zero
+    public static readonly decimal3a zero = new(0m);
+
+    public static readonly decimal3a one = new(1m);
+
+    static decimal3a IVectorSelf<decimal3a>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new decimal3a(0m);
+        get => zero;
     }
 
-    public static decimal3a One
+    static decimal3a IVectorSelf<decimal3a>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new decimal3a(1m);
+        get => one;
     }
 
 
@@ -90,7 +102,7 @@ public unsafe partial struct decimal3a :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator decimal3a(decimal value) => new decimal3a(value);
+    public static implicit operator decimal3a(decimal value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -114,33 +126,33 @@ public unsafe partial struct decimal3a :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y, this.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int3 Hash() => new int3(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode());
+    public int3a Hash() => new(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool3 IEqualityOperators<decimal3a, decimal3a, bool3>.operator ==(decimal3a left, decimal3a right) => new bool3(left.x == right.x, left.y == right.y, left.z == right.z);
+    static bool3a IEqualityOperators<decimal3a, decimal3a, bool3a>.operator ==(decimal3a left, decimal3a right) => new(left.x == right.x, left.y == right.y, left.z == right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool3 IEqualityOperators<decimal3a, decimal3a, bool3>.operator !=(decimal3a left, decimal3a right) => new bool3(left.x != right.x, left.y != right.y, left.z != right.z);
+    static bool3a IEqualityOperators<decimal3a, decimal3a, bool3a>.operator !=(decimal3a left, decimal3a right) => new(left.x != right.x, left.y != right.y, left.z != right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool3 VEq(decimal3a other) => new bool3(this.x == other.x, this.y == other.y, this.z == other.z);
+    public bool3a VEq(decimal3a other) => new(this.x == other.x, this.y == other.y, this.z == other.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool3 VNe(decimal3a other) => new bool3(this.x != other.x, this.y != other.y, this.z != other.z);
+    public bool3a VNe(decimal3a other) => new(this.x != other.x, this.y != other.y, this.z != other.z);
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator >(decimal3a left, decimal3a right) => new bool3(left.x > right.x, left.y > right.y, left.z > right.z);
+    public static bool3a operator >(decimal3a left, decimal3a right) => new(left.x > right.x, left.y > right.y, left.z > right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator <(decimal3a left, decimal3a right) => new bool3(left.x < right.x, left.y < right.y, left.z < right.z);
+    public static bool3a operator <(decimal3a left, decimal3a right) => new(left.x < right.x, left.y < right.y, left.z < right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator >=(decimal3a left, decimal3a right) => new bool3(left.x >= right.x, left.y >= right.y, left.z >= right.z);
+    public static bool3a operator >=(decimal3a left, decimal3a right) => new(left.x >= right.x, left.y >= right.y, left.z >= right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator <=(decimal3a left, decimal3a right) => new bool3(left.x <= right.x, left.y <= right.y, left.z <= right.z);
+    public static bool3a operator <=(decimal3a left, decimal3a right) => new(left.x <= right.x, left.y <= right.y, left.z <= right.z);
 
 
 
@@ -148,72 +160,72 @@ public unsafe partial struct decimal3a :
     public static decimal3a AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new decimal3a(0m);
+        get => new(0m);
     }
 
     public static decimal3a MultiplicativeIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new decimal3a(1m);
+        get => new(1m);
     }
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator +(decimal3a left, decimal3a right) => new decimal3a(left.x + right.x, left.y + right.y, left.z + right.z);
+    public static decimal3a operator +(decimal3a left, decimal3a right) => new(left.x + right.x, left.y + right.y, left.z + right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator -(decimal3a left, decimal3a right) => new decimal3a(left.x - right.x, left.y - right.y, left.z - right.z);
+    public static decimal3a operator -(decimal3a left, decimal3a right) => new(left.x - right.x, left.y - right.y, left.z - right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator *(decimal3a left, decimal3a right) => new decimal3a(left.x * right.x, left.y * right.y, left.z * right.z);
+    public static decimal3a operator *(decimal3a left, decimal3a right) => new(left.x * right.x, left.y * right.y, left.z * right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator /(decimal3a left, decimal3a right) => new decimal3a(left.x / right.x, left.y / right.y, left.z / right.z);
+    public static decimal3a operator /(decimal3a left, decimal3a right) => new(left.x / right.x, left.y / right.y, left.z / right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator %(decimal3a left, decimal3a right) => new decimal3a(left.x % right.x, left.y % right.y, left.z % right.z);
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator +(decimal3a left, decimal right) => new decimal3a(left.x + right, left.y + right, left.z + right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator -(decimal3a left, decimal right) => new decimal3a(left.x - right, left.y - right, left.z - right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator *(decimal3a left, decimal right) => new decimal3a(left.x * right, left.y * right, left.z * right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator /(decimal3a left, decimal right) => new decimal3a(left.x / right, left.y / right, left.z / right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator %(decimal3a left, decimal right) => new decimal3a(left.x % right, left.y % right, left.z % right);
+    public static decimal3a operator %(decimal3a left, decimal3a right) => new(left.x % right.x, left.y % right.y, left.z % right.z);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator +(decimal left, decimal3a right) => new decimal3a(left + right.x, left + right.y, left + right.z);
+    public static decimal3a operator +(decimal3a left, decimal right) => new(left.x + right, left.y + right, left.z + right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator -(decimal left, decimal3a right) => new decimal3a(left - right.x, left - right.y, left - right.z);
+    public static decimal3a operator -(decimal3a left, decimal right) => new(left.x - right, left.y - right, left.z - right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator *(decimal left, decimal3a right) => new decimal3a(left * right.x, left * right.y, left * right.z);
+    public static decimal3a operator *(decimal3a left, decimal right) => new(left.x * right, left.y * right, left.z * right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator /(decimal left, decimal3a right) => new decimal3a(left / right.x, left / right.y, left / right.z);
+    public static decimal3a operator /(decimal3a left, decimal right) => new(left.x / right, left.y / right, left.z / right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator %(decimal left, decimal3a right) => new decimal3a(left % right.x, left % right.y, left % right.z);
+    public static decimal3a operator %(decimal3a left, decimal right) => new(left.x % right, left.y % right, left.z % right);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3a operator +(decimal left, decimal3a right) => new(left + right.x, left + right.y, left + right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3a operator -(decimal left, decimal3a right) => new(left - right.x, left - right.y, left - right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3a operator *(decimal left, decimal3a right) => new(left * right.x, left * right.y, left * right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3a operator /(decimal left, decimal3a right) => new(left / right.x, left / right.y, left / right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3a operator %(decimal left, decimal3a right) => new(left % right.x, left % right.y, left % right.z);
 
 
     
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator -(decimal3a self) => new decimal3a(-self.x, -self.y, -self.z);
+    public static decimal3a operator -(decimal3a self) => new(-self.x, -self.y, -self.z);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a operator +(decimal3a self) => new decimal3a(+self.x, +self.y, +self.z);
+    public static decimal3a operator +(decimal3a self) => new(+self.x, +self.y, +self.z);
 
 
 
@@ -230,10 +242,10 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a min(decimal3a x, decimal3a y) => new decimal3a(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z));
+    public static decimal3a min(decimal3a x, decimal3a y) => new(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a max(decimal3a x, decimal3a y) => new decimal3a(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z));
+    public static decimal3a max(decimal3a x, decimal3a y) => new(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z));
 
 
 
@@ -257,14 +269,14 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a saturate(decimal3a x) => clamp(x, decimal3a.Zero, decimal3a.One);
+    public static decimal3a saturate(decimal3a x) => clamp(x, decimal3a.zero, decimal3a.one);
 
 
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a abs(decimal3a x) => new decimal3a(abs(x.x), abs(x.y), abs(x.z));
+    public static decimal3a abs(decimal3a x) => new(abs(x.x), abs(x.y), abs(x.z));
 
 
 
@@ -288,18 +300,18 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a floor(decimal3a x) => new decimal3a(floor(x.x), floor(x.y), floor(x.z));
+    public static decimal3a floor(decimal3a x) => new(floor(x.x), floor(x.y), floor(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a ceil(decimal3a x) => new decimal3a(ceil(x.x), ceil(x.y), ceil(x.z));
+    public static decimal3a ceil(decimal3a x) => new(ceil(x.x), ceil(x.y), ceil(x.z));
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a round(decimal3a x) => new decimal3a(round(x.x), round(x.y), round(x.z));
+    public static decimal3a round(decimal3a x) => new(round(x.x), round(x.y), round(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a trunc(decimal3a x) => new decimal3a(trunc(x.x), trunc(x.y), trunc(x.z));
+    public static decimal3a trunc(decimal3a x) => new(trunc(x.x), trunc(x.y), trunc(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal3a frac(decimal3a x) => x - floor(x);
@@ -312,7 +324,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a sign(decimal3a x) => new decimal3a(sign(x.x), sign(x.y), sign(x.z));
+    public static decimal3a sign(decimal3a x) => new(sign(x.x), sign(x.y), sign(x.z));
 
 
 
@@ -337,7 +349,7 @@ public static unsafe partial class math
     public static decimal3a select(decimal3a a, decimal3a b, bool c) => c ? b : a;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3a select(decimal3a a, decimal3a b, bool3 c) => new decimal3a(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z);
+    public static decimal3a select(decimal3a a, decimal3a b, bool3a c) => new(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal3a step(decimal3a y, decimal3a x) => select(new decimal3a(0m), new decimal3a(1m), x >= y);
@@ -377,7 +389,7 @@ public static unsafe partial class math
 
 }
 
-public class Decimal3AConverter : JsonConverter<decimal3a>
+public class Decimal3AJsonConverter : JsonConverter<decimal3a>
 {
     public override decimal3a Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

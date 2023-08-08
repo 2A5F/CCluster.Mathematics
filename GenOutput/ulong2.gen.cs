@@ -14,8 +14,9 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 2 component vector of ulong</summary>
 [Serializable]
-[JsonConverter(typeof(Ulong2Converter))]
+[JsonConverter(typeof(Ulong2JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 16)]
 public unsafe partial struct ulong2 : 
     IEquatable<ulong2>, IEqualityOperators<ulong2, ulong2, bool>, IEqualityOperators<ulong2, ulong2, bool2>,
@@ -26,22 +27,28 @@ public unsafe partial struct ulong2 :
     IDivisionOperators<ulong2, ulong2, ulong2>,
     IModulusOperators<ulong2, ulong2, ulong2>,
 
-    IVector, IVector2, IVector<ulong>, IVector2<ulong>
+    IVector2<ulong>, IVectorSelf<ulong2>
 {
 
+    /// <summary>Raw simd vector</summary>
     [FieldOffset(0)]
     public Vector128<ulong> vector;
 
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public ulong x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(8)]
     public ulong y;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public ulong r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(8)]
     public ulong g;
 
@@ -58,16 +65,20 @@ public unsafe partial struct ulong2 :
         get => 128;
     }
 
-    public static ulong2 Zero
+    public static readonly ulong2 zero = new(0UL);
+
+    public static readonly ulong2 one = new(1UL);
+
+    static ulong2 IVectorSelf<ulong2>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new ulong2(0UL);
+        get => zero;
     }
 
-    public static ulong2 One
+    static ulong2 IVectorSelf<ulong2>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new ulong2(1UL);
+        get => one;
     }
 
 
@@ -93,7 +104,7 @@ public unsafe partial struct ulong2 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator ulong2(ulong value) => new ulong2(value);
+    public static implicit operator ulong2(ulong value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -126,33 +137,33 @@ public unsafe partial struct ulong2 :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int2 Hash() => new int2(this.x.GetHashCode(), this.y.GetHashCode());
+    public int2 Hash() => new(this.x.GetHashCode(), this.y.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool2 IEqualityOperators<ulong2, ulong2, bool2>.operator ==(ulong2 left, ulong2 right) => new bool2(left.x == right.x, left.y == right.y);
+    static bool2 IEqualityOperators<ulong2, ulong2, bool2>.operator ==(ulong2 left, ulong2 right) => new(left.x == right.x, left.y == right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool2 IEqualityOperators<ulong2, ulong2, bool2>.operator !=(ulong2 left, ulong2 right) => new bool2(left.x != right.x, left.y != right.y);
+    static bool2 IEqualityOperators<ulong2, ulong2, bool2>.operator !=(ulong2 left, ulong2 right) => new(left.x != right.x, left.y != right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool2 VEq(ulong2 other) => new bool2(this.x == other.x, this.y == other.y);
+    public bool2 VEq(ulong2 other) => new(this.x == other.x, this.y == other.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool2 VNe(ulong2 other) => new bool2(this.x != other.x, this.y != other.y);
+    public bool2 VNe(ulong2 other) => new(this.x != other.x, this.y != other.y);
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator >(ulong2 left, ulong2 right) => new bool2(left.x > right.x, left.y > right.y);
+    public static bool2 operator >(ulong2 left, ulong2 right) => new(left.x > right.x, left.y > right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator <(ulong2 left, ulong2 right) => new bool2(left.x < right.x, left.y < right.y);
+    public static bool2 operator <(ulong2 left, ulong2 right) => new(left.x < right.x, left.y < right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator >=(ulong2 left, ulong2 right) => new bool2(left.x >= right.x, left.y >= right.y);
+    public static bool2 operator >=(ulong2 left, ulong2 right) => new(left.x >= right.x, left.y >= right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator <=(ulong2 left, ulong2 right) => new bool2(left.x <= right.x, left.y <= right.y);
+    public static bool2 operator <=(ulong2 left, ulong2 right) => new(left.x <= right.x, left.y <= right.y);
 
 
 
@@ -160,13 +171,13 @@ public unsafe partial struct ulong2 :
     public static ulong2 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new ulong2(0UL);
+        get => new(0UL);
     }
 
     public static ulong2 MultiplicativeIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new ulong2(1UL);
+        get => new(1UL);
     }
 
 
@@ -174,29 +185,29 @@ public unsafe partial struct ulong2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ulong2 operator +(ulong2 left, ulong2 right)
     {
-        return new ulong2(left.vector + right.vector);
+        return new(left.vector + right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ulong2 operator -(ulong2 left, ulong2 right)
     {
-        return new ulong2(left.vector - right.vector);
+        return new(left.vector - right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ulong2 operator *(ulong2 left, ulong2 right)
     {
-        return new ulong2(left.vector * right.vector);
+        return new(left.vector * right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ulong2 operator /(ulong2 left, ulong2 right)
     {
-        return new ulong2(left.vector / right.vector);
+        return new(left.vector / right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong2 operator %(ulong2 left, ulong2 right) => new ulong2(left.x % right.x, left.y % right.y);
+    public static ulong2 operator %(ulong2 left, ulong2 right) => new(left.x % right.x, left.y % right.y);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -234,7 +245,7 @@ public unsafe partial struct ulong2 :
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong2 operator +(ulong2 self) => new ulong2(+self.x, +self.y);
+    public static ulong2 operator +(ulong2 self) => new(+self.x, +self.y);
 
 
 
@@ -251,10 +262,10 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong2 min(ulong2 x, ulong2 y) => new ulong2(min(x.x, y.x), min(x.y, y.y));
+    public static ulong2 min(ulong2 x, ulong2 y) => new(min(x.x, y.x), min(x.y, y.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong2 max(ulong2 x, ulong2 y) => new ulong2(max(x.x, y.x), max(x.y, y.y));
+    public static ulong2 max(ulong2 x, ulong2 y) => new(max(x.x, y.x), max(x.y, y.y));
 
 
 
@@ -310,7 +321,7 @@ public static unsafe partial class math
     public static ulong2 select(ulong2 a, ulong2 b, bool c) => c ? b : a;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong2 select(ulong2 a, ulong2 b, bool2 c) => new ulong2(c.x ? b.x : a.x, c.y ? b.y : a.y);
+    public static ulong2 select(ulong2 a, ulong2 b, bool2 c) => new(c.x ? b.x : a.x, c.y ? b.y : a.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ulong2 step(ulong2 y, ulong2 x) => select(new ulong2(0UL), new ulong2(1UL), x >= y);
@@ -336,7 +347,7 @@ public static unsafe partial class math
 
 }
 
-public class Ulong2Converter : JsonConverter<ulong2>
+public class Ulong2JsonConverter : JsonConverter<ulong2>
 {
     public override ulong2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

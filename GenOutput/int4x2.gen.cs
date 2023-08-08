@@ -1,0 +1,301 @@
+using System;
+using System.Numerics;
+using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.X86;
+using System.Runtime.Intrinsics.Arm;
+using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+#nullable enable
+#pragma warning disable CS8981
+
+namespace CCluster.Mathematics;
+
+/// <summary>A 4x2 matrix of int</summary>
+[Serializable]
+[StructLayout(LayoutKind.Explicit, Size = 32)]
+public unsafe partial struct int4x2 :
+    IEquatable<int4x2>, IEqualityOperators<int4x2, int4x2, bool>, IEqualityOperators<int4x2, int4x2, bool4x2>,
+
+    IAdditionOperators<int4x2, int4x2, int4x2>, IAdditiveIdentity<int4x2, int4x2>, IUnaryPlusOperators<int4x2, int4x2>,
+    ISubtractionOperators<int4x2, int4x2, int4x2>, IUnaryNegationOperators<int4x2, int4x2>,
+    IMultiplyOperators<int4x2, int4x2, int4x2>, IMultiplicativeIdentity<int4x2, int4x2>,
+    IDivisionOperators<int4x2, int4x2, int4x2>,
+    IModulusOperators<int4x2, int4x2, int4x2>,
+
+    IMatrix4x2<int>, IMatrixSelf<int4x2>
+{
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
+
+    /// <summary>Column 0 of the matrix</summary>
+    [FieldOffset(0)]
+    public int4 c0;
+
+    /// <summary>Column 1 of the matrix</summary>
+    [FieldOffset(16)]
+    public int4 c1;
+
+
+    /// <summary>Row 0 column 0 of the matrix</summary>
+    [FieldOffset(0)]
+    public int m00;
+
+    /// <summary>Row 1 column 0 of the matrix</summary>
+    [FieldOffset(4)]
+    public int m10;
+
+    /// <summary>Row 2 column 0 of the matrix</summary>
+    [FieldOffset(8)]
+    public int m20;
+
+    /// <summary>Row 3 column 0 of the matrix</summary>
+    [FieldOffset(12)]
+    public int m30;
+
+    /// <summary>Row 0 column 1 of the matrix</summary>
+    [FieldOffset(16)]
+    public int m01;
+
+    /// <summary>Row 1 column 1 of the matrix</summary>
+    [FieldOffset(20)]
+    public int m11;
+
+    /// <summary>Row 2 column 1 of the matrix</summary>
+    [FieldOffset(24)]
+    public int m21;
+
+    /// <summary>Row 3 column 1 of the matrix</summary>
+    [FieldOffset(28)]
+    public int m31;
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
+
+    public static readonly int4x2 zero = new(0);
+
+    public static readonly int4x2 one = new(1);
+
+    static int4x2 IMatrixSelf<int4x2>.Zero 
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => zero;
+    }
+
+    static int4x2 IMatrixSelf<int4x2>.One 
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => one;
+    }
+
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
+
+    #region Ctor
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public int4x2(int4 c0, int4 c1)
+    {
+        Unsafe.SkipInit(out this);
+        this.c0.vector = c0.vector;
+        this.c1.vector = c1.vector;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public int4x2(int m00, int m10, int m20, int m30, int m01, int m11, int m21, int m31)
+    {
+        Unsafe.SkipInit(out this);
+        this.c0.vector = Vector128.Create(m00, m10, m20, m30);
+        this.c1.vector = Vector128.Create(m01, m11, m21, m31);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public int4x2(int value)
+    {
+        Unsafe.SkipInit(out this);
+        this.c0.vector = Vector128.Create(value);
+        this.c1.vector = Vector128.Create(value);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator int4x2(int value) => new(value);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool operator ==(int4x2 left, int4x2 right) 
+        => left.c0 == right.c0 && left.c1 == right.c1;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool operator !=(int4x2 left, int4x2 right) 
+        => left.c0 != right.c0 || left.c1 != right.c1;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool Equals(int4x2 other) 
+        => this == other;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override bool Equals(object? o) 
+        => o is int4x2 other && Equals(other);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override int GetHashCode() 
+        => HashCode.Combine(this.c0, this.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public int4x2 Hash() 
+        => new(this.c0.GetHashCode(), this.c1.GetHashCode());
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    static bool4x2 IEqualityOperators<int4x2, int4x2, bool4x2>.operator ==(int4x2 left, int4x2 right) 
+        => new(left.c0 == right.c0, left.c1 == right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    static bool4x2 IEqualityOperators<int4x2, int4x2, bool4x2>.operator !=(int4x2 left, int4x2 right) 
+        => new(left.c0 != right.c0, left.c1 != right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool4x2 VEq(int4x2 other) 
+        => new(this.c0 == other.c0, this.c1 == other.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool4x2 VNe(int4x2 other) 
+        => new(this.c0 != other.c0, this.c1 != other.c1);
+
+    #endregion
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Arithmetic
+
+    #region Arithmetic
+
+    public static int4x2 AdditiveIdentity 
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new(0);
+    }
+
+    public static int4x2 MultiplicativeIdentity 
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => new(1);
+    }
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator +(int4x2 left, int4x2 right) 
+        => new(left.c0 + right.c0, left.c1 + right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator -(int4x2 left, int4x2 right) 
+        => new(left.c0 - right.c0, left.c1 - right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator *(int4x2 left, int4x2 right) 
+        => new(left.c0 * right.c0, left.c1 * right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator /(int4x2 left, int4x2 right) 
+        => new(left.c0 / right.c0, left.c1 / right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator %(int4x2 left, int4x2 right) 
+        => new(left.c0 % right.c0, left.c1 % right.c1);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator +(int4x2 left, int4 right) => new(left.c0 + right, left.c1 + right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator -(int4x2 left, int4 right) => new(left.c0 - right, left.c1 - right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator *(int4x2 left, int4 right) => new(left.c0 * right, left.c1 * right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator /(int4x2 left, int4 right) => new(left.c0 / right, left.c1 / right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator %(int4x2 left, int4 right) => new(left.c0 % right, left.c1 % right);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator +(int4 left, int4x2 right) => new(left + right.c0, left + right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator -(int4 left, int4x2 right) => new(left - right.c0, left - right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator *(int4 left, int4x2 right) => new(left * right.c0, left * right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator /(int4 left, int4x2 right) => new(left / right.c0, left / right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator %(int4 left, int4x2 right) => new(left % right.c0, left % right.c1);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator +(int4x2 left, int right) => new(left.c0 + right, left.c1 + right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator -(int4x2 left, int right) => new(left.c0 - right, left.c1 - right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator *(int4x2 left, int right) => new(left.c0 * right, left.c1 * right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator /(int4x2 left, int right) => new(left.c0 / right, left.c1 / right);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator %(int4x2 left, int right) => new(left.c0 % right, left.c1 % right);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator +(int left, int4x2 right) => new(left + right.c0, left + right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator -(int left, int4x2 right) => new(left - right.c0, left - right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator *(int left, int4x2 right) => new(left * right.c0, left * right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator /(int left, int4x2 right) => new(left / right.c0, left / right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator %(int left, int4x2 right) => new(left % right.c0, left % right.c1);
+
+    
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator -(int4x2 self) => new(-self.c0, -self.c1);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 operator +(int4x2 self) => new(+self.c0, +self.c1);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public override string ToString() => $"int4x2({this.c0}, {this.c1})";
+
+    #endregion
+}

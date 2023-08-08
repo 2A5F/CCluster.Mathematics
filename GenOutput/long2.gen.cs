@@ -14,8 +14,9 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 2 component vector of long</summary>
 [Serializable]
-[JsonConverter(typeof(Long2Converter))]
+[JsonConverter(typeof(Long2JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 16)]
 public unsafe partial struct long2 : 
     IEquatable<long2>, IEqualityOperators<long2, long2, bool>, IEqualityOperators<long2, long2, bool2>,
@@ -26,22 +27,28 @@ public unsafe partial struct long2 :
     IDivisionOperators<long2, long2, long2>,
     IModulusOperators<long2, long2, long2>,
 
-    IVector, IVector2, IVector<long>, IVector2<long>
+    IVector2<long>, IVectorSelf<long2>
 {
 
+    /// <summary>Raw simd vector</summary>
     [FieldOffset(0)]
     public Vector128<long> vector;
 
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public long x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(8)]
     public long y;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public long r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(8)]
     public long g;
 
@@ -58,16 +65,20 @@ public unsafe partial struct long2 :
         get => 128;
     }
 
-    public static long2 Zero
+    public static readonly long2 zero = new(0L);
+
+    public static readonly long2 one = new(1L);
+
+    static long2 IVectorSelf<long2>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new long2(0L);
+        get => zero;
     }
 
-    public static long2 One
+    static long2 IVectorSelf<long2>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new long2(1L);
+        get => one;
     }
 
 
@@ -93,7 +104,7 @@ public unsafe partial struct long2 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator long2(long value) => new long2(value);
+    public static implicit operator long2(long value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -126,33 +137,33 @@ public unsafe partial struct long2 :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int2 Hash() => new int2(this.x.GetHashCode(), this.y.GetHashCode());
+    public int2 Hash() => new(this.x.GetHashCode(), this.y.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool2 IEqualityOperators<long2, long2, bool2>.operator ==(long2 left, long2 right) => new bool2(left.x == right.x, left.y == right.y);
+    static bool2 IEqualityOperators<long2, long2, bool2>.operator ==(long2 left, long2 right) => new(left.x == right.x, left.y == right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool2 IEqualityOperators<long2, long2, bool2>.operator !=(long2 left, long2 right) => new bool2(left.x != right.x, left.y != right.y);
+    static bool2 IEqualityOperators<long2, long2, bool2>.operator !=(long2 left, long2 right) => new(left.x != right.x, left.y != right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool2 VEq(long2 other) => new bool2(this.x == other.x, this.y == other.y);
+    public bool2 VEq(long2 other) => new(this.x == other.x, this.y == other.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool2 VNe(long2 other) => new bool2(this.x != other.x, this.y != other.y);
+    public bool2 VNe(long2 other) => new(this.x != other.x, this.y != other.y);
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator >(long2 left, long2 right) => new bool2(left.x > right.x, left.y > right.y);
+    public static bool2 operator >(long2 left, long2 right) => new(left.x > right.x, left.y > right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator <(long2 left, long2 right) => new bool2(left.x < right.x, left.y < right.y);
+    public static bool2 operator <(long2 left, long2 right) => new(left.x < right.x, left.y < right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator >=(long2 left, long2 right) => new bool2(left.x >= right.x, left.y >= right.y);
+    public static bool2 operator >=(long2 left, long2 right) => new(left.x >= right.x, left.y >= right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator <=(long2 left, long2 right) => new bool2(left.x <= right.x, left.y <= right.y);
+    public static bool2 operator <=(long2 left, long2 right) => new(left.x <= right.x, left.y <= right.y);
 
 
 
@@ -160,13 +171,13 @@ public unsafe partial struct long2 :
     public static long2 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new long2(0L);
+        get => new(0L);
     }
 
     public static long2 MultiplicativeIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new long2(1L);
+        get => new(1L);
     }
 
 
@@ -174,29 +185,29 @@ public unsafe partial struct long2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long2 operator +(long2 left, long2 right)
     {
-        return new long2(left.vector + right.vector);
+        return new(left.vector + right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long2 operator -(long2 left, long2 right)
     {
-        return new long2(left.vector - right.vector);
+        return new(left.vector - right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long2 operator *(long2 left, long2 right)
     {
-        return new long2(left.vector * right.vector);
+        return new(left.vector * right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long2 operator /(long2 left, long2 right)
     {
-        return new long2(left.vector / right.vector);
+        return new(left.vector / right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator %(long2 left, long2 right) => new long2(left.x % right.x, left.y % right.y);
+    public static long2 operator %(long2 left, long2 right) => new(left.x % right.x, left.y % right.y);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -233,11 +244,11 @@ public unsafe partial struct long2 :
 
     
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator -(long2 self) => new long2(-self.x, -self.y);
+    public static long2 operator -(long2 self) => new(-self.x, -self.y);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 operator +(long2 self) => new long2(+self.x, +self.y);
+    public static long2 operator +(long2 self) => new(+self.x, +self.y);
 
 
 
@@ -254,10 +265,10 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 min(long2 x, long2 y) => new long2(min(x.x, y.x), min(x.y, y.y));
+    public static long2 min(long2 x, long2 y) => new(min(x.x, y.x), min(x.y, y.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 max(long2 x, long2 y) => new long2(max(x.x, y.x), max(x.y, y.y));
+    public static long2 max(long2 x, long2 y) => new(max(x.x, y.x), max(x.y, y.y));
 
 
 
@@ -272,7 +283,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 abs(long2 x) => new long2(abs(x.x), abs(x.y));
+    public static long2 abs(long2 x) => new(abs(x.x), abs(x.y));
 
 
 
@@ -293,7 +304,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 sign(long2 x) => new long2(sign(x.x), sign(x.y));
+    public static long2 sign(long2 x) => new(sign(x.x), sign(x.y));
 
 
 
@@ -318,7 +329,7 @@ public static unsafe partial class math
     public static long2 select(long2 a, long2 b, bool c) => c ? b : a;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2 select(long2 a, long2 b, bool2 c) => new long2(c.x ? b.x : a.x, c.y ? b.y : a.y);
+    public static long2 select(long2 a, long2 b, bool2 c) => new(c.x ? b.x : a.x, c.y ? b.y : a.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long2 step(long2 y, long2 x) => select(new long2(0L), new long2(1L), x >= y);
@@ -349,7 +360,7 @@ public static unsafe partial class math
 
 }
 
-public class Long2Converter : JsonConverter<long2>
+public class Long2JsonConverter : JsonConverter<long2>
 {
     public override long2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

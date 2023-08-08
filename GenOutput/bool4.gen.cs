@@ -14,36 +14,46 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 4 component vector of bool</summary>
 [Serializable]
-[JsonConverter(typeof(Bool4Converter))]
+[JsonConverter(typeof(Bool4JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 4)]
 public unsafe partial struct bool4 : 
     IEquatable<bool4>, IEqualityOperators<bool4, bool4, bool>, IEqualityOperators<bool4, bool4, bool4>,
 
-    IVector, IVector4, IVector<bool>, IVector4<bool>
+    IVector4<bool>, IVectorSelf<bool4>
 {
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public bool x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(1)]
     public bool y;
 
+    /// <summary>Z component of the vector</summary>
     [FieldOffset(2)]
     public bool z;
 
+    /// <summary>W component of the vector</summary>
     [FieldOffset(3)]
     public bool w;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public bool r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(1)]
     public bool g;
 
+    /// <summary>B component of the vector</summary>
     [FieldOffset(2)]
     public bool b;
 
+    /// <summary>A component of the vector</summary>
     [FieldOffset(3)]
     public bool a;
 
@@ -60,16 +70,20 @@ public unsafe partial struct bool4 :
         get => 32;
     }
 
-    public static bool4 Zero
+    public static readonly bool4 zero = new(false);
+
+    public static readonly bool4 one = new(true);
+
+    static bool4 IVectorSelf<bool4>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new bool4(false);
+        get => zero;
     }
 
-    public static bool4 One
+    static bool4 IVectorSelf<bool4>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new bool4(true);
+        get => one;
     }
 
 
@@ -92,7 +106,7 @@ public unsafe partial struct bool4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator bool4(bool value) => new bool4(value);
+    public static implicit operator bool4(bool value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -116,19 +130,19 @@ public unsafe partial struct bool4 :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y, this.z, this.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int4 Hash() => new int4(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode(), this.w.GetHashCode());
+    public int4 Hash() => new(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode(), this.w.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool4 IEqualityOperators<bool4, bool4, bool4>.operator ==(bool4 left, bool4 right) => new bool4(left.x == right.x, left.y == right.y, left.z == right.z, left.w == right.w);
+    static bool4 IEqualityOperators<bool4, bool4, bool4>.operator ==(bool4 left, bool4 right) => new(left.x == right.x, left.y == right.y, left.z == right.z, left.w == right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool4 IEqualityOperators<bool4, bool4, bool4>.operator !=(bool4 left, bool4 right) => new bool4(left.x != right.x, left.y != right.y, left.z != right.z, left.w != right.w);
+    static bool4 IEqualityOperators<bool4, bool4, bool4>.operator !=(bool4 left, bool4 right) => new(left.x != right.x, left.y != right.y, left.z != right.z, left.w != right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool4 VEq(bool4 other) => new bool4(this.x == other.x, this.y == other.y, this.z == other.z, this.w == other.w);
+    public bool4 VEq(bool4 other) => new(this.x == other.x, this.y == other.y, this.z == other.z, this.w == other.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool4 VNe(bool4 other) => new bool4(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
+    public bool4 VNe(bool4 other) => new(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
 
 
 
@@ -160,7 +174,7 @@ public static unsafe partial class math
 
 }
 
-public class Bool4Converter : JsonConverter<bool4>
+public class Bool4JsonConverter : JsonConverter<bool4>
 {
     public override bool4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

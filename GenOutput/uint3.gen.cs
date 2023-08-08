@@ -14,8 +14,9 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 3 component vector of uint</summary>
 [Serializable]
-[JsonConverter(typeof(Uint3Converter))]
+[JsonConverter(typeof(Uint3JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 16)]
 public unsafe partial struct uint3 : 
     IEquatable<uint3>, IEqualityOperators<uint3, uint3, bool>, IEqualityOperators<uint3, uint3, bool3>,
@@ -26,28 +27,36 @@ public unsafe partial struct uint3 :
     IDivisionOperators<uint3, uint3, uint3>,
     IModulusOperators<uint3, uint3, uint3>,
 
-    IVector, IVector3, IVector<uint>, IVector3<uint>
+    IVector3<uint>, IVectorSelf<uint3>
 {
 
+    /// <summary>Raw simd vector</summary>
     [FieldOffset(0)]
     public Vector128<uint> vector;
 
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public uint x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(4)]
     public uint y;
 
+    /// <summary>Z component of the vector</summary>
     [FieldOffset(8)]
     public uint z;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public uint r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(4)]
     public uint g;
 
+    /// <summary>B component of the vector</summary>
     [FieldOffset(8)]
     public uint b;
 
@@ -64,16 +73,20 @@ public unsafe partial struct uint3 :
         get => 128;
     }
 
-    public static uint3 Zero
+    public static readonly uint3 zero = new(0u);
+
+    public static readonly uint3 one = new(1u);
+
+    static uint3 IVectorSelf<uint3>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new uint3(0u);
+        get => zero;
     }
 
-    public static uint3 One
+    static uint3 IVectorSelf<uint3>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new uint3(1u);
+        get => one;
     }
 
 
@@ -99,7 +112,7 @@ public unsafe partial struct uint3 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator uint3(uint value) => new uint3(value);
+    public static implicit operator uint3(uint value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -132,33 +145,33 @@ public unsafe partial struct uint3 :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y, this.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int3 Hash() => new int3(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode());
+    public int3 Hash() => new(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool3 IEqualityOperators<uint3, uint3, bool3>.operator ==(uint3 left, uint3 right) => new bool3(left.x == right.x, left.y == right.y, left.z == right.z);
+    static bool3 IEqualityOperators<uint3, uint3, bool3>.operator ==(uint3 left, uint3 right) => new(left.x == right.x, left.y == right.y, left.z == right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool3 IEqualityOperators<uint3, uint3, bool3>.operator !=(uint3 left, uint3 right) => new bool3(left.x != right.x, left.y != right.y, left.z != right.z);
+    static bool3 IEqualityOperators<uint3, uint3, bool3>.operator !=(uint3 left, uint3 right) => new(left.x != right.x, left.y != right.y, left.z != right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool3 VEq(uint3 other) => new bool3(this.x == other.x, this.y == other.y, this.z == other.z);
+    public bool3 VEq(uint3 other) => new(this.x == other.x, this.y == other.y, this.z == other.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool3 VNe(uint3 other) => new bool3(this.x != other.x, this.y != other.y, this.z != other.z);
+    public bool3 VNe(uint3 other) => new(this.x != other.x, this.y != other.y, this.z != other.z);
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator >(uint3 left, uint3 right) => new bool3(left.x > right.x, left.y > right.y, left.z > right.z);
+    public static bool3 operator >(uint3 left, uint3 right) => new(left.x > right.x, left.y > right.y, left.z > right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator <(uint3 left, uint3 right) => new bool3(left.x < right.x, left.y < right.y, left.z < right.z);
+    public static bool3 operator <(uint3 left, uint3 right) => new(left.x < right.x, left.y < right.y, left.z < right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator >=(uint3 left, uint3 right) => new bool3(left.x >= right.x, left.y >= right.y, left.z >= right.z);
+    public static bool3 operator >=(uint3 left, uint3 right) => new(left.x >= right.x, left.y >= right.y, left.z >= right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator <=(uint3 left, uint3 right) => new bool3(left.x <= right.x, left.y <= right.y, left.z <= right.z);
+    public static bool3 operator <=(uint3 left, uint3 right) => new(left.x <= right.x, left.y <= right.y, left.z <= right.z);
 
 
 
@@ -166,13 +179,13 @@ public unsafe partial struct uint3 :
     public static uint3 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new uint3(0u);
+        get => new(0u);
     }
 
     public static uint3 MultiplicativeIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new uint3(1u);
+        get => new(1u);
     }
 
 
@@ -180,29 +193,29 @@ public unsafe partial struct uint3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint3 operator +(uint3 left, uint3 right)
     {
-        return new uint3(left.vector + right.vector);
+        return new(left.vector + right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint3 operator -(uint3 left, uint3 right)
     {
-        return new uint3(left.vector - right.vector);
+        return new(left.vector - right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint3 operator *(uint3 left, uint3 right)
     {
-        return new uint3(left.vector * right.vector);
+        return new(left.vector * right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint3 operator /(uint3 left, uint3 right)
     {
-        return new uint3(left.vector / right.vector);
+        return new(left.vector / right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint3 operator %(uint3 left, uint3 right) => new uint3(left.x % right.x, left.y % right.y, left.z % right.z);
+    public static uint3 operator %(uint3 left, uint3 right) => new(left.x % right.x, left.y % right.y, left.z % right.z);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -240,7 +253,7 @@ public unsafe partial struct uint3 :
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint3 operator +(uint3 self) => new uint3(+self.x, +self.y, +self.z);
+    public static uint3 operator +(uint3 self) => new(+self.x, +self.y, +self.z);
 
 
 
@@ -257,10 +270,10 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint3 min(uint3 x, uint3 y) => new uint3(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z));
+    public static uint3 min(uint3 x, uint3 y) => new(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint3 max(uint3 x, uint3 y) => new uint3(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z));
+    public static uint3 max(uint3 x, uint3 y) => new(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z));
 
 
 
@@ -319,7 +332,7 @@ public static unsafe partial class math
     public static uint3 select(uint3 a, uint3 b, bool c) => c ? b : a;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint3 select(uint3 a, uint3 b, bool3 c) => new uint3(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z);
+    public static uint3 select(uint3 a, uint3 b, bool3 c) => new(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint3 step(uint3 y, uint3 x) => select(new uint3(0u), new uint3(1u), x >= y);
@@ -345,7 +358,7 @@ public static unsafe partial class math
 
 }
 
-public class Uint3Converter : JsonConverter<uint3>
+public class Uint3JsonConverter : JsonConverter<uint3>
 {
     public override uint3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

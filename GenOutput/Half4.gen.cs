@@ -14,8 +14,9 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 4 component vector of Half</summary>
 [Serializable]
-[JsonConverter(typeof(Half4Converter))]
+[JsonConverter(typeof(Half4JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 8)]
 public unsafe partial struct Half4 : 
     IEquatable<Half4>, IEqualityOperators<Half4, Half4, bool>, IEqualityOperators<Half4, Half4, bool4>,
@@ -26,30 +27,39 @@ public unsafe partial struct Half4 :
     IDivisionOperators<Half4, Half4, Half4>,
     IModulusOperators<Half4, Half4, Half4>,
 
-    IVector, IVector4, IVector<Half>, IVector4<Half>
+    IVector4<Half>, IVectorSelf<Half4>
 {
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public Half x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(2)]
     public Half y;
 
+    /// <summary>Z component of the vector</summary>
     [FieldOffset(4)]
     public Half z;
 
+    /// <summary>W component of the vector</summary>
     [FieldOffset(6)]
     public Half w;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public Half r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(2)]
     public Half g;
 
+    /// <summary>B component of the vector</summary>
     [FieldOffset(4)]
     public Half b;
 
+    /// <summary>A component of the vector</summary>
     [FieldOffset(6)]
     public Half a;
 
@@ -66,16 +76,20 @@ public unsafe partial struct Half4 :
         get => 64;
     }
 
-    public static Half4 Zero
+    public static readonly Half4 zero = new(Half.Zero);
+
+    public static readonly Half4 one = new(Half.One);
+
+    static Half4 IVectorSelf<Half4>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new Half4(Half.Zero);
+        get => zero;
     }
 
-    public static Half4 One
+    static Half4 IVectorSelf<Half4>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new Half4(Half.One);
+        get => one;
     }
 
 
@@ -98,7 +112,7 @@ public unsafe partial struct Half4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator Half4(Half value) => new Half4(value);
+    public static implicit operator Half4(Half value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -122,33 +136,33 @@ public unsafe partial struct Half4 :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y, this.z, this.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int4 Hash() => new int4(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode(), this.w.GetHashCode());
+    public int4 Hash() => new(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode(), this.w.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool4 IEqualityOperators<Half4, Half4, bool4>.operator ==(Half4 left, Half4 right) => new bool4(left.x == right.x, left.y == right.y, left.z == right.z, left.w == right.w);
+    static bool4 IEqualityOperators<Half4, Half4, bool4>.operator ==(Half4 left, Half4 right) => new(left.x == right.x, left.y == right.y, left.z == right.z, left.w == right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool4 IEqualityOperators<Half4, Half4, bool4>.operator !=(Half4 left, Half4 right) => new bool4(left.x != right.x, left.y != right.y, left.z != right.z, left.w != right.w);
+    static bool4 IEqualityOperators<Half4, Half4, bool4>.operator !=(Half4 left, Half4 right) => new(left.x != right.x, left.y != right.y, left.z != right.z, left.w != right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool4 VEq(Half4 other) => new bool4(this.x == other.x, this.y == other.y, this.z == other.z, this.w == other.w);
+    public bool4 VEq(Half4 other) => new(this.x == other.x, this.y == other.y, this.z == other.z, this.w == other.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool4 VNe(Half4 other) => new bool4(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
+    public bool4 VNe(Half4 other) => new(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator >(Half4 left, Half4 right) => new bool4(left.x > right.x, left.y > right.y, left.z > right.z, left.w > right.w);
+    public static bool4 operator >(Half4 left, Half4 right) => new(left.x > right.x, left.y > right.y, left.z > right.z, left.w > right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator <(Half4 left, Half4 right) => new bool4(left.x < right.x, left.y < right.y, left.z < right.z, left.w < right.w);
+    public static bool4 operator <(Half4 left, Half4 right) => new(left.x < right.x, left.y < right.y, left.z < right.z, left.w < right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator >=(Half4 left, Half4 right) => new bool4(left.x >= right.x, left.y >= right.y, left.z >= right.z, left.w >= right.w);
+    public static bool4 operator >=(Half4 left, Half4 right) => new(left.x >= right.x, left.y >= right.y, left.z >= right.z, left.w >= right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator <=(Half4 left, Half4 right) => new bool4(left.x <= right.x, left.y <= right.y, left.z <= right.z, left.w <= right.w);
+    public static bool4 operator <=(Half4 left, Half4 right) => new(left.x <= right.x, left.y <= right.y, left.z <= right.z, left.w <= right.w);
 
 
 
@@ -156,72 +170,72 @@ public unsafe partial struct Half4 :
     public static Half4 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new Half4(Half.Zero);
+        get => new(Half.Zero);
     }
 
     public static Half4 MultiplicativeIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new Half4(Half.One);
+        get => new(Half.One);
     }
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator +(Half4 left, Half4 right) => new Half4(left.x + right.x, left.y + right.y, left.z + right.z, left.w + right.w);
+    public static Half4 operator +(Half4 left, Half4 right) => new(left.x + right.x, left.y + right.y, left.z + right.z, left.w + right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator -(Half4 left, Half4 right) => new Half4(left.x - right.x, left.y - right.y, left.z - right.z, left.w - right.w);
+    public static Half4 operator -(Half4 left, Half4 right) => new(left.x - right.x, left.y - right.y, left.z - right.z, left.w - right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator *(Half4 left, Half4 right) => new Half4(left.x * right.x, left.y * right.y, left.z * right.z, left.w * right.w);
+    public static Half4 operator *(Half4 left, Half4 right) => new(left.x * right.x, left.y * right.y, left.z * right.z, left.w * right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator /(Half4 left, Half4 right) => new Half4(left.x / right.x, left.y / right.y, left.z / right.z, left.w / right.w);
+    public static Half4 operator /(Half4 left, Half4 right) => new(left.x / right.x, left.y / right.y, left.z / right.z, left.w / right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator %(Half4 left, Half4 right) => new Half4(left.x % right.x, left.y % right.y, left.z % right.z, left.w % right.w);
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator +(Half4 left, Half right) => new Half4(left.x + right, left.y + right, left.z + right, left.w + right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator -(Half4 left, Half right) => new Half4(left.x - right, left.y - right, left.z - right, left.w - right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator *(Half4 left, Half right) => new Half4(left.x * right, left.y * right, left.z * right, left.w * right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator /(Half4 left, Half right) => new Half4(left.x / right, left.y / right, left.z / right, left.w / right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator %(Half4 left, Half right) => new Half4(left.x % right, left.y % right, left.z % right, left.w % right);
+    public static Half4 operator %(Half4 left, Half4 right) => new(left.x % right.x, left.y % right.y, left.z % right.z, left.w % right.w);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator +(Half left, Half4 right) => new Half4(left + right.x, left + right.y, left + right.z, left + right.w);
+    public static Half4 operator +(Half4 left, Half right) => new(left.x + right, left.y + right, left.z + right, left.w + right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator -(Half left, Half4 right) => new Half4(left - right.x, left - right.y, left - right.z, left - right.w);
+    public static Half4 operator -(Half4 left, Half right) => new(left.x - right, left.y - right, left.z - right, left.w - right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator *(Half left, Half4 right) => new Half4(left * right.x, left * right.y, left * right.z, left * right.w);
+    public static Half4 operator *(Half4 left, Half right) => new(left.x * right, left.y * right, left.z * right, left.w * right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator /(Half left, Half4 right) => new Half4(left / right.x, left / right.y, left / right.z, left / right.w);
+    public static Half4 operator /(Half4 left, Half right) => new(left.x / right, left.y / right, left.z / right, left.w / right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator %(Half left, Half4 right) => new Half4(left % right.x, left % right.y, left % right.z, left % right.w);
+    public static Half4 operator %(Half4 left, Half right) => new(left.x % right, left.y % right, left.z % right, left.w % right);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 operator +(Half left, Half4 right) => new(left + right.x, left + right.y, left + right.z, left + right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 operator -(Half left, Half4 right) => new(left - right.x, left - right.y, left - right.z, left - right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 operator *(Half left, Half4 right) => new(left * right.x, left * right.y, left * right.z, left * right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 operator /(Half left, Half4 right) => new(left / right.x, left / right.y, left / right.z, left / right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 operator %(Half left, Half4 right) => new(left % right.x, left % right.y, left % right.z, left % right.w);
 
 
     
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator -(Half4 self) => new Half4(-self.x, -self.y, -self.z, -self.w);
+    public static Half4 operator -(Half4 self) => new(-self.x, -self.y, -self.z, -self.w);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 operator +(Half4 self) => new Half4(+self.x, +self.y, +self.z, +self.w);
+    public static Half4 operator +(Half4 self) => new(+self.x, +self.y, +self.z, +self.w);
 
 
 
@@ -238,10 +252,10 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 min(Half4 x, Half4 y) => new Half4(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z), min(x.w, y.w));
+    public static Half4 min(Half4 x, Half4 y) => new(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z), min(x.w, y.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 max(Half4 x, Half4 y) => new Half4(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z), max(x.w, y.w));
+    public static Half4 max(Half4 x, Half4 y) => new(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z), max(x.w, y.w));
 
 
 
@@ -265,14 +279,14 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 saturate(Half4 x) => clamp(x, Half4.Zero, Half4.One);
+    public static Half4 saturate(Half4 x) => clamp(x, Half4.zero, Half4.one);
 
 
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 abs(Half4 x) => new Half4(abs(x.x), abs(x.y), abs(x.z), abs(x.w));
+    public static Half4 abs(Half4 x) => new(abs(x.x), abs(x.y), abs(x.z), abs(x.w));
 
 
 
@@ -289,66 +303,66 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 tan(Half4 x) => new Half4(tan(x.x), tan(x.y), tan(x.z), tan(x.w));
+    public static Half4 tan(Half4 x) => new(tan(x.x), tan(x.y), tan(x.z), tan(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 tanh(Half4 x) => new Half4(tanh(x.x), tanh(x.y), tanh(x.z), tanh(x.w));
+    public static Half4 tanh(Half4 x) => new(tanh(x.x), tanh(x.y), tanh(x.z), tanh(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 atan(Half4 x) => new Half4(atan(x.x), atan(x.y), atan(x.z), atan(x.w));
+    public static Half4 atan(Half4 x) => new(atan(x.x), atan(x.y), atan(x.z), atan(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 atanh(Half4 x) => new Half4(tanh(x.x), tanh(x.y), tanh(x.z), tanh(x.w));
+    public static Half4 atanh(Half4 x) => new(tanh(x.x), tanh(x.y), tanh(x.z), tanh(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 atan2(Half4 y, Half4 x) => new Half4(atan2(y.x, x.x), atan2(y.y, x.y), atan2(y.z, x.z), atan2(y.w, x.w));
+    public static Half4 atan2(Half4 y, Half4 x) => new(atan2(y.x, x.x), atan2(y.y, x.y), atan2(y.z, x.z), atan2(y.w, x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 tanPi(Half4 x) => new Half4(tanPi(x.x), tanPi(x.y), tanPi(x.z), tanPi(x.w));
+    public static Half4 tanPi(Half4 x) => new(tanPi(x.x), tanPi(x.y), tanPi(x.z), tanPi(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 atanPi(Half4 x) => new Half4(atanPi(x.x), atanPi(x.y), atanPi(x.z), atanPi(x.w));
+    public static Half4 atanPi(Half4 x) => new(atanPi(x.x), atanPi(x.y), atanPi(x.z), atanPi(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 atan2Pi(Half4 y, Half4 x) => new Half4(atan2Pi(y.x, x.x), atan2Pi(y.y, x.y), atan2Pi(y.z, x.z), atan2Pi(y.w, x.w));
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 cos(Half4 x) => new Half4(cos(x.x), cos(x.y), cos(x.z), cos(x.w));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 cosh(Half4 x) => new Half4(cosh(x.x), cosh(x.y), cosh(x.z), cosh(x.w));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 acos(Half4 x) => new Half4(acos(x.x), acos(x.y), acos(x.z), acos(x.w));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 acosh(Half4 x) => new Half4(acosh(x.x), acosh(x.y), acosh(x.z), acosh(x.w));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 cosPi(Half4 x) => new Half4(cosPi(x.x), cosPi(x.y), cosPi(x.z), cosPi(x.w));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 acosPi(Half4 x) => new Half4(acosPi(x.x), acosPi(x.y), acosPi(x.z), acosPi(x.w));
+    public static Half4 atan2Pi(Half4 y, Half4 x) => new(atan2Pi(y.x, x.x), atan2Pi(y.y, x.y), atan2Pi(y.z, x.z), atan2Pi(y.w, x.w));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 sin(Half4 x) => new Half4(sin(x.x), sin(x.y), sin(x.z), sin(x.w));
+    public static Half4 cos(Half4 x) => new(cos(x.x), cos(x.y), cos(x.z), cos(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 sinh(Half4 x) => new Half4(sinh(x.x), sinh(x.y), sinh(x.z), sinh(x.w));
+    public static Half4 cosh(Half4 x) => new(cosh(x.x), cosh(x.y), cosh(x.z), cosh(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 asin(Half4 x) => new Half4(asin(x.x), asin(x.y), asin(x.z), asin(x.w));
+    public static Half4 acos(Half4 x) => new(acos(x.x), acos(x.y), acos(x.z), acos(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 asinh(Half4 x) => new Half4(asinh(x.x), asinh(x.y), asinh(x.z), asinh(x.w));
+    public static Half4 acosh(Half4 x) => new(acosh(x.x), acosh(x.y), acosh(x.z), acosh(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 sinPi(Half4 x) => new Half4(sinPi(x.x), sinPi(x.y), sinPi(x.z), sinPi(x.w));
+    public static Half4 cosPi(Half4 x) => new(cosPi(x.x), cosPi(x.y), cosPi(x.z), cosPi(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 asinPi(Half4 x) => new Half4(asinPi(x.x), asinPi(x.y), asinPi(x.z), asinPi(x.w));
+    public static Half4 acosPi(Half4 x) => new(acosPi(x.x), acosPi(x.y), acosPi(x.z), acosPi(x.w));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 sin(Half4 x) => new(sin(x.x), sin(x.y), sin(x.z), sin(x.w));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 sinh(Half4 x) => new(sinh(x.x), sinh(x.y), sinh(x.z), sinh(x.w));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 asin(Half4 x) => new(asin(x.x), asin(x.y), asin(x.z), asin(x.w));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 asinh(Half4 x) => new(asinh(x.x), asinh(x.y), asinh(x.z), asinh(x.w));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 sinPi(Half4 x) => new(sinPi(x.x), sinPi(x.y), sinPi(x.z), sinPi(x.w));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 asinPi(Half4 x) => new(asinPi(x.x), asinPi(x.y), asinPi(x.z), asinPi(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static void sincos(Half4 x, out Half4 sin, out Half4 cos)
@@ -362,7 +376,7 @@ public static unsafe partial class math
     public static (Half4 sin, Half4 cos) sincos(Half4 x)
     {
         var (s0, c0) = sincos(x.x); var (s1, c1) = sincos(x.y); var (s2, c2) = sincos(x.z); var (s3, c3) = sincos(x.w);
-        return (new Half4(s0, s1, s2, s3), new Half4(c0, c1, c2, c3));
+        return (new(s0, s1, s2, s3), new(c0, c1, c2, c3));
     }
 
 
@@ -371,18 +385,18 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 floor(Half4 x) => new Half4(floor(x.x), floor(x.y), floor(x.z), floor(x.w));
+    public static Half4 floor(Half4 x) => new(floor(x.x), floor(x.y), floor(x.z), floor(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 ceil(Half4 x) => new Half4(ceil(x.x), ceil(x.y), ceil(x.z), ceil(x.w));
+    public static Half4 ceil(Half4 x) => new(ceil(x.x), ceil(x.y), ceil(x.z), ceil(x.w));
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 round(Half4 x) => new Half4(round(x.x), round(x.y), round(x.z), round(x.w));
+    public static Half4 round(Half4 x) => new(round(x.x), round(x.y), round(x.z), round(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 trunc(Half4 x) => new Half4(trunc(x.x), trunc(x.y), trunc(x.z), trunc(x.w));
+    public static Half4 trunc(Half4 x) => new(trunc(x.x), trunc(x.y), trunc(x.z), trunc(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half4 frac(Half4 x) => x - floor(x);
@@ -395,52 +409,52 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 sign(Half4 x) => new Half4(sign(x.x), sign(x.y), sign(x.z), sign(x.w));
+    public static Half4 sign(Half4 x) => new(sign(x.x), sign(x.y), sign(x.z), sign(x.w));
 
 
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 pow(Half4 x, Half4 y) => new Half4(pow(x.x, y.x), pow(x.y, y.y), pow(x.z, y.z), pow(x.w, y.w));
+    public static Half4 pow(Half4 x, Half4 y) => new(pow(x.x, y.x), pow(x.y, y.y), pow(x.z, y.z), pow(x.w, y.w));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 exp(Half4 x) => new Half4(exp(x.x), exp(x.y), exp(x.z), exp(x.w));
+    public static Half4 exp(Half4 x) => new(exp(x.x), exp(x.y), exp(x.z), exp(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 exp2(Half4 x) => new Half4(exp2(x.x), exp2(x.y), exp2(x.z), exp2(x.w));
+    public static Half4 exp2(Half4 x) => new(exp2(x.x), exp2(x.y), exp2(x.z), exp2(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 exp10(Half4 x) => new Half4(exp10(x.x), exp10(x.y), exp10(x.z), exp10(x.w));
+    public static Half4 exp10(Half4 x) => new(exp10(x.x), exp10(x.y), exp10(x.z), exp10(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 expM1(Half4 x) => new Half4(expM1(x.x), expM1(x.y), expM1(x.z), expM1(x.w));
+    public static Half4 expM1(Half4 x) => new(expM1(x.x), expM1(x.y), expM1(x.z), expM1(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 exp2M1(Half4 x) => new Half4(exp2M1(x.x), exp2M1(x.y), exp2M1(x.z), exp2M1(x.w));
+    public static Half4 exp2M1(Half4 x) => new(exp2M1(x.x), exp2M1(x.y), exp2M1(x.z), exp2M1(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 exp10M1(Half4 x) => new Half4(exp10M1(x.x), exp10M1(x.y), exp10M1(x.z), exp10M1(x.w));
+    public static Half4 exp10M1(Half4 x) => new(exp10M1(x.x), exp10M1(x.y), exp10M1(x.z), exp10M1(x.w));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 log(Half4 x) => new Half4(log(x.x), log(x.y), log(x.z), log(x.w));
+    public static Half4 log(Half4 x) => new(log(x.x), log(x.y), log(x.z), log(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 log2(Half4 x) => new Half4(log2(x.x), log2(x.y), log2(x.z), log2(x.w));
+    public static Half4 log2(Half4 x) => new(log2(x.x), log2(x.y), log2(x.z), log2(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 log10(Half4 x) => new Half4(log10(x.x), log10(x.y), log10(x.z), log10(x.w));
+    public static Half4 log10(Half4 x) => new(log10(x.x), log10(x.y), log10(x.z), log10(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 logP1(Half4 x) => new Half4(logP1(x.x), logP1(x.y), logP1(x.z), logP1(x.w));
+    public static Half4 logP1(Half4 x) => new(logP1(x.x), logP1(x.y), logP1(x.z), logP1(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 log2P1(Half4 x) => new Half4(log2P1(x.x), log2P1(x.y), log2P1(x.z), log2P1(x.w));
+    public static Half4 log2P1(Half4 x) => new(log2P1(x.x), log2P1(x.y), log2P1(x.z), log2P1(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 log10P1(Half4 x) => new Half4(log10P1(x.x), log10P1(x.y), log10P1(x.z), log10P1(x.w));
+    public static Half4 log10P1(Half4 x) => new(log10P1(x.x), log10P1(x.y), log10P1(x.z), log10P1(x.w));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -453,7 +467,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 sqrt(Half4 x) => new Half4(sqrt(x.x), sqrt(x.y), sqrt(x.z), sqrt(x.w));
+    public static Half4 sqrt(Half4 x) => new(sqrt(x.x), sqrt(x.y), sqrt(x.z), sqrt(x.w));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -494,7 +508,7 @@ public static unsafe partial class math
     public static Half4 select(Half4 a, Half4 b, bool c) => c ? b : a;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half4 select(Half4 a, Half4 b, bool4 c) => new Half4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w);
+    public static Half4 select(Half4 a, Half4 b, bool4 c) => new(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half4 step(Half4 y, Half4 x) => select(new Half4(Half.Zero), new Half4(Half.One), x >= y);
@@ -544,7 +558,7 @@ public static unsafe partial class math
 
 }
 
-public class Half4Converter : JsonConverter<Half4>
+public class Half4JsonConverter : JsonConverter<Half4>
 {
     public override Half4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

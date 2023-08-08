@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace CodeGen;
 
 public class GenCartesian : Base
 {
-    private static readonly string[] types =
-        { "bool", "Half", "float", "double", "decimal", "int", "uint", "long", "ulong" };
-
     public override async Task Gen()
     {
-        foreach (var type in types)
+        foreach (var type in TypeMeta.types.Keys)
         {
             foreach (var _n in Enumerable.Range(2, 4))
             {

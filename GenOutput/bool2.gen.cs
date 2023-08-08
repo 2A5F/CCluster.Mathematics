@@ -14,24 +14,30 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 2 component vector of bool</summary>
 [Serializable]
-[JsonConverter(typeof(Bool2Converter))]
+[JsonConverter(typeof(Bool2JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 2)]
 public unsafe partial struct bool2 : 
     IEquatable<bool2>, IEqualityOperators<bool2, bool2, bool>, IEqualityOperators<bool2, bool2, bool2>,
 
-    IVector, IVector2, IVector<bool>, IVector2<bool>
+    IVector2<bool>, IVectorSelf<bool2>
 {
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public bool x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(1)]
     public bool y;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public bool r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(1)]
     public bool g;
 
@@ -48,16 +54,20 @@ public unsafe partial struct bool2 :
         get => 16;
     }
 
-    public static bool2 Zero
+    public static readonly bool2 zero = new(false);
+
+    public static readonly bool2 one = new(true);
+
+    static bool2 IVectorSelf<bool2>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new bool2(false);
+        get => zero;
     }
 
-    public static bool2 One
+    static bool2 IVectorSelf<bool2>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new bool2(true);
+        get => one;
     }
 
 
@@ -76,7 +86,7 @@ public unsafe partial struct bool2 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator bool2(bool value) => new bool2(value);
+    public static implicit operator bool2(bool value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -100,19 +110,19 @@ public unsafe partial struct bool2 :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int2 Hash() => new int2(this.x.GetHashCode(), this.y.GetHashCode());
+    public int2 Hash() => new(this.x.GetHashCode(), this.y.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool2 IEqualityOperators<bool2, bool2, bool2>.operator ==(bool2 left, bool2 right) => new bool2(left.x == right.x, left.y == right.y);
+    static bool2 IEqualityOperators<bool2, bool2, bool2>.operator ==(bool2 left, bool2 right) => new(left.x == right.x, left.y == right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool2 IEqualityOperators<bool2, bool2, bool2>.operator !=(bool2 left, bool2 right) => new bool2(left.x != right.x, left.y != right.y);
+    static bool2 IEqualityOperators<bool2, bool2, bool2>.operator !=(bool2 left, bool2 right) => new(left.x != right.x, left.y != right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool2 VEq(bool2 other) => new bool2(this.x == other.x, this.y == other.y);
+    public bool2 VEq(bool2 other) => new(this.x == other.x, this.y == other.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool2 VNe(bool2 other) => new bool2(this.x != other.x, this.y != other.y);
+    public bool2 VNe(bool2 other) => new(this.x != other.x, this.y != other.y);
 
 
 
@@ -144,7 +154,7 @@ public static unsafe partial class math
 
 }
 
-public class Bool2Converter : JsonConverter<bool2>
+public class Bool2JsonConverter : JsonConverter<bool2>
 {
     public override bool2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

@@ -9,90 +9,9 @@ namespace CodeGen;
 
 public class GenVectors : Base
 {
-    private record TypeMeta(int Size, string suffix, string Zero, string One, string Two)
-    {
-        public bool Number { get; set; }
-        public bool Half { get; set; }
-        public bool Float { get; set; }
-        public bool Decimal { get; set; }
-        public bool Bool { get; set; }
-        public bool Unsigned { get; set; }
-        public bool Simd { get; set; }
-        public string JsonRead { get; set; } = null!;
-        public Func<string, string> JsonWrite { get; set; } = null!;
-    }
-
-    private static Dictionary<string, TypeMeta> types = new()
-    {
-        {
-            "bool", new(sizeof(bool), "", "false", "true", "")
-            {
-                Bool = true, Unsigned = true,
-                JsonRead = "reader.GetBoolean()", JsonWrite = n => $"writer.WriteBooleanValue({n})",
-            }
-        },
-        {
-            "Half",
-            new(sizeof(short), "", "Half.Zero", "Half.One", "(Half.One + Half.One)")
-            {
-                Number = true, Float = true, Half = true,
-                JsonRead = "(Half)reader.GetSingle()", JsonWrite = n => $"writer.WriteNumberValue((float){n})",
-            }
-        },
-        {
-            "float", new(sizeof(float), "f", "0f", "1f", "2f")
-            {
-                Number = true, Float = true, Simd = true,
-                JsonRead = "reader.GetSingle()", JsonWrite = n => $"writer.WriteNumberValue({n})",
-            }
-        },
-        {
-            "double", new(sizeof(double), "d", "0d", "1d", "2d")
-            {
-                Number = true, Float = true, Simd = true,
-                JsonRead = "reader.GetDouble()", JsonWrite = n => $"writer.WriteNumberValue({n})",
-            }
-        },
-        {
-            "decimal", new(sizeof(decimal), "m", "0m", "1m", "2m")
-            {
-                Number = true, Decimal = true,
-                JsonRead = "reader.GetDecimal()", JsonWrite = n => $"writer.WriteNumberValue({n})",
-            }
-        },
-        {
-            "int", new(sizeof(int), "", "0", "1", "2")
-            {
-                Number = true, Simd = true,
-                JsonRead = "reader.GetInt32()", JsonWrite = n => $"writer.WriteNumberValue({n})",
-            }
-        },
-        {
-            "uint", new(sizeof(uint), "u", "0u", "1u", "2u")
-            {
-                Number = true, Unsigned = true, Simd = true,
-                JsonRead = "reader.GetUInt32()", JsonWrite = n => $"writer.WriteNumberValue({n})",
-            }
-        },
-        {
-            "long", new(sizeof(long), "L", "0L", "1L", "2L")
-            {
-                Number = true, Simd = true,
-                JsonRead = "reader.GetInt64()", JsonWrite = n => $"writer.WriteNumberValue({n})",
-            }
-        },
-        {
-            "ulong", new(sizeof(ulong), "UL", "0UL", "1UL", "2UL")
-            {
-                Number = true, Unsigned = true, Simd = true,
-                JsonRead = "reader.GetUInt64()", JsonWrite = n => $"writer.WriteNumberValue({n})",
-            }
-        },
-    };
-
     public override async Task Gen()
     {
-        foreach (var tm in types)
+        foreach (var tm in TypeMeta.types)
         {
             var type = tm.Key;
             var meta = tm.Value;
@@ -106,7 +25,8 @@ public class GenVectors : Base
                     no_align = true;
                 }
                 var align_name = no_align ? "a" : string.Empty;
-                var vname = $"{type}{n}{align_name}";
+                var na = $"{n}{align_name}";
+                var vname = $"{type}{na}";
 
                 var json_name = $"{type[0].ToString().ToUpper()}{type[1..]}{n}{align_name.ToUpper()}";
 
@@ -114,10 +34,13 @@ public class GenVectors : Base
                 var bitSize = byteSize * 8;
                 var simd = !no_align && meta.Simd && bitSize is 64 or 128 or 256;
 
+                #region fields
+                
                 var fields = new StringBuilder();
                 if (simd)
                 {
                     fields.Append($@"
+    /// <summary>Raw simd vector</summary>
     [FieldOffset(0)]
     public Vector{bitSize}<{type}> vector;
 
@@ -127,18 +50,24 @@ public class GenVectors : Base
                 foreach (var (v, i) in Enumerable.Range(0, n).Select(i => (xyzw[i], i)))
                 {
                     fields.Append($@"
+    /// <summary>{v.ToString().ToUpper()} component of the vector</summary>
     [FieldOffset({i * meta.Size})]
     public {type} {v};
 ");
                 }
+                
+                fields.Append($"\n");
 
                 foreach (var (c, i) in Enumerable.Range(0, n).Select(i => (rgba[i], i)))
                 {
                     fields.Append($@"
+    /// <summary>{c.ToString().ToUpper()} component of the vector</summary>
     [FieldOffset({i * meta.Size})]
     public {type} {c};
 ");
                 }
+                
+                #endregion
 
                 var value_n_value = string.Join(", ", Enumerable.Range(0, n).Select(_ => "value"));
                 var xyzw_arg = string.Join(", ", Enumerable.Range(0, n).Select(i => $"{type} {xyzw[i]}"));
@@ -245,19 +174,20 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A {n} component vector of {type}{(no_align ? $", with no aligned" : string.Empty)}</summary>
 [Serializable]
 [JsonConverter(typeof({json_name}JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = {byteSize})]
 public unsafe partial struct {vname} : 
-    IEquatable<{vname}>, IEqualityOperators<{vname}, {vname}, bool>, IEqualityOperators<{vname}, {vname}, bool{n}>,
+    IEquatable<{vname}>, IEqualityOperators<{vname}, {vname}, bool>, IEqualityOperators<{vname}, {vname}, bool{na}>,
 {(meta.Number ? $@"
     IAdditionOperators<{vname}, {vname}, {vname}>, IAdditiveIdentity<{vname}, {vname}>, IUnaryPlusOperators<{vname}, {vname}>,
     ISubtractionOperators<{vname}, {vname}, {vname}>, {(meta.Unsigned ? "" : $@"IUnaryNegationOperators<{vname}, {vname}>,")}
     IMultiplyOperators<{vname}, {vname}, {vname}>, IMultiplicativeIdentity<{vname}, {vname}>,
     IDivisionOperators<{vname}, {vname}, {vname}>,
     IModulusOperators<{vname}, {vname}, {vname}>,
-" : "")}
-    IVector, IVector{n}, IVector<{type}>, IVector{n}<{type}>
+" : "" /* meta.Number */)}
+    IVector{n}<{type}>, IVectorSelf<{vname}>
 {{
 {fields}
 
@@ -273,16 +203,20 @@ public unsafe partial struct {vname} :
         get => {bitSize};
     }}
 
-    public static {vname} Zero
+    public static readonly {vname} zero = new({meta.Zero});
+
+    public static readonly {vname} one = new({meta.One});
+
+    static {vname} IVectorSelf<{vname}>.Zero 
     {{
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new {vname}({meta.Zero});
+        get => zero;
     }}
 
-    public static {vname} One
+    static {vname} IVectorSelf<{vname}>.One 
     {{
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new {vname}({meta.One});
+        get => one;
     }}
 
 {(simd ? $@"
@@ -309,7 +243,7 @@ public unsafe partial struct {vname} :
     }}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator {vname}({type} value) => new {vname}(value);
+    public static implicit operator {vname}({type} value) => new(value);
 
 {(simd ? $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -353,33 +287,33 @@ public unsafe partial struct {vname} :
     public override int GetHashCode() => HashCode.Combine({xyzw_this_value});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int{n} Hash() => new int{n}({hash_value});
+    public int{na} Hash() => new({hash_value});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool{n} IEqualityOperators<{vname}, {vname}, bool{n}>.operator ==({vname} left, {vname} right) => new bool{n}({oper_value("==")});
+    static bool{na} IEqualityOperators<{vname}, {vname}, bool{na}>.operator ==({vname} left, {vname} right) => new({oper_value("==")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool{n} IEqualityOperators<{vname}, {vname}, bool{n}>.operator !=({vname} left, {vname} right) => new bool{n}({oper_value("!=")});
+    static bool{na} IEqualityOperators<{vname}, {vname}, bool{na}>.operator !=({vname} left, {vname} right) => new({oper_value("!=")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool{n} VEq({vname} other) => new bool{n}({this_oper_value("==")});
+    public bool{na} VEq({vname} other) => new({this_oper_value("==")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool{n} VNe({vname} other) => new bool{n}({this_oper_value("!=")});
+    public bool{na} VNe({vname} other) => new({this_oper_value("!=")});
 
 {(meta.Number ? $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool{n} operator >({vname} left, {vname} right) => new bool{n}({oper_value(">")});
+    public static bool{na} operator >({vname} left, {vname} right) => new({oper_value(">")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool{n} operator <({vname} left, {vname} right) => new bool{n}({oper_value("<")});
+    public static bool{na} operator <({vname} left, {vname} right) => new({oper_value("<")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool{n} operator >=({vname} left, {vname} right) => new bool{n}({oper_value(">=")});
+    public static bool{na} operator >=({vname} left, {vname} right) => new({oper_value(">=")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool{n} operator <=({vname} left, {vname} right) => new bool{n}({oper_value("<=")});
+    public static bool{na} operator <=({vname} left, {vname} right) => new({oper_value("<=")});
 
 " : "")}
 
@@ -387,13 +321,13 @@ public unsafe partial struct {vname} :
     public static {vname} AdditiveIdentity 
     {{
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new {vname}({meta.Zero});
+        get => new({meta.Zero});
     }}
 
     public static {vname} MultiplicativeIdentity 
     {{
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new {vname}({meta.One});
+        get => new({meta.One});
     }}
 
 {(simd ? $@"
@@ -401,29 +335,29 @@ public unsafe partial struct {vname} :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} operator +({vname} left, {vname} right)
     {{
-        return new {vname}(left.vector + right.vector);
+        return new(left.vector + right.vector);
     }}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} operator -({vname} left, {vname} right)
     {{
-        return new {vname}(left.vector - right.vector);
+        return new(left.vector - right.vector);
     }}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} operator *({vname} left, {vname} right)
     {{
-        return new {vname}(left.vector * right.vector);
+        return new(left.vector * right.vector);
     }}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} operator /({vname} left, {vname} right)
     {{
-        return new {vname}(left.vector / right.vector);
+        return new(left.vector / right.vector);
     }}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator %({vname} left, {vname} right) => new {vname}({oper_value("%")});
+    public static {vname} operator %({vname} left, {vname} right) => new({oper_value("%")});
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -460,69 +394,69 @@ public unsafe partial struct {vname} :
 
 {(meta.Unsigned ? "" : $@"    
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator -({vname} self) => new {vname}({unary_oper_value("-")});
+    public static {vname} operator -({vname} self) => new({unary_oper_value("-")});
 ")}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator +({vname} self) => new {vname}({unary_oper_value("+")});
+    public static {vname} operator +({vname} self) => new({unary_oper_value("+")});
 
 " : $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator +({vname} left, {vname} right) => new {vname}({oper_value("+")});
+    public static {vname} operator +({vname} left, {vname} right) => new({oper_value("+")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator -({vname} left, {vname} right) => new {vname}({oper_value("-")});
+    public static {vname} operator -({vname} left, {vname} right) => new({oper_value("-")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator *({vname} left, {vname} right) => new {vname}({oper_value("*")});
+    public static {vname} operator *({vname} left, {vname} right) => new({oper_value("*")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator /({vname} left, {vname} right) => new {vname}({oper_value("/")});
+    public static {vname} operator /({vname} left, {vname} right) => new({oper_value("/")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator %({vname} left, {vname} right) => new {vname}({oper_value("%")});
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator +({vname} left, {type} right) => new {vname}({oper_scalar_right_value("+")});
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator -({vname} left, {type} right) => new {vname}({oper_scalar_right_value("-")});
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator *({vname} left, {type} right) => new {vname}({oper_scalar_right_value("*")});
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator /({vname} left, {type} right) => new {vname}({oper_scalar_right_value("/")});
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator %({vname} left, {type} right) => new {vname}({oper_scalar_right_value("%")});
+    public static {vname} operator %({vname} left, {vname} right) => new({oper_value("%")});
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator +({type} left, {vname} right) => new {vname}({oper_scalar_left_value("+")});
+    public static {vname} operator +({vname} left, {type} right) => new({oper_scalar_right_value("+")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator -({type} left, {vname} right) => new {vname}({oper_scalar_left_value("-")});
+    public static {vname} operator -({vname} left, {type} right) => new({oper_scalar_right_value("-")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator *({type} left, {vname} right) => new {vname}({oper_scalar_left_value("*")});
+    public static {vname} operator *({vname} left, {type} right) => new({oper_scalar_right_value("*")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator /({type} left, {vname} right) => new {vname}({oper_scalar_left_value("/")});
+    public static {vname} operator /({vname} left, {type} right) => new({oper_scalar_right_value("/")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator %({type} left, {vname} right) => new {vname}({oper_scalar_left_value("%")});
+    public static {vname} operator %({vname} left, {type} right) => new({oper_scalar_right_value("%")});
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} operator +({type} left, {vname} right) => new({oper_scalar_left_value("+")});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} operator -({type} left, {vname} right) => new({oper_scalar_left_value("-")});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} operator *({type} left, {vname} right) => new({oper_scalar_left_value("*")});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} operator /({type} left, {vname} right) => new({oper_scalar_left_value("/")});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} operator %({type} left, {vname} right) => new({oper_scalar_left_value("%")});
 
 
 {(meta.Unsigned ? "" : $@"    
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator -({vname} self) => new {vname}({unary_oper_value("-")});
+    public static {vname} operator -({vname} self) => new({unary_oper_value("-")});
 ")}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} operator +({vname} self) => new {vname}({unary_oper_value("+")});
+    public static {vname} operator +({vname} self) => new({unary_oper_value("+")});
 
 ")}
 
@@ -539,10 +473,10 @@ public static unsafe partial class math
 {(meta.Number ? $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} min({vname} x, {vname} y) => new {vname}({fn_value_xy("min")});
+    public static {vname} min({vname} x, {vname} y) => new({fn_value_xy("min")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} max({vname} x, {vname} y) => new {vname}({fn_value_xy("max")});
+    public static {vname} max({vname} x, {vname} y) => new({fn_value_xy("max")});
 
 {(meta.Float || meta.Decimal ? $@"
 
@@ -566,7 +500,7 @@ public static unsafe partial class math
 {(meta.Float || meta.Decimal ? $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} saturate({vname} x) => clamp(x, {vname}.Zero, {vname}.One);
+    public static {vname} saturate({vname} x) => clamp(x, {vname}.zero, {vname}.one);
 
 " : "")}
 
@@ -578,7 +512,7 @@ public static unsafe partial class math
 " : $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} abs({vname} x) => new {vname}({fn_value_x("abs")});
+    public static {vname} abs({vname} x) => new({fn_value_x("abs")});
 
 ")}
 
@@ -601,66 +535,66 @@ public static unsafe partial class math
 {(meta.Float ? $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} tan({vname} x) => new {vname}({fn_value_x("tan")});
+    public static {vname} tan({vname} x) => new({fn_value_x("tan")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} tanh({vname} x) => new {vname}({fn_value_x("tanh")});
+    public static {vname} tanh({vname} x) => new({fn_value_x("tanh")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} atan({vname} x) => new {vname}({fn_value_x("atan")});
+    public static {vname} atan({vname} x) => new({fn_value_x("atan")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} atanh({vname} x) => new {vname}({fn_value_x("tanh")});
+    public static {vname} atanh({vname} x) => new({fn_value_x("tanh")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} atan2({vname} y, {vname} x) => new {vname}({fn_value_yx("atan2")});
+    public static {vname} atan2({vname} y, {vname} x) => new({fn_value_yx("atan2")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} tanPi({vname} x) => new {vname}({fn_value_x("tanPi")});
+    public static {vname} tanPi({vname} x) => new({fn_value_x("tanPi")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} atanPi({vname} x) => new {vname}({fn_value_x("atanPi")});
+    public static {vname} atanPi({vname} x) => new({fn_value_x("atanPi")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} atan2Pi({vname} y, {vname} x) => new {vname}({fn_value_yx("atan2Pi")});
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} cos({vname} x) => new {vname}({fn_value_x("cos")});
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} cosh({vname} x) => new {vname}({fn_value_x("cosh")});
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} acos({vname} x) => new {vname}({fn_value_x("acos")});
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} acosh({vname} x) => new {vname}({fn_value_x("acosh")});
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} cosPi({vname} x) => new {vname}({fn_value_x("cosPi")});
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} acosPi({vname} x) => new {vname}({fn_value_x("acosPi")});
+    public static {vname} atan2Pi({vname} y, {vname} x) => new({fn_value_yx("atan2Pi")});
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} sin({vname} x) => new {vname}({fn_value_x("sin")});
+    public static {vname} cos({vname} x) => new({fn_value_x("cos")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} sinh({vname} x) => new {vname}({fn_value_x("sinh")});
+    public static {vname} cosh({vname} x) => new({fn_value_x("cosh")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} asin({vname} x) => new {vname}({fn_value_x("asin")});
+    public static {vname} acos({vname} x) => new({fn_value_x("acos")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} asinh({vname} x) => new {vname}({fn_value_x("asinh")});
+    public static {vname} acosh({vname} x) => new({fn_value_x("acosh")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} sinPi({vname} x) => new {vname}({fn_value_x("sinPi")});
+    public static {vname} cosPi({vname} x) => new({fn_value_x("cosPi")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} asinPi({vname} x) => new {vname}({fn_value_x("asinPi")});
+    public static {vname} acosPi({vname} x) => new({fn_value_x("acosPi")});
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} sin({vname} x) => new({fn_value_x("sin")});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} sinh({vname} x) => new({fn_value_x("sinh")});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} asin({vname} x) => new({fn_value_x("asin")});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} asinh({vname} x) => new({fn_value_x("asinh")});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} sinPi({vname} x) => new({fn_value_x("sinPi")});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} asinPi({vname} x) => new({fn_value_x("asinPi")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static void sincos({vname} x, out {vname} sin, out {vname} cos)
@@ -674,7 +608,7 @@ public static unsafe partial class math
     public static ({vname} sin, {vname} cos) sincos({vname} x)
     {{
         {sin_cos_part1}
-        return (new {vname}({sin_cos_part2_sin}), new {vname}({sin_cos_part2_cos}));
+        return (new({sin_cos_part2_sin}), new({sin_cos_part2_cos}));
     }}
 " : "")}
 
@@ -683,26 +617,26 @@ public static unsafe partial class math
 {(simd ? $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} floor({vname} x) => new {vname}(Vector{bitSize}.Floor(x.vector));
+    public static {vname} floor({vname} x) => new(Vector{bitSize}.Floor(x.vector));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} ceil({vname} x) => new {vname}(Vector{bitSize}.Ceiling(x.vector));
+    public static {vname} ceil({vname} x) => new(Vector{bitSize}.Ceiling(x.vector));
 
 " : $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} floor({vname} x) => new {vname}({fn_value_x("floor")});
+    public static {vname} floor({vname} x) => new({fn_value_x("floor")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} ceil({vname} x) => new {vname}({fn_value_x("ceil")});
+    public static {vname} ceil({vname} x) => new({fn_value_x("ceil")});
 
 ")}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} round({vname} x) => new {vname}({fn_value_x("round")});
+    public static {vname} round({vname} x) => new({fn_value_x("round")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} trunc({vname} x) => new {vname}({fn_value_x("trunc")});
+    public static {vname} trunc({vname} x) => new({fn_value_x("trunc")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} frac({vname} x) => x - floor(x);
@@ -715,52 +649,52 @@ public static unsafe partial class math
 {(meta.Unsigned ? "" : $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} sign({vname} x) => new {vname}({fn_value_x("sign")});
+    public static {vname} sign({vname} x) => new({fn_value_x("sign")});
 
 ")}
 
 {(meta.Float ? $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} pow({vname} x, {vname} y) => new {vname}({fn_value_xy("pow")});
+    public static {vname} pow({vname} x, {vname} y) => new({fn_value_xy("pow")});
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} exp({vname} x) => new {vname}({fn_value_x("exp")});
+    public static {vname} exp({vname} x) => new({fn_value_x("exp")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} exp2({vname} x) => new {vname}({fn_value_x("exp2")});
+    public static {vname} exp2({vname} x) => new({fn_value_x("exp2")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} exp10({vname} x) => new {vname}({fn_value_x("exp10")});
+    public static {vname} exp10({vname} x) => new({fn_value_x("exp10")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} expM1({vname} x) => new {vname}({fn_value_x("expM1")});
+    public static {vname} expM1({vname} x) => new({fn_value_x("expM1")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} exp2M1({vname} x) => new {vname}({fn_value_x("exp2M1")});
+    public static {vname} exp2M1({vname} x) => new({fn_value_x("exp2M1")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} exp10M1({vname} x) => new {vname}({fn_value_x("exp10M1")});
+    public static {vname} exp10M1({vname} x) => new({fn_value_x("exp10M1")});
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} log({vname} x) => new {vname}({fn_value_x("log")});
+    public static {vname} log({vname} x) => new({fn_value_x("log")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} log2({vname} x) => new {vname}({fn_value_x("log2")});
+    public static {vname} log2({vname} x) => new({fn_value_x("log2")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} log10({vname} x) => new {vname}({fn_value_x("log10")});
+    public static {vname} log10({vname} x) => new({fn_value_x("log10")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} logP1({vname} x) => new {vname}({fn_value_x("logP1")});
+    public static {vname} logP1({vname} x) => new({fn_value_x("logP1")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} log2P1({vname} x) => new {vname}({fn_value_x("log2P1")});
+    public static {vname} log2P1({vname} x) => new({fn_value_x("log2P1")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} log10P1({vname} x) => new {vname}({fn_value_x("log10P1")});
+    public static {vname} log10P1({vname} x) => new({fn_value_x("log10P1")});
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -773,10 +707,10 @@ public static unsafe partial class math
 
 {(simd ? $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} sqrt({vname} x) => new {vname}(Vector{bitSize}.Sqrt(x.vector));
+    public static {vname} sqrt({vname} x) => new(Vector{bitSize}.Sqrt(x.vector));
 " : $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} sqrt({vname} x) => new {vname}({fn_value_x("sqrt")});
+    public static {vname} sqrt({vname} x) => new({fn_value_x("sqrt")});
 ")}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -817,7 +751,7 @@ public static unsafe partial class math
     public static {vname} select({vname} a, {vname} b, bool c) => c ? b : a;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {vname} select({vname} a, {vname} b, bool{n} c) => new {vname}({select});
+    public static {vname} select({vname} a, {vname} b, bool{na} c) => new({select});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} step({vname} y, {vname} x) => select(new {vname}({meta.Zero}), new {vname}({meta.One}), x >= y);

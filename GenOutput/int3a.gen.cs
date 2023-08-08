@@ -14,11 +14,12 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 3 component vector of int, with no aligned</summary>
 [Serializable]
-[JsonConverter(typeof(Int3AConverter))]
+[JsonConverter(typeof(Int3AJsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 12)]
 public unsafe partial struct int3a : 
-    IEquatable<int3a>, IEqualityOperators<int3a, int3a, bool>, IEqualityOperators<int3a, int3a, bool3>,
+    IEquatable<int3a>, IEqualityOperators<int3a, int3a, bool>, IEqualityOperators<int3a, int3a, bool3a>,
 
     IAdditionOperators<int3a, int3a, int3a>, IAdditiveIdentity<int3a, int3a>, IUnaryPlusOperators<int3a, int3a>,
     ISubtractionOperators<int3a, int3a, int3a>, IUnaryNegationOperators<int3a, int3a>,
@@ -26,24 +27,31 @@ public unsafe partial struct int3a :
     IDivisionOperators<int3a, int3a, int3a>,
     IModulusOperators<int3a, int3a, int3a>,
 
-    IVector, IVector3, IVector<int>, IVector3<int>
+    IVector3<int>, IVectorSelf<int3a>
 {
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public int x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(4)]
     public int y;
 
+    /// <summary>Z component of the vector</summary>
     [FieldOffset(8)]
     public int z;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public int r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(4)]
     public int g;
 
+    /// <summary>B component of the vector</summary>
     [FieldOffset(8)]
     public int b;
 
@@ -60,16 +68,20 @@ public unsafe partial struct int3a :
         get => 96;
     }
 
-    public static int3a Zero
+    public static readonly int3a zero = new(0);
+
+    public static readonly int3a one = new(1);
+
+    static int3a IVectorSelf<int3a>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new int3a(0);
+        get => zero;
     }
 
-    public static int3a One
+    static int3a IVectorSelf<int3a>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new int3a(1);
+        get => one;
     }
 
 
@@ -90,7 +102,7 @@ public unsafe partial struct int3a :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator int3a(int value) => new int3a(value);
+    public static implicit operator int3a(int value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -114,33 +126,33 @@ public unsafe partial struct int3a :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y, this.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int3 Hash() => new int3(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode());
+    public int3a Hash() => new(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool3 IEqualityOperators<int3a, int3a, bool3>.operator ==(int3a left, int3a right) => new bool3(left.x == right.x, left.y == right.y, left.z == right.z);
+    static bool3a IEqualityOperators<int3a, int3a, bool3a>.operator ==(int3a left, int3a right) => new(left.x == right.x, left.y == right.y, left.z == right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool3 IEqualityOperators<int3a, int3a, bool3>.operator !=(int3a left, int3a right) => new bool3(left.x != right.x, left.y != right.y, left.z != right.z);
+    static bool3a IEqualityOperators<int3a, int3a, bool3a>.operator !=(int3a left, int3a right) => new(left.x != right.x, left.y != right.y, left.z != right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool3 VEq(int3a other) => new bool3(this.x == other.x, this.y == other.y, this.z == other.z);
+    public bool3a VEq(int3a other) => new(this.x == other.x, this.y == other.y, this.z == other.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool3 VNe(int3a other) => new bool3(this.x != other.x, this.y != other.y, this.z != other.z);
+    public bool3a VNe(int3a other) => new(this.x != other.x, this.y != other.y, this.z != other.z);
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator >(int3a left, int3a right) => new bool3(left.x > right.x, left.y > right.y, left.z > right.z);
+    public static bool3a operator >(int3a left, int3a right) => new(left.x > right.x, left.y > right.y, left.z > right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator <(int3a left, int3a right) => new bool3(left.x < right.x, left.y < right.y, left.z < right.z);
+    public static bool3a operator <(int3a left, int3a right) => new(left.x < right.x, left.y < right.y, left.z < right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator >=(int3a left, int3a right) => new bool3(left.x >= right.x, left.y >= right.y, left.z >= right.z);
+    public static bool3a operator >=(int3a left, int3a right) => new(left.x >= right.x, left.y >= right.y, left.z >= right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator <=(int3a left, int3a right) => new bool3(left.x <= right.x, left.y <= right.y, left.z <= right.z);
+    public static bool3a operator <=(int3a left, int3a right) => new(left.x <= right.x, left.y <= right.y, left.z <= right.z);
 
 
 
@@ -148,72 +160,72 @@ public unsafe partial struct int3a :
     public static int3a AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new int3a(0);
+        get => new(0);
     }
 
     public static int3a MultiplicativeIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new int3a(1);
+        get => new(1);
     }
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator +(int3a left, int3a right) => new int3a(left.x + right.x, left.y + right.y, left.z + right.z);
+    public static int3a operator +(int3a left, int3a right) => new(left.x + right.x, left.y + right.y, left.z + right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator -(int3a left, int3a right) => new int3a(left.x - right.x, left.y - right.y, left.z - right.z);
+    public static int3a operator -(int3a left, int3a right) => new(left.x - right.x, left.y - right.y, left.z - right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator *(int3a left, int3a right) => new int3a(left.x * right.x, left.y * right.y, left.z * right.z);
+    public static int3a operator *(int3a left, int3a right) => new(left.x * right.x, left.y * right.y, left.z * right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator /(int3a left, int3a right) => new int3a(left.x / right.x, left.y / right.y, left.z / right.z);
+    public static int3a operator /(int3a left, int3a right) => new(left.x / right.x, left.y / right.y, left.z / right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator %(int3a left, int3a right) => new int3a(left.x % right.x, left.y % right.y, left.z % right.z);
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator +(int3a left, int right) => new int3a(left.x + right, left.y + right, left.z + right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator -(int3a left, int right) => new int3a(left.x - right, left.y - right, left.z - right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator *(int3a left, int right) => new int3a(left.x * right, left.y * right, left.z * right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator /(int3a left, int right) => new int3a(left.x / right, left.y / right, left.z / right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator %(int3a left, int right) => new int3a(left.x % right, left.y % right, left.z % right);
+    public static int3a operator %(int3a left, int3a right) => new(left.x % right.x, left.y % right.y, left.z % right.z);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator +(int left, int3a right) => new int3a(left + right.x, left + right.y, left + right.z);
+    public static int3a operator +(int3a left, int right) => new(left.x + right, left.y + right, left.z + right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator -(int left, int3a right) => new int3a(left - right.x, left - right.y, left - right.z);
+    public static int3a operator -(int3a left, int right) => new(left.x - right, left.y - right, left.z - right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator *(int left, int3a right) => new int3a(left * right.x, left * right.y, left * right.z);
+    public static int3a operator *(int3a left, int right) => new(left.x * right, left.y * right, left.z * right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator /(int left, int3a right) => new int3a(left / right.x, left / right.y, left / right.z);
+    public static int3a operator /(int3a left, int right) => new(left.x / right, left.y / right, left.z / right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator %(int left, int3a right) => new int3a(left % right.x, left % right.y, left % right.z);
+    public static int3a operator %(int3a left, int right) => new(left.x % right, left.y % right, left.z % right);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3a operator +(int left, int3a right) => new(left + right.x, left + right.y, left + right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3a operator -(int left, int3a right) => new(left - right.x, left - right.y, left - right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3a operator *(int left, int3a right) => new(left * right.x, left * right.y, left * right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3a operator /(int left, int3a right) => new(left / right.x, left / right.y, left / right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3a operator %(int left, int3a right) => new(left % right.x, left % right.y, left % right.z);
 
 
     
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator -(int3a self) => new int3a(-self.x, -self.y, -self.z);
+    public static int3a operator -(int3a self) => new(-self.x, -self.y, -self.z);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a operator +(int3a self) => new int3a(+self.x, +self.y, +self.z);
+    public static int3a operator +(int3a self) => new(+self.x, +self.y, +self.z);
 
 
 
@@ -230,10 +242,10 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a min(int3a x, int3a y) => new int3a(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z));
+    public static int3a min(int3a x, int3a y) => new(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a max(int3a x, int3a y) => new int3a(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z));
+    public static int3a max(int3a x, int3a y) => new(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z));
 
 
 
@@ -248,7 +260,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a abs(int3a x) => new int3a(abs(x.x), abs(x.y), abs(x.z));
+    public static int3a abs(int3a x) => new(abs(x.x), abs(x.y), abs(x.z));
 
 
 
@@ -272,7 +284,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a sign(int3a x) => new int3a(sign(x.x), sign(x.y), sign(x.z));
+    public static int3a sign(int3a x) => new(sign(x.x), sign(x.y), sign(x.z));
 
 
 
@@ -297,7 +309,7 @@ public static unsafe partial class math
     public static int3a select(int3a a, int3a b, bool c) => c ? b : a;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int3a select(int3a a, int3a b, bool3 c) => new int3a(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z);
+    public static int3a select(int3a a, int3a b, bool3a c) => new(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static int3a step(int3a y, int3a x) => select(new int3a(0), new int3a(1), x >= y);
@@ -328,7 +340,7 @@ public static unsafe partial class math
 
 }
 
-public class Int3AConverter : JsonConverter<int3a>
+public class Int3AJsonConverter : JsonConverter<int3a>
 {
     public override int3a Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

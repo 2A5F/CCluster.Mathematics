@@ -14,8 +14,9 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 4 component vector of long</summary>
 [Serializable]
-[JsonConverter(typeof(Long4Converter))]
+[JsonConverter(typeof(Long4JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 32)]
 public unsafe partial struct long4 : 
     IEquatable<long4>, IEqualityOperators<long4, long4, bool>, IEqualityOperators<long4, long4, bool4>,
@@ -26,34 +27,44 @@ public unsafe partial struct long4 :
     IDivisionOperators<long4, long4, long4>,
     IModulusOperators<long4, long4, long4>,
 
-    IVector, IVector4, IVector<long>, IVector4<long>
+    IVector4<long>, IVectorSelf<long4>
 {
 
+    /// <summary>Raw simd vector</summary>
     [FieldOffset(0)]
     public Vector256<long> vector;
 
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public long x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(8)]
     public long y;
 
+    /// <summary>Z component of the vector</summary>
     [FieldOffset(16)]
     public long z;
 
+    /// <summary>W component of the vector</summary>
     [FieldOffset(24)]
     public long w;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public long r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(8)]
     public long g;
 
+    /// <summary>B component of the vector</summary>
     [FieldOffset(16)]
     public long b;
 
+    /// <summary>A component of the vector</summary>
     [FieldOffset(24)]
     public long a;
 
@@ -70,16 +81,20 @@ public unsafe partial struct long4 :
         get => 256;
     }
 
-    public static long4 Zero
+    public static readonly long4 zero = new(0L);
+
+    public static readonly long4 one = new(1L);
+
+    static long4 IVectorSelf<long4>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new long4(0L);
+        get => zero;
     }
 
-    public static long4 One
+    static long4 IVectorSelf<long4>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new long4(1L);
+        get => one;
     }
 
 
@@ -105,7 +120,7 @@ public unsafe partial struct long4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator long4(long value) => new long4(value);
+    public static implicit operator long4(long value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -138,33 +153,33 @@ public unsafe partial struct long4 :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y, this.z, this.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int4 Hash() => new int4(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode(), this.w.GetHashCode());
+    public int4 Hash() => new(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode(), this.w.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool4 IEqualityOperators<long4, long4, bool4>.operator ==(long4 left, long4 right) => new bool4(left.x == right.x, left.y == right.y, left.z == right.z, left.w == right.w);
+    static bool4 IEqualityOperators<long4, long4, bool4>.operator ==(long4 left, long4 right) => new(left.x == right.x, left.y == right.y, left.z == right.z, left.w == right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool4 IEqualityOperators<long4, long4, bool4>.operator !=(long4 left, long4 right) => new bool4(left.x != right.x, left.y != right.y, left.z != right.z, left.w != right.w);
+    static bool4 IEqualityOperators<long4, long4, bool4>.operator !=(long4 left, long4 right) => new(left.x != right.x, left.y != right.y, left.z != right.z, left.w != right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool4 VEq(long4 other) => new bool4(this.x == other.x, this.y == other.y, this.z == other.z, this.w == other.w);
+    public bool4 VEq(long4 other) => new(this.x == other.x, this.y == other.y, this.z == other.z, this.w == other.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool4 VNe(long4 other) => new bool4(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
+    public bool4 VNe(long4 other) => new(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator >(long4 left, long4 right) => new bool4(left.x > right.x, left.y > right.y, left.z > right.z, left.w > right.w);
+    public static bool4 operator >(long4 left, long4 right) => new(left.x > right.x, left.y > right.y, left.z > right.z, left.w > right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator <(long4 left, long4 right) => new bool4(left.x < right.x, left.y < right.y, left.z < right.z, left.w < right.w);
+    public static bool4 operator <(long4 left, long4 right) => new(left.x < right.x, left.y < right.y, left.z < right.z, left.w < right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator >=(long4 left, long4 right) => new bool4(left.x >= right.x, left.y >= right.y, left.z >= right.z, left.w >= right.w);
+    public static bool4 operator >=(long4 left, long4 right) => new(left.x >= right.x, left.y >= right.y, left.z >= right.z, left.w >= right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator <=(long4 left, long4 right) => new bool4(left.x <= right.x, left.y <= right.y, left.z <= right.z, left.w <= right.w);
+    public static bool4 operator <=(long4 left, long4 right) => new(left.x <= right.x, left.y <= right.y, left.z <= right.z, left.w <= right.w);
 
 
 
@@ -172,13 +187,13 @@ public unsafe partial struct long4 :
     public static long4 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new long4(0L);
+        get => new(0L);
     }
 
     public static long4 MultiplicativeIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new long4(1L);
+        get => new(1L);
     }
 
 
@@ -186,29 +201,29 @@ public unsafe partial struct long4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long4 operator +(long4 left, long4 right)
     {
-        return new long4(left.vector + right.vector);
+        return new(left.vector + right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long4 operator -(long4 left, long4 right)
     {
-        return new long4(left.vector - right.vector);
+        return new(left.vector - right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long4 operator *(long4 left, long4 right)
     {
-        return new long4(left.vector * right.vector);
+        return new(left.vector * right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long4 operator /(long4 left, long4 right)
     {
-        return new long4(left.vector / right.vector);
+        return new(left.vector / right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long4 operator %(long4 left, long4 right) => new long4(left.x % right.x, left.y % right.y, left.z % right.z, left.w % right.w);
+    public static long4 operator %(long4 left, long4 right) => new(left.x % right.x, left.y % right.y, left.z % right.z, left.w % right.w);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -245,11 +260,11 @@ public unsafe partial struct long4 :
 
     
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long4 operator -(long4 self) => new long4(-self.x, -self.y, -self.z, -self.w);
+    public static long4 operator -(long4 self) => new(-self.x, -self.y, -self.z, -self.w);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long4 operator +(long4 self) => new long4(+self.x, +self.y, +self.z, +self.w);
+    public static long4 operator +(long4 self) => new(+self.x, +self.y, +self.z, +self.w);
 
 
 
@@ -266,10 +281,10 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long4 min(long4 x, long4 y) => new long4(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z), min(x.w, y.w));
+    public static long4 min(long4 x, long4 y) => new(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z), min(x.w, y.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long4 max(long4 x, long4 y) => new long4(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z), max(x.w, y.w));
+    public static long4 max(long4 x, long4 y) => new(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z), max(x.w, y.w));
 
 
 
@@ -284,7 +299,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long4 abs(long4 x) => new long4(abs(x.x), abs(x.y), abs(x.z), abs(x.w));
+    public static long4 abs(long4 x) => new(abs(x.x), abs(x.y), abs(x.z), abs(x.w));
 
 
 
@@ -305,7 +320,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long4 sign(long4 x) => new long4(sign(x.x), sign(x.y), sign(x.z), sign(x.w));
+    public static long4 sign(long4 x) => new(sign(x.x), sign(x.y), sign(x.z), sign(x.w));
 
 
 
@@ -330,7 +345,7 @@ public static unsafe partial class math
     public static long4 select(long4 a, long4 b, bool c) => c ? b : a;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long4 select(long4 a, long4 b, bool4 c) => new long4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w);
+    public static long4 select(long4 a, long4 b, bool4 c) => new(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long4 step(long4 y, long4 x) => select(new long4(0L), new long4(1L), x >= y);
@@ -361,7 +376,7 @@ public static unsafe partial class math
 
 }
 
-public class Long4Converter : JsonConverter<long4>
+public class Long4JsonConverter : JsonConverter<long4>
 {
     public override long4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

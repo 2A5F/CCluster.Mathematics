@@ -14,8 +14,9 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 3 component vector of double</summary>
 [Serializable]
-[JsonConverter(typeof(Double3Converter))]
+[JsonConverter(typeof(Double3JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 32)]
 public unsafe partial struct double3 : 
     IEquatable<double3>, IEqualityOperators<double3, double3, bool>, IEqualityOperators<double3, double3, bool3>,
@@ -26,28 +27,36 @@ public unsafe partial struct double3 :
     IDivisionOperators<double3, double3, double3>,
     IModulusOperators<double3, double3, double3>,
 
-    IVector, IVector3, IVector<double>, IVector3<double>
+    IVector3<double>, IVectorSelf<double3>
 {
 
+    /// <summary>Raw simd vector</summary>
     [FieldOffset(0)]
     public Vector256<double> vector;
 
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public double x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(8)]
     public double y;
 
+    /// <summary>Z component of the vector</summary>
     [FieldOffset(16)]
     public double z;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public double r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(8)]
     public double g;
 
+    /// <summary>B component of the vector</summary>
     [FieldOffset(16)]
     public double b;
 
@@ -64,16 +73,20 @@ public unsafe partial struct double3 :
         get => 256;
     }
 
-    public static double3 Zero
+    public static readonly double3 zero = new(0d);
+
+    public static readonly double3 one = new(1d);
+
+    static double3 IVectorSelf<double3>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new double3(0d);
+        get => zero;
     }
 
-    public static double3 One
+    static double3 IVectorSelf<double3>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new double3(1d);
+        get => one;
     }
 
 
@@ -99,7 +112,7 @@ public unsafe partial struct double3 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator double3(double value) => new double3(value);
+    public static implicit operator double3(double value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -132,33 +145,33 @@ public unsafe partial struct double3 :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y, this.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int3 Hash() => new int3(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode());
+    public int3 Hash() => new(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool3 IEqualityOperators<double3, double3, bool3>.operator ==(double3 left, double3 right) => new bool3(left.x == right.x, left.y == right.y, left.z == right.z);
+    static bool3 IEqualityOperators<double3, double3, bool3>.operator ==(double3 left, double3 right) => new(left.x == right.x, left.y == right.y, left.z == right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool3 IEqualityOperators<double3, double3, bool3>.operator !=(double3 left, double3 right) => new bool3(left.x != right.x, left.y != right.y, left.z != right.z);
+    static bool3 IEqualityOperators<double3, double3, bool3>.operator !=(double3 left, double3 right) => new(left.x != right.x, left.y != right.y, left.z != right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool3 VEq(double3 other) => new bool3(this.x == other.x, this.y == other.y, this.z == other.z);
+    public bool3 VEq(double3 other) => new(this.x == other.x, this.y == other.y, this.z == other.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool3 VNe(double3 other) => new bool3(this.x != other.x, this.y != other.y, this.z != other.z);
+    public bool3 VNe(double3 other) => new(this.x != other.x, this.y != other.y, this.z != other.z);
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator >(double3 left, double3 right) => new bool3(left.x > right.x, left.y > right.y, left.z > right.z);
+    public static bool3 operator >(double3 left, double3 right) => new(left.x > right.x, left.y > right.y, left.z > right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator <(double3 left, double3 right) => new bool3(left.x < right.x, left.y < right.y, left.z < right.z);
+    public static bool3 operator <(double3 left, double3 right) => new(left.x < right.x, left.y < right.y, left.z < right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator >=(double3 left, double3 right) => new bool3(left.x >= right.x, left.y >= right.y, left.z >= right.z);
+    public static bool3 operator >=(double3 left, double3 right) => new(left.x >= right.x, left.y >= right.y, left.z >= right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator <=(double3 left, double3 right) => new bool3(left.x <= right.x, left.y <= right.y, left.z <= right.z);
+    public static bool3 operator <=(double3 left, double3 right) => new(left.x <= right.x, left.y <= right.y, left.z <= right.z);
 
 
 
@@ -166,13 +179,13 @@ public unsafe partial struct double3 :
     public static double3 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new double3(0d);
+        get => new(0d);
     }
 
     public static double3 MultiplicativeIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new double3(1d);
+        get => new(1d);
     }
 
 
@@ -180,29 +193,29 @@ public unsafe partial struct double3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double3 operator +(double3 left, double3 right)
     {
-        return new double3(left.vector + right.vector);
+        return new(left.vector + right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double3 operator -(double3 left, double3 right)
     {
-        return new double3(left.vector - right.vector);
+        return new(left.vector - right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double3 operator *(double3 left, double3 right)
     {
-        return new double3(left.vector * right.vector);
+        return new(left.vector * right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double3 operator /(double3 left, double3 right)
     {
-        return new double3(left.vector / right.vector);
+        return new(left.vector / right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator %(double3 left, double3 right) => new double3(left.x % right.x, left.y % right.y, left.z % right.z);
+    public static double3 operator %(double3 left, double3 right) => new(left.x % right.x, left.y % right.y, left.z % right.z);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -239,11 +252,11 @@ public unsafe partial struct double3 :
 
     
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator -(double3 self) => new double3(-self.x, -self.y, -self.z);
+    public static double3 operator -(double3 self) => new(-self.x, -self.y, -self.z);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 operator +(double3 self) => new double3(+self.x, +self.y, +self.z);
+    public static double3 operator +(double3 self) => new(+self.x, +self.y, +self.z);
 
 
 
@@ -260,10 +273,10 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 min(double3 x, double3 y) => new double3(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z));
+    public static double3 min(double3 x, double3 y) => new(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 max(double3 x, double3 y) => new double3(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z));
+    public static double3 max(double3 x, double3 y) => new(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z));
 
 
 
@@ -287,14 +300,14 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 saturate(double3 x) => clamp(x, double3.Zero, double3.One);
+    public static double3 saturate(double3 x) => clamp(x, double3.zero, double3.one);
 
 
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 abs(double3 x) => new double3(abs(x.x), abs(x.y), abs(x.z));
+    public static double3 abs(double3 x) => new(abs(x.x), abs(x.y), abs(x.z));
 
 
 
@@ -314,66 +327,66 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 tan(double3 x) => new double3(tan(x.x), tan(x.y), tan(x.z));
+    public static double3 tan(double3 x) => new(tan(x.x), tan(x.y), tan(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 tanh(double3 x) => new double3(tanh(x.x), tanh(x.y), tanh(x.z));
+    public static double3 tanh(double3 x) => new(tanh(x.x), tanh(x.y), tanh(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 atan(double3 x) => new double3(atan(x.x), atan(x.y), atan(x.z));
+    public static double3 atan(double3 x) => new(atan(x.x), atan(x.y), atan(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 atanh(double3 x) => new double3(tanh(x.x), tanh(x.y), tanh(x.z));
+    public static double3 atanh(double3 x) => new(tanh(x.x), tanh(x.y), tanh(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 atan2(double3 y, double3 x) => new double3(atan2(y.x, x.x), atan2(y.y, x.y), atan2(y.z, x.z));
+    public static double3 atan2(double3 y, double3 x) => new(atan2(y.x, x.x), atan2(y.y, x.y), atan2(y.z, x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 tanPi(double3 x) => new double3(tanPi(x.x), tanPi(x.y), tanPi(x.z));
+    public static double3 tanPi(double3 x) => new(tanPi(x.x), tanPi(x.y), tanPi(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 atanPi(double3 x) => new double3(atanPi(x.x), atanPi(x.y), atanPi(x.z));
+    public static double3 atanPi(double3 x) => new(atanPi(x.x), atanPi(x.y), atanPi(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 atan2Pi(double3 y, double3 x) => new double3(atan2Pi(y.x, x.x), atan2Pi(y.y, x.y), atan2Pi(y.z, x.z));
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 cos(double3 x) => new double3(cos(x.x), cos(x.y), cos(x.z));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 cosh(double3 x) => new double3(cosh(x.x), cosh(x.y), cosh(x.z));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 acos(double3 x) => new double3(acos(x.x), acos(x.y), acos(x.z));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 acosh(double3 x) => new double3(acosh(x.x), acosh(x.y), acosh(x.z));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 cosPi(double3 x) => new double3(cosPi(x.x), cosPi(x.y), cosPi(x.z));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 acosPi(double3 x) => new double3(acosPi(x.x), acosPi(x.y), acosPi(x.z));
+    public static double3 atan2Pi(double3 y, double3 x) => new(atan2Pi(y.x, x.x), atan2Pi(y.y, x.y), atan2Pi(y.z, x.z));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 sin(double3 x) => new double3(sin(x.x), sin(x.y), sin(x.z));
+    public static double3 cos(double3 x) => new(cos(x.x), cos(x.y), cos(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 sinh(double3 x) => new double3(sinh(x.x), sinh(x.y), sinh(x.z));
+    public static double3 cosh(double3 x) => new(cosh(x.x), cosh(x.y), cosh(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 asin(double3 x) => new double3(asin(x.x), asin(x.y), asin(x.z));
+    public static double3 acos(double3 x) => new(acos(x.x), acos(x.y), acos(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 asinh(double3 x) => new double3(asinh(x.x), asinh(x.y), asinh(x.z));
+    public static double3 acosh(double3 x) => new(acosh(x.x), acosh(x.y), acosh(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 sinPi(double3 x) => new double3(sinPi(x.x), sinPi(x.y), sinPi(x.z));
+    public static double3 cosPi(double3 x) => new(cosPi(x.x), cosPi(x.y), cosPi(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 asinPi(double3 x) => new double3(asinPi(x.x), asinPi(x.y), asinPi(x.z));
+    public static double3 acosPi(double3 x) => new(acosPi(x.x), acosPi(x.y), acosPi(x.z));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 sin(double3 x) => new(sin(x.x), sin(x.y), sin(x.z));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 sinh(double3 x) => new(sinh(x.x), sinh(x.y), sinh(x.z));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 asin(double3 x) => new(asin(x.x), asin(x.y), asin(x.z));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 asinh(double3 x) => new(asinh(x.x), asinh(x.y), asinh(x.z));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 sinPi(double3 x) => new(sinPi(x.x), sinPi(x.y), sinPi(x.z));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 asinPi(double3 x) => new(asinPi(x.x), asinPi(x.y), asinPi(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static void sincos(double3 x, out double3 sin, out double3 cos)
@@ -387,7 +400,7 @@ public static unsafe partial class math
     public static (double3 sin, double3 cos) sincos(double3 x)
     {
         var (s0, c0) = sincos(x.x); var (s1, c1) = sincos(x.y); var (s2, c2) = sincos(x.z);
-        return (new double3(s0, s1, s2), new double3(c0, c1, c2));
+        return (new(s0, s1, s2), new(c0, c1, c2));
     }
 
 
@@ -396,18 +409,18 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 floor(double3 x) => new double3(Vector256.Floor(x.vector));
+    public static double3 floor(double3 x) => new(Vector256.Floor(x.vector));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 ceil(double3 x) => new double3(Vector256.Ceiling(x.vector));
+    public static double3 ceil(double3 x) => new(Vector256.Ceiling(x.vector));
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 round(double3 x) => new double3(round(x.x), round(x.y), round(x.z));
+    public static double3 round(double3 x) => new(round(x.x), round(x.y), round(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 trunc(double3 x) => new double3(trunc(x.x), trunc(x.y), trunc(x.z));
+    public static double3 trunc(double3 x) => new(trunc(x.x), trunc(x.y), trunc(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double3 frac(double3 x) => x - floor(x);
@@ -420,52 +433,52 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 sign(double3 x) => new double3(sign(x.x), sign(x.y), sign(x.z));
+    public static double3 sign(double3 x) => new(sign(x.x), sign(x.y), sign(x.z));
 
 
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 pow(double3 x, double3 y) => new double3(pow(x.x, y.x), pow(x.y, y.y), pow(x.z, y.z));
+    public static double3 pow(double3 x, double3 y) => new(pow(x.x, y.x), pow(x.y, y.y), pow(x.z, y.z));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 exp(double3 x) => new double3(exp(x.x), exp(x.y), exp(x.z));
+    public static double3 exp(double3 x) => new(exp(x.x), exp(x.y), exp(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 exp2(double3 x) => new double3(exp2(x.x), exp2(x.y), exp2(x.z));
+    public static double3 exp2(double3 x) => new(exp2(x.x), exp2(x.y), exp2(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 exp10(double3 x) => new double3(exp10(x.x), exp10(x.y), exp10(x.z));
+    public static double3 exp10(double3 x) => new(exp10(x.x), exp10(x.y), exp10(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 expM1(double3 x) => new double3(expM1(x.x), expM1(x.y), expM1(x.z));
+    public static double3 expM1(double3 x) => new(expM1(x.x), expM1(x.y), expM1(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 exp2M1(double3 x) => new double3(exp2M1(x.x), exp2M1(x.y), exp2M1(x.z));
+    public static double3 exp2M1(double3 x) => new(exp2M1(x.x), exp2M1(x.y), exp2M1(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 exp10M1(double3 x) => new double3(exp10M1(x.x), exp10M1(x.y), exp10M1(x.z));
+    public static double3 exp10M1(double3 x) => new(exp10M1(x.x), exp10M1(x.y), exp10M1(x.z));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 log(double3 x) => new double3(log(x.x), log(x.y), log(x.z));
+    public static double3 log(double3 x) => new(log(x.x), log(x.y), log(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 log2(double3 x) => new double3(log2(x.x), log2(x.y), log2(x.z));
+    public static double3 log2(double3 x) => new(log2(x.x), log2(x.y), log2(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 log10(double3 x) => new double3(log10(x.x), log10(x.y), log10(x.z));
+    public static double3 log10(double3 x) => new(log10(x.x), log10(x.y), log10(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 logP1(double3 x) => new double3(logP1(x.x), logP1(x.y), logP1(x.z));
+    public static double3 logP1(double3 x) => new(logP1(x.x), logP1(x.y), logP1(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 log2P1(double3 x) => new double3(log2P1(x.x), log2P1(x.y), log2P1(x.z));
+    public static double3 log2P1(double3 x) => new(log2P1(x.x), log2P1(x.y), log2P1(x.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 log10P1(double3 x) => new double3(log10P1(x.x), log10P1(x.y), log10P1(x.z));
+    public static double3 log10P1(double3 x) => new(log10P1(x.x), log10P1(x.y), log10P1(x.z));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -478,7 +491,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 sqrt(double3 x) => new double3(Vector256.Sqrt(x.vector));
+    public static double3 sqrt(double3 x) => new(Vector256.Sqrt(x.vector));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -519,7 +532,7 @@ public static unsafe partial class math
     public static double3 select(double3 a, double3 b, bool c) => c ? b : a;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double3 select(double3 a, double3 b, bool3 c) => new double3(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z);
+    public static double3 select(double3 a, double3 b, bool3 c) => new(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double3 step(double3 y, double3 x) => select(new double3(0d), new double3(1d), x >= y);
@@ -569,7 +582,7 @@ public static unsafe partial class math
 
 }
 
-public class Double3Converter : JsonConverter<double3>
+public class Double3JsonConverter : JsonConverter<double3>
 {
     public override double3 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

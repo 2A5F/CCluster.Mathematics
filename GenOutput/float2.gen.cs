@@ -14,8 +14,9 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 2 component vector of float</summary>
 [Serializable]
-[JsonConverter(typeof(Float2Converter))]
+[JsonConverter(typeof(Float2JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 8)]
 public unsafe partial struct float2 : 
     IEquatable<float2>, IEqualityOperators<float2, float2, bool>, IEqualityOperators<float2, float2, bool2>,
@@ -26,22 +27,28 @@ public unsafe partial struct float2 :
     IDivisionOperators<float2, float2, float2>,
     IModulusOperators<float2, float2, float2>,
 
-    IVector, IVector2, IVector<float>, IVector2<float>
+    IVector2<float>, IVectorSelf<float2>
 {
 
+    /// <summary>Raw simd vector</summary>
     [FieldOffset(0)]
     public Vector64<float> vector;
 
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public float x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(4)]
     public float y;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public float r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(4)]
     public float g;
 
@@ -58,16 +65,20 @@ public unsafe partial struct float2 :
         get => 64;
     }
 
-    public static float2 Zero
+    public static readonly float2 zero = new(0f);
+
+    public static readonly float2 one = new(1f);
+
+    static float2 IVectorSelf<float2>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new float2(0f);
+        get => zero;
     }
 
-    public static float2 One
+    static float2 IVectorSelf<float2>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new float2(1f);
+        get => one;
     }
 
 
@@ -93,7 +104,7 @@ public unsafe partial struct float2 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator float2(float value) => new float2(value);
+    public static implicit operator float2(float value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -126,33 +137,33 @@ public unsafe partial struct float2 :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int2 Hash() => new int2(this.x.GetHashCode(), this.y.GetHashCode());
+    public int2 Hash() => new(this.x.GetHashCode(), this.y.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool2 IEqualityOperators<float2, float2, bool2>.operator ==(float2 left, float2 right) => new bool2(left.x == right.x, left.y == right.y);
+    static bool2 IEqualityOperators<float2, float2, bool2>.operator ==(float2 left, float2 right) => new(left.x == right.x, left.y == right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool2 IEqualityOperators<float2, float2, bool2>.operator !=(float2 left, float2 right) => new bool2(left.x != right.x, left.y != right.y);
+    static bool2 IEqualityOperators<float2, float2, bool2>.operator !=(float2 left, float2 right) => new(left.x != right.x, left.y != right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool2 VEq(float2 other) => new bool2(this.x == other.x, this.y == other.y);
+    public bool2 VEq(float2 other) => new(this.x == other.x, this.y == other.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool2 VNe(float2 other) => new bool2(this.x != other.x, this.y != other.y);
+    public bool2 VNe(float2 other) => new(this.x != other.x, this.y != other.y);
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator >(float2 left, float2 right) => new bool2(left.x > right.x, left.y > right.y);
+    public static bool2 operator >(float2 left, float2 right) => new(left.x > right.x, left.y > right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator <(float2 left, float2 right) => new bool2(left.x < right.x, left.y < right.y);
+    public static bool2 operator <(float2 left, float2 right) => new(left.x < right.x, left.y < right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator >=(float2 left, float2 right) => new bool2(left.x >= right.x, left.y >= right.y);
+    public static bool2 operator >=(float2 left, float2 right) => new(left.x >= right.x, left.y >= right.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2 operator <=(float2 left, float2 right) => new bool2(left.x <= right.x, left.y <= right.y);
+    public static bool2 operator <=(float2 left, float2 right) => new(left.x <= right.x, left.y <= right.y);
 
 
 
@@ -160,13 +171,13 @@ public unsafe partial struct float2 :
     public static float2 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new float2(0f);
+        get => new(0f);
     }
 
     public static float2 MultiplicativeIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new float2(1f);
+        get => new(1f);
     }
 
 
@@ -174,29 +185,29 @@ public unsafe partial struct float2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float2 operator +(float2 left, float2 right)
     {
-        return new float2(left.vector + right.vector);
+        return new(left.vector + right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float2 operator -(float2 left, float2 right)
     {
-        return new float2(left.vector - right.vector);
+        return new(left.vector - right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float2 operator *(float2 left, float2 right)
     {
-        return new float2(left.vector * right.vector);
+        return new(left.vector * right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float2 operator /(float2 left, float2 right)
     {
-        return new float2(left.vector / right.vector);
+        return new(left.vector / right.vector);
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator %(float2 left, float2 right) => new float2(left.x % right.x, left.y % right.y);
+    public static float2 operator %(float2 left, float2 right) => new(left.x % right.x, left.y % right.y);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -233,11 +244,11 @@ public unsafe partial struct float2 :
 
     
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator -(float2 self) => new float2(-self.x, -self.y);
+    public static float2 operator -(float2 self) => new(-self.x, -self.y);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator +(float2 self) => new float2(+self.x, +self.y);
+    public static float2 operator +(float2 self) => new(+self.x, +self.y);
 
 
 
@@ -254,10 +265,10 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 min(float2 x, float2 y) => new float2(min(x.x, y.x), min(x.y, y.y));
+    public static float2 min(float2 x, float2 y) => new(min(x.x, y.x), min(x.y, y.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 max(float2 x, float2 y) => new float2(max(x.x, y.x), max(x.y, y.y));
+    public static float2 max(float2 x, float2 y) => new(max(x.x, y.x), max(x.y, y.y));
 
 
 
@@ -281,14 +292,14 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 saturate(float2 x) => clamp(x, float2.Zero, float2.One);
+    public static float2 saturate(float2 x) => clamp(x, float2.zero, float2.one);
 
 
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 abs(float2 x) => new float2(abs(x.x), abs(x.y));
+    public static float2 abs(float2 x) => new(abs(x.x), abs(x.y));
 
 
 
@@ -305,66 +316,66 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 tan(float2 x) => new float2(tan(x.x), tan(x.y));
+    public static float2 tan(float2 x) => new(tan(x.x), tan(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 tanh(float2 x) => new float2(tanh(x.x), tanh(x.y));
+    public static float2 tanh(float2 x) => new(tanh(x.x), tanh(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 atan(float2 x) => new float2(atan(x.x), atan(x.y));
+    public static float2 atan(float2 x) => new(atan(x.x), atan(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 atanh(float2 x) => new float2(tanh(x.x), tanh(x.y));
+    public static float2 atanh(float2 x) => new(tanh(x.x), tanh(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 atan2(float2 y, float2 x) => new float2(atan2(y.x, x.x), atan2(y.y, x.y));
+    public static float2 atan2(float2 y, float2 x) => new(atan2(y.x, x.x), atan2(y.y, x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 tanPi(float2 x) => new float2(tanPi(x.x), tanPi(x.y));
+    public static float2 tanPi(float2 x) => new(tanPi(x.x), tanPi(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 atanPi(float2 x) => new float2(atanPi(x.x), atanPi(x.y));
+    public static float2 atanPi(float2 x) => new(atanPi(x.x), atanPi(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 atan2Pi(float2 y, float2 x) => new float2(atan2Pi(y.x, x.x), atan2Pi(y.y, x.y));
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 cos(float2 x) => new float2(cos(x.x), cos(x.y));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 cosh(float2 x) => new float2(cosh(x.x), cosh(x.y));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 acos(float2 x) => new float2(acos(x.x), acos(x.y));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 acosh(float2 x) => new float2(acosh(x.x), acosh(x.y));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 cosPi(float2 x) => new float2(cosPi(x.x), cosPi(x.y));
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 acosPi(float2 x) => new float2(acosPi(x.x), acosPi(x.y));
+    public static float2 atan2Pi(float2 y, float2 x) => new(atan2Pi(y.x, x.x), atan2Pi(y.y, x.y));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 sin(float2 x) => new float2(sin(x.x), sin(x.y));
+    public static float2 cos(float2 x) => new(cos(x.x), cos(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 sinh(float2 x) => new float2(sinh(x.x), sinh(x.y));
+    public static float2 cosh(float2 x) => new(cosh(x.x), cosh(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 asin(float2 x) => new float2(asin(x.x), asin(x.y));
+    public static float2 acos(float2 x) => new(acos(x.x), acos(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 asinh(float2 x) => new float2(asinh(x.x), asinh(x.y));
+    public static float2 acosh(float2 x) => new(acosh(x.x), acosh(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 sinPi(float2 x) => new float2(sinPi(x.x), sinPi(x.y));
+    public static float2 cosPi(float2 x) => new(cosPi(x.x), cosPi(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 asinPi(float2 x) => new float2(asinPi(x.x), asinPi(x.y));
+    public static float2 acosPi(float2 x) => new(acosPi(x.x), acosPi(x.y));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 sin(float2 x) => new(sin(x.x), sin(x.y));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 sinh(float2 x) => new(sinh(x.x), sinh(x.y));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 asin(float2 x) => new(asin(x.x), asin(x.y));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 asinh(float2 x) => new(asinh(x.x), asinh(x.y));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 sinPi(float2 x) => new(sinPi(x.x), sinPi(x.y));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 asinPi(float2 x) => new(asinPi(x.x), asinPi(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static void sincos(float2 x, out float2 sin, out float2 cos)
@@ -378,7 +389,7 @@ public static unsafe partial class math
     public static (float2 sin, float2 cos) sincos(float2 x)
     {
         var (s0, c0) = sincos(x.x); var (s1, c1) = sincos(x.y);
-        return (new float2(s0, s1), new float2(c0, c1));
+        return (new(s0, s1), new(c0, c1));
     }
 
 
@@ -387,18 +398,18 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 floor(float2 x) => new float2(Vector64.Floor(x.vector));
+    public static float2 floor(float2 x) => new(Vector64.Floor(x.vector));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 ceil(float2 x) => new float2(Vector64.Ceiling(x.vector));
+    public static float2 ceil(float2 x) => new(Vector64.Ceiling(x.vector));
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 round(float2 x) => new float2(round(x.x), round(x.y));
+    public static float2 round(float2 x) => new(round(x.x), round(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 trunc(float2 x) => new float2(trunc(x.x), trunc(x.y));
+    public static float2 trunc(float2 x) => new(trunc(x.x), trunc(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float2 frac(float2 x) => x - floor(x);
@@ -411,52 +422,52 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 sign(float2 x) => new float2(sign(x.x), sign(x.y));
+    public static float2 sign(float2 x) => new(sign(x.x), sign(x.y));
 
 
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 pow(float2 x, float2 y) => new float2(pow(x.x, y.x), pow(x.y, y.y));
+    public static float2 pow(float2 x, float2 y) => new(pow(x.x, y.x), pow(x.y, y.y));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 exp(float2 x) => new float2(exp(x.x), exp(x.y));
+    public static float2 exp(float2 x) => new(exp(x.x), exp(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 exp2(float2 x) => new float2(exp2(x.x), exp2(x.y));
+    public static float2 exp2(float2 x) => new(exp2(x.x), exp2(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 exp10(float2 x) => new float2(exp10(x.x), exp10(x.y));
+    public static float2 exp10(float2 x) => new(exp10(x.x), exp10(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 expM1(float2 x) => new float2(expM1(x.x), expM1(x.y));
+    public static float2 expM1(float2 x) => new(expM1(x.x), expM1(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 exp2M1(float2 x) => new float2(exp2M1(x.x), exp2M1(x.y));
+    public static float2 exp2M1(float2 x) => new(exp2M1(x.x), exp2M1(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 exp10M1(float2 x) => new float2(exp10M1(x.x), exp10M1(x.y));
+    public static float2 exp10M1(float2 x) => new(exp10M1(x.x), exp10M1(x.y));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 log(float2 x) => new float2(log(x.x), log(x.y));
+    public static float2 log(float2 x) => new(log(x.x), log(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 log2(float2 x) => new float2(log2(x.x), log2(x.y));
+    public static float2 log2(float2 x) => new(log2(x.x), log2(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 log10(float2 x) => new float2(log10(x.x), log10(x.y));
+    public static float2 log10(float2 x) => new(log10(x.x), log10(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 logP1(float2 x) => new float2(logP1(x.x), logP1(x.y));
+    public static float2 logP1(float2 x) => new(logP1(x.x), logP1(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 log2P1(float2 x) => new float2(log2P1(x.x), log2P1(x.y));
+    public static float2 log2P1(float2 x) => new(log2P1(x.x), log2P1(x.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 log10P1(float2 x) => new float2(log10P1(x.x), log10P1(x.y));
+    public static float2 log10P1(float2 x) => new(log10P1(x.x), log10P1(x.y));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -469,7 +480,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 sqrt(float2 x) => new float2(Vector64.Sqrt(x.vector));
+    public static float2 sqrt(float2 x) => new(Vector64.Sqrt(x.vector));
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -510,7 +521,7 @@ public static unsafe partial class math
     public static float2 select(float2 a, float2 b, bool c) => c ? b : a;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 select(float2 a, float2 b, bool2 c) => new float2(c.x ? b.x : a.x, c.y ? b.y : a.y);
+    public static float2 select(float2 a, float2 b, bool2 c) => new(c.x ? b.x : a.x, c.y ? b.y : a.y);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float2 step(float2 y, float2 x) => select(new float2(0f), new float2(1f), x >= y);
@@ -560,7 +571,7 @@ public static unsafe partial class math
 
 }
 
-public class Float2Converter : JsonConverter<float2>
+public class Float2JsonConverter : JsonConverter<float2>
 {
     public override float2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

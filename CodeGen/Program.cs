@@ -9,7 +9,8 @@ internal class Program
         Task.WhenAll(
             new GenScalarNumbers().Gen(),
             new GenCartesian().Gen(),
-            new GenVectors().Gen()
+            new GenVectors().Gen(),
+            new GenMatrix().Gen()
         ).Wait();
     }
 }

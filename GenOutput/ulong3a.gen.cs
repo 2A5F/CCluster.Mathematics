@@ -14,11 +14,12 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 3 component vector of ulong, with no aligned</summary>
 [Serializable]
-[JsonConverter(typeof(Ulong3AConverter))]
+[JsonConverter(typeof(Ulong3AJsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 24)]
 public unsafe partial struct ulong3a : 
-    IEquatable<ulong3a>, IEqualityOperators<ulong3a, ulong3a, bool>, IEqualityOperators<ulong3a, ulong3a, bool3>,
+    IEquatable<ulong3a>, IEqualityOperators<ulong3a, ulong3a, bool>, IEqualityOperators<ulong3a, ulong3a, bool3a>,
 
     IAdditionOperators<ulong3a, ulong3a, ulong3a>, IAdditiveIdentity<ulong3a, ulong3a>, IUnaryPlusOperators<ulong3a, ulong3a>,
     ISubtractionOperators<ulong3a, ulong3a, ulong3a>, 
@@ -26,24 +27,31 @@ public unsafe partial struct ulong3a :
     IDivisionOperators<ulong3a, ulong3a, ulong3a>,
     IModulusOperators<ulong3a, ulong3a, ulong3a>,
 
-    IVector, IVector3, IVector<ulong>, IVector3<ulong>
+    IVector3<ulong>, IVectorSelf<ulong3a>
 {
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public ulong x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(8)]
     public ulong y;
 
+    /// <summary>Z component of the vector</summary>
     [FieldOffset(16)]
     public ulong z;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public ulong r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(8)]
     public ulong g;
 
+    /// <summary>B component of the vector</summary>
     [FieldOffset(16)]
     public ulong b;
 
@@ -60,16 +68,20 @@ public unsafe partial struct ulong3a :
         get => 192;
     }
 
-    public static ulong3a Zero
+    public static readonly ulong3a zero = new(0UL);
+
+    public static readonly ulong3a one = new(1UL);
+
+    static ulong3a IVectorSelf<ulong3a>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new ulong3a(0UL);
+        get => zero;
     }
 
-    public static ulong3a One
+    static ulong3a IVectorSelf<ulong3a>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new ulong3a(1UL);
+        get => one;
     }
 
 
@@ -90,7 +102,7 @@ public unsafe partial struct ulong3a :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator ulong3a(ulong value) => new ulong3a(value);
+    public static implicit operator ulong3a(ulong value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -114,33 +126,33 @@ public unsafe partial struct ulong3a :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y, this.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int3 Hash() => new int3(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode());
+    public int3a Hash() => new(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool3 IEqualityOperators<ulong3a, ulong3a, bool3>.operator ==(ulong3a left, ulong3a right) => new bool3(left.x == right.x, left.y == right.y, left.z == right.z);
+    static bool3a IEqualityOperators<ulong3a, ulong3a, bool3a>.operator ==(ulong3a left, ulong3a right) => new(left.x == right.x, left.y == right.y, left.z == right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool3 IEqualityOperators<ulong3a, ulong3a, bool3>.operator !=(ulong3a left, ulong3a right) => new bool3(left.x != right.x, left.y != right.y, left.z != right.z);
+    static bool3a IEqualityOperators<ulong3a, ulong3a, bool3a>.operator !=(ulong3a left, ulong3a right) => new(left.x != right.x, left.y != right.y, left.z != right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool3 VEq(ulong3a other) => new bool3(this.x == other.x, this.y == other.y, this.z == other.z);
+    public bool3a VEq(ulong3a other) => new(this.x == other.x, this.y == other.y, this.z == other.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool3 VNe(ulong3a other) => new bool3(this.x != other.x, this.y != other.y, this.z != other.z);
+    public bool3a VNe(ulong3a other) => new(this.x != other.x, this.y != other.y, this.z != other.z);
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator >(ulong3a left, ulong3a right) => new bool3(left.x > right.x, left.y > right.y, left.z > right.z);
+    public static bool3a operator >(ulong3a left, ulong3a right) => new(left.x > right.x, left.y > right.y, left.z > right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator <(ulong3a left, ulong3a right) => new bool3(left.x < right.x, left.y < right.y, left.z < right.z);
+    public static bool3a operator <(ulong3a left, ulong3a right) => new(left.x < right.x, left.y < right.y, left.z < right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator >=(ulong3a left, ulong3a right) => new bool3(left.x >= right.x, left.y >= right.y, left.z >= right.z);
+    public static bool3a operator >=(ulong3a left, ulong3a right) => new(left.x >= right.x, left.y >= right.y, left.z >= right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool3 operator <=(ulong3a left, ulong3a right) => new bool3(left.x <= right.x, left.y <= right.y, left.z <= right.z);
+    public static bool3a operator <=(ulong3a left, ulong3a right) => new(left.x <= right.x, left.y <= right.y, left.z <= right.z);
 
 
 
@@ -148,69 +160,69 @@ public unsafe partial struct ulong3a :
     public static ulong3a AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new ulong3a(0UL);
+        get => new(0UL);
     }
 
     public static ulong3a MultiplicativeIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new ulong3a(1UL);
+        get => new(1UL);
     }
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator +(ulong3a left, ulong3a right) => new ulong3a(left.x + right.x, left.y + right.y, left.z + right.z);
+    public static ulong3a operator +(ulong3a left, ulong3a right) => new(left.x + right.x, left.y + right.y, left.z + right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator -(ulong3a left, ulong3a right) => new ulong3a(left.x - right.x, left.y - right.y, left.z - right.z);
+    public static ulong3a operator -(ulong3a left, ulong3a right) => new(left.x - right.x, left.y - right.y, left.z - right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator *(ulong3a left, ulong3a right) => new ulong3a(left.x * right.x, left.y * right.y, left.z * right.z);
+    public static ulong3a operator *(ulong3a left, ulong3a right) => new(left.x * right.x, left.y * right.y, left.z * right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator /(ulong3a left, ulong3a right) => new ulong3a(left.x / right.x, left.y / right.y, left.z / right.z);
+    public static ulong3a operator /(ulong3a left, ulong3a right) => new(left.x / right.x, left.y / right.y, left.z / right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator %(ulong3a left, ulong3a right) => new ulong3a(left.x % right.x, left.y % right.y, left.z % right.z);
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator +(ulong3a left, ulong right) => new ulong3a(left.x + right, left.y + right, left.z + right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator -(ulong3a left, ulong right) => new ulong3a(left.x - right, left.y - right, left.z - right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator *(ulong3a left, ulong right) => new ulong3a(left.x * right, left.y * right, left.z * right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator /(ulong3a left, ulong right) => new ulong3a(left.x / right, left.y / right, left.z / right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator %(ulong3a left, ulong right) => new ulong3a(left.x % right, left.y % right, left.z % right);
+    public static ulong3a operator %(ulong3a left, ulong3a right) => new(left.x % right.x, left.y % right.y, left.z % right.z);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator +(ulong left, ulong3a right) => new ulong3a(left + right.x, left + right.y, left + right.z);
+    public static ulong3a operator +(ulong3a left, ulong right) => new(left.x + right, left.y + right, left.z + right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator -(ulong left, ulong3a right) => new ulong3a(left - right.x, left - right.y, left - right.z);
+    public static ulong3a operator -(ulong3a left, ulong right) => new(left.x - right, left.y - right, left.z - right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator *(ulong left, ulong3a right) => new ulong3a(left * right.x, left * right.y, left * right.z);
+    public static ulong3a operator *(ulong3a left, ulong right) => new(left.x * right, left.y * right, left.z * right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator /(ulong left, ulong3a right) => new ulong3a(left / right.x, left / right.y, left / right.z);
+    public static ulong3a operator /(ulong3a left, ulong right) => new(left.x / right, left.y / right, left.z / right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator %(ulong left, ulong3a right) => new ulong3a(left % right.x, left % right.y, left % right.z);
-
-
+    public static ulong3a operator %(ulong3a left, ulong right) => new(left.x % right, left.y % right, left.z % right);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a operator +(ulong3a self) => new ulong3a(+self.x, +self.y, +self.z);
+    public static ulong3a operator +(ulong left, ulong3a right) => new(left + right.x, left + right.y, left + right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3a operator -(ulong left, ulong3a right) => new(left - right.x, left - right.y, left - right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3a operator *(ulong left, ulong3a right) => new(left * right.x, left * right.y, left * right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3a operator /(ulong left, ulong3a right) => new(left / right.x, left / right.y, left / right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3a operator %(ulong left, ulong3a right) => new(left % right.x, left % right.y, left % right.z);
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3a operator +(ulong3a self) => new(+self.x, +self.y, +self.z);
 
 
 
@@ -227,10 +239,10 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a min(ulong3a x, ulong3a y) => new ulong3a(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z));
+    public static ulong3a min(ulong3a x, ulong3a y) => new(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a max(ulong3a x, ulong3a y) => new ulong3a(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z));
+    public static ulong3a max(ulong3a x, ulong3a y) => new(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z));
 
 
 
@@ -289,7 +301,7 @@ public static unsafe partial class math
     public static ulong3a select(ulong3a a, ulong3a b, bool c) => c ? b : a;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3a select(ulong3a a, ulong3a b, bool3 c) => new ulong3a(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z);
+    public static ulong3a select(ulong3a a, ulong3a b, bool3a c) => new(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ulong3a step(ulong3a y, ulong3a x) => select(new ulong3a(0UL), new ulong3a(1UL), x >= y);
@@ -315,7 +327,7 @@ public static unsafe partial class math
 
 }
 
-public class Ulong3AConverter : JsonConverter<ulong3a>
+public class Ulong3AJsonConverter : JsonConverter<ulong3a>
 {
     public override ulong3a Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

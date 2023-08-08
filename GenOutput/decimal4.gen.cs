@@ -14,8 +14,9 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 4 component vector of decimal</summary>
 [Serializable]
-[JsonConverter(typeof(Decimal4Converter))]
+[JsonConverter(typeof(Decimal4JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 64)]
 public unsafe partial struct decimal4 : 
     IEquatable<decimal4>, IEqualityOperators<decimal4, decimal4, bool>, IEqualityOperators<decimal4, decimal4, bool4>,
@@ -26,30 +27,39 @@ public unsafe partial struct decimal4 :
     IDivisionOperators<decimal4, decimal4, decimal4>,
     IModulusOperators<decimal4, decimal4, decimal4>,
 
-    IVector, IVector4, IVector<decimal>, IVector4<decimal>
+    IVector4<decimal>, IVectorSelf<decimal4>
 {
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public decimal x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(16)]
     public decimal y;
 
+    /// <summary>Z component of the vector</summary>
     [FieldOffset(32)]
     public decimal z;
 
+    /// <summary>W component of the vector</summary>
     [FieldOffset(48)]
     public decimal w;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public decimal r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(16)]
     public decimal g;
 
+    /// <summary>B component of the vector</summary>
     [FieldOffset(32)]
     public decimal b;
 
+    /// <summary>A component of the vector</summary>
     [FieldOffset(48)]
     public decimal a;
 
@@ -66,16 +76,20 @@ public unsafe partial struct decimal4 :
         get => 512;
     }
 
-    public static decimal4 Zero
+    public static readonly decimal4 zero = new(0m);
+
+    public static readonly decimal4 one = new(1m);
+
+    static decimal4 IVectorSelf<decimal4>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new decimal4(0m);
+        get => zero;
     }
 
-    public static decimal4 One
+    static decimal4 IVectorSelf<decimal4>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new decimal4(1m);
+        get => one;
     }
 
 
@@ -98,7 +112,7 @@ public unsafe partial struct decimal4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator decimal4(decimal value) => new decimal4(value);
+    public static implicit operator decimal4(decimal value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -122,33 +136,33 @@ public unsafe partial struct decimal4 :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y, this.z, this.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int4 Hash() => new int4(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode(), this.w.GetHashCode());
+    public int4 Hash() => new(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode(), this.w.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool4 IEqualityOperators<decimal4, decimal4, bool4>.operator ==(decimal4 left, decimal4 right) => new bool4(left.x == right.x, left.y == right.y, left.z == right.z, left.w == right.w);
+    static bool4 IEqualityOperators<decimal4, decimal4, bool4>.operator ==(decimal4 left, decimal4 right) => new(left.x == right.x, left.y == right.y, left.z == right.z, left.w == right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool4 IEqualityOperators<decimal4, decimal4, bool4>.operator !=(decimal4 left, decimal4 right) => new bool4(left.x != right.x, left.y != right.y, left.z != right.z, left.w != right.w);
+    static bool4 IEqualityOperators<decimal4, decimal4, bool4>.operator !=(decimal4 left, decimal4 right) => new(left.x != right.x, left.y != right.y, left.z != right.z, left.w != right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool4 VEq(decimal4 other) => new bool4(this.x == other.x, this.y == other.y, this.z == other.z, this.w == other.w);
+    public bool4 VEq(decimal4 other) => new(this.x == other.x, this.y == other.y, this.z == other.z, this.w == other.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool4 VNe(decimal4 other) => new bool4(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
+    public bool4 VNe(decimal4 other) => new(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator >(decimal4 left, decimal4 right) => new bool4(left.x > right.x, left.y > right.y, left.z > right.z, left.w > right.w);
+    public static bool4 operator >(decimal4 left, decimal4 right) => new(left.x > right.x, left.y > right.y, left.z > right.z, left.w > right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator <(decimal4 left, decimal4 right) => new bool4(left.x < right.x, left.y < right.y, left.z < right.z, left.w < right.w);
+    public static bool4 operator <(decimal4 left, decimal4 right) => new(left.x < right.x, left.y < right.y, left.z < right.z, left.w < right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator >=(decimal4 left, decimal4 right) => new bool4(left.x >= right.x, left.y >= right.y, left.z >= right.z, left.w >= right.w);
+    public static bool4 operator >=(decimal4 left, decimal4 right) => new(left.x >= right.x, left.y >= right.y, left.z >= right.z, left.w >= right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool4 operator <=(decimal4 left, decimal4 right) => new bool4(left.x <= right.x, left.y <= right.y, left.z <= right.z, left.w <= right.w);
+    public static bool4 operator <=(decimal4 left, decimal4 right) => new(left.x <= right.x, left.y <= right.y, left.z <= right.z, left.w <= right.w);
 
 
 
@@ -156,72 +170,72 @@ public unsafe partial struct decimal4 :
     public static decimal4 AdditiveIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new decimal4(0m);
+        get => new(0m);
     }
 
     public static decimal4 MultiplicativeIdentity 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new decimal4(1m);
+        get => new(1m);
     }
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator +(decimal4 left, decimal4 right) => new decimal4(left.x + right.x, left.y + right.y, left.z + right.z, left.w + right.w);
+    public static decimal4 operator +(decimal4 left, decimal4 right) => new(left.x + right.x, left.y + right.y, left.z + right.z, left.w + right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator -(decimal4 left, decimal4 right) => new decimal4(left.x - right.x, left.y - right.y, left.z - right.z, left.w - right.w);
+    public static decimal4 operator -(decimal4 left, decimal4 right) => new(left.x - right.x, left.y - right.y, left.z - right.z, left.w - right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator *(decimal4 left, decimal4 right) => new decimal4(left.x * right.x, left.y * right.y, left.z * right.z, left.w * right.w);
+    public static decimal4 operator *(decimal4 left, decimal4 right) => new(left.x * right.x, left.y * right.y, left.z * right.z, left.w * right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator /(decimal4 left, decimal4 right) => new decimal4(left.x / right.x, left.y / right.y, left.z / right.z, left.w / right.w);
+    public static decimal4 operator /(decimal4 left, decimal4 right) => new(left.x / right.x, left.y / right.y, left.z / right.z, left.w / right.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator %(decimal4 left, decimal4 right) => new decimal4(left.x % right.x, left.y % right.y, left.z % right.z, left.w % right.w);
-
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator +(decimal4 left, decimal right) => new decimal4(left.x + right, left.y + right, left.z + right, left.w + right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator -(decimal4 left, decimal right) => new decimal4(left.x - right, left.y - right, left.z - right, left.w - right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator *(decimal4 left, decimal right) => new decimal4(left.x * right, left.y * right, left.z * right, left.w * right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator /(decimal4 left, decimal right) => new decimal4(left.x / right, left.y / right, left.z / right, left.w / right);
-
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator %(decimal4 left, decimal right) => new decimal4(left.x % right, left.y % right, left.z % right, left.w % right);
+    public static decimal4 operator %(decimal4 left, decimal4 right) => new(left.x % right.x, left.y % right.y, left.z % right.z, left.w % right.w);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator +(decimal left, decimal4 right) => new decimal4(left + right.x, left + right.y, left + right.z, left + right.w);
+    public static decimal4 operator +(decimal4 left, decimal right) => new(left.x + right, left.y + right, left.z + right, left.w + right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator -(decimal left, decimal4 right) => new decimal4(left - right.x, left - right.y, left - right.z, left - right.w);
+    public static decimal4 operator -(decimal4 left, decimal right) => new(left.x - right, left.y - right, left.z - right, left.w - right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator *(decimal left, decimal4 right) => new decimal4(left * right.x, left * right.y, left * right.z, left * right.w);
+    public static decimal4 operator *(decimal4 left, decimal right) => new(left.x * right, left.y * right, left.z * right, left.w * right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator /(decimal left, decimal4 right) => new decimal4(left / right.x, left / right.y, left / right.z, left / right.w);
+    public static decimal4 operator /(decimal4 left, decimal right) => new(left.x / right, left.y / right, left.z / right, left.w / right);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator %(decimal left, decimal4 right) => new decimal4(left % right.x, left % right.y, left % right.z, left % right.w);
+    public static decimal4 operator %(decimal4 left, decimal right) => new(left.x % right, left.y % right, left.z % right, left.w % right);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal4 operator +(decimal left, decimal4 right) => new(left + right.x, left + right.y, left + right.z, left + right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal4 operator -(decimal left, decimal4 right) => new(left - right.x, left - right.y, left - right.z, left - right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal4 operator *(decimal left, decimal4 right) => new(left * right.x, left * right.y, left * right.z, left * right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal4 operator /(decimal left, decimal4 right) => new(left / right.x, left / right.y, left / right.z, left / right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal4 operator %(decimal left, decimal4 right) => new(left % right.x, left % right.y, left % right.z, left % right.w);
 
 
     
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator -(decimal4 self) => new decimal4(-self.x, -self.y, -self.z, -self.w);
+    public static decimal4 operator -(decimal4 self) => new(-self.x, -self.y, -self.z, -self.w);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 operator +(decimal4 self) => new decimal4(+self.x, +self.y, +self.z, +self.w);
+    public static decimal4 operator +(decimal4 self) => new(+self.x, +self.y, +self.z, +self.w);
 
 
 
@@ -238,10 +252,10 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 min(decimal4 x, decimal4 y) => new decimal4(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z), min(x.w, y.w));
+    public static decimal4 min(decimal4 x, decimal4 y) => new(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z), min(x.w, y.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 max(decimal4 x, decimal4 y) => new decimal4(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z), max(x.w, y.w));
+    public static decimal4 max(decimal4 x, decimal4 y) => new(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z), max(x.w, y.w));
 
 
 
@@ -265,14 +279,14 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 saturate(decimal4 x) => clamp(x, decimal4.Zero, decimal4.One);
+    public static decimal4 saturate(decimal4 x) => clamp(x, decimal4.zero, decimal4.one);
 
 
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 abs(decimal4 x) => new decimal4(abs(x.x), abs(x.y), abs(x.z), abs(x.w));
+    public static decimal4 abs(decimal4 x) => new(abs(x.x), abs(x.y), abs(x.z), abs(x.w));
 
 
 
@@ -293,18 +307,18 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 floor(decimal4 x) => new decimal4(floor(x.x), floor(x.y), floor(x.z), floor(x.w));
+    public static decimal4 floor(decimal4 x) => new(floor(x.x), floor(x.y), floor(x.z), floor(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 ceil(decimal4 x) => new decimal4(ceil(x.x), ceil(x.y), ceil(x.z), ceil(x.w));
+    public static decimal4 ceil(decimal4 x) => new(ceil(x.x), ceil(x.y), ceil(x.z), ceil(x.w));
 
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 round(decimal4 x) => new decimal4(round(x.x), round(x.y), round(x.z), round(x.w));
+    public static decimal4 round(decimal4 x) => new(round(x.x), round(x.y), round(x.z), round(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 trunc(decimal4 x) => new decimal4(trunc(x.x), trunc(x.y), trunc(x.z), trunc(x.w));
+    public static decimal4 trunc(decimal4 x) => new(trunc(x.x), trunc(x.y), trunc(x.z), trunc(x.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal4 frac(decimal4 x) => x - floor(x);
@@ -317,7 +331,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 sign(decimal4 x) => new decimal4(sign(x.x), sign(x.y), sign(x.z), sign(x.w));
+    public static decimal4 sign(decimal4 x) => new(sign(x.x), sign(x.y), sign(x.z), sign(x.w));
 
 
 
@@ -342,7 +356,7 @@ public static unsafe partial class math
     public static decimal4 select(decimal4 a, decimal4 b, bool c) => c ? b : a;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal4 select(decimal4 a, decimal4 b, bool4 c) => new decimal4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w);
+    public static decimal4 select(decimal4 a, decimal4 b, bool4 c) => new(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal4 step(decimal4 y, decimal4 x) => select(new decimal4(0m), new decimal4(1m), x >= y);
@@ -382,7 +396,7 @@ public static unsafe partial class math
 
 }
 
-public class Decimal4Converter : JsonConverter<decimal4>
+public class Decimal4JsonConverter : JsonConverter<decimal4>
 {
     public override decimal4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {

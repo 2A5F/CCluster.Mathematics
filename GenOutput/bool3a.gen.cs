@@ -14,30 +14,38 @@ using System.Text.Json.Serialization;
 
 namespace CCluster.Mathematics;
 
+/// <summary>A 3 component vector of bool, with no aligned</summary>
 [Serializable]
-[JsonConverter(typeof(Bool3AConverter))]
+[JsonConverter(typeof(Bool3AJsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 3)]
 public unsafe partial struct bool3a : 
-    IEquatable<bool3a>, IEqualityOperators<bool3a, bool3a, bool>, IEqualityOperators<bool3a, bool3a, bool3>,
+    IEquatable<bool3a>, IEqualityOperators<bool3a, bool3a, bool>, IEqualityOperators<bool3a, bool3a, bool3a>,
 
-    IVector, IVector3, IVector<bool>, IVector3<bool>
+    IVector3<bool>, IVectorSelf<bool3a>
 {
 
+    /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
     public bool x;
 
+    /// <summary>Y component of the vector</summary>
     [FieldOffset(1)]
     public bool y;
 
+    /// <summary>Z component of the vector</summary>
     [FieldOffset(2)]
     public bool z;
 
+
+    /// <summary>R component of the vector</summary>
     [FieldOffset(0)]
     public bool r;
 
+    /// <summary>G component of the vector</summary>
     [FieldOffset(1)]
     public bool g;
 
+    /// <summary>B component of the vector</summary>
     [FieldOffset(2)]
     public bool b;
 
@@ -54,16 +62,20 @@ public unsafe partial struct bool3a :
         get => 24;
     }
 
-    public static bool3a Zero
+    public static readonly bool3a zero = new(false);
+
+    public static readonly bool3a one = new(true);
+
+    static bool3a IVectorSelf<bool3a>.Zero 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new bool3a(false);
+        get => zero;
     }
 
-    public static bool3a One
+    static bool3a IVectorSelf<bool3a>.One 
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-        get => new bool3a(true);
+        get => one;
     }
 
 
@@ -84,7 +96,7 @@ public unsafe partial struct bool3a :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static implicit operator bool3a(bool value) => new bool3a(value);
+    public static implicit operator bool3a(bool value) => new(value);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -108,19 +120,19 @@ public unsafe partial struct bool3a :
     public override int GetHashCode() => HashCode.Combine(this.x, this.y, this.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public int3 Hash() => new int3(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode());
+    public int3a Hash() => new(this.x.GetHashCode(), this.y.GetHashCode(), this.z.GetHashCode());
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool3 IEqualityOperators<bool3a, bool3a, bool3>.operator ==(bool3a left, bool3a right) => new bool3(left.x == right.x, left.y == right.y, left.z == right.z);
+    static bool3a IEqualityOperators<bool3a, bool3a, bool3a>.operator ==(bool3a left, bool3a right) => new(left.x == right.x, left.y == right.y, left.z == right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    static bool3 IEqualityOperators<bool3a, bool3a, bool3>.operator !=(bool3a left, bool3a right) => new bool3(left.x != right.x, left.y != right.y, left.z != right.z);
+    static bool3a IEqualityOperators<bool3a, bool3a, bool3a>.operator !=(bool3a left, bool3a right) => new(left.x != right.x, left.y != right.y, left.z != right.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool3 VEq(bool3a other) => new bool3(this.x == other.x, this.y == other.y, this.z == other.z);
+    public bool3a VEq(bool3a other) => new(this.x == other.x, this.y == other.y, this.z == other.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public bool3 VNe(bool3a other) => new bool3(this.x != other.x, this.y != other.y, this.z != other.z);
+    public bool3a VNe(bool3a other) => new(this.x != other.x, this.y != other.y, this.z != other.z);
 
 
 
@@ -152,7 +164,7 @@ public static unsafe partial class math
 
 }
 
-public class Bool3AConverter : JsonConverter<bool3a>
+public class Bool3AJsonConverter : JsonConverter<bool3a>
 {
     public override bool3a Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
