@@ -28,7 +28,10 @@ public unsafe partial struct ulong3a :
     IModulusOperators<ulong3a, ulong3a, ulong3a>,
 
     IVector3<ulong>, IVectorSelf<ulong3a>
-{
+{    
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
 
     /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
@@ -55,6 +58,11 @@ public unsafe partial struct ulong3a :
     [FieldOffset(16)]
     public ulong b;
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
 
     public static int ByteSize 
     {
@@ -84,25 +92,45 @@ public unsafe partial struct ulong3a :
         get => one;
     }
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
+
+    #region Ctor
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public ulong3a(ulong value) : this(value, value, value) { }
 
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public ulong3a(ulong x, ulong y, ulong z)
     {
-
         this.x = x;
 
         this.y = y;
 
         this.z = z;
-
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public ulong3a(ulong2 xy, ulong z) : this(xy.x, xy.y, z) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public ulong3a(ulong x, ulong2 yz) : this(x, yz.x, yz.y) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator ulong3a(ulong value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator ulong3a(ulong3 value) => new(value.x, value.y, value.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator ulong3(ulong3a value) => new(value.x, value.y, value.z);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -140,6 +168,8 @@ public unsafe partial struct ulong3a :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool3a VNe(ulong3a other) => new(this.x != other.x, this.y != other.y, this.z != other.z);
 
+    #endregion
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -156,6 +186,10 @@ public unsafe partial struct ulong3a :
 
 
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Arithmetic
+
+    #region Arithmetic
 
     public static ulong3a AdditiveIdentity 
     {
@@ -226,11 +260,17 @@ public unsafe partial struct ulong3a :
 
 
 
+    #endregion
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override string ToString() => $"ulong3a({this.x}, {this.y}, {this.z})";
 
+    #endregion
 }
 
 public static unsafe partial class math

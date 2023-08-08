@@ -22,7 +22,10 @@ public unsafe partial struct bool4 :
     IEquatable<bool4>, IEqualityOperators<bool4, bool4, bool>, IEqualityOperators<bool4, bool4, bool4>,
 
     IVector4<bool>, IVectorSelf<bool4>
-{
+{    
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
 
     /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
@@ -57,6 +60,11 @@ public unsafe partial struct bool4 :
     [FieldOffset(3)]
     public bool a;
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
 
     public static int ByteSize 
     {
@@ -86,15 +94,18 @@ public unsafe partial struct bool4 :
         get => one;
     }
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
+
+    #region Ctor
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool4(bool value) : this(value, value, value, value) { }
 
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool4(bool x, bool y, bool z, bool w)
     {
-
         this.x = x;
 
         this.y = y;
@@ -102,11 +113,34 @@ public unsafe partial struct bool4 :
         this.z = z;
 
         this.w = w;
-
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool4(bool2 xy, bool2 zw) : this(xy.x, xy.y, zw.x, zw.y) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool4(bool2 xy, bool z, bool w) : this(xy.x, xy.y, z, w) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool4(bool x, bool2 yz, bool w) : this(x, yz.x, yz.y, w) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool4(bool x, bool y, bool2 zw) : this(x, y, zw.x, zw.y) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool4(bool3 xyz, bool w) : this(xyz.x, xyz.y, xyz.z, w) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool4(bool x, bool3 yzw) : this(x, yzw.x, yzw.y, yzw.z) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator bool4(bool value) => new(value);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -144,13 +178,19 @@ public unsafe partial struct bool4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool4 VNe(bool4 other) => new(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
 
+    #endregion
 
 
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override string ToString() => $"bool4({this.x}, {this.y}, {this.z}, {this.w})";
 
+    #endregion
 }
 
 public static unsafe partial class math

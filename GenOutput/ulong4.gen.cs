@@ -28,7 +28,10 @@ public unsafe partial struct ulong4 :
     IModulusOperators<ulong4, ulong4, ulong4>,
 
     IVector4<ulong>, IVectorSelf<ulong4>
-{
+{    
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
 
     /// <summary>Raw simd vector</summary>
     [FieldOffset(0)]
@@ -68,6 +71,11 @@ public unsafe partial struct ulong4 :
     [FieldOffset(24)]
     public ulong a;
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
 
     public static int ByteSize 
     {
@@ -97,6 +105,11 @@ public unsafe partial struct ulong4 :
         get => one;
     }
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
+
+    #region Ctor
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public ulong4(Vector256<ulong> vector)
@@ -110,17 +123,38 @@ public unsafe partial struct ulong4 :
         this.vector = Vector256.Create(value);
     }
 
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public ulong4(ulong x, ulong y, ulong z, ulong w)
     {
-
         this.vector = Vector256.Create(x, y, z, w);
-
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public ulong4(ulong2 xy, ulong2 zw) : this(xy.x, xy.y, zw.x, zw.y) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public ulong4(ulong2 xy, ulong z, ulong w) : this(xy.x, xy.y, z, w) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public ulong4(ulong x, ulong2 yz, ulong w) : this(x, yz.x, yz.y, w) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public ulong4(ulong x, ulong y, ulong2 zw) : this(x, y, zw.x, zw.y) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public ulong4(ulong3 xyz, ulong w) : this(xyz.x, xyz.y, xyz.z, w) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public ulong4(ulong x, ulong3 yzw) : this(x, yzw.x, yzw.y, yzw.z) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator ulong4(ulong value) => new(value);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -167,6 +201,8 @@ public unsafe partial struct ulong4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool4 VNe(ulong4 other) => new(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
 
+    #endregion
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -183,6 +219,10 @@ public unsafe partial struct ulong4 :
 
 
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Arithmetic
+
+    #region Arithmetic
 
     public static ulong4 AdditiveIdentity 
     {
@@ -265,11 +305,17 @@ public unsafe partial struct ulong4 :
 
 
 
+    #endregion
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override string ToString() => $"ulong4({this.x}, {this.y}, {this.z}, {this.w})";
 
+    #endregion
 }
 
 public static unsafe partial class math

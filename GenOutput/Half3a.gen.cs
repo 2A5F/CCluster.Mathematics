@@ -28,7 +28,10 @@ public unsafe partial struct Half3a :
     IModulusOperators<Half3a, Half3a, Half3a>,
 
     IVector3<Half>, IVectorSelf<Half3a>
-{
+{    
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
 
     /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
@@ -55,6 +58,11 @@ public unsafe partial struct Half3a :
     [FieldOffset(4)]
     public Half b;
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
 
     public static int ByteSize 
     {
@@ -84,25 +92,45 @@ public unsafe partial struct Half3a :
         get => one;
     }
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
+
+    #region Ctor
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public Half3a(Half value) : this(value, value, value) { }
 
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public Half3a(Half x, Half y, Half z)
     {
-
         this.x = x;
 
         this.y = y;
 
         this.z = z;
-
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public Half3a(Half2 xy, Half z) : this(xy.x, xy.y, z) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public Half3a(Half x, Half2 yz) : this(x, yz.x, yz.y) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator Half3a(Half value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator Half3a(Half3 value) => new(value.x, value.y, value.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator Half3(Half3a value) => new(value.x, value.y, value.z);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -140,6 +168,8 @@ public unsafe partial struct Half3a :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool3a VNe(Half3a other) => new(this.x != other.x, this.y != other.y, this.z != other.z);
 
+    #endregion
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -156,6 +186,10 @@ public unsafe partial struct Half3a :
 
 
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Arithmetic
+
+    #region Arithmetic
 
     public static Half3a AdditiveIdentity 
     {
@@ -229,11 +263,17 @@ public unsafe partial struct Half3a :
 
 
 
+    #endregion
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override string ToString() => $"Half3a({this.x}, {this.y}, {this.z})";
 
+    #endregion
 }
 
 public static unsafe partial class math

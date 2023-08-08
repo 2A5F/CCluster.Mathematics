@@ -28,7 +28,10 @@ public unsafe partial struct double3 :
     IModulusOperators<double3, double3, double3>,
 
     IVector3<double>, IVectorSelf<double3>
-{
+{    
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
 
     /// <summary>Raw simd vector</summary>
     [FieldOffset(0)]
@@ -60,6 +63,11 @@ public unsafe partial struct double3 :
     [FieldOffset(16)]
     public double b;
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
 
     public static int ByteSize 
     {
@@ -89,6 +97,11 @@ public unsafe partial struct double3 :
         get => one;
     }
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
+
+    #region Ctor
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public double3(Vector256<double> vector)
@@ -102,17 +115,26 @@ public unsafe partial struct double3 :
         this.vector = Vector256.Create(value);
     }
 
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public double3(double x, double y, double z)
     {
-
         this.vector = Vector256.Create(x, y, z, 0d);
-
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public double3(double2 xy, double z) : this(xy.x, xy.y, z) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public double3(double x, double2 yz) : this(x, yz.x, yz.y) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator double3(double value) => new(value);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -159,6 +181,8 @@ public unsafe partial struct double3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool3 VNe(double3 other) => new(this.x != other.x, this.y != other.y, this.z != other.z);
 
+    #endregion
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -175,6 +199,10 @@ public unsafe partial struct double3 :
 
 
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Arithmetic
+
+    #region Arithmetic
 
     public static double3 AdditiveIdentity 
     {
@@ -260,11 +288,17 @@ public unsafe partial struct double3 :
 
 
 
+    #endregion
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override string ToString() => $"double3({this.x}, {this.y}, {this.z})";
 
+    #endregion
 }
 
 public static unsafe partial class math

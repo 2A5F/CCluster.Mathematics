@@ -28,7 +28,10 @@ public unsafe partial struct int2 :
     IModulusOperators<int2, int2, int2>,
 
     IVector2<int>, IVectorSelf<int2>
-{
+{    
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
 
     /// <summary>Raw simd vector</summary>
     [FieldOffset(0)]
@@ -52,6 +55,11 @@ public unsafe partial struct int2 :
     [FieldOffset(4)]
     public int g;
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
 
     public static int ByteSize 
     {
@@ -81,6 +89,11 @@ public unsafe partial struct int2 :
         get => one;
     }
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
+
+    #region Ctor
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public int2(Vector64<int> vector)
@@ -94,17 +107,20 @@ public unsafe partial struct int2 :
         this.vector = Vector64.Create(value);
     }
 
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public int2(int x, int y)
     {
-
         this.vector = Vector64.Create(x, y);
-
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator int2(int value) => new(value);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -151,6 +167,8 @@ public unsafe partial struct int2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool2 VNe(int2 other) => new(this.x != other.x, this.y != other.y);
 
+    #endregion
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -167,6 +185,10 @@ public unsafe partial struct int2 :
 
 
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Arithmetic
+
+    #region Arithmetic
 
     public static int2 AdditiveIdentity 
     {
@@ -252,11 +274,17 @@ public unsafe partial struct int2 :
 
 
 
+    #endregion
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override string ToString() => $"int2({this.x}, {this.y})";
 
+    #endregion
 }
 
 public static unsafe partial class math

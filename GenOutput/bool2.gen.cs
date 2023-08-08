@@ -22,7 +22,10 @@ public unsafe partial struct bool2 :
     IEquatable<bool2>, IEqualityOperators<bool2, bool2, bool>, IEqualityOperators<bool2, bool2, bool2>,
 
     IVector2<bool>, IVectorSelf<bool2>
-{
+{    
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
 
     /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
@@ -41,6 +44,11 @@ public unsafe partial struct bool2 :
     [FieldOffset(1)]
     public bool g;
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
 
     public static int ByteSize 
     {
@@ -70,23 +78,31 @@ public unsafe partial struct bool2 :
         get => one;
     }
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
+
+    #region Ctor
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool2(bool value) : this(value, value) { }
 
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool2(bool x, bool y)
     {
-
         this.x = x;
 
         this.y = y;
-
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator bool2(bool value) => new(value);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -124,13 +140,19 @@ public unsafe partial struct bool2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool2 VNe(bool2 other) => new(this.x != other.x, this.y != other.y);
 
+    #endregion
 
 
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override string ToString() => $"bool2({this.x}, {this.y})";
 
+    #endregion
 }
 
 public static unsafe partial class math

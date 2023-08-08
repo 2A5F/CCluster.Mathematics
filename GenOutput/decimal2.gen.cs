@@ -28,7 +28,10 @@ public unsafe partial struct decimal2 :
     IModulusOperators<decimal2, decimal2, decimal2>,
 
     IVector2<decimal>, IVectorSelf<decimal2>
-{
+{    
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
 
     /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
@@ -47,6 +50,11 @@ public unsafe partial struct decimal2 :
     [FieldOffset(16)]
     public decimal g;
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
 
     public static int ByteSize 
     {
@@ -76,23 +84,31 @@ public unsafe partial struct decimal2 :
         get => one;
     }
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
+
+    #region Ctor
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public decimal2(decimal value) : this(value, value) { }
 
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public decimal2(decimal x, decimal y)
     {
-
         this.x = x;
 
         this.y = y;
-
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator decimal2(decimal value) => new(value);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -130,6 +146,8 @@ public unsafe partial struct decimal2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool2 VNe(decimal2 other) => new(this.x != other.x, this.y != other.y);
 
+    #endregion
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -146,6 +164,10 @@ public unsafe partial struct decimal2 :
 
 
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Arithmetic
+
+    #region Arithmetic
 
     public static decimal2 AdditiveIdentity 
     {
@@ -219,11 +241,17 @@ public unsafe partial struct decimal2 :
 
 
 
+    #endregion
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override string ToString() => $"decimal2({this.x}, {this.y})";
 
+    #endregion
 }
 
 public static unsafe partial class math

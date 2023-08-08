@@ -28,7 +28,10 @@ public unsafe partial struct uint4 :
     IModulusOperators<uint4, uint4, uint4>,
 
     IVector4<uint>, IVectorSelf<uint4>
-{
+{    
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
 
     /// <summary>Raw simd vector</summary>
     [FieldOffset(0)]
@@ -68,6 +71,11 @@ public unsafe partial struct uint4 :
     [FieldOffset(12)]
     public uint a;
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
 
     public static int ByteSize 
     {
@@ -97,6 +105,11 @@ public unsafe partial struct uint4 :
         get => one;
     }
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
+
+    #region Ctor
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public uint4(Vector128<uint> vector)
@@ -110,17 +123,38 @@ public unsafe partial struct uint4 :
         this.vector = Vector128.Create(value);
     }
 
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public uint4(uint x, uint y, uint z, uint w)
     {
-
         this.vector = Vector128.Create(x, y, z, w);
-
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public uint4(uint2 xy, uint2 zw) : this(xy.x, xy.y, zw.x, zw.y) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public uint4(uint2 xy, uint z, uint w) : this(xy.x, xy.y, z, w) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public uint4(uint x, uint2 yz, uint w) : this(x, yz.x, yz.y, w) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public uint4(uint x, uint y, uint2 zw) : this(x, y, zw.x, zw.y) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public uint4(uint3 xyz, uint w) : this(xyz.x, xyz.y, xyz.z, w) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public uint4(uint x, uint3 yzw) : this(x, yzw.x, yzw.y, yzw.z) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator uint4(uint value) => new(value);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -167,6 +201,8 @@ public unsafe partial struct uint4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool4 VNe(uint4 other) => new(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
 
+    #endregion
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -183,6 +219,10 @@ public unsafe partial struct uint4 :
 
 
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Arithmetic
+
+    #region Arithmetic
 
     public static uint4 AdditiveIdentity 
     {
@@ -265,11 +305,17 @@ public unsafe partial struct uint4 :
 
 
 
+    #endregion
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override string ToString() => $"uint4({this.x}, {this.y}, {this.z}, {this.w})";
 
+    #endregion
 }
 
 public static unsafe partial class math

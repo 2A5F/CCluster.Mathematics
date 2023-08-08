@@ -28,7 +28,10 @@ public unsafe partial struct ulong2 :
     IModulusOperators<ulong2, ulong2, ulong2>,
 
     IVector2<ulong>, IVectorSelf<ulong2>
-{
+{    
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
 
     /// <summary>Raw simd vector</summary>
     [FieldOffset(0)]
@@ -52,6 +55,11 @@ public unsafe partial struct ulong2 :
     [FieldOffset(8)]
     public ulong g;
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
 
     public static int ByteSize 
     {
@@ -81,6 +89,11 @@ public unsafe partial struct ulong2 :
         get => one;
     }
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
+
+    #region Ctor
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public ulong2(Vector128<ulong> vector)
@@ -94,17 +107,20 @@ public unsafe partial struct ulong2 :
         this.vector = Vector128.Create(value);
     }
 
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public ulong2(ulong x, ulong y)
     {
-
         this.vector = Vector128.Create(x, y);
-
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator ulong2(ulong value) => new(value);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -151,6 +167,8 @@ public unsafe partial struct ulong2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool2 VNe(ulong2 other) => new(this.x != other.x, this.y != other.y);
 
+    #endregion
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -167,6 +185,10 @@ public unsafe partial struct ulong2 :
 
 
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Arithmetic
+
+    #region Arithmetic
 
     public static ulong2 AdditiveIdentity 
     {
@@ -249,11 +271,17 @@ public unsafe partial struct ulong2 :
 
 
 
+    #endregion
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override string ToString() => $"ulong2({this.x}, {this.y})";
 
+    #endregion
 }
 
 public static unsafe partial class math

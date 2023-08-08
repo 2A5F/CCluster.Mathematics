@@ -28,7 +28,10 @@ public unsafe partial struct float3 :
     IModulusOperators<float3, float3, float3>,
 
     IVector3<float>, IVectorSelf<float3>
-{
+{    
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
 
     /// <summary>Raw simd vector</summary>
     [FieldOffset(0)]
@@ -60,6 +63,11 @@ public unsafe partial struct float3 :
     [FieldOffset(8)]
     public float b;
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
 
     public static int ByteSize 
     {
@@ -89,6 +97,11 @@ public unsafe partial struct float3 :
         get => one;
     }
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
+
+    #region Ctor
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public float3(Vector128<float> vector)
@@ -102,17 +115,26 @@ public unsafe partial struct float3 :
         this.vector = Vector128.Create(value);
     }
 
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public float3(float x, float y, float z)
     {
-
         this.vector = Vector128.Create(x, y, z, 0f);
-
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public float3(float2 xy, float z) : this(xy.x, xy.y, z) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public float3(float x, float2 yz) : this(x, yz.x, yz.y) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator float3(float value) => new(value);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -159,6 +181,8 @@ public unsafe partial struct float3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool3 VNe(float3 other) => new(this.x != other.x, this.y != other.y, this.z != other.z);
 
+    #endregion
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -175,6 +199,10 @@ public unsafe partial struct float3 :
 
 
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Arithmetic
+
+    #region Arithmetic
 
     public static float3 AdditiveIdentity 
     {
@@ -260,11 +288,17 @@ public unsafe partial struct float3 :
 
 
 
+    #endregion
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override string ToString() => $"float3({this.x}, {this.y}, {this.z})";
 
+    #endregion
 }
 
 public static unsafe partial class math

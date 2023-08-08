@@ -35,7 +35,7 @@ public class GenVectors : Base
                 var simd = !no_align && meta.Simd && bitSize is 64 or 128 or 256;
 
                 #region fields
-                
+
                 var fields = new StringBuilder();
                 if (simd)
                 {
@@ -55,7 +55,7 @@ public class GenVectors : Base
     public {type} {v};
 ");
                 }
-                
+
                 fields.Append($"\n");
 
                 foreach (var (c, i) in Enumerable.Range(0, n).Select(i => (rgba[i], i)))
@@ -66,40 +66,143 @@ public class GenVectors : Base
     public {type} {c};
 ");
                 }
-                
+
                 #endregion
 
                 var value_n_value = string.Join(", ", Enumerable.Range(0, n).Select(_ => "value"));
                 var xyzw_arg = string.Join(", ", Enumerable.Range(0, n).Select(i => $"{type} {xyzw[i]}"));
                 var xyzw_value = string.Join(", ", Enumerable.Range(0, n).Select(i => $"{xyzw[i]}"));
                 var xyzw_this_value = string.Join(", ", Enumerable.Range(0, n).Select(i => $"this.{xyzw[i]}"));
+                var xyzw_value_value = string.Join(", ", Enumerable.Range(0, n).Select(i => $"value.{xyzw[i]}"));
                 var xyzw_this_value_to_str =
                     string.Join(", ", Enumerable.Range(0, n).Select(i => $"{{this.{xyzw[i]}}}"));
-                var ctor = new StringBuilder();
-                if (simd)
+
+                #region ctors
+
+                var ctors = new StringBuilder();
+
+                #region ctor1
+
                 {
-                    if (n == 3)
+                    if (simd)
                     {
-                        ctor.Append($@"
-        this.vector = Vector{bitSize}.Create({xyzw_value}, {meta.Zero});
+                        ctors.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public {vname}(Vector{bitSize}<{type}> vector)
+    {{
+        this.vector = vector;
+    }}
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public {vname}({type} value)
+    {{
+        this.vector = Vector{bitSize}.Create(value);
+    }}
 ");
                     }
                     else
                     {
-                        ctor.Append($@"
+                        ctors.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public {vname}({type} value) : this({value_n_value}) {{ }}
+");
+                    }
+                }
+
+                #endregion
+
+                #region ctor2
+
+                {
+                    ctors.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public {vname}({xyzw_arg})
+    {{");
+                    if (simd)
+                    {
+                        if (n == 3)
+                        {
+                            ctors.Append($@"
+        this.vector = Vector{bitSize}.Create({xyzw_value}, {meta.Zero});
+");
+                        }
+                        else
+                        {
+                            ctors.Append($@"
         this.vector = Vector{bitSize}.Create({xyzw_value});
 ");
+                        }
                     }
-                }
-                else
-                {
-                    foreach (var i in Enumerable.Range(0, n))
+                    else
                     {
-                        ctor.Append(@$"
+                        foreach (var i in Enumerable.Range(0, n))
+                        {
+                            ctors.Append(@$"
         this.{xyzw[i]} = {xyzw[i]};
 ");
+                        }
                     }
+                    ctors.Append($@"    }}
+");
                 }
+
+                #endregion
+
+                #region ctor3
+
+                if (n == 3)
+                {
+                    ctors.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public {vname}({type}{2} xy, {type} z) : this(xy.x, xy.y, z) {{ }}
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public {vname}({type} x, {type}{2} yz) : this(x, yz.x, yz.y) {{ }}
+");
+                }
+                else if (n == 4)
+                {
+                    ctors.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public {vname}({type}{2} xy, {type}{2} zw) : this(xy.x, xy.y, zw.x, zw.y) {{ }}
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public {vname}({type}{2} xy, {type} z, {type} w) : this(xy.x, xy.y, z, w) {{ }}
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public {vname}({type} x, {type}{2} yz, {type} w) : this(x, yz.x, yz.y, w) {{ }}
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public {vname}({type} x, {type} y, {type}{2} zw) : this(x, y, zw.x, zw.y) {{ }}
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public {vname}({type}{3}{align_name} xyz, {type} w) : this(xyz.x, xyz.y, xyz.z, w) {{ }}
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public {vname}({type} x, {type}{3}{align_name} yzw) : this(x, yzw.x, yzw.y, yzw.z) {{ }}
+");
+                }
+
+                #endregion
+
+                #endregion
+
+                #region aligned convert
+
+                var aligned_convert = new StringBuilder();
+
+                if (no_align)
+                {
+                    aligned_convert.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator {type}{n}{align_name}({type}{n} value) => new({xyzw_value_value});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator {type}{n}({type}{n}{align_name} value) => new({xyzw_value_value});
+");
+                }
+
+                #endregion
 
                 var hash_value = string.Join(", ", Enumerable.Range(0, n).Select(i => $"this.{xyzw[i]}.GetHashCode()"));
                 var this_eq_and = string.Join(" && ",
@@ -188,8 +291,16 @@ public unsafe partial struct {vname} :
     IModulusOperators<{vname}, {vname}, {vname}>,
 " : "" /* meta.Number */)}
     IVector{n}<{type}>, IVectorSelf<{vname}>
-{{
+{{    
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
 {fields}
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
 
     public static int ByteSize 
     {{
@@ -219,31 +330,20 @@ public unsafe partial struct {vname} :
         get => one;
     }}
 
-{(simd ? $@"
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public {vname}(Vector{bitSize}<{type}> vector)
-    {{
-        this.vector = vector;
-    }}
+    #endregion
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public {vname}({type} value)
-    {{
-        this.vector = Vector{bitSize}.Create(value);
-    }}
-" : $@"
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public {vname}({type} value) : this({value_n_value}) {{ }}
-")}
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public {vname}({xyzw_arg})
-    {{
-{ctor}
-    }}
-
+    #region Ctor
+{ctors}
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator {vname}({type} value) => new(value);
+{aligned_convert}
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
 
 {(simd ? $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -254,7 +354,7 @@ public unsafe partial struct {vname} :
 " : $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool Equals({vname} other) => {this_eq_and};
-")}
+" /* simd */)}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override bool Equals(object? o) => o is {vname} other && Equals(other);
@@ -281,7 +381,7 @@ public unsafe partial struct {vname} :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator !=({vname} left, {vname} right) => {ne_or};
 
-")}
+" /* simd */)}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override int GetHashCode() => HashCode.Combine({xyzw_this_value});
@@ -301,6 +401,8 @@ public unsafe partial struct {vname} :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool{na} VNe({vname} other) => new({this_oper_value("!=")});
 
+    #endregion
+
 {(meta.Number ? $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -315,9 +417,13 @@ public unsafe partial struct {vname} :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool{na} operator <=({vname} left, {vname} right) => new({oper_value("<=")});
 
-" : "")}
+" : "" /* meta.Number */)}
 
 {(meta.Number ? $@"
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Arithmetic
+
+    #region Arithmetic
+
     public static {vname} AdditiveIdentity 
     {{
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -395,12 +501,12 @@ public unsafe partial struct {vname} :
 {(meta.Unsigned ? "" : $@"    
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} operator -({vname} self) => new({unary_oper_value("-")});
-")}
+" /* meta.Unsigned */)}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} operator +({vname} self) => new({unary_oper_value("+")});
 
-" : $@"
+" /* simd */ : /* !simd */ $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} operator +({vname} left, {vname} right) => new({oper_value("+")});
@@ -453,18 +559,24 @@ public unsafe partial struct {vname} :
 {(meta.Unsigned ? "" : $@"    
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} operator -({vname} self) => new({unary_oper_value("-")});
-")}
+" /* meta.Unsigned */)}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} operator +({vname} self) => new({unary_oper_value("+")});
 
-")}
+" /* simd */)}
 
-" : "")}
+    #endregion
+
+" : "" /* meta.Number */)}
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override string ToString() => $""{vname}({xyzw_this_value_to_str})"";
 
+    #endregion
 }}
 
 public static unsafe partial class math

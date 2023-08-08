@@ -28,7 +28,10 @@ public unsafe partial struct decimal4 :
     IModulusOperators<decimal4, decimal4, decimal4>,
 
     IVector4<decimal>, IVectorSelf<decimal4>
-{
+{    
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Fields
+
+    #region Fields
 
     /// <summary>X component of the vector</summary>
     [FieldOffset(0)]
@@ -63,6 +66,11 @@ public unsafe partial struct decimal4 :
     [FieldOffset(48)]
     public decimal a;
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Constants
+
+    #region Constants
 
     public static int ByteSize 
     {
@@ -92,15 +100,18 @@ public unsafe partial struct decimal4 :
         get => one;
     }
 
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Ctor
+
+    #region Ctor
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public decimal4(decimal value) : this(value, value, value, value) { }
 
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public decimal4(decimal x, decimal y, decimal z, decimal w)
     {
-
         this.x = x;
 
         this.y = y;
@@ -108,11 +119,34 @@ public unsafe partial struct decimal4 :
         this.z = z;
 
         this.w = w;
-
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public decimal4(decimal2 xy, decimal2 zw) : this(xy.x, xy.y, zw.x, zw.y) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public decimal4(decimal2 xy, decimal z, decimal w) : this(xy.x, xy.y, z, w) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public decimal4(decimal x, decimal2 yz, decimal w) : this(x, yz.x, yz.y, w) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public decimal4(decimal x, decimal y, decimal2 zw) : this(x, y, zw.x, zw.y) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public decimal4(decimal3 xyz, decimal w) : this(xyz.x, xyz.y, xyz.z, w) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public decimal4(decimal x, decimal3 yzw) : this(x, yzw.x, yzw.y, yzw.z) { }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator decimal4(decimal value) => new(value);
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
+
+    #region Equals
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -150,6 +184,8 @@ public unsafe partial struct decimal4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool4 VNe(decimal4 other) => new(this.x != other.x, this.y != other.y, this.z != other.z, this.w != other.w);
 
+    #endregion
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -166,6 +202,10 @@ public unsafe partial struct decimal4 :
 
 
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Arithmetic
+
+    #region Arithmetic
 
     public static decimal4 AdditiveIdentity 
     {
@@ -239,11 +279,17 @@ public unsafe partial struct decimal4 :
 
 
 
+    #endregion
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
+
+    #region ToString
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override string ToString() => $"decimal4({this.x}, {this.y}, {this.z}, {this.w})";
 
+    #endregion
 }
 
 public static unsafe partial class math
