@@ -145,7 +145,25 @@ public unsafe partial struct bool4x3 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool4x3(bool4 value)
+    {
+        Unsafe.SkipInit(out this);
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator bool4x3(bool value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator bool4x3(bool4 value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator bool(bool4x3 value) => value.m00;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator bool4(bool4x3 value) => value.c0;
 
     #endregion
 

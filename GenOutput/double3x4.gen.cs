@@ -158,7 +158,68 @@ public unsafe partial struct double3x4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public double3x4(double3 value)
+    {
+        Unsafe.SkipInit(out this);
+        this.c0.vector = value.vector;
+        this.c1.vector = value.vector;
+        this.c2.vector = value.vector;
+        this.c3.vector = value.vector;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator double3x4(double value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator double3x4(double3 value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator double(double3x4 value) => value.m00;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator double3(double3x4 value) => value.c0;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator uint3x4(double3x4 self) => new((uint3)self.c0, (uint3)self.c1, (uint3)self.c2, (uint3)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator uint3x4a(double3x4 self) => new((uint3a)self.c0, (uint3a)self.c1, (uint3a)self.c2, (uint3a)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator int3x4(double3x4 self) => new((int3)self.c0, (int3)self.c1, (int3)self.c2, (int3)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator int3x4a(double3x4 self) => new((int3a)self.c0, (int3a)self.c1, (int3a)self.c2, (int3a)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator ulong3x4(double3x4 self) => new((ulong3)self.c0, (ulong3)self.c1, (ulong3)self.c2, (ulong3)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator ulong3x4a(double3x4 self) => new((ulong3a)self.c0, (ulong3a)self.c1, (ulong3a)self.c2, (ulong3a)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator long3x4(double3x4 self) => new((long3)self.c0, (long3)self.c1, (long3)self.c2, (long3)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator long3x4a(double3x4 self) => new((long3a)self.c0, (long3a)self.c1, (long3a)self.c2, (long3a)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator float3x4(double3x4 self) => new((float3)self.c0, (float3)self.c1, (float3)self.c2, (float3)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator float3x4a(double3x4 self) => new((float3a)self.c0, (float3a)self.c1, (float3a)self.c2, (float3a)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator decimal3x4(double3x4 self) => new((decimal3)self.c0, (decimal3)self.c1, (decimal3)self.c2, (decimal3)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator decimal3x4a(double3x4 self) => new((decimal3a)self.c0, (decimal3a)self.c1, (decimal3a)self.c2, (decimal3a)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator Half3x4(double3x4 self) => new((Half3)self.c0, (Half3)self.c1, (Half3)self.c2, (Half3)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator Half3x4a(double3x4 self) => new((Half3a)self.c0, (Half3a)self.c1, (Half3a)self.c2, (Half3a)self.c3);
 
     #endregion
 

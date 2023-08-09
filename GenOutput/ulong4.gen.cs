@@ -150,6 +150,30 @@ public unsafe partial struct ulong4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator ulong4(ulong value) => new(value);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator ulong(ulong4 value) => value.x;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator float4(ulong4 self) => new(self.x, self.y, self.z, self.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator double4(ulong4 self) => new(self.x, self.y, self.z, self.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator decimal4(ulong4 self) => new(self.x, self.y, self.z, self.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator uint4(ulong4 self) => new((uint)self.x, (uint)self.y, (uint)self.z, (uint)self.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator int4(ulong4 self) => new((int)self.x, (int)self.y, (int)self.z, (int)self.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator long4(ulong4 self) => new((long)self.x, (long)self.y, (long)self.z, (long)self.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator Half4(ulong4 self) => new((Half)self.x, (Half)self.y, (Half)self.z, (Half)self.w);
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals

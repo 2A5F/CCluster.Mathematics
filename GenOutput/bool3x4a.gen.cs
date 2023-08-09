@@ -152,7 +152,32 @@ public unsafe partial struct bool3x4a :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool3x4a(bool3a value)
+    {
+        Unsafe.SkipInit(out this);
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+        this.c3 = value;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator bool3x4a(bool value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator bool3x4a(bool3a value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator bool(bool3x4a value) => value.m00;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator bool3a(bool3x4a value) => value.c0;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator bool3x4a(bool3x4 value) => new(value.c0, value.c1, value.c2, value.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator bool3x4(bool3x4a value) => new(value.c0, value.c1, value.c2, value.c3);
 
     #endregion
 

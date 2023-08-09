@@ -104,6 +104,30 @@ public unsafe partial struct decimal2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator decimal2(decimal value) => new(value);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator decimal(decimal2 value) => value.x;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator uint2(decimal2 self) => new((uint)self.x, (uint)self.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator int2(decimal2 self) => new((int)self.x, (int)self.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator ulong2(decimal2 self) => new((ulong)self.x, (ulong)self.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator long2(decimal2 self) => new((long)self.x, (long)self.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator float2(decimal2 self) => new((float)self.x, (float)self.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator double2(decimal2 self) => new((double)self.x, (double)self.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator Half2(decimal2 self) => new((Half)self.x, (Half)self.y);
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals

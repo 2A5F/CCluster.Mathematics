@@ -121,10 +121,55 @@ public unsafe partial struct Half3a :
     public static implicit operator Half3a(Half value) => new(value);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator Half(Half3a value) => value.x;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator Half3a(Half3 value) => new(value.x, value.y, value.z);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator Half3(Half3a value) => new(value.x, value.y, value.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator uint3(Half3a self) => new((uint)self.x, (uint)self.y, (uint)self.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator uint3a(Half3a self) => new((uint)self.x, (uint)self.y, (uint)self.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator int3(Half3a self) => new((int)self.x, (int)self.y, (int)self.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator int3a(Half3a self) => new((int)self.x, (int)self.y, (int)self.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator ulong3(Half3a self) => new((ulong)self.x, (ulong)self.y, (ulong)self.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator ulong3a(Half3a self) => new((ulong)self.x, (ulong)self.y, (ulong)self.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator long3(Half3a self) => new((long)self.x, (long)self.y, (long)self.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator long3a(Half3a self) => new((long)self.x, (long)self.y, (long)self.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator float3(Half3a self) => new((float)self.x, (float)self.y, (float)self.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator float3a(Half3a self) => new((float)self.x, (float)self.y, (float)self.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator double3(Half3a self) => new((double)self.x, (double)self.y, (double)self.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator double3a(Half3a self) => new((double)self.x, (double)self.y, (double)self.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator decimal3(Half3a self) => new((decimal)self.x, (decimal)self.y, (decimal)self.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator decimal3a(Half3a self) => new((decimal)self.x, (decimal)self.y, (decimal)self.z);
 
     #endregion
 

@@ -142,7 +142,47 @@ public unsafe partial struct ulong2x4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public ulong2x4(ulong2 value)
+    {
+        Unsafe.SkipInit(out this);
+        this.c0.vector = value.vector;
+        this.c1.vector = value.vector;
+        this.c2.vector = value.vector;
+        this.c3.vector = value.vector;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator ulong2x4(ulong value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator ulong2x4(ulong2 value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator ulong(ulong2x4 value) => value.m00;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator ulong2(ulong2x4 value) => value.c0;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator float2x4(ulong2x4 self) => new(self.c0, self.c1, self.c2, self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator double2x4(ulong2x4 self) => new(self.c0, self.c1, self.c2, self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator decimal2x4(ulong2x4 self) => new(self.c0, self.c1, self.c2, self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator uint2x4(ulong2x4 self) => new((uint2)self.c0, (uint2)self.c1, (uint2)self.c2, (uint2)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator int2x4(ulong2x4 self) => new((int2)self.c0, (int2)self.c1, (int2)self.c2, (int2)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator long2x4(ulong2x4 self) => new((long2)self.c0, (long2)self.c1, (long2)self.c2, (long2)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator Half2x4(ulong2x4 self) => new((Half2)self.c0, (Half2)self.c1, (Half2)self.c2, (Half2)self.c3);
 
     #endregion
 

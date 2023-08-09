@@ -11,7 +11,7 @@ public record TypeMeta(int Size, string suffix, string Zero, string One, string 
     public bool Simd { get; set; }
     public string JsonRead { get; set; } = null!;
     public Func<string, string> JsonWrite { get; set; } = null!;
-    
+
     public static readonly Dictionary<string, TypeMeta> types = new()
     {
         {
@@ -78,5 +78,26 @@ public record TypeMeta(int Size, string suffix, string Zero, string One, string 
                 JsonRead = "reader.GetUInt64()", JsonWrite = n => $"writer.WriteNumberValue({n})",
             }
         },
+    };
+
+    public static readonly Dictionary<string, string[]> typeImplicitConvert = new()
+    {
+        { "int", new[] { "long", "float", "double", "decimal" } },
+        { "uint", new[] { "long", "ulong", "float", "double", "decimal" } },
+        { "long", new[] { "float", "double", "decimal" } },
+        { "ulong", new[] { "float", "double", "decimal" } },
+        { "float", new[] { "double" } },
+    };
+
+    public static readonly Dictionary<string, string[]> typeExplicitConvert = new()
+    {
+        { "int", new[] { "uint", "ulong", "Half" } },
+        { "uint", new[] { "int", "Half" } },
+        { "long", new[] { "uint", "int", "ulong", "Half" } },
+        { "ulong", new[] { "uint", "int", "long", "Half" } },
+        { "float", new[] { "uint", "int", "ulong", "long", "decimal", "Half" } },
+        { "double", new[] { "uint", "int", "ulong", "long", "float", "decimal", "Half" } },
+        { "decimal", new[] { "uint", "int", "ulong", "long", "float", "double", "Half" } },
+        { "Half", new[] { "uint", "int", "ulong", "long", "float", "double", "decimal" } },
     };
 }

@@ -98,6 +98,9 @@ public unsafe partial struct bool2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator bool2(bool value) => new(value);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator bool(bool2 value) => value.x;
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals

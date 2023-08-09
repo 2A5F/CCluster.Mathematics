@@ -150,7 +150,67 @@ public unsafe partial struct Half3x3 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public Half3x3(Half3 value)
+    {
+        Unsafe.SkipInit(out this);
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator Half3x3(Half value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator Half3x3(Half3 value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator Half(Half3x3 value) => value.m00;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator Half3(Half3x3 value) => value.c0;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator uint3x3(Half3x3 self) => new((uint3)self.c0, (uint3)self.c1, (uint3)self.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator uint3x3a(Half3x3 self) => new((uint3a)self.c0, (uint3a)self.c1, (uint3a)self.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator int3x3(Half3x3 self) => new((int3)self.c0, (int3)self.c1, (int3)self.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator int3x3a(Half3x3 self) => new((int3a)self.c0, (int3a)self.c1, (int3a)self.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator ulong3x3(Half3x3 self) => new((ulong3)self.c0, (ulong3)self.c1, (ulong3)self.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator ulong3x3a(Half3x3 self) => new((ulong3a)self.c0, (ulong3a)self.c1, (ulong3a)self.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator long3x3(Half3x3 self) => new((long3)self.c0, (long3)self.c1, (long3)self.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator long3x3a(Half3x3 self) => new((long3a)self.c0, (long3a)self.c1, (long3a)self.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator float3x3(Half3x3 self) => new((float3)self.c0, (float3)self.c1, (float3)self.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator float3x3a(Half3x3 self) => new((float3a)self.c0, (float3a)self.c1, (float3a)self.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator double3x3(Half3x3 self) => new((double3)self.c0, (double3)self.c1, (double3)self.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator double3x3a(Half3x3 self) => new((double3a)self.c0, (double3a)self.c1, (double3a)self.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator decimal3x3(Half3x3 self) => new((decimal3)self.c0, (decimal3)self.c1, (decimal3)self.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator decimal3x3a(Half3x3 self) => new((decimal3a)self.c0, (decimal3a)self.c1, (decimal3a)self.c2);
 
     #endregion
 

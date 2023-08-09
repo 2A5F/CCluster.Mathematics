@@ -186,7 +186,47 @@ public unsafe partial struct decimal4x4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public decimal4x4(decimal4 value)
+    {
+        Unsafe.SkipInit(out this);
+        this.c0 = value;
+        this.c1 = value;
+        this.c2 = value;
+        this.c3 = value;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator decimal4x4(decimal value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator decimal4x4(decimal4 value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator decimal(decimal4x4 value) => value.m00;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator decimal4(decimal4x4 value) => value.c0;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator uint4x4(decimal4x4 self) => new((uint4)self.c0, (uint4)self.c1, (uint4)self.c2, (uint4)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator int4x4(decimal4x4 self) => new((int4)self.c0, (int4)self.c1, (int4)self.c2, (int4)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator ulong4x4(decimal4x4 self) => new((ulong4)self.c0, (ulong4)self.c1, (ulong4)self.c2, (ulong4)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator long4x4(decimal4x4 self) => new((long4)self.c0, (long4)self.c1, (long4)self.c2, (long4)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator float4x4(decimal4x4 self) => new((float4)self.c0, (float4)self.c1, (float4)self.c2, (float4)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator double4x4(decimal4x4 self) => new((double4)self.c0, (double4)self.c1, (double4)self.c2, (double4)self.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator Half4x4(decimal4x4 self) => new((Half4)self.c0, (Half4)self.c1, (Half4)self.c2, (Half4)self.c3);
 
     #endregion
 

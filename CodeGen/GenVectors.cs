@@ -204,6 +204,53 @@ public class GenVectors : Base
 
                 #endregion
 
+                var take_self_value = string.Join(", ",
+                    Enumerable.Range(0, n).Select(i => $"self.{xyzw[i]}"));
+                
+                string cast_self_value(string t) => string.Join(", ",
+                    Enumerable.Range(0, n).Select(i => $"({t})self.{xyzw[i]}"));
+                
+                #region converts
+
+                var converts = new StringBuilder();
+
+                if (TypeMeta.typeImplicitConvert.TryGetValue(type, out var implicit_targets))
+                {
+                    foreach (var it in implicit_targets)
+                    {
+                        converts.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator {it}{n}({vname} self) => new({take_self_value});
+");
+                        if (n == 3)
+                        {
+                            converts.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator {it}{n}a({vname} self) => new({take_self_value});
+");
+                        }
+                    }
+                }
+                if (TypeMeta.typeExplicitConvert.TryGetValue(type, out var explicit_targets))
+                {
+                    foreach (var et in explicit_targets)
+                    {
+                        converts.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator {et}{n}({vname} self) => new({cast_self_value(et)});
+");
+                        if (n == 3)
+                        {
+                            converts.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator {et}{n}a({vname} self) => new({cast_self_value(et)});
+");
+                        }
+                    }
+                }
+
+                #endregion
+                
                 var hash_value = string.Join(", ", Enumerable.Range(0, n).Select(i => $"this.{xyzw[i]}.GetHashCode()"));
                 var this_eq_and = string.Join(" && ",
                     Enumerable.Range(0, n).Select(i => $"this.{xyzw[i]} == other.{xyzw[i]}"));
@@ -338,7 +385,10 @@ public unsafe partial struct {vname} :
 {ctors}
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator {vname}({type} value) => new(value);
-{aligned_convert}
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator {type}({vname} value) => value.x;
+{aligned_convert}{converts}
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals

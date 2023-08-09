@@ -150,6 +150,30 @@ public unsafe partial struct double4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator double4(double value) => new(value);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator double(double4 value) => value.x;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator uint4(double4 self) => new((uint)self.x, (uint)self.y, (uint)self.z, (uint)self.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator int4(double4 self) => new((int)self.x, (int)self.y, (int)self.z, (int)self.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator ulong4(double4 self) => new((ulong)self.x, (ulong)self.y, (ulong)self.z, (ulong)self.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator long4(double4 self) => new((long)self.x, (long)self.y, (long)self.z, (long)self.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator float4(double4 self) => new((float)self.x, (float)self.y, (float)self.z, (float)self.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator decimal4(double4 self) => new((decimal)self.x, (decimal)self.y, (decimal)self.z, (decimal)self.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator Half4(double4 self) => new((Half)self.x, (Half)self.y, (Half)self.z, (Half)self.w);
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals

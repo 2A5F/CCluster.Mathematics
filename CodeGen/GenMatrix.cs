@@ -114,11 +114,9 @@ public class GenMatrix : Base
                     #region ctor1
 
                     {
-                        var ctor = new StringBuilder();
-
                         var cols = string.Join(", ", Enumerable.Range(0, nm).Select(i => $"{vname} c{i}"));
 
-                        ctor.Append($@"
+                        ctors.Append($@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public {mname}({cols})
     {{
@@ -128,17 +126,15 @@ public class GenMatrix : Base
                         {
                             if (simd)
                             {
-                                ctor.Append($"        this.c{i}.vector = c{i}.vector;\n");
+                                ctors.Append($"        this.c{i}.vector = c{i}.vector;\n");
                             }
                             else
                             {
-                                ctor.Append($"        this.c{i} = c{i};\n");
+                                ctors.Append($"        this.c{i} = c{i};\n");
                             }
                         }
-                        ctor.Append($@"    }}
+                        ctors.Append($@"    }}
 ");
-
-                        ctors.Append(ctor);
                     }
 
                     #endregion
@@ -146,12 +142,10 @@ public class GenMatrix : Base
                     #region ctor2
 
                     {
-                        var ctor = new StringBuilder();
-
                         var args = string.Join(", ", Enumerable.Range(0, nm)
                             .SelectMany(im => Enumerable.Range(0, nv).Select(iv => $"{type} m{iv}{im}")));
 
-                        ctor.Append($@"
+                        ctors.Append($@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public {mname}({args})
     {{
@@ -165,23 +159,21 @@ public class GenMatrix : Base
                             {
                                 if (nv == 3)
                                 {
-                                    ctor.Append(
+                                    ctors.Append(
                                         $"        this.c{im}.vector = Vector{bitSize}.Create({items}, {meta.Zero});\n");
                                 }
                                 else
                                 {
-                                    ctor.Append($"        this.c{im}.vector = Vector{bitSize}.Create({items});\n");
+                                    ctors.Append($"        this.c{im}.vector = Vector{bitSize}.Create({items});\n");
                                 }
                             }
                             else
                             {
-                                ctor.Append($"        this.c{im} = new({items});\n");
+                                ctors.Append($"        this.c{im} = new({items});\n");
                             }
                         }
-                        ctor.Append($@"    }}
+                        ctors.Append($@"    }}
 ");
-
-                        ctors.Append(ctor);
                     }
 
                     #endregion
@@ -189,8 +181,7 @@ public class GenMatrix : Base
                     #region ctor3
 
                     {
-                        var ctor = new StringBuilder();
-                        ctor.Append($@"
+                        ctors.Append($@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public {mname}({type} value)
     {{
@@ -200,23 +191,114 @@ public class GenMatrix : Base
                         {
                             if (simd)
                             {
-                                ctor.Append($"        this.c{im}.vector = Vector{bitSize}.Create(value);\n");
+                                ctors.Append($"        this.c{im}.vector = Vector{bitSize}.Create(value);\n");
                             }
                             else
                             {
-                                ctor.Append($"        this.c{im} = new(value);\n");
+                                ctors.Append($"        this.c{im} = new(value);\n");
                             }
                         }
-                        ctor.Append($@"    }}
+                        ctors.Append($@"    }}
 ");
-
-                        ctors.Append(ctor);
                     }
 
                     #endregion
 
+                    #region ctor4
+
+                    {
+                        ctors.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public {mname}({vname} value)
+    {{
+        Unsafe.SkipInit(out this);
+");
+                        foreach (var im in Enumerable.Range(0, nm))
+                        {
+                            if (simd)
+                            {
+                                ctors.Append($"        this.c{im}.vector = value.vector;\n");
+                            }
+                            else
+                            {
+                                ctors.Append($"        this.c{im} = value;\n");
+                            }
+                        }
+                        ctors.Append($@"    }}
+");
+                    }
+
+                    #endregion
+                    
                     #endregion
 
+                    #region aligned convert
+                    
+                    var aligned_convert = new StringBuilder();
+                    
+                    var value_c_value = string.Join(", ", Enumerable.Range(0, nm).Select(i => $"value.c{i}"));
+
+                    if (no_align)
+                    {
+                        aligned_convert.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator {type}{nv}x{nm}{align_name}({type}{nv}x{nm} value) => new({value_c_value});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator {type}{nv}x{nm}({type}{nv}x{nm}{align_name} value) => new({value_c_value});
+");
+                    }
+                    
+                    #endregion
+                    
+                    var take_self_c_value = string.Join(", ",
+                        Enumerable.Range(0, nm).Select(i => $"self.c{i}"));
+                
+                    string cast_self_c_value(string t, string a) => string.Join(", ",
+                        Enumerable.Range(0, nm).Select(i => $"({t}{nv}{a})self.c{i}"));
+                    
+                    #region converts
+
+                    var converts = new StringBuilder();
+
+                    if (TypeMeta.typeImplicitConvert.TryGetValue(type, out var implicit_targets))
+                    {
+                        foreach (var it in implicit_targets)
+                        {
+                            converts.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator {it}{nv}x{nm}({mname} self) => new({take_self_c_value});
+");
+                            if (nv == 3)
+                            {
+                                converts.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator {it}{nv}x{nm}a({mname} self) => new({take_self_c_value});
+");
+                            }
+                        }
+                    }
+                    if (TypeMeta.typeExplicitConvert.TryGetValue(type, out var explicit_targets))
+                    {
+                        foreach (var et in explicit_targets)
+                        {
+                            converts.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator {et}{nv}x{nm}({mname} self) => new({cast_self_c_value(et, "")});
+");
+                            if (nv == 3)
+                            {
+                                converts.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator {et}{nv}x{nm}a({mname} self) => new({cast_self_c_value(et, "a")});
+");
+                            }
+                        }
+                    }
+
+                    #endregion
+
+                    
                     var hash_value = string.Join(", ", Enumerable.Range(0, nm).Select(i => $"this.c{i}.GetHashCode()"));
 
                     var eq_and = string.Join(" && ",
@@ -347,6 +429,15 @@ public unsafe partial struct {mname} :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator {mname}({type} value) => new(value);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator {mname}({vname} value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator {type}({mname} value) => value.m00;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator {vname}({mname} value) => value.c0;
+{aligned_convert}{converts}
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals

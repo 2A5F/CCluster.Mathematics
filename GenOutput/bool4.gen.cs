@@ -136,6 +136,9 @@ public unsafe partial struct bool4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator bool4(bool value) => new(value);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static explicit operator bool(bool4 value) => value.x;
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
