@@ -300,8 +300,16 @@ public static unsafe partial class math
 
 
 
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int2 mad(int2 a, int2 b, int2 c) => a * b + c;
+    public static int2 mad(int2 a, int2 b, int2 c)
+    {
+        
+        
+        
+        return a * b + c;
+    }
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static int2 clamp(int2 x, int2 a, int2 b) => max(a, min(b, x));

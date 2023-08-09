@@ -311,8 +311,16 @@ public static unsafe partial class math
 
 
 
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3 mad(ulong3 a, ulong3 b, ulong3 c) => a * b + c;
+    public static ulong3 mad(ulong3 a, ulong3 b, ulong3 c)
+    {
+        
+        
+        
+        return a * b + c;
+    }
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ulong3 clamp(ulong3 x, ulong3 a, ulong3 b) => max(a, min(b, x));

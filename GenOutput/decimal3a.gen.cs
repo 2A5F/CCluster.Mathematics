@@ -300,8 +300,10 @@ public static unsafe partial class math
 
 
 
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal3a mad(decimal3a a, decimal3a b, decimal3a c) => a * b + c;
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal3a clamp(decimal3a x, decimal3a a, decimal3a b) => max(a, min(b, x));

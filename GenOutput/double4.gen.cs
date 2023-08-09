@@ -345,8 +345,16 @@ public static unsafe partial class math
 
 
 
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 mad(double4 a, double4 b, double4 c) => a * b + c;
+    public static double4 mad(double4 a, double4 b, double4 c)
+    {
+        if (Fma.IsSupported) return new(Fma.MultiplyAdd(a.vector, b.vector, c.vector));
+        
+        
+        return a * b + c;
+    }
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double4 clamp(double4 x, double4 a, double4 b) => max(a, min(b, x));

@@ -311,8 +311,16 @@ public static unsafe partial class math
 
 
 
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double2 mad(double2 a, double2 b, double2 c) => a * b + c;
+    public static double2 mad(double2 a, double2 b, double2 c)
+    {
+        if (Fma.IsSupported) return new(Fma.MultiplyAdd(a.vector, b.vector, c.vector));
+        if (AdvSimd.Arm64.IsSupported) return new(AdvSimd.Arm64.FusedMultiplyAdd(c.vector, a.vector, b.vector));
+        
+        return a * b + c;
+    }
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double2 clamp(double2 x, double2 a, double2 b) => max(a, min(b, x));

@@ -334,8 +334,16 @@ public static unsafe partial class math
 
 
 
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long4 mad(long4 a, long4 b, long4 c) => a * b + c;
+    public static long4 mad(long4 a, long4 b, long4 c)
+    {
+        
+        
+        
+        return a * b + c;
+    }
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long4 clamp(long4 x, long4 a, long4 b) => max(a, min(b, x));

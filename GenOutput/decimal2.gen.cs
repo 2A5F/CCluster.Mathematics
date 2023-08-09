@@ -278,8 +278,10 @@ public static unsafe partial class math
 
 
 
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal2 mad(decimal2 a, decimal2 b, decimal2 c) => a * b + c;
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal2 clamp(decimal2 x, decimal2 a, decimal2 b) => max(a, min(b, x));

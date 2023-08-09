@@ -603,8 +603,19 @@ public static unsafe partial class math
 
 " : "")}
 
+{(simd ? $@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} mad({vname} a, {vname} b, {vname} c)
+    {{
+        {(meta.Float && bitSize is 128 or 256 ? $"if (Fma.IsSupported) return new(Fma.MultiplyAdd(a.vector, b.vector, c.vector));" : "")}
+        {(type == "double" && bitSize is 128 ? $"if (AdvSimd.Arm64.IsSupported) return new(AdvSimd.Arm64.FusedMultiplyAdd(c.vector, a.vector, b.vector));" : "")}
+        {(type == "float" && bitSize is 64 or 128 ? $"if (AdvSimd.IsSupported) return new(AdvSimd.FusedMultiplyAdd(c.vector, a.vector, b.vector));" : "")}
+        return a * b + c;
+    }}
+" : $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} mad({vname} a, {vname} b, {vname} c) => a * b + c;
+" /* simd */)}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} clamp({vname} x, {vname} a, {vname} b) => max(a, min(b, x));

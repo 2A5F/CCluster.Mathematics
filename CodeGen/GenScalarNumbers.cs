@@ -66,7 +66,7 @@ public static partial class math
 " : "")}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} mad({type} a, {type} b, {type} c) => a * b + c;
+    public static {type} mad({type} a, {type} b, {type} c) => {(meta.Float ? $"{type}.FusedMultiplyAdd(a, b, c)" : "a * b + c")};
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} clamp({type} x, {type} a, {type} b) => max(a, min(b, x));

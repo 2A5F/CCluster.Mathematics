@@ -29,7 +29,7 @@ public static partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half mad(Half a, Half b, Half c) => a * b + c;
+    public static Half mad(Half a, Half b, Half c) => Half.FusedMultiplyAdd(a, b, c);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half clamp(Half x, Half a, Half b) => max(a, min(b, x));

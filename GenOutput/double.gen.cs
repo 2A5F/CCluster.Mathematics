@@ -29,7 +29,7 @@ public static partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double mad(double a, double b, double c) => a * b + c;
+    public static double mad(double a, double b, double c) => double.FusedMultiplyAdd(a, b, c);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double clamp(double x, double a, double b) => max(a, min(b, x));
