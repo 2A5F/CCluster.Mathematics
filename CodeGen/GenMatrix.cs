@@ -26,6 +26,7 @@ public class GenMatrix : Base
 
                     var align_name = no_align ? "a" : string.Empty;
                     var na = $"{nv}{align_name}";
+                    var ma = nm == 3 && no_align ? $"{nm}a" : $"{nm}";
                     var vname = $"{type}{na}";
                     var nma = $"{nv}x{nm}{align_name}";
                     var mname = $"{type}{nma}";
@@ -217,33 +218,63 @@ public class GenMatrix : Base
                     #endregion
 
                     var hash_value = string.Join(", ", Enumerable.Range(0, nm).Select(i => $"this.c{i}.GetHashCode()"));
-                    
+
                     var eq_and = string.Join(" && ",
                         Enumerable.Range(0, nm).Select(i => $"left.c{i} == right.c{i}"));
                     var ne_or = string.Join(" || ",
                         Enumerable.Range(0, nm).Select(i => $"left.c{i} != right.c{i}"));
-                    
+
                     var c_this_value = string.Join(", ", Enumerable.Range(0, nm).Select(i => $"this.c{i}"));
-                    
+
                     var c_this_value_to_str =
                         string.Join(", ", Enumerable.Range(0, nm).Select(i => $"{{this.c{i}}}"));
-                    
+
                     string this_oper_c_value(string op) => string.Join(", ",
                         Enumerable.Range(0, nm).Select(i => $"this.c{i} {op} other.c{i}"));
-                    
+
                     string oper_c_value(string op) => string.Join(", ",
                         Enumerable.Range(0, nm).Select(i => $"left.c{i} {op} right.c{i}"));
-                    
+
                     string unary_oper_c_value(string op) => string.Join(", ",
                         Enumerable.Range(0, nm).Select(i => $"{op}self.c{i}"));
-                    
+
                     string oper_c_scalar_right_value(string op) => string.Join(", ",
                         Enumerable.Range(0, nm).Select(i => $"left.c{i} {op} right"));
 
                     string oper_c_scalar_left_value(string op) => string.Join(", ",
                         Enumerable.Range(0, nm).Select(i => $"left {op} right.c{i}"));
-                    
-                    
+
+                    var matrix_mul_scalar_a = string.Join(", ",
+                        Enumerable.Range(0, nm).Select(i => $"dot(a, b.c{i})"));
+
+                    var matrix_mul_scalar_b = string.Join(" + ",
+                        Enumerable.Range(0, nm).Select(i => $"a.c{i} * b.{xyzw[i]}"));
+
+                    var matrix_muls = new StringBuilder();
+
+                    if (meta.Number)
+                    {
+                        foreach (var ibm in Enumerable.Range(2, 3))
+                        {
+                            var matrix_mul = string.Join(",\n        ", Enumerable.Range(0, ibm).Select(j =>
+                                string.Join(" + ", Enumerable.Range(0, nm)
+                                    .Select(i => $"a.c{i} * b.c{j}.{xyzw[i]}")
+                                )
+                            ));
+                            var a1 = no_align && nm == 3 ? "a" : string.Empty;
+                            var a2 = no_align && nv == 3 ? "a" : string.Empty;
+                            var rm_type = $"{type}{nm}x{ibm}{a1}";
+                            var re_type = $"{type}{nv}x{ibm}{a2}";
+                            matrix_muls.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {re_type} mul({mname} a, {rm_type} b) => new(
+        {matrix_mul}
+    );
+");
+                        }
+                    }
+
+
                     var source = $@"using System;
 using System.Numerics;
 using System.Runtime.Intrinsics;
@@ -484,6 +515,20 @@ public unsafe partial struct {mname} :
     public override string ToString() => $""{mname}({c_this_value_to_str})"";
 
     #endregion
+}}
+
+public static unsafe partial class math
+{{
+{(meta.Number ? $@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{ma} mul({vname} a, {mname} b) => new({matrix_mul_scalar_a});
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} mul({mname} a, {type}{ma} b) => {matrix_mul_scalar_b};
+
+{matrix_muls}
+
+" : "" /* meta.Number */)}
 }}
 ";
                     await SaveCode($"{mname}.gen.cs", source);

@@ -357,6 +357,9 @@ public static unsafe partial class math
     public static long dot(long4 x, long4 y) => Vector256.Dot(x.vector, y.vector);
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long mul(long4 a, long4 b) => dot(a, b);
+
 
 
 

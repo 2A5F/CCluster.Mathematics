@@ -35,6 +35,9 @@ public static partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint dot(uint x, uint y) => x * y;
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint mul(uint a, uint b) => a * b;
+
 
 
 

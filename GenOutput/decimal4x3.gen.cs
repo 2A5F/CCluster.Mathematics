@@ -322,3 +322,38 @@ public unsafe partial struct decimal4x3 :
 
     #endregion
 }
+
+public static unsafe partial class math
+{
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3 mul(decimal4 a, decimal4x3 b) => new(dot(a, b.c0), dot(a, b.c1), dot(a, b.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal4 mul(decimal4x3 a, decimal3 b) => a.c0 * b.x + a.c1 * b.y + a.c2 * b.z;
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal4x2 mul(decimal4x3 a, decimal3x2 b) => new(
+        a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
+        a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal4x3 mul(decimal4x3 a, decimal3x3 b) => new(
+        a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
+        a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
+        a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal4x4 mul(decimal4x3 a, decimal3x4 b) => new(
+        a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
+        a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
+        a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z,
+        a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z
+    );
+
+
+
+}

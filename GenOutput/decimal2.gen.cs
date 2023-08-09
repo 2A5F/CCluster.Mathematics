@@ -306,6 +306,9 @@ public static unsafe partial class math
     public static decimal dot(decimal2 x, decimal2 y) => x.x * y.x + x.y * y.y;
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal mul(decimal2 a, decimal2 b) => dot(a, b);
+
 
 
 

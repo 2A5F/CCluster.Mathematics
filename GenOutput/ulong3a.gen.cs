@@ -312,6 +312,9 @@ public static unsafe partial class math
     public static ulong dot(ulong3a x, ulong3a y) => x.x * y.x + x.y * y.y + x.z * y.z;
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong mul(ulong3a a, ulong3a b) => dot(a, b);
+
 
 
 

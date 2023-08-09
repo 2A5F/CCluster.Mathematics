@@ -299,3 +299,38 @@ public unsafe partial struct int4x2 :
 
     #endregion
 }
+
+public static unsafe partial class math
+{
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int2 mul(int4 a, int4x2 b) => new(dot(a, b.c0), dot(a, b.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4 mul(int4x2 a, int2 b) => a.c0 * b.x + a.c1 * b.y;
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 mul(int4x2 a, int2x2 b) => new(
+        a.c0 * b.c0.x + a.c1 * b.c0.y,
+        a.c0 * b.c1.x + a.c1 * b.c1.y
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x3 mul(int4x2 a, int2x3 b) => new(
+        a.c0 * b.c0.x + a.c1 * b.c0.y,
+        a.c0 * b.c1.x + a.c1 * b.c1.y,
+        a.c0 * b.c2.x + a.c1 * b.c2.y
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x4 mul(int4x2 a, int2x4 b) => new(
+        a.c0 * b.c0.x + a.c1 * b.c0.y,
+        a.c0 * b.c1.x + a.c1 * b.c1.y,
+        a.c0 * b.c2.x + a.c1 * b.c2.y,
+        a.c0 * b.c3.x + a.c1 * b.c3.y
+    );
+
+
+
+}

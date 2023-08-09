@@ -306,6 +306,9 @@ public static unsafe partial class math
     public static Half dot(Half2 x, Half2 y) => x.x * y.x + x.y * y.y;
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half mul(Half2 a, Half2 b) => dot(a, b);
+
 
 
 

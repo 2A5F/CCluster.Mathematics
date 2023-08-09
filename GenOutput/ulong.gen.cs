@@ -35,6 +35,9 @@ public static partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ulong dot(ulong x, ulong y) => x * y;
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong mul(ulong a, ulong b) => a * b;
+
 
 
 

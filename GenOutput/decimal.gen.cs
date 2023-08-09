@@ -51,6 +51,9 @@ public static partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal dot(decimal x, decimal y) => x * y;
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal mul(decimal a, decimal b) => a * b;
+
 
 
 

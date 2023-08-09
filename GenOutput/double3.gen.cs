@@ -356,6 +356,9 @@ public static unsafe partial class math
     public static double dot(double3 x, double3 y) => Vector256.Dot(x.vector, y.vector);
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double mul(double3 a, double3 b) => dot(a, b);
+
 
 
 

@@ -312,6 +312,9 @@ public static unsafe partial class math
     public static uint dot(uint3a x, uint3a y) => x.x * y.x + x.y * y.y + x.z * y.z;
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint mul(uint3a a, uint3a b) => dot(a, b);
+
 
 
 

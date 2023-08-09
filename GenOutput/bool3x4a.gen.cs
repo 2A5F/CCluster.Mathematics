@@ -212,3 +212,8 @@ public unsafe partial struct bool3x4a :
 
     #endregion
 }
+
+public static unsafe partial class math
+{
+
+}

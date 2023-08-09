@@ -298,3 +298,38 @@ public unsafe partial struct float2x3 :
 
     #endregion
 }
+
+public static unsafe partial class math
+{
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3 mul(float2 a, float2x3 b) => new(dot(a, b.c0), dot(a, b.c1), dot(a, b.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 mul(float2x3 a, float3 b) => a.c0 * b.x + a.c1 * b.y + a.c2 * b.z;
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x2 mul(float2x3 a, float3x2 b) => new(
+        a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
+        a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 mul(float2x3 a, float3x3 b) => new(
+        a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
+        a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
+        a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x4 mul(float2x3 a, float3x4 b) => new(
+        a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
+        a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
+        a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z,
+        a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z
+    );
+
+
+
+}

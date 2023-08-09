@@ -337,6 +337,9 @@ public static unsafe partial class math
     public static ulong dot(ulong3 x, ulong3 y) => Vector256.Dot(x.vector, y.vector);
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong mul(ulong3 a, ulong3 b) => dot(a, b);
+
 
 
 

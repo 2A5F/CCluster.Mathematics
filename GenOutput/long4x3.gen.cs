@@ -322,3 +322,38 @@ public unsafe partial struct long4x3 :
 
     #endregion
 }
+
+public static unsafe partial class math
+{
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 mul(long4 a, long4x3 b) => new(dot(a, b.c0), dot(a, b.c1), dot(a, b.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long4 mul(long4x3 a, long3 b) => a.c0 * b.x + a.c1 * b.y + a.c2 * b.z;
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long4x2 mul(long4x3 a, long3x2 b) => new(
+        a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
+        a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long4x3 mul(long4x3 a, long3x3 b) => new(
+        a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
+        a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
+        a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long4x4 mul(long4x3 a, long3x4 b) => new(
+        a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
+        a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
+        a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z,
+        a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z
+    );
+
+
+
+}

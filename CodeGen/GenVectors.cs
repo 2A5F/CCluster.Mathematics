@@ -642,6 +642,9 @@ public static unsafe partial class math
     public static {type} dot({vname} x, {vname} y) => {dot};
 ")}
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} mul({vname} a, {vname} b) => dot(a, b);
+
 " : "")}
 
 {(meta.Float ? $@"
