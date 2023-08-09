@@ -198,6 +198,24 @@ public unsafe partial struct bool2x3 :
     public override string ToString() => $"bool2x3({this.c0}, {this.c1}, {this.c2})";
 
     #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Methods
+
+    #region Methods
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x3 transpose(bool2x3 v) => new(
+        v.c0.x, v.c0.y,
+        v.c1.x, v.c1.y,
+        v.c2.x, v.c2.y
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly bool2x3 transpose() => transpose(this);
+
+    #endregion
 }
 
 public static unsafe partial class math

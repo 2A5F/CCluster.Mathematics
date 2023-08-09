@@ -396,6 +396,50 @@ public unsafe partial struct Half4x4 :
     public override string ToString() => $"Half4x4({this.c0}, {this.c1}, {this.c2}, {this.c3})";
 
     #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Methods
+
+    #region Methods
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 rotate(Half4x4 a, Half3 b) => (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z).xyz;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3a rotate(Half4x4 a, Half3a b) => (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z).xyz;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 transform(Half4x4 a, Half3 b) => (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3).xyz;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3a transform(Half4x4 a, Half3a b) => (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3).xyz;
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly Half3 rotate(Half3 b) => rotate(this, b);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly Half3a rotate(Half3a b) => rotate(this, b);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly Half3 transform(Half3 b) => transform(this, b);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly Half3a transform(Half3a b) => transform(this, b);
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4x4 transpose(Half4x4 v) => new(
+        v.c0.x, v.c0.y, v.c0.z, v.c0.w,
+        v.c1.x, v.c1.y, v.c1.z, v.c1.w,
+        v.c2.x, v.c2.y, v.c2.z, v.c2.w,
+        v.c3.x, v.c3.y, v.c3.z, v.c3.w
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly Half4x4 transpose() => transpose(this);
+
+    #endregion
 }
 
 public static unsafe partial class math

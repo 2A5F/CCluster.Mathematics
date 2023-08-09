@@ -395,6 +395,25 @@ public unsafe partial struct Half3x4a :
     public override string ToString() => $"Half3x4a({this.c0}, {this.c1}, {this.c2}, {this.c3})";
 
     #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Methods
+
+    #region Methods
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4a transpose(Half3x4a v) => new(
+        v.c0.x, v.c0.y, v.c0.z,
+        v.c1.x, v.c1.y, v.c1.z,
+        v.c2.x, v.c2.y, v.c2.z,
+        v.c3.x, v.c3.y, v.c3.z
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly Half3x4a transpose() => transpose(this);
+
+    #endregion
 }
 
 public static unsafe partial class math

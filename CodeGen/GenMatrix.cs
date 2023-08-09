@@ -229,13 +229,13 @@ public class GenMatrix : Base
                     }
 
                     #endregion
-                    
+
                     #endregion
 
                     #region aligned convert
-                    
+
                     var aligned_convert = new StringBuilder();
-                    
+
                     var value_c_value = string.Join(", ", Enumerable.Range(0, nm).Select(i => $"value.c{i}"));
 
                     if (no_align)
@@ -248,15 +248,15 @@ public class GenMatrix : Base
     public static implicit operator {type}{nv}x{nm}({type}{nv}x{nm}{align_name} value) => new({value_c_value});
 ");
                     }
-                    
+
                     #endregion
-                    
+
                     var take_self_c_value = string.Join(", ",
                         Enumerable.Range(0, nm).Select(i => $"self.c{i}"));
-                
+
                     string cast_self_c_value(string t, string a) => string.Join(", ",
                         Enumerable.Range(0, nm).Select(i => $"({t}{nv}{a})self.c{i}"));
-                    
+
                     #region converts
 
                     var converts = new StringBuilder();
@@ -298,7 +298,7 @@ public class GenMatrix : Base
 
                     #endregion
 
-                    
+
                     var hash_value = string.Join(", ", Enumerable.Range(0, nm).Select(i => $"this.c{i}.GetHashCode()"));
 
                     var eq_and = string.Join(" && ",
@@ -356,6 +356,9 @@ public class GenMatrix : Base
                         }
                     }
 
+                    var transpose = string.Join(",\n        ", Enumerable.Range(0, nm).Select(im =>
+                        string.Join(", ", Enumerable.Range(0, nv).Select(iv => $"v.c{im}.{xyzw[iv]}")))
+                    );
 
                     var source = $@"using System;
 using System.Numerics;
@@ -604,6 +607,47 @@ public unsafe partial struct {mname} :
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public override string ToString() => $""{mname}({c_this_value_to_str})"";
+
+    #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Methods
+
+    #region Methods
+
+{(nv == nm && nm == 4 && meta.Number ? $@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{3} rotate({mname} a, {type}{3} b) => (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z).xyz;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{3}a rotate({mname} a, {type}{3}a b) => (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z).xyz;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{3} transform({mname} a, {type}{3} b) => (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3).xyz;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type}{3}a transform({mname} a, {type}{3}a b) => (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3).xyz;
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly {type}{3} rotate({type}{3} b) => rotate(this, b);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly {type}{3}a rotate({type}{3}a b) => rotate(this, b);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly {type}{3} transform({type}{3} b) => transform(this, b);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly {type}{3}a transform({type}{3}a b) => transform(this, b);
+" : "" /* nv == nm && nm == 4 */)}
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {mname} transpose({mname} v) => new(
+        {transpose}
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly {mname} transpose() => transpose(this);
 
     #endregion
 }}

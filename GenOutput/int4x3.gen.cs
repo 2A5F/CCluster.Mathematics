@@ -360,6 +360,24 @@ public unsafe partial struct int4x3 :
     public override string ToString() => $"int4x3({this.c0}, {this.c1}, {this.c2})";
 
     #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Methods
+
+    #region Methods
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x3 transpose(int4x3 v) => new(
+        v.c0.x, v.c0.y, v.c0.z, v.c0.w,
+        v.c1.x, v.c1.y, v.c1.z, v.c1.w,
+        v.c2.x, v.c2.y, v.c2.z, v.c2.w
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly int4x3 transpose() => transpose(this);
+
+    #endregion
 }
 
 public static unsafe partial class math

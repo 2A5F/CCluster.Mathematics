@@ -352,6 +352,23 @@ public unsafe partial struct ulong3x2a :
     public override string ToString() => $"ulong3x2a({this.c0}, {this.c1})";
 
     #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Methods
+
+    #region Methods
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3x2a transpose(ulong3x2a v) => new(
+        v.c0.x, v.c0.y, v.c0.z,
+        v.c1.x, v.c1.y, v.c1.z
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly ulong3x2a transpose() => transpose(this);
+
+    #endregion
 }
 
 public static unsafe partial class math

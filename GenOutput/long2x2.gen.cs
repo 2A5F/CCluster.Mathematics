@@ -330,6 +330,23 @@ public unsafe partial struct long2x2 :
     public override string ToString() => $"long2x2({this.c0}, {this.c1})";
 
     #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Methods
+
+    #region Methods
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long2x2 transpose(long2x2 v) => new(
+        v.c0.x, v.c0.y,
+        v.c1.x, v.c1.y
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly long2x2 transpose() => transpose(this);
+
+    #endregion
 }
 
 public static unsafe partial class math

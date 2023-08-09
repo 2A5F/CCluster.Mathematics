@@ -386,6 +386,24 @@ public unsafe partial struct int3x3a :
     public override string ToString() => $"int3x3a({this.c0}, {this.c1}, {this.c2})";
 
     #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Methods
+
+    #region Methods
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3x3a transpose(int3x3a v) => new(
+        v.c0.x, v.c0.y, v.c0.z,
+        v.c1.x, v.c1.y, v.c1.z,
+        v.c2.x, v.c2.y, v.c2.z
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly int3x3a transpose() => transpose(this);
+
+    #endregion
 }
 
 public static unsafe partial class math

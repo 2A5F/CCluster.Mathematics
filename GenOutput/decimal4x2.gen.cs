@@ -336,6 +336,23 @@ public unsafe partial struct decimal4x2 :
     public override string ToString() => $"decimal4x2({this.c0}, {this.c1})";
 
     #endregion
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////// Methods
+
+    #region Methods
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal4x2 transpose(decimal4x2 v) => new(
+        v.c0.x, v.c0.y, v.c0.z, v.c0.w,
+        v.c1.x, v.c1.y, v.c1.z, v.c1.w
+    );
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public readonly decimal4x2 transpose() => transpose(this);
+
+    #endregion
 }
 
 public static unsafe partial class math
