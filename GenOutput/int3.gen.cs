@@ -185,7 +185,7 @@ public unsafe partial struct int3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool Equals(int3 other)
     {
-        return this.vector.Equals(other.vector);
+        return (this.vector & math.v3_iz_int128).Equals((other.vector & math.v3_iz_int128));
     }
 
 
@@ -197,13 +197,13 @@ public unsafe partial struct int3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator ==(int3 left, int3 right)
     {
-        return left.vector.Equals(right.vector);
+        return (left.vector & math.v3_iz_int128).Equals((right.vector & math.v3_iz_int128));
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator !=(int3 left, int3 right)
     {
-        return !left.vector.Equals(right.vector);
+        return !(left.vector & math.v3_iz_int128).Equals((right.vector & math.v3_iz_int128));
     }
 
 
@@ -360,6 +360,11 @@ public static unsafe partial class math
 
 
 
+    
+
+    internal static readonly Vector128<int> v3_iz_int128 = Vector128.Create(-1, -1, -1, 0).As<int, int>();
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static int3 mad(int3 a, int3 b, int3 c)
     {
@@ -390,7 +395,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int dot(int3 x, int3 y) => Vector128.Dot(x.vector, y.vector);
+    public static int dot(int3 x, int3 y) => Vector128.Dot(x.vector & math.v3_iz_int128, y.vector);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]

@@ -185,7 +185,7 @@ public unsafe partial struct long3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool Equals(long3 other)
     {
-        return this.vector.Equals(other.vector);
+        return (this.vector & math.v3_iz_long256).Equals((other.vector & math.v3_iz_long256));
     }
 
 
@@ -197,13 +197,13 @@ public unsafe partial struct long3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator ==(long3 left, long3 right)
     {
-        return left.vector.Equals(right.vector);
+        return (left.vector & math.v3_iz_long256).Equals((right.vector & math.v3_iz_long256));
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator !=(long3 left, long3 right)
     {
-        return !left.vector.Equals(right.vector);
+        return !(left.vector & math.v3_iz_long256).Equals((right.vector & math.v3_iz_long256));
     }
 
 
@@ -360,6 +360,11 @@ public static unsafe partial class math
 
 
 
+    
+
+    internal static readonly Vector256<long> v3_iz_long256 = Vector256.Create(-1, -1, -1, 0).As<long, long>();
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long3 mad(long3 a, long3 b, long3 c)
     {
@@ -390,7 +395,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long dot(long3 x, long3 y) => Vector256.Dot(x.vector, y.vector);
+    public static long dot(long3 x, long3 y) => Vector256.Dot(x.vector & math.v3_iz_long256, y.vector);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]

@@ -150,7 +150,7 @@ public unsafe partial struct int2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool Equals(int2 other)
     {
-        return this.vector.Equals(other.vector);
+        return (this.vector).Equals((other.vector));
     }
 
 
@@ -162,13 +162,13 @@ public unsafe partial struct int2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator ==(int2 left, int2 right)
     {
-        return left.vector.Equals(right.vector);
+        return (left.vector).Equals((right.vector));
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator !=(int2 left, int2 right)
     {
-        return !left.vector.Equals(right.vector);
+        return !(left.vector).Equals((right.vector));
     }
 
 
@@ -323,6 +323,9 @@ public static unsafe partial class math
     public static int2 max(int2 x, int2 y) => new(max(x.x, y.x), max(x.y, y.y));
 
 
+
+
+    
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]

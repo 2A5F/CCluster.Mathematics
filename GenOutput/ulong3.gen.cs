@@ -185,7 +185,7 @@ public unsafe partial struct ulong3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool Equals(ulong3 other)
     {
-        return this.vector.Equals(other.vector);
+        return (this.vector & math.v3_iz_ulong256).Equals((other.vector & math.v3_iz_ulong256));
     }
 
 
@@ -197,13 +197,13 @@ public unsafe partial struct ulong3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator ==(ulong3 left, ulong3 right)
     {
-        return left.vector.Equals(right.vector);
+        return (left.vector & math.v3_iz_ulong256).Equals((right.vector & math.v3_iz_ulong256));
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator !=(ulong3 left, ulong3 right)
     {
-        return !left.vector.Equals(right.vector);
+        return !(left.vector & math.v3_iz_ulong256).Equals((right.vector & math.v3_iz_ulong256));
     }
 
 
@@ -357,6 +357,11 @@ public static unsafe partial class math
 
 
 
+    
+
+    internal static readonly Vector256<ulong> v3_iz_ulong256 = Vector256.Create(-1, -1, -1, 0).As<long, ulong>();
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ulong3 mad(ulong3 a, ulong3 b, ulong3 c)
     {
@@ -387,7 +392,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong dot(ulong3 x, ulong3 y) => Vector256.Dot(x.vector, y.vector);
+    public static ulong dot(ulong3 x, ulong3 y) => Vector256.Dot(x.vector & math.v3_iz_ulong256, y.vector);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]

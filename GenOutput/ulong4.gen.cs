@@ -184,7 +184,7 @@ public unsafe partial struct ulong4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool Equals(ulong4 other)
     {
-        return this.vector.Equals(other.vector);
+        return (this.vector).Equals((other.vector));
     }
 
 
@@ -196,13 +196,13 @@ public unsafe partial struct ulong4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator ==(ulong4 left, ulong4 right)
     {
-        return left.vector.Equals(right.vector);
+        return (left.vector).Equals((right.vector));
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator !=(ulong4 left, ulong4 right)
     {
-        return !left.vector.Equals(right.vector);
+        return !(left.vector).Equals((right.vector));
     }
 
 
@@ -354,6 +354,9 @@ public static unsafe partial class math
     public static ulong4 max(ulong4 x, ulong4 y) => new(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z), max(x.w, y.w));
 
 
+
+
+    
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]

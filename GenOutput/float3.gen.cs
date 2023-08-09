@@ -185,7 +185,7 @@ public unsafe partial struct float3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool Equals(float3 other)
     {
-        return this.vector.Equals(other.vector);
+        return (this.vector & math.v3_iz_float128).Equals((other.vector & math.v3_iz_float128));
     }
 
 
@@ -197,13 +197,13 @@ public unsafe partial struct float3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator ==(float3 left, float3 right)
     {
-        return left.vector.Equals(right.vector);
+        return (left.vector & math.v3_iz_float128).Equals((right.vector & math.v3_iz_float128));
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator !=(float3 left, float3 right)
     {
-        return !left.vector.Equals(right.vector);
+        return !(left.vector & math.v3_iz_float128).Equals((right.vector & math.v3_iz_float128));
     }
 
 
@@ -371,6 +371,11 @@ public static unsafe partial class math
 
 
 
+    
+
+    internal static readonly Vector128<float> v3_iz_float128 = Vector128.Create(-1, -1, -1, 0).As<int, float>();
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float3 mad(float3 a, float3 b, float3 c)
     {
@@ -406,7 +411,7 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float dot(float3 x, float3 y) => Vector128.Dot(x.vector, y.vector);
+    public static float dot(float3 x, float3 y) => Vector128.Dot(x.vector & math.v3_iz_float128, y.vector);
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]

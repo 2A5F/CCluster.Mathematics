@@ -150,7 +150,7 @@ public unsafe partial struct float2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool Equals(float2 other)
     {
-        return this.vector.Equals(other.vector);
+        return (this.vector).Equals((other.vector));
     }
 
 
@@ -162,13 +162,13 @@ public unsafe partial struct float2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator ==(float2 left, float2 right)
     {
-        return left.vector.Equals(right.vector);
+        return (left.vector).Equals((right.vector));
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator !=(float2 left, float2 right)
     {
-        return !left.vector.Equals(right.vector);
+        return !(left.vector).Equals((right.vector));
     }
 
 
@@ -334,6 +334,9 @@ public static unsafe partial class math
     public static float2 remap(float2 x, float2 a, float2 b, float2 c, float2 d) => lerp(c, d, unlerp(a, b, x));
 
 
+
+
+    
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]

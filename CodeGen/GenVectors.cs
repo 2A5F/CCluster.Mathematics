@@ -77,6 +77,9 @@ public class GenVectors : Base
                 var xyzw_this_value_to_str =
                     string.Join(", ", Enumerable.Range(0, n).Select(i => $"{{this.{xyzw[i]}}}"));
 
+                var v3_iz = n == 3 ? $" & math.v3_iz_{type}{bitSize}" : "";
+                var vint = bitSize == 256 ? "long" : "int";
+
                 #region ctors
 
                 var ctors = new StringBuilder();
@@ -399,7 +402,7 @@ public unsafe partial struct {vname} :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool Equals({vname} other)
     {{
-        return this.vector.Equals(other.vector);
+        return (this.vector{v3_iz}).Equals((other.vector{v3_iz}));
     }}
 " : $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -414,13 +417,13 @@ public unsafe partial struct {vname} :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator ==({vname} left, {vname} right)
     {{
-        return left.vector.Equals(right.vector);
+        return (left.vector{v3_iz}).Equals((right.vector{v3_iz}));
     }}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static bool operator !=({vname} left, {vname} right)
     {{
-        return !left.vector.Equals(right.vector);
+        return !(left.vector{v3_iz}).Equals((right.vector{v3_iz}));
     }}
 
 " : $@"
@@ -654,6 +657,11 @@ public static unsafe partial class math
 " : "")}
 
 {(simd ? $@"
+    
+{(n == 3 ? $@"
+    internal static readonly Vector{bitSize}<{type}> v3_iz_{type}{bitSize} = Vector{bitSize}.Create(-1, -1, -1, 0).As<{vint}, {type}>();
+" :"")}
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} mad({vname} a, {vname} b, {vname} c)
     {{
@@ -697,7 +705,7 @@ public static unsafe partial class math
 
 {(simd ? $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} dot({vname} x, {vname} y) => Vector{bitSize}.Dot(x.vector, y.vector);
+    public static {type} dot({vname} x, {vname} y) => Vector{bitSize}.Dot(x.vector{v3_iz}, y.vector);
 " : $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} dot({vname} x, {vname} y) => {dot};
