@@ -8,11 +8,13 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CCluster.Mathematics.Json;
 
 #nullable enable
 #pragma warning disable CS8981
 
-namespace CCluster.Mathematics;
+namespace CCluster.Mathematics
+{
 
 /// <summary>A 4 component vector of ulong</summary>
 [Serializable]
@@ -447,6 +449,9 @@ public static unsafe partial class math
 
 }
 
+namespace Json
+{
+
 public class Ulong4JsonConverter : JsonConverter<ulong4>
 {
     public override ulong4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -476,3 +481,7 @@ public class Ulong4JsonConverter : JsonConverter<ulong4>
         writer.WriteEndArray();
     }
 }
+
+} // namespace Json
+
+} // namespace CCluster.Mathematics

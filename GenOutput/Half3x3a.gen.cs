@@ -8,14 +8,17 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CCluster.Mathematics.Json;
 
 #nullable enable
 #pragma warning disable CS8981
 
-namespace CCluster.Mathematics;
+namespace CCluster.Mathematics
+{
 
 /// <summary>A 3x3 matrix of Half</summary>
 [Serializable]
+[JsonConverter(typeof(Half3x3AJsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 18, Pack = 2)]
 public unsafe partial struct Half3x3a :
     IEquatable<Half3x3a>, IEqualityOperators<Half3x3a, Half3x3a, bool>, IEqualityOperators<Half3x3a, Half3x3a, bool3x3a>,
@@ -440,3 +443,41 @@ public static unsafe partial class math
 
 
 }
+
+namespace Json
+{
+
+public class Half3x3AJsonConverter : JsonConverter<Half3x3a>
+{
+    private static readonly Type v_type = typeof(Half3a);
+
+    public override Half3x3a Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        Unsafe.SkipInit(out Half3x3a result);
+        if (reader.TokenType is not JsonTokenType.StartArray) throw new JsonException();
+        var conv = (JsonConverter<Half3a>)options.GetConverter(v_type);
+        reader.Read();
+        result.c0 = conv.Read(ref reader, v_type, options);
+        reader.Read();
+        result.c1 = conv.Read(ref reader, v_type, options);
+        reader.Read();
+        result.c2 = conv.Read(ref reader, v_type, options);
+        reader.Read();
+        if (reader.TokenType is not JsonTokenType.EndArray) throw new JsonException();
+        return result;
+    }
+
+    public override void Write(Utf8JsonWriter writer, Half3x3a value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        var conv = (JsonConverter<Half3a>)options.GetConverter(v_type);
+        conv.Write(writer, value.c0, options);
+        conv.Write(writer, value.c1, options);
+        conv.Write(writer, value.c2, options);
+        writer.WriteEndArray();
+    }
+}
+
+} // namespace Json
+
+} // namespace CCluster.Mathematics

@@ -30,6 +30,8 @@ public class GenMatrix : Base
                     var vname = $"{type}{na}";
                     var nma = $"{nv}x{nm}{align_name}";
                     var mname = $"{type}{nma}";
+                    
+                    var json_name = $"{type[0].ToString().ToUpper()}{type[1..]}{nv}x{nm}{align_name.ToUpper()}";
 
                     var byteSize = meta.Size * (nv == 3 && !no_align ? 4 : nv);
                     var bitSize = byteSize * 8;
@@ -298,6 +300,20 @@ public class GenMatrix : Base
 
                     #endregion
 
+                    #region json
+
+                    var json_read = new StringBuilder();
+                    var json_write = new StringBuilder();
+                    foreach (var i in Enumerable.Range(0, nm).Select(i => i))
+                    {
+                        json_read.Append($@"
+        reader.Read();
+        result.c{i} = conv.Read(ref reader, v_type, options);");
+                        json_write.Append($@"
+        conv.Write(writer, value.c{i}, options);");
+                    }
+
+                    #endregion
 
                     var hash_value = string.Join(", ", Enumerable.Range(0, nm).Select(i => $"this.c{i}.GetHashCode()"));
 
@@ -370,14 +386,17 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CCluster.Mathematics.Json;
 
 #nullable enable
 #pragma warning disable CS8981
 
-namespace CCluster.Mathematics;
+namespace CCluster.Mathematics
+{{
 
 /// <summary>A {nv}x{nm} matrix of {type}</summary>
 [Serializable]
+[JsonConverter(typeof({json_name}JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = {byteSize * nm}, Pack = {meta.Size})]
 public unsafe partial struct {mname} :
     IEquatable<{mname}>, IEqualityOperators<{mname}, {mname}, bool>, IEqualityOperators<{mname}, {mname}, bool{nma}>,
@@ -665,6 +684,35 @@ public static unsafe partial class math
 
 " : "" /* meta.Number */)}
 }}
+
+namespace Json
+{{
+
+public class {json_name}JsonConverter : JsonConverter<{mname}>
+{{
+    private static readonly Type v_type = typeof({vname});
+
+    public override {mname} Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {{
+        Unsafe.SkipInit(out {mname} result);
+        if (reader.TokenType is not JsonTokenType.StartArray) throw new JsonException();
+        var conv = (JsonConverter<{vname}>)options.GetConverter(v_type);{json_read}
+        reader.Read();
+        if (reader.TokenType is not JsonTokenType.EndArray) throw new JsonException();
+        return result;
+    }}
+
+    public override void Write(Utf8JsonWriter writer, {mname} value, JsonSerializerOptions options)
+    {{
+        writer.WriteStartArray();
+        var conv = (JsonConverter<{vname}>)options.GetConverter(v_type);{json_write}
+        writer.WriteEndArray();
+    }}
+}}
+
+}} // namespace Json
+
+}} // namespace CCluster.Mathematics
 ";
                     await SaveCode($"{mname}.gen.cs", source);
                 }

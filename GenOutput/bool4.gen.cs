@@ -8,11 +8,13 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CCluster.Mathematics.Json;
 
 #nullable enable
 #pragma warning disable CS8981
 
-namespace CCluster.Mathematics;
+namespace CCluster.Mathematics
+{
 
 /// <summary>A 4 component vector of bool</summary>
 [Serializable]
@@ -217,6 +219,9 @@ public static unsafe partial class math
 
 }
 
+namespace Json
+{
+
 public class Bool4JsonConverter : JsonConverter<bool4>
 {
     public override bool4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -246,3 +251,7 @@ public class Bool4JsonConverter : JsonConverter<bool4>
         writer.WriteEndArray();
     }
 }
+
+} // namespace Json
+
+} // namespace CCluster.Mathematics

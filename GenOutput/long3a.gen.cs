@@ -8,11 +8,13 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CCluster.Mathematics.Json;
 
 #nullable enable
 #pragma warning disable CS8981
 
-namespace CCluster.Mathematics;
+namespace CCluster.Mathematics
+{
 
 /// <summary>A 3 component vector of long, with no aligned</summary>
 [Serializable]
@@ -430,6 +432,9 @@ public static unsafe partial class math
 
 }
 
+namespace Json
+{
+
 public class Long3AJsonConverter : JsonConverter<long3a>
 {
     public override long3a Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -456,3 +461,7 @@ public class Long3AJsonConverter : JsonConverter<long3a>
         writer.WriteEndArray();
     }
 }
+
+} // namespace Json
+
+} // namespace CCluster.Mathematics

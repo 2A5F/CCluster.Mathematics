@@ -8,11 +8,13 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CCluster.Mathematics.Json;
 
 #nullable enable
 #pragma warning disable CS8981
 
-namespace CCluster.Mathematics;
+namespace CCluster.Mathematics
+{
 
 /// <summary>A 2 component vector of int</summary>
 [Serializable]
@@ -426,6 +428,9 @@ public static unsafe partial class math
 
 }
 
+namespace Json
+{
+
 public class Int2JsonConverter : JsonConverter<int2>
 {
     public override int2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -449,3 +454,7 @@ public class Int2JsonConverter : JsonConverter<int2>
         writer.WriteEndArray();
     }
 }
+
+} // namespace Json
+
+} // namespace CCluster.Mathematics

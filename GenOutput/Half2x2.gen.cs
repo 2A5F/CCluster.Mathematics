@@ -8,14 +8,17 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CCluster.Mathematics.Json;
 
 #nullable enable
 #pragma warning disable CS8981
 
-namespace CCluster.Mathematics;
+namespace CCluster.Mathematics
+{
 
 /// <summary>A 2x2 matrix of Half</summary>
 [Serializable]
+[JsonConverter(typeof(Half2x2JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 8, Pack = 2)]
 public unsafe partial struct Half2x2 :
     IEquatable<Half2x2>, IEqualityOperators<Half2x2, Half2x2, bool>, IEqualityOperators<Half2x2, Half2x2, bool2x2>,
@@ -383,3 +386,38 @@ public static unsafe partial class math
 
 
 }
+
+namespace Json
+{
+
+public class Half2x2JsonConverter : JsonConverter<Half2x2>
+{
+    private static readonly Type v_type = typeof(Half2);
+
+    public override Half2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        Unsafe.SkipInit(out Half2x2 result);
+        if (reader.TokenType is not JsonTokenType.StartArray) throw new JsonException();
+        var conv = (JsonConverter<Half2>)options.GetConverter(v_type);
+        reader.Read();
+        result.c0 = conv.Read(ref reader, v_type, options);
+        reader.Read();
+        result.c1 = conv.Read(ref reader, v_type, options);
+        reader.Read();
+        if (reader.TokenType is not JsonTokenType.EndArray) throw new JsonException();
+        return result;
+    }
+
+    public override void Write(Utf8JsonWriter writer, Half2x2 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        var conv = (JsonConverter<Half2>)options.GetConverter(v_type);
+        conv.Write(writer, value.c0, options);
+        conv.Write(writer, value.c1, options);
+        writer.WriteEndArray();
+    }
+}
+
+} // namespace Json
+
+} // namespace CCluster.Mathematics

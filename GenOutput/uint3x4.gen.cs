@@ -8,14 +8,17 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CCluster.Mathematics.Json;
 
 #nullable enable
 #pragma warning disable CS8981
 
-namespace CCluster.Mathematics;
+namespace CCluster.Mathematics
+{
 
 /// <summary>A 3x4 matrix of uint</summary>
 [Serializable]
+[JsonConverter(typeof(Uint3x4JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 64, Pack = 4)]
 public unsafe partial struct uint3x4 :
     IEquatable<uint3x4>, IEqualityOperators<uint3x4, uint3x4, bool>, IEqualityOperators<uint3x4, uint3x4, bool3x4>,
@@ -441,3 +444,44 @@ public static unsafe partial class math
 
 
 }
+
+namespace Json
+{
+
+public class Uint3x4JsonConverter : JsonConverter<uint3x4>
+{
+    private static readonly Type v_type = typeof(uint3);
+
+    public override uint3x4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        Unsafe.SkipInit(out uint3x4 result);
+        if (reader.TokenType is not JsonTokenType.StartArray) throw new JsonException();
+        var conv = (JsonConverter<uint3>)options.GetConverter(v_type);
+        reader.Read();
+        result.c0 = conv.Read(ref reader, v_type, options);
+        reader.Read();
+        result.c1 = conv.Read(ref reader, v_type, options);
+        reader.Read();
+        result.c2 = conv.Read(ref reader, v_type, options);
+        reader.Read();
+        result.c3 = conv.Read(ref reader, v_type, options);
+        reader.Read();
+        if (reader.TokenType is not JsonTokenType.EndArray) throw new JsonException();
+        return result;
+    }
+
+    public override void Write(Utf8JsonWriter writer, uint3x4 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        var conv = (JsonConverter<uint3>)options.GetConverter(v_type);
+        conv.Write(writer, value.c0, options);
+        conv.Write(writer, value.c1, options);
+        conv.Write(writer, value.c2, options);
+        conv.Write(writer, value.c3, options);
+        writer.WriteEndArray();
+    }
+}
+
+} // namespace Json
+
+} // namespace CCluster.Mathematics

@@ -8,14 +8,17 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CCluster.Mathematics.Json;
 
 #nullable enable
 #pragma warning disable CS8981
 
-namespace CCluster.Mathematics;
+namespace CCluster.Mathematics
+{
 
 /// <summary>A 2x2 matrix of float</summary>
 [Serializable]
+[JsonConverter(typeof(Float2x2JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 16, Pack = 4)]
 public unsafe partial struct float2x2 :
     IEquatable<float2x2>, IEqualityOperators<float2x2, float2x2, bool>, IEqualityOperators<float2x2, float2x2, bool2x2>,
@@ -383,3 +386,38 @@ public static unsafe partial class math
 
 
 }
+
+namespace Json
+{
+
+public class Float2x2JsonConverter : JsonConverter<float2x2>
+{
+    private static readonly Type v_type = typeof(float2);
+
+    public override float2x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        Unsafe.SkipInit(out float2x2 result);
+        if (reader.TokenType is not JsonTokenType.StartArray) throw new JsonException();
+        var conv = (JsonConverter<float2>)options.GetConverter(v_type);
+        reader.Read();
+        result.c0 = conv.Read(ref reader, v_type, options);
+        reader.Read();
+        result.c1 = conv.Read(ref reader, v_type, options);
+        reader.Read();
+        if (reader.TokenType is not JsonTokenType.EndArray) throw new JsonException();
+        return result;
+    }
+
+    public override void Write(Utf8JsonWriter writer, float2x2 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        var conv = (JsonConverter<float2>)options.GetConverter(v_type);
+        conv.Write(writer, value.c0, options);
+        conv.Write(writer, value.c1, options);
+        writer.WriteEndArray();
+    }
+}
+
+} // namespace Json
+
+} // namespace CCluster.Mathematics

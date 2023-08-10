@@ -8,14 +8,17 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CCluster.Mathematics.Json;
 
 #nullable enable
 #pragma warning disable CS8981
 
-namespace CCluster.Mathematics;
+namespace CCluster.Mathematics
+{
 
 /// <summary>A 4x2 matrix of bool</summary>
 [Serializable]
+[JsonConverter(typeof(Bool4x2JsonConverter))]
 [StructLayout(LayoutKind.Explicit, Size = 8, Pack = 1)]
 public unsafe partial struct bool4x2 :
     IEquatable<bool4x2>, IEqualityOperators<bool4x2, bool4x2, bool>, IEqualityOperators<bool4x2, bool4x2, bool4x2>,
@@ -221,3 +224,38 @@ public static unsafe partial class math
 {
 
 }
+
+namespace Json
+{
+
+public class Bool4x2JsonConverter : JsonConverter<bool4x2>
+{
+    private static readonly Type v_type = typeof(bool4);
+
+    public override bool4x2 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    {
+        Unsafe.SkipInit(out bool4x2 result);
+        if (reader.TokenType is not JsonTokenType.StartArray) throw new JsonException();
+        var conv = (JsonConverter<bool4>)options.GetConverter(v_type);
+        reader.Read();
+        result.c0 = conv.Read(ref reader, v_type, options);
+        reader.Read();
+        result.c1 = conv.Read(ref reader, v_type, options);
+        reader.Read();
+        if (reader.TokenType is not JsonTokenType.EndArray) throw new JsonException();
+        return result;
+    }
+
+    public override void Write(Utf8JsonWriter writer, bool4x2 value, JsonSerializerOptions options)
+    {
+        writer.WriteStartArray();
+        var conv = (JsonConverter<bool4>)options.GetConverter(v_type);
+        conv.Write(writer, value.c0, options);
+        conv.Write(writer, value.c1, options);
+        writer.WriteEndArray();
+    }
+}
+
+} // namespace Json
+
+} // namespace CCluster.Mathematics

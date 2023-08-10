@@ -8,11 +8,13 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CCluster.Mathematics.Json;
 
 #nullable enable
 #pragma warning disable CS8981
 
-namespace CCluster.Mathematics;
+namespace CCluster.Mathematics
+{
 
 /// <summary>A 4 component vector of Half</summary>
 [Serializable]
@@ -633,6 +635,9 @@ public static unsafe partial class math
 
 }
 
+namespace Json
+{
+
 public class Half4JsonConverter : JsonConverter<Half4>
 {
     public override Half4 Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -662,3 +667,7 @@ public class Half4JsonConverter : JsonConverter<Half4>
         writer.WriteEndArray();
     }
 }
+
+} // namespace Json
+
+} // namespace CCluster.Mathematics
