@@ -349,11 +349,19 @@ public static unsafe partial class math
 
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 min(ulong4 x, ulong4 y) => new(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z), min(x.w, y.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 max(ulong4 x, ulong4 y) => new(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z), max(x.w, y.w));
+    public static ulong4 min(ulong4 x, ulong4 y) => new(Vector256.Min(x.vector, y.vector));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 max(ulong4 x, ulong4 y) => new(Vector256.Max(x.vector, y.vector));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 min(ulong4 x, ulong4 y, ulong4 z) => min(min(x, y), z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 max(ulong4 x, ulong4 y, ulong4 z) => max(max(x, y), z);
 
 
 
@@ -388,7 +396,11 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong dot(ulong4 x, ulong4 y) => Vector256.Dot(x.vector, y.vector);
+    public static ulong dot(ulong4 x, ulong4 y)
+    {
+        
+        return Vector256.Dot(x.vector, y.vector);
+    }
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -446,8 +458,26 @@ public static unsafe partial class math
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong csum(ulong4 x) => Vector256.Sum(x.vector);
 
-}
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4 pop_cnt(ulong4 x)
+    {
+        return new(pop_cnt(x.x), pop_cnt(x.y), pop_cnt(x.z), pop_cnt(x.w));
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(ulong4 x)
+    {
+
+        return csum(pop_cnt(x));
+    }
+
+} // class math
 
 namespace Json
 {
@@ -480,7 +510,7 @@ public class Ulong4JsonConverter : JsonConverter<ulong4>
         writer.WriteNumberValue(value.w);
         writer.WriteEndArray();
     }
-}
+} // class JsonConverter
 
 } // namespace Json
 

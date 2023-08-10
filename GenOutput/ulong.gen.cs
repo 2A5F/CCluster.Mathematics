@@ -15,6 +15,12 @@ public static partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ulong max(ulong x, ulong y) => ulong.Max(x, y);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong min(ulong x, ulong y, ulong z) => min(min(x, y), z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong max(ulong x, ulong y, ulong z) => max(max(x, y), z);
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -78,5 +84,11 @@ public static partial class math
     // todo projectsafe
 
 
+   
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int pop_cnt(ulong x) => x.PopCount();
 
-}
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(ulong x) => pop_cnt(x);
+
+} // class math

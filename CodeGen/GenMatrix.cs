@@ -683,7 +683,7 @@ public static unsafe partial class math
 {matrix_muls}
 
 " : "" /* meta.Number */)}
-}}
+}} // class math
 
 namespace Json
 {{
@@ -708,7 +708,7 @@ public class {json_name}JsonConverter : JsonConverter<{mname}>
         var conv = (JsonConverter<{vname}>)options.GetConverter(v_type);{json_write}
         writer.WriteEndArray();
     }}
-}}
+}} // class JsonConverter
 
 }} // namespace Json
 

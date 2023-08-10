@@ -285,11 +285,19 @@ public static unsafe partial class math
 
 
 
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal2 min(decimal2 x, decimal2 y) => new(min(x.x, y.x), min(x.y, y.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal2 max(decimal2 x, decimal2 y) => new(max(x.x, y.x), max(x.y, y.y));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 min(decimal2 x, decimal2 y, decimal2 z) => min(min(x, y), z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 max(decimal2 x, decimal2 y, decimal2 z) => max(max(x, y), z);
 
 
 
@@ -321,8 +329,10 @@ public static unsafe partial class math
 
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal2 abs(decimal2 x) => new(abs(x.x), abs(x.y));
+
 
 
 
@@ -351,10 +361,10 @@ public static unsafe partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal2 ceil(decimal2 x) => new(ceil(x.x), ceil(x.y));
 
-
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal2 round(decimal2 x) => new(round(x.x), round(x.y));
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal2 trunc(decimal2 x) => new(trunc(x.x), trunc(x.y));
@@ -432,8 +442,26 @@ public static unsafe partial class math
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal csum(decimal2 x) => x.x + x.y;
 
-}
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int2 pop_cnt(decimal2 x)
+    {
+        return new(pop_cnt(x.x), pop_cnt(x.y));
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(decimal2 x)
+    {
+
+        return csum(pop_cnt(x));
+    }
+
+} // class math
 
 namespace Json
 {
@@ -460,7 +488,7 @@ public class Decimal2JsonConverter : JsonConverter<decimal2>
         writer.WriteNumberValue(value.y);
         writer.WriteEndArray();
     }
-}
+} // class JsonConverter
 
 } // namespace Json
 

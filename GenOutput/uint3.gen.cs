@@ -350,11 +350,19 @@ public static unsafe partial class math
 
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint3 min(uint3 x, uint3 y) => new(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint3 max(uint3 x, uint3 y) => new(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z));
+    public static uint3 min(uint3 x, uint3 y) => new(Vector128.Min(x.vector, y.vector));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3 max(uint3 x, uint3 y) => new(Vector128.Max(x.vector, y.vector));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3 min(uint3 x, uint3 y, uint3 z) => min(min(x, y), z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3 max(uint3 x, uint3 y, uint3 z) => max(max(x, y), z);
 
 
 
@@ -394,7 +402,11 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint dot(uint3 x, uint3 y) => Vector128.Dot(x.vector & math.v3_iz_uint128, y.vector);
+    public static uint dot(uint3 x, uint3 y)
+    {
+        
+        return Vector128.Dot(x.vector & math.v3_iz_uint128, y.vector);
+    }
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -452,8 +464,32 @@ public static unsafe partial class math
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint csum(uint3 x) => Vector128.Sum(x.vector & math.v3_iz_uint128);
 
-}
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3 pop_cnt(uint3 x)
+    {
+        return new(pop_cnt(x.x), pop_cnt(x.y), pop_cnt(x.z));
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(uint3 x)
+    {
+
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            var a = AdvSimd.Arm64.AddAcross(AdvSimd.PopCount((x.vector & math.v3_iz_uint128).AsByte()));
+            return a.ToScalar();
+        }
+
+        return csum(pop_cnt(x));
+    }
+
+} // class math
 
 namespace Json
 {
@@ -483,7 +519,7 @@ public class Uint3JsonConverter : JsonConverter<uint3>
         writer.WriteNumberValue(value.z);
         writer.WriteEndArray();
     }
-}
+} // class JsonConverter
 
 } // namespace Json
 

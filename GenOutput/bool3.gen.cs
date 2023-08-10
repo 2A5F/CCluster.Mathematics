@@ -195,7 +195,20 @@ public static unsafe partial class math
 
 
 
-}
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3 pop_cnt(bool3 x)
+    {
+        return new(pop_cnt(x.x), pop_cnt(x.y), pop_cnt(x.z));
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(bool3 x)
+    {
+
+        return csum(pop_cnt(x));
+    }
+
+} // class math
 
 namespace Json
 {
@@ -225,7 +238,7 @@ public class Bool3JsonConverter : JsonConverter<bool3>
         writer.WriteBooleanValue(value.z);
         writer.WriteEndArray();
     }
-}
+} // class JsonConverter
 
 } // namespace Json
 

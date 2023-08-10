@@ -315,11 +315,19 @@ public static unsafe partial class math
 
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint2 min(uint2 x, uint2 y) => new(min(x.x, y.x), min(x.y, y.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint2 max(uint2 x, uint2 y) => new(max(x.x, y.x), max(x.y, y.y));
+    public static uint2 min(uint2 x, uint2 y) => new(Vector64.Min(x.vector, y.vector));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint2 max(uint2 x, uint2 y) => new(Vector64.Max(x.vector, y.vector));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint2 min(uint2 x, uint2 y, uint2 z) => min(min(x, y), z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint2 max(uint2 x, uint2 y, uint2 z) => max(max(x, y), z);
 
 
 
@@ -354,7 +362,11 @@ public static unsafe partial class math
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint dot(uint2 x, uint2 y) => Vector64.Dot(x.vector, y.vector);
+    public static uint dot(uint2 x, uint2 y)
+    {
+        
+        return Vector64.Dot(x.vector, y.vector);
+    }
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -412,8 +424,32 @@ public static unsafe partial class math
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint csum(uint2 x) => Vector64.Sum(x.vector);
 
-}
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int2 pop_cnt(uint2 x)
+    {
+        return new(pop_cnt(x.x), pop_cnt(x.y));
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(uint2 x)
+    {
+
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            var a = AdvSimd.Arm64.AddAcross(AdvSimd.PopCount((x.vector).AsByte()));
+            return a.ToScalar();
+        }
+
+        return csum(pop_cnt(x));
+    }
+
+} // class math
 
 namespace Json
 {
@@ -440,7 +476,7 @@ public class Uint2JsonConverter : JsonConverter<uint2>
         writer.WriteNumberValue(value.y);
         writer.WriteEndArray();
     }
-}
+} // class JsonConverter
 
 } // namespace Json
 

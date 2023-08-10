@@ -328,11 +328,19 @@ public static unsafe partial class math
 
 
 
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float3a min(float3a x, float3a y) => new(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float3a max(float3a x, float3a y) => new(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3a min(float3a x, float3a y, float3a z) => min(min(x, y), z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3a max(float3a x, float3a y, float3a z) => max(max(x, y), z);
 
 
 
@@ -364,8 +372,10 @@ public static unsafe partial class math
 
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float3a abs(float3a x) => new(abs(x.x), abs(x.y), abs(x.z));
+
 
 
 
@@ -475,10 +485,10 @@ public static unsafe partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float3a ceil(float3a x) => new(ceil(x.x), ceil(x.y), ceil(x.z));
 
-
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float3a round(float3a x) => new(round(x.x), round(x.y), round(x.z));
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float3a trunc(float3a x) => new(trunc(x.x), trunc(x.y), trunc(x.z));
@@ -640,8 +650,26 @@ public static unsafe partial class math
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float csum(float3a x) => x.x + x.y + x.z;
 
-}
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3a pop_cnt(float3a x)
+    {
+        return new(pop_cnt(x.x), pop_cnt(x.y), pop_cnt(x.z));
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(float3a x)
+    {
+
+        return csum(pop_cnt(x));
+    }
+
+} // class math
 
 namespace Json
 {
@@ -671,7 +699,7 @@ public class Float3AJsonConverter : JsonConverter<float3a>
         writer.WriteNumberValue(value.z);
         writer.WriteEndArray();
     }
-}
+} // class JsonConverter
 
 } // namespace Json
 

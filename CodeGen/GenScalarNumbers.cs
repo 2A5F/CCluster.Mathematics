@@ -52,6 +52,12 @@ public static partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} max({type} x, {type} y) => {type}.Max(x, y);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} min({type} x, {type} y, {type} z) => min(min(x, y), z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} max({type} x, {type} y, {type} z) => max(max(x, y), z);
+
 {(meta.Float || meta.Decimal ? $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -63,7 +69,7 @@ public static partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} remap({type} x, {type} a, {type} b, {type} c, {type} d) => lerp(c, d, unlerp(a, b, x));
 
-" : "")}
+" : "" /* meta.Float || meta.Decimal */)}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} mad({type} a, {type} b, {type} c) => {(meta.Float ? $"{type}.FusedMultiplyAdd(a, b, c)" : "a * b + c")};
@@ -76,7 +82,7 @@ public static partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} saturate({type} x) => clamp(x, {meta.Zero}, {meta.One});
 
-" : "")}
+" : "" /* meta.Float || meta.Decimal */)}
 
 {(meta.Unsigned ? $@"
 
@@ -88,7 +94,7 @@ public static partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} abs({type} x) => {type}.Abs(x);
 
-")}
+" /* meta.Unsigned */)}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} dot({type} x, {type} y) => x * y;
@@ -167,7 +173,7 @@ public static partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ({type} sin, {type} cos) sincos({type} x) => {type}.SinCos(x);
 
-" : "")}
+" : "" /* meta.Float */)}
 
 {(meta.Float || meta.Decimal ? $@"
 
@@ -189,14 +195,14 @@ public static partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} rcp({type} x) => {meta.One} / x;
 
-" : "")}
+" : "" /* meta.Float || meta.Decimal */)}
 
 {(meta.Unsigned ? "" : $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} sign({type} x) => (x > {meta.Zero} ? {meta.One} : {meta.Zero}) - (x < {meta.Zero} ? {meta.One} : {meta.Zero});
 
-")}
+" /* meta.Unsigned */)}
 
 {(meta.Float ? $@"
 
@@ -261,7 +267,7 @@ public static partial class math
 
     // todo normalizesafe
 
-" : "")}
+" : "" /* meta.Float */)}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} length({type} x) => abs(x);
@@ -296,7 +302,7 @@ public static partial class math
         return select({meta.Zero}, eta * i - (eta * ni + sqrt(k)) * n, k >= {meta.Zero});
     }}
 
-" : "")}
+" : "" /* meta.Float */)}
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -313,9 +319,15 @@ public static partial class math
     public static {type} degrees({type} x) => x * {(meta.Half ? "(Half)" : "")}57.295779513082320876798154814105170332405472466564321549160243861{meta.suffix};
 
 
-" : "")}
+" : "" /* meta.Float || meta.Decimal */)}
+   
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int pop_cnt({type} x) => x.PopCount();
 
-}}
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits({type} x) => pop_cnt(x);
+
+}} // class math
 ";
             await SaveCode($"{type}.gen.cs", source);
         }

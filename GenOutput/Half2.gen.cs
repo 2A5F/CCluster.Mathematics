@@ -285,11 +285,19 @@ public static unsafe partial class math
 
 
 
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half2 min(Half2 x, Half2 y) => new(min(x.x, y.x), min(x.y, y.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half2 max(Half2 x, Half2 y) => new(max(x.x, y.x), max(x.y, y.y));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 min(Half2 x, Half2 y, Half2 z) => min(min(x, y), z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half2 max(Half2 x, Half2 y, Half2 z) => max(max(x, y), z);
 
 
 
@@ -321,8 +329,10 @@ public static unsafe partial class math
 
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half2 abs(Half2 x) => new(abs(x.x), abs(x.y));
+
 
 
 
@@ -429,10 +439,10 @@ public static unsafe partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half2 ceil(Half2 x) => new(ceil(x.x), ceil(x.y));
 
-
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half2 round(Half2 x) => new(round(x.x), round(x.y));
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half2 trunc(Half2 x) => new(trunc(x.x), trunc(x.y));
@@ -594,8 +604,26 @@ public static unsafe partial class math
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half csum(Half2 x) => x.x + x.y;
 
-}
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int2 pop_cnt(Half2 x)
+    {
+        return new(pop_cnt(x.x), pop_cnt(x.y));
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(Half2 x)
+    {
+
+        return csum(pop_cnt(x));
+    }
+
+} // class math
 
 namespace Json
 {
@@ -622,7 +650,7 @@ public class Half2JsonConverter : JsonConverter<Half2>
         writer.WriteNumberValue((float)value.y);
         writer.WriteEndArray();
     }
-}
+} // class JsonConverter
 
 } // namespace Json
 

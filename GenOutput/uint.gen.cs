@@ -15,6 +15,12 @@ public static partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint max(uint x, uint y) => uint.Max(x, y);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint min(uint x, uint y, uint z) => min(min(x, y), z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint max(uint x, uint y, uint z) => max(max(x, y), z);
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -78,5 +84,11 @@ public static partial class math
     // todo projectsafe
 
 
+   
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int pop_cnt(uint x) => x.PopCount();
 
-}
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(uint x) => pop_cnt(x);
+
+} // class math

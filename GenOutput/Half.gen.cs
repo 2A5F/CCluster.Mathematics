@@ -15,6 +15,12 @@ public static partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Half max(Half x, Half y) => Half.Max(x, y);
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half min(Half x, Half y, Half z) => min(min(x, y), z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half max(Half x, Half y, Half z) => max(max(x, y), z);
+
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -272,5 +278,11 @@ public static partial class math
 
 
 
+   
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int pop_cnt(Half x) => x.PopCount();
 
-}
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(Half x) => pop_cnt(x);
+
+} // class math

@@ -318,11 +318,19 @@ public static unsafe partial class math
 
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double2 min(double2 x, double2 y) => new(min(x.x, y.x), min(x.y, y.y));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double2 max(double2 x, double2 y) => new(max(x.x, y.x), max(x.y, y.y));
+    public static double2 min(double2 x, double2 y) => new(Vector128.Min(x.vector, y.vector));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double2 max(double2 x, double2 y) => new(Vector128.Max(x.vector, y.vector));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double2 min(double2 x, double2 y, double2 z) => min(min(x, y), z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double2 max(double2 x, double2 y, double2 z) => max(max(x, y), z);
 
 
 
@@ -363,17 +371,23 @@ public static unsafe partial class math
 
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double2 abs(double2 x) => new(abs(x.x), abs(x.y));
-
-
-
-
-
-
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double dot(double2 x, double2 y) => Vector128.Dot(x.vector, y.vector);
+    public static double2 abs(double2 x) => new(Vector128.Abs(x.vector));
+
+
+
+
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double dot(double2 x, double2 y)
+    {
+        
+        return Vector128.Dot(x.vector, y.vector);
+    }
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -471,10 +485,15 @@ public static unsafe partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double2 ceil(double2 x) => new(Vector128.Ceiling(x.vector));
 
-
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double2 round(double2 x) => new(round(x.x), round(x.y));
+    public static double2 round(double2 x)
+    {
+        if (Sse41.IsSupported) return new(Sse41.RoundToNearestInteger(x.vector));
+        
+        return new(round(x.x), round(x.y));
+    }
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double2 trunc(double2 x) => new(trunc(x.x), trunc(x.y));
@@ -636,8 +655,32 @@ public static unsafe partial class math
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double csum(double2 x) => Vector128.Sum(x.vector);
 
-}
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int2 pop_cnt(double2 x)
+    {
+        return new(pop_cnt(x.x), pop_cnt(x.y));
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(double2 x)
+    {
+
+        if (AdvSimd.Arm64.IsSupported)
+        {
+            var a = AdvSimd.Arm64.AddAcross(AdvSimd.PopCount((x.vector).AsByte()));
+            return a.ToScalar();
+        }
+
+        return csum(pop_cnt(x));
+    }
+
+} // class math
 
 namespace Json
 {
@@ -664,7 +707,7 @@ public class Double2JsonConverter : JsonConverter<double2>
         writer.WriteNumberValue(value.y);
         writer.WriteEndArray();
     }
-}
+} // class JsonConverter
 
 } // namespace Json
 

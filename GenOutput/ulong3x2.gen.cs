@@ -401,7 +401,7 @@ public static unsafe partial class math
 
 
 
-}
+} // class math
 
 namespace Json
 {
@@ -432,7 +432,7 @@ public class Ulong3x2JsonConverter : JsonConverter<ulong3x2>
         conv.Write(writer, value.c1, options);
         writer.WriteEndArray();
     }
-}
+} // class JsonConverter
 
 } // namespace Json
 

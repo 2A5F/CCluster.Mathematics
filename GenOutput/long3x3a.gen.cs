@@ -442,7 +442,7 @@ public static unsafe partial class math
 
 
 
-}
+} // class math
 
 namespace Json
 {
@@ -476,7 +476,7 @@ public class Long3x3AJsonConverter : JsonConverter<long3x3a>
         conv.Write(writer, value.c2, options);
         writer.WriteEndArray();
     }
-}
+} // class JsonConverter
 
 } // namespace Json
 

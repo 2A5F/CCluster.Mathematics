@@ -1,6 +1,8 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.Intrinsics;
+using System.Runtime.Intrinsics.Arm;
 
 namespace CCluster.Mathematics;
 
@@ -8,7 +10,6 @@ namespace CCluster.Mathematics;
 
 public static partial class math
 {
-    
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static Vector2 ToVector2(this float2 self) => new(self.x, self.y);
 
@@ -26,4 +27,63 @@ public static partial class math
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float4 ToFloat4(this Vector4 self) => new(self.X, self.Y, self.Z, self.W);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    internal static unsafe R Transmute<T, R>(this T val) where T : unmanaged where R : unmanaged
+    {
+        if (sizeof(T) != sizeof(R)) throw new InvalidOperationException();
+        return Unsafe.As<T, R>(ref val);
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    internal static ushort AsInt(this Half val) => Transmute<Half, ushort>(val);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    internal static uint AsInt(this float val) => Transmute<float, uint>(val);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    internal static ulong AsInt(this double val) => Transmute<double, ulong>(val);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    internal static UInt128 AsInt(this decimal val) => Transmute<decimal, UInt128>(val);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    internal static int PopCount(this Half val) => BitOperations.PopCount(val.AsInt());
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    internal static int PopCount(this float val) => BitOperations.PopCount(val.AsInt());
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    internal static int PopCount(this double val) => BitOperations.PopCount(val.AsInt());
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    internal static int PopCount(this decimal val)
+    {
+        if (AdvSimd.Arm64.IsSupported)
+            return AdvSimd.Arm64.AddAcross(AdvSimd.PopCount(val.Transmute<decimal, Vector128<byte>>())).ToScalar();
+        return (int)UInt128.PopCount(val.AsInt());
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    internal static int PopCount(this int val) => BitOperations.PopCount((uint)val);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    internal static int PopCount(this uint val) => BitOperations.PopCount(val);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    internal static int PopCount(this long val) => BitOperations.PopCount((ulong)val);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    internal static int PopCount(this ulong val) => BitOperations.PopCount(val);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    internal static int PopCount(this bool val) => val ? 1 : 0;
+    
+    
+   
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int pop_cnt(bool x) => x.PopCount();
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(bool x) => pop_cnt(x);
 }

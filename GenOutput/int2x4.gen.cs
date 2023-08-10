@@ -409,7 +409,7 @@ public static unsafe partial class math
 
 
 
-}
+} // class math
 
 namespace Json
 {
@@ -446,7 +446,7 @@ public class Int2x4JsonConverter : JsonConverter<int2x4>
         conv.Write(writer, value.c3, options);
         writer.WriteEndArray();
     }
-}
+} // class JsonConverter
 
 } // namespace Json
 

@@ -209,10 +209,10 @@ public class GenVectors : Base
 
                 var take_self_value = string.Join(", ",
                     Enumerable.Range(0, n).Select(i => $"self.{xyzw[i]}"));
-                
+
                 string cast_self_value(string t) => string.Join(", ",
                     Enumerable.Range(0, n).Select(i => $"({t})self.{xyzw[i]}"));
-                
+
                 #region converts
 
                 var converts = new StringBuilder();
@@ -253,7 +253,7 @@ public class GenVectors : Base
                 }
 
                 #endregion
-                
+
                 var hash_value = string.Join(", ", Enumerable.Range(0, n).Select(i => $"this.{xyzw[i]}.GetHashCode()"));
                 var this_eq_and = string.Join(" && ",
                     Enumerable.Range(0, n).Select(i => $"this.{xyzw[i]} == other.{xyzw[i]}"));
@@ -261,6 +261,9 @@ public class GenVectors : Base
                     Enumerable.Range(0, n).Select(i => $"left.{xyzw[i]} == right.{xyzw[i]}"));
                 var ne_or = string.Join(" || ",
                     Enumerable.Range(0, n).Select(i => $"left.{xyzw[i]} != right.{xyzw[i]}"));
+
+                var value_x_add = string.Join(" + ",
+                    Enumerable.Range(0, n).Select(i => $"x.{xyzw[i]}"));
 
                 string this_oper_value(string op) => string.Join(", ",
                     Enumerable.Range(0, n).Select(i => $"this.{xyzw[i]} {op} other.{xyzw[i]}"));
@@ -284,6 +287,9 @@ public class GenVectors : Base
                     Enumerable.Range(0, n).Select(i => $"{f}(y.{xyzw[i]}, x.{xyzw[i]})"));
 
                 string fn_value_x(string f) => string.Join(", ",
+                    Enumerable.Range(0, n).Select(i => $"{f}(x.{xyzw[i]})"));
+
+                string fn_value_x_add(string f) => string.Join(" + ",
                     Enumerable.Range(0, n).Select(i => $"{f}(x.{xyzw[i]})"));
 
                 var dot = string.Join(" + ", Enumerable.Range(0, n).Select(i => $"x.{xyzw[i]} * y.{xyzw[i]}"));
@@ -639,11 +645,25 @@ public static unsafe partial class math
 
 {(meta.Number ? $@"
 
+{(simd ? $@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} min({vname} x, {vname} y) => new(Vector{bitSize}.Min(x.vector, y.vector));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} max({vname} x, {vname} y) => new(Vector{bitSize}.Max(x.vector, y.vector));
+" : $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} min({vname} x, {vname} y) => new({fn_value_xy("min")});
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} max({vname} x, {vname} y) => new({fn_value_xy("max")});
+" /* simd */)}
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} min({vname} x, {vname} y, {vname} z) => min(min(x, y), z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} max({vname} x, {vname} y, {vname} z) => max(max(x, y), z);
 
 {(meta.Float || meta.Decimal ? $@"
 
@@ -656,13 +676,13 @@ public static unsafe partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} remap({vname} x, {vname} a, {vname} b, {vname} c, {vname} d) => lerp(c, d, unlerp(a, b, x));
 
-" : "")}
+" : "" /* meta.Float || meta.Decimal */)}
 
 {(simd ? $@"
     
 {(n == 3 ? $@"
     internal static readonly Vector{bitSize}<{type}> v3_iz_{type}{bitSize} = Vector{bitSize}.Create(-1, -1, -1, 0).As<{vint}, {type}>();
-" :"")}
+" : "" /* n == 3 */)}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} mad({vname} a, {vname} b, {vname} c)
@@ -672,7 +692,7 @@ public static unsafe partial class math
         {(type == "float" && bitSize is 64 or 128 ? $"if (AdvSimd.IsSupported) return new(AdvSimd.FusedMultiplyAdd(c.vector, a.vector, b.vector));" : "")}
         return a * b + c;
     }}
-" : $@"
+" /* simd */ : /* !simd */ $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} mad({vname} a, {vname} b, {vname} c) => a * b + c;
 " /* simd */)}
@@ -685,7 +705,7 @@ public static unsafe partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} saturate({vname} x) => clamp(x, {vname}.zero, {vname}.one);
 
-" : "")}
+" : "" /* meta.Float || meta.Decimal */)}
 
 {(meta.Unsigned ? $@"
 
@@ -694,29 +714,38 @@ public static unsafe partial class math
 
 " : $@"
 
+{(simd ? $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} abs({vname} x) => new(Vector{bitSize}.Abs(x.vector));
+" : $@"
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} abs({vname} x) => new({fn_value_x("abs")});
+" /* simd */)}
 
-")}
+" /* meta.Unsigned */)}
 
 {(n == 3 ? $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} cross({vname} x, {vname} y) => (x * y.yzx - x.yzx * y).yzx;
-" : "")}
+" : "" /* n == 3 */)}
 
 
 {(simd ? $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static {type} dot({vname} x, {vname} y) => Vector{bitSize}.Dot(x.vector{v3_iz}, y.vector);
+    public static {type} dot({vname} x, {vname} y)
+    {{
+        {(bitSize is 128 && n == 3 && type is "float" ? $"if (Sse41.IsSupported) return Sse41.DotProduct(x.vector, y.vector, 113).ToScalar();" : "")}
+        return Vector{bitSize}.Dot(x.vector{v3_iz}, y.vector);
+    }}
 " : $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} dot({vname} x, {vname} y) => {dot};
-")}
+" /* simd */)}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} mul({vname} a, {vname} b) => dot(a, b);
 
-" : "")}
+" : "" /* meta.Number */)}
 
 {(meta.Float ? $@"
 
@@ -796,7 +825,7 @@ public static unsafe partial class math
         {sin_cos_part1}
         return (new({sin_cos_part2_sin}), new({sin_cos_part2_cos}));
     }}
-" : "")}
+" : "" /* meta.Float */)}
 
 {(meta.Float || meta.Decimal ? $@"
 
@@ -808,7 +837,15 @@ public static unsafe partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} ceil({vname} x) => new(Vector{bitSize}.Ceiling(x.vector));
 
-" : $@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {vname} round({vname} x)
+    {{
+        {(bitSize is 128 && type is "float" or "double" ? $"if (Sse41.IsSupported) return new(Sse41.RoundToNearestInteger(x.vector));" : "")}
+        {(bitSize is 256 && type is "double" ? $"if (Avx.IsSupported) return new(Avx.RoundToNearestInteger(x.vector));" : "")}
+        return new({fn_value_x("round")});
+    }}
+
+" /* simd */ : /* !simd */ $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} floor({vname} x) => new({fn_value_x("floor")});
@@ -816,10 +853,10 @@ public static unsafe partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} ceil({vname} x) => new({fn_value_x("ceil")});
 
-")}
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} round({vname} x) => new({fn_value_x("round")});
+
+" /* simd */)}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} trunc({vname} x) => new({fn_value_x("trunc")});
@@ -830,14 +867,14 @@ public static unsafe partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} rcp({vname} x) => {meta.One} / x;
 
-" : "")}
+" : "" /* meta.Float || meta.Decimal */)}
 
 {(meta.Unsigned ? "" : $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} sign({vname} x) => new({fn_value_x("sign")});
 
-")}
+" /* meta.Unsigned */)}
 
 {(meta.Float ? $@"
 
@@ -897,7 +934,7 @@ public static unsafe partial class math
 " : $@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} sqrt({vname} x) => new({fn_value_x("sqrt")});
-")}
+" /* simd */)}
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} rsqrt({vname} x) => {meta.One} / sqrt(x);
@@ -911,21 +948,21 @@ public static unsafe partial class math
     public static {vname} length({vname} x) => sqrt(dot(x, x));
 
 
-" : "")}
+" : "" /* meta.Float */)}
 
 {(meta.Number ? $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} lengthsq({vname} x) => dot(x, x);
 
-" : "")}
+" : "" /* meta.Number */)}
 
 {(meta.Float ? $@"
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} distance({vname} x, {vname} y) => length(y - x);
 
-" : "")}
+" : "" /* meta.Float */)}
 
 {(meta.Number ? $@"
 
@@ -956,7 +993,7 @@ public static unsafe partial class math
         return select({meta.Zero}, eta * i - (eta * ni + sqrt(k)) * n, k >= {meta.Zero});
     }}
 
-" : "")}
+" : "" /* meta.Float */)}
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -970,7 +1007,7 @@ public static unsafe partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {vname} faceforward({vname} n, {vname} i, {vname} ng) => select(n, -n, dot(ng, i) >= {meta.Zero});
 
-")}
+" /* meta.Unsigned */)}
 
 {(meta.Float || meta.Decimal ? $@"
     
@@ -981,11 +1018,38 @@ public static unsafe partial class math
     public static {vname} degrees({vname} x) => x * {(meta.Half ? "(Half)" : "")}57.295779513082320876798154814105170332405472466564321549160243861{meta.suffix};
 
 
-" : "")}
+" : "" /* meta.Float || meta.Decimal */)}
 
-" : "")}
+{(simd ? $@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} csum({vname} x) => Vector{bitSize}.Sum(x.vector{v3_iz});
+" : $@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {type} csum({vname} x) => {value_x_add};
+")}
 
-}}
+" : "" /* meta.Number */)}
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int{na} pop_cnt({vname} x)
+    {{
+        return new({fn_value_x("pop_cnt")});
+    }}
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits({vname} x)
+    {{
+{(simd && bitSize is 128 or 64 ? $@"
+        if (AdvSimd.Arm64.IsSupported)
+        {{
+            var a = AdvSimd.Arm64.AddAcross(AdvSimd.PopCount((x.vector{v3_iz}).AsByte()));
+            return a.ToScalar();
+        }}
+" : "")}
+        return csum(pop_cnt(x));
+    }}
+
+}} // class math
 
 namespace Json
 {{
@@ -1006,7 +1070,7 @@ public class {json_name}JsonConverter : JsonConverter<{vname}>
         writer.WriteStartArray();{json_write}
         writer.WriteEndArray();
     }}
-}}
+}} // class JsonConverter
 
 }} // namespace Json
 

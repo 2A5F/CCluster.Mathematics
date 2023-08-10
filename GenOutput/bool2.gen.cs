@@ -179,7 +179,20 @@ public static unsafe partial class math
 
 
 
-}
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int2 pop_cnt(bool2 x)
+    {
+        return new(pop_cnt(x.x), pop_cnt(x.y));
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(bool2 x)
+    {
+
+        return csum(pop_cnt(x));
+    }
+
+} // class math
 
 namespace Json
 {
@@ -206,7 +219,7 @@ public class Bool2JsonConverter : JsonConverter<bool2>
         writer.WriteBooleanValue(value.y);
         writer.WriteEndArray();
     }
-}
+} // class JsonConverter
 
 } // namespace Json
 

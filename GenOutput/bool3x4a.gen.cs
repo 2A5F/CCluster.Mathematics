@@ -263,7 +263,7 @@ public unsafe partial struct bool3x4a :
 public static unsafe partial class math
 {
 
-}
+} // class math
 
 namespace Json
 {
@@ -300,7 +300,7 @@ public class Bool3x4AJsonConverter : JsonConverter<bool3x4a>
         conv.Write(writer, value.c3, options);
         writer.WriteEndArray();
     }
-}
+} // class JsonConverter
 
 } // namespace Json
 

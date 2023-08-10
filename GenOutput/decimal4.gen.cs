@@ -323,11 +323,19 @@ public static unsafe partial class math
 
 
 
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal4 min(decimal4 x, decimal4 y) => new(min(x.x, y.x), min(x.y, y.y), min(x.z, y.z), min(x.w, y.w));
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal4 max(decimal4 x, decimal4 y) => new(max(x.x, y.x), max(x.y, y.y), max(x.z, y.z), max(x.w, y.w));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal4 min(decimal4 x, decimal4 y, decimal4 z) => min(min(x, y), z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal4 max(decimal4 x, decimal4 y, decimal4 z) => max(max(x, y), z);
 
 
 
@@ -359,8 +367,10 @@ public static unsafe partial class math
 
 
 
-    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal4 abs(decimal4 x) => new(abs(x.x), abs(x.y), abs(x.z), abs(x.w));
+
 
 
 
@@ -389,10 +399,10 @@ public static unsafe partial class math
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal4 ceil(decimal4 x) => new(ceil(x.x), ceil(x.y), ceil(x.z), ceil(x.w));
 
-
-
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal4 round(decimal4 x) => new(round(x.x), round(x.y), round(x.z), round(x.w));
+
+
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal4 trunc(decimal4 x) => new(trunc(x.x), trunc(x.y), trunc(x.z), trunc(x.w));
@@ -470,8 +480,26 @@ public static unsafe partial class math
 
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal csum(decimal4 x) => x.x + x.y + x.z + x.w;
 
-}
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4 pop_cnt(decimal4 x)
+    {
+        return new(pop_cnt(x.x), pop_cnt(x.y), pop_cnt(x.z), pop_cnt(x.w));
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(decimal4 x)
+    {
+
+        return csum(pop_cnt(x));
+    }
+
+} // class math
 
 namespace Json
 {
@@ -504,7 +532,7 @@ public class Decimal4JsonConverter : JsonConverter<decimal4>
         writer.WriteNumberValue(value.w);
         writer.WriteEndArray();
     }
-}
+} // class JsonConverter
 
 } // namespace Json
 
