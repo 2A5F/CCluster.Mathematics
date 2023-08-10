@@ -173,6 +173,7 @@ public unsafe partial struct decimal3a :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static explicit operator Half3a(decimal3a self) => new((Half)self.x, (Half)self.y, (Half)self.z);
 
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
@@ -313,6 +314,14 @@ public unsafe partial struct decimal3a :
     #endregion
 
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////// BitOpers
+
+    #region BitOpers
+
+
+
+    #endregion
+
     //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
 
     #region ToString
@@ -322,6 +331,27 @@ public unsafe partial struct decimal3a :
 
     #endregion
 }
+
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3a decimal3a(decimal value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3a decimal3a(decimal x, decimal y, decimal z) => new(x, y, z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3a decimal3a(decimal2 xy, decimal z) => new(xy, z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3a decimal3a(decimal x, decimal2 yz) => new(x, yz);
+
+
+
+
+} // vectors
 
 public static unsafe partial class math
 {

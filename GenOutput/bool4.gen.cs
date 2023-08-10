@@ -141,6 +141,7 @@ public unsafe partial struct bool4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static explicit operator bool(bool4 value) => value.x;
 
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
@@ -188,6 +189,31 @@ public unsafe partial struct bool4 :
 
 
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////// BitOpers
+
+    #region BitOpers
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 operator &(bool4 left, bool4 right) => new(left.x & right.x, left.y & right.y, left.z & right.z, left.w & right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 operator |(bool4 left, bool4 right) => new(left.x | right.x, left.y | right.y, left.z | right.z, left.w | right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 operator ^(bool4 left, bool4 right) => new(left.x ^ right.x, left.y ^ right.y, left.z ^ right.z, left.w ^ right.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 operator ~(bool4 self) => new(!self.x, !self.y, !self.z, !self.w);
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 operator !(bool4 self) => new(!self.x, !self.y, !self.z, !self.w);
+
+    #endregion
+
     //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
 
     #region ToString
@@ -197,6 +223,39 @@ public unsafe partial struct bool4 :
 
     #endregion
 }
+
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 bool4(bool value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 bool4(bool x, bool y, bool z, bool w) => new(x, y, z, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 bool4(bool2 xy, bool2 zw) => new(xy, zw);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 bool4(bool2 xy, bool z, bool w) => new(xy, z, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 bool4(bool x, bool2 yz, bool w) => new(x, yz, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 bool4(bool x, bool y, bool2 zw) => new(x, y, zw);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 bool4(bool3 xyz, bool w) => new(xyz, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4 bool4(bool x, bool3 yzw) => new(x, yzw);
+
+
+
+
+} // vectors
 
 public static unsafe partial class math
 {

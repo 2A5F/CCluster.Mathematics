@@ -123,6 +123,9 @@ public unsafe partial struct int4x2 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 RowMajor(int m00, int m01, int m10, int m11, int m20, int m21, int m30, int m31) => new(m00, m10, m20, m30, m01, m11, m21, m31);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public int4x2(int value)
     {
         Unsafe.SkipInit(out this);

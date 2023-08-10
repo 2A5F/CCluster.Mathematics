@@ -151,6 +151,9 @@ public unsafe partial struct long3x4a :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3x4a RowMajor(long m00, long m01, long m02, long m03, long m10, long m11, long m12, long m13, long m20, long m21, long m22, long m23) => new(m00, m10, m20, m01, m11, m21, m02, m12, m22, m03, m13, m23);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public long3x4a(long value)
     {
         Unsafe.SkipInit(out this);

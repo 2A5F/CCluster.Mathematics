@@ -176,6 +176,13 @@ public unsafe partial struct double4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static explicit operator Half4(double4 self) => new((Half)self.x, (Half)self.y, (Half)self.z, (Half)self.w);
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator double4(Vector256<double> vector) => new(vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator Vector256<double>(double4 self) => self.vector;
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
@@ -265,28 +272,16 @@ public unsafe partial struct double4 :
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator +(double4 left, double4 right)
-    {
-        return new(left.vector + right.vector);
-    }
+    public static double4 operator +(double4 left, double4 right) => new(left.vector + right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator -(double4 left, double4 right)
-    {
-        return new(left.vector - right.vector);
-    }
+    public static double4 operator -(double4 left, double4 right) => new(left.vector - right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator *(double4 left, double4 right)
-    {
-        return new(left.vector * right.vector);
-    }
+    public static double4 operator *(double4 left, double4 right) => new(left.vector * right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static double4 operator /(double4 left, double4 right)
-    {
-        return new(left.vector / right.vector);
-    }
+    public static double4 operator /(double4 left, double4 right) => new(left.vector / right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static double4 operator %(double4 left, double4 right) => new(left.x % right.x, left.y % right.y, left.z % right.z, left.w % right.w);
@@ -337,6 +332,28 @@ public unsafe partial struct double4 :
     #endregion
 
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////// BitOpers
+
+    #region BitOpers
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 operator &(double4 left, double4 right) => new(left.vector & right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 operator |(double4 left, double4 right) => new(left.vector | right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 operator ^(double4 left, double4 right) => new(left.vector ^ right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 operator ~(double4 self) => new(~self.vector);
+
+
+
+
+    #endregion
+
     //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
 
     #region ToString
@@ -346,6 +363,58 @@ public unsafe partial struct double4 :
 
     #endregion
 }
+
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 double4(Vector256<double> vector) => new(vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 double4(double value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 double4(double x, double y, double z, double w) => new(x, y, z, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 double4(double2 xy, double2 zw) => new(xy, zw);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 double4(double2 xy, double z, double w) => new(xy, z, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 double4(double x, double2 yz, double w) => new(x, yz, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 double4(double x, double y, double2 zw) => new(x, y, zw);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 double4(double3 xyz, double w) => new(xyz, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 double4(double x, double3 yzw) => new(x, yzw);
+
+
+
+    /// <summary>transmute double4 memory to long4 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long4 as_long(this double4 val) => new(val.vector.As<double, long>());
+
+    /// <summary>transmute double4 memory to long4 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long4 aslong(double4 val) => as_long(val);
+
+    /// <summary>transmute double4 memory to ulong4 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 as_ulong(this double4 val) => new(val.vector.As<double, ulong>());
+
+    /// <summary>transmute double4 memory to ulong4 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 asulong(double4 val) => as_ulong(val);
+
+
+} // vectors
 
 public static unsafe partial class math
 {

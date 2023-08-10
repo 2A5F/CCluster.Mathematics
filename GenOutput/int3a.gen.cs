@@ -173,6 +173,7 @@ public unsafe partial struct int3a :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static explicit operator Half3a(int3a self) => new((Half)self.x, (Half)self.y, (Half)self.z);
 
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
@@ -313,6 +314,14 @@ public unsafe partial struct int3a :
     #endregion
 
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////// BitOpers
+
+    #region BitOpers
+
+
+
+    #endregion
+
     //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
 
     #region ToString
@@ -322,6 +331,43 @@ public unsafe partial struct int3a :
 
     #endregion
 }
+
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3a int3a(int value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3a int3a(int x, int y, int z) => new(x, y, z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3a int3a(int2 xy, int z) => new(xy, z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3a int3a(int x, int2 yz) => new(x, yz);
+
+
+
+    /// <summary>transmute int3a memory to float3a memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3a as_float(this int3a val) => val.Transmute<int3a, float3a>();
+
+    /// <summary>transmute int3a memory to float3a memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3a asfloat(int3a val) => as_float(val);
+
+    /// <summary>transmute int3a memory to uint3a memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3a as_uint(this int3a val) => val.Transmute<int3a, uint3a>();
+
+    /// <summary>transmute int3a memory to uint3a memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3a asuint(int3a val) => as_uint(val);
+
+
+} // vectors
 
 public static unsafe partial class math
 {

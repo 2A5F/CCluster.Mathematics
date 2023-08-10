@@ -146,7 +146,7 @@ public class GenMatrix : Base
                     {
                         var args = string.Join(", ", Enumerable.Range(0, nm)
                             .SelectMany(im => Enumerable.Range(0, nv).Select(iv => $"{type} m{iv}{im}")));
-
+                        
                         ctors.Append($@"
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public {mname}({args})
@@ -175,6 +175,16 @@ public class GenMatrix : Base
                             }
                         }
                         ctors.Append($@"    }}
+");
+                        var args_r = string.Join(", ", Enumerable.Range(0, nv)
+                            .SelectMany(iv => Enumerable.Range(0, nm).Select(im => $"{type} m{iv}{im}")));
+                        
+                        var args_value = string.Join(", ", Enumerable.Range(0, nm)
+                            .SelectMany(im => Enumerable.Range(0, nv).Select(iv => $"m{iv}{im}")));
+                        
+                        ctors.Append($@"
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {mname} RowMajor({args_r}) => new({args_value});
 ");
                     }
 

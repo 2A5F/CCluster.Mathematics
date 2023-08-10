@@ -121,6 +121,9 @@ public unsafe partial struct ulong2x3 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong2x3 RowMajor(ulong m00, ulong m01, ulong m02, ulong m10, ulong m11, ulong m12) => new(m00, m10, m01, m11, m02, m12);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public ulong2x3(ulong value)
     {
         Unsafe.SkipInit(out this);

@@ -145,6 +145,9 @@ public unsafe partial struct decimal4x3 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal4x3 RowMajor(decimal m00, decimal m01, decimal m02, decimal m10, decimal m11, decimal m12, decimal m20, decimal m21, decimal m22, decimal m30, decimal m31, decimal m32) => new(m00, m10, m20, m30, m01, m11, m21, m31, m02, m12, m22, m32);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public decimal4x3(decimal value)
     {
         Unsafe.SkipInit(out this);

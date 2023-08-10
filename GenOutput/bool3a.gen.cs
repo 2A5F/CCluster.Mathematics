@@ -125,6 +125,7 @@ public unsafe partial struct bool3a :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static implicit operator bool3(bool3a value) => new(value.x, value.y, value.z);
 
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
@@ -172,6 +173,31 @@ public unsafe partial struct bool3a :
 
 
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////// BitOpers
+
+    #region BitOpers
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3a operator &(bool3a left, bool3a right) => new(left.x & right.x, left.y & right.y, left.z & right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3a operator |(bool3a left, bool3a right) => new(left.x | right.x, left.y | right.y, left.z | right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3a operator ^(bool3a left, bool3a right) => new(left.x ^ right.x, left.y ^ right.y, left.z ^ right.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3a operator ~(bool3a self) => new(!self.x, !self.y, !self.z);
+
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3a operator !(bool3a self) => new(!self.x, !self.y, !self.z);
+
+    #endregion
+
     //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
 
     #region ToString
@@ -181,6 +207,27 @@ public unsafe partial struct bool3a :
 
     #endregion
 }
+
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3a bool3a(bool value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3a bool3a(bool x, bool y, bool z) => new(x, y, z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3a bool3a(bool2 xy, bool z) => new(xy, z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3a bool3a(bool x, bool2 yz) => new(x, yz);
+
+
+
+
+} // vectors
 
 public static unsafe partial class math
 {

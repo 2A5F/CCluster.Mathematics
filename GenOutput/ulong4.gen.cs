@@ -176,6 +176,13 @@ public unsafe partial struct ulong4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static explicit operator Half4(ulong4 self) => new((Half)self.x, (Half)self.y, (Half)self.z, (Half)self.w);
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator ulong4(Vector256<ulong> vector) => new(vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator Vector256<ulong>(ulong4 self) => self.vector;
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
@@ -265,28 +272,16 @@ public unsafe partial struct ulong4 :
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator +(ulong4 left, ulong4 right)
-    {
-        return new(left.vector + right.vector);
-    }
+    public static ulong4 operator +(ulong4 left, ulong4 right) => new(left.vector + right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator -(ulong4 left, ulong4 right)
-    {
-        return new(left.vector - right.vector);
-    }
+    public static ulong4 operator -(ulong4 left, ulong4 right) => new(left.vector - right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator *(ulong4 left, ulong4 right)
-    {
-        return new(left.vector * right.vector);
-    }
+    public static ulong4 operator *(ulong4 left, ulong4 right) => new(left.vector * right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong4 operator /(ulong4 left, ulong4 right)
-    {
-        return new(left.vector / right.vector);
-    }
+    public static ulong4 operator /(ulong4 left, ulong4 right) => new(left.vector / right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ulong4 operator %(ulong4 left, ulong4 right) => new(left.x % right.x, left.y % right.y, left.z % right.z, left.w % right.w);
@@ -334,6 +329,28 @@ public unsafe partial struct ulong4 :
     #endregion
 
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////// BitOpers
+
+    #region BitOpers
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 operator &(ulong4 left, ulong4 right) => new(left.vector & right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 operator |(ulong4 left, ulong4 right) => new(left.vector | right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 operator ^(ulong4 left, ulong4 right) => new(left.vector ^ right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 operator ~(ulong4 self) => new(~self.vector);
+
+
+
+
+    #endregion
+
     //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
 
     #region ToString
@@ -343,6 +360,58 @@ public unsafe partial struct ulong4 :
 
     #endregion
 }
+
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 ulong4(Vector256<ulong> vector) => new(vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 ulong4(ulong value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 ulong4(ulong x, ulong y, ulong z, ulong w) => new(x, y, z, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 ulong4(ulong2 xy, ulong2 zw) => new(xy, zw);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 ulong4(ulong2 xy, ulong z, ulong w) => new(xy, z, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 ulong4(ulong x, ulong2 yz, ulong w) => new(x, yz, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 ulong4(ulong x, ulong y, ulong2 zw) => new(x, y, zw);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 ulong4(ulong3 xyz, ulong w) => new(xyz, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4 ulong4(ulong x, ulong3 yzw) => new(x, yzw);
+
+
+
+    /// <summary>transmute ulong4 memory to double4 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 as_double(this ulong4 val) => new(val.vector.As<ulong, double>());
+
+    /// <summary>transmute ulong4 memory to double4 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double4 asdouble(ulong4 val) => as_double(val);
+
+    /// <summary>transmute ulong4 memory to long4 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long4 as_long(this ulong4 val) => new(val.vector.As<ulong, long>());
+
+    /// <summary>transmute ulong4 memory to long4 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long4 aslong(ulong4 val) => as_long(val);
+
+
+} // vectors
 
 public static unsafe partial class math
 {

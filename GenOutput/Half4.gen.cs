@@ -168,6 +168,7 @@ public unsafe partial struct Half4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static explicit operator decimal4(Half4 self) => new((decimal)self.x, (decimal)self.y, (decimal)self.z, (decimal)self.w);
 
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
@@ -308,6 +309,14 @@ public unsafe partial struct Half4 :
     #endregion
 
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////// BitOpers
+
+    #region BitOpers
+
+
+
+    #endregion
+
     //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
 
     #region ToString
@@ -317,6 +326,39 @@ public unsafe partial struct Half4 :
 
     #endregion
 }
+
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 Half4(Half value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 Half4(Half x, Half y, Half z, Half w) => new(x, y, z, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 Half4(Half2 xy, Half2 zw) => new(xy, zw);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 Half4(Half2 xy, Half z, Half w) => new(xy, z, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 Half4(Half x, Half2 yz, Half w) => new(x, yz, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 Half4(Half x, Half y, Half2 zw) => new(x, y, zw);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 Half4(Half3 xyz, Half w) => new(xyz, w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half4 Half4(Half x, Half3 yzw) => new(x, yzw);
+
+
+
+
+} // vectors
 
 public static unsafe partial class math
 {

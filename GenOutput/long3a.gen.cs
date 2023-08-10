@@ -173,6 +173,7 @@ public unsafe partial struct long3a :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static explicit operator Half3a(long3a self) => new((Half)self.x, (Half)self.y, (Half)self.z);
 
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
@@ -313,6 +314,14 @@ public unsafe partial struct long3a :
     #endregion
 
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////// BitOpers
+
+    #region BitOpers
+
+
+
+    #endregion
+
     //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
 
     #region ToString
@@ -322,6 +331,43 @@ public unsafe partial struct long3a :
 
     #endregion
 }
+
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3a long3a(long value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3a long3a(long x, long y, long z) => new(x, y, z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3a long3a(long2 xy, long z) => new(xy, z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3a long3a(long x, long2 yz) => new(x, yz);
+
+
+
+    /// <summary>transmute long3a memory to double3a memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3a as_double(this long3a val) => val.Transmute<long3a, double3a>();
+
+    /// <summary>transmute long3a memory to double3a memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3a asdouble(long3a val) => as_double(val);
+
+    /// <summary>transmute long3a memory to ulong3a memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3a as_ulong(this long3a val) => val.Transmute<long3a, ulong3a>();
+
+    /// <summary>transmute long3a memory to ulong3a memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3a asulong(long3a val) => as_ulong(val);
+
+
+} // vectors
 
 public static unsafe partial class math
 {

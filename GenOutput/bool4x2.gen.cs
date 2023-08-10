@@ -117,6 +117,9 @@ public unsafe partial struct bool4x2 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4x2 RowMajor(bool m00, bool m01, bool m10, bool m11, bool m20, bool m21, bool m30, bool m31) => new(m00, m10, m20, m30, m01, m11, m21, m31);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool4x2(bool value)
     {
         Unsafe.SkipInit(out this);

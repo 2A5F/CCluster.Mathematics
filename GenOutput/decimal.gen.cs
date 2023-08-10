@@ -9,6 +9,8 @@ namespace CCluster.Mathematics;
 
 public static partial class math
 {
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static decimal min(decimal x, decimal y) => decimal.Min(x, y);
 

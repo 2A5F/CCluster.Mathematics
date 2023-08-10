@@ -142,6 +142,13 @@ public unsafe partial struct float2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static explicit operator Half2(float2 self) => new((Half)self.x, (Half)self.y);
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator float2(Vector64<float> vector) => new(vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator Vector64<float>(float2 self) => self.vector;
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
@@ -231,28 +238,16 @@ public unsafe partial struct float2 :
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator +(float2 left, float2 right)
-    {
-        return new(left.vector + right.vector);
-    }
+    public static float2 operator +(float2 left, float2 right) => new(left.vector + right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator -(float2 left, float2 right)
-    {
-        return new(left.vector - right.vector);
-    }
+    public static float2 operator -(float2 left, float2 right) => new(left.vector - right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator *(float2 left, float2 right)
-    {
-        return new(left.vector * right.vector);
-    }
+    public static float2 operator *(float2 left, float2 right) => new(left.vector * right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2 operator /(float2 left, float2 right)
-    {
-        return new(left.vector / right.vector);
-    }
+    public static float2 operator /(float2 left, float2 right) => new(left.vector / right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static float2 operator %(float2 left, float2 right) => new(left.x % right.x, left.y % right.y);
@@ -303,15 +298,71 @@ public unsafe partial struct float2 :
     #endregion
 
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////// BitOpers
+
+    #region BitOpers
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 operator &(float2 left, float2 right) => new(left.vector & right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 operator |(float2 left, float2 right) => new(left.vector | right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 operator ^(float2 left, float2 right) => new(left.vector ^ right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 operator ~(float2 self) => new(~self.vector);
+
+
+
+
+    #endregion
+
     //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
 
     #region ToString
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public override string ToString() => $"float2({this.x}, {this.y})";
+    public override string ToString() => $"float2({this.x}f, {this.y}f)";
 
     #endregion
 }
+
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 float2(Vector64<float> vector) => new(vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 float2(float value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 float2(float x, float y) => new(x, y);
+
+
+
+    /// <summary>transmute float2 memory to int2 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int2 as_int(this float2 val) => new(val.vector.As<float, int>());
+
+    /// <summary>transmute float2 memory to int2 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int2 asint(float2 val) => as_int(val);
+
+    /// <summary>transmute float2 memory to uint2 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint2 as_uint(this float2 val) => new(val.vector.As<float, uint>());
+
+    /// <summary>transmute float2 memory to uint2 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint2 asuint(float2 val) => as_uint(val);
+
+
+} // vectors
 
 public static unsafe partial class math
 {

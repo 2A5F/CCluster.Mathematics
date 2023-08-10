@@ -179,6 +179,9 @@ public unsafe partial struct ulong4x4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong4x4 RowMajor(ulong m00, ulong m01, ulong m02, ulong m03, ulong m10, ulong m11, ulong m12, ulong m13, ulong m20, ulong m21, ulong m22, ulong m23, ulong m30, ulong m31, ulong m32, ulong m33) => new(m00, m10, m20, m30, m01, m11, m21, m31, m02, m12, m22, m32, m03, m13, m23, m33);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public ulong4x4(ulong value)
     {
         Unsafe.SkipInit(out this);

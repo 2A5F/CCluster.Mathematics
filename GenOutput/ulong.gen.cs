@@ -9,6 +9,24 @@ namespace CCluster.Mathematics;
 
 public static partial class math
 {
+
+    /// <summary>transmute ulong memory to double memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double as_double(this ulong val) => val.Transmute<ulong, double>();
+
+    /// <summary>transmute ulong memory to double memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double asdouble(ulong val) => as_double(val);
+
+    /// <summary>transmute ulong memory to long memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long as_long(this ulong val) => val.Transmute<ulong, long>();
+
+    /// <summary>transmute ulong memory to long memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long aslong(ulong val) => as_long(val);
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static ulong min(ulong x, ulong y) => ulong.Min(x, y);
 

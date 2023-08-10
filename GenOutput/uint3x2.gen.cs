@@ -115,6 +115,9 @@ public unsafe partial struct uint3x2 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3x2 RowMajor(uint m00, uint m01, uint m10, uint m11, uint m20, uint m21) => new(m00, m10, m20, m01, m11, m21);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public uint3x2(uint value)
     {
         Unsafe.SkipInit(out this);

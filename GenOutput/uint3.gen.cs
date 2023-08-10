@@ -177,6 +177,13 @@ public unsafe partial struct uint3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static explicit operator Half3a(uint3 self) => new((Half)self.x, (Half)self.y, (Half)self.z);
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator uint3(Vector128<uint> vector) => new(vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator Vector128<uint>(uint3 self) => self.vector;
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
@@ -266,28 +273,16 @@ public unsafe partial struct uint3 :
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint3 operator +(uint3 left, uint3 right)
-    {
-        return new(left.vector + right.vector);
-    }
+    public static uint3 operator +(uint3 left, uint3 right) => new(left.vector + right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint3 operator -(uint3 left, uint3 right)
-    {
-        return new(left.vector - right.vector);
-    }
+    public static uint3 operator -(uint3 left, uint3 right) => new(left.vector - right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint3 operator *(uint3 left, uint3 right)
-    {
-        return new(left.vector * right.vector);
-    }
+    public static uint3 operator *(uint3 left, uint3 right) => new(left.vector * right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint3 operator /(uint3 left, uint3 right)
-    {
-        return new(left.vector / right.vector);
-    }
+    public static uint3 operator /(uint3 left, uint3 right) => new(left.vector / right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint3 operator %(uint3 left, uint3 right) => new(left.x % right.x, left.y % right.y, left.z % right.z);
@@ -335,6 +330,28 @@ public unsafe partial struct uint3 :
     #endregion
 
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////// BitOpers
+
+    #region BitOpers
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3 operator &(uint3 left, uint3 right) => new(left.vector & right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3 operator |(uint3 left, uint3 right) => new(left.vector | right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3 operator ^(uint3 left, uint3 right) => new(left.vector ^ right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3 operator ~(uint3 self) => new(~self.vector);
+
+
+
+
+    #endregion
+
     //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
 
     #region ToString
@@ -344,6 +361,46 @@ public unsafe partial struct uint3 :
 
     #endregion
 }
+
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3 uint3(Vector128<uint> vector) => new(vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3 uint3(uint value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3 uint3(uint x, uint y, uint z) => new(x, y, z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3 uint3(uint2 xy, uint z) => new(xy, z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3 uint3(uint x, uint2 yz) => new(x, yz);
+
+
+
+    /// <summary>transmute uint3 memory to float3 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3 as_float(this uint3 val) => new(val.vector.As<uint, float>());
+
+    /// <summary>transmute uint3 memory to float3 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float3 asfloat(uint3 val) => as_float(val);
+
+    /// <summary>transmute uint3 memory to int3 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3 as_int(this uint3 val) => new(val.vector.As<uint, int>());
+
+    /// <summary>transmute uint3 memory to int3 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3 asint(uint3 val) => as_int(val);
+
+
+} // vectors
 
 public static unsafe partial class math
 {

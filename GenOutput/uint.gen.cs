@@ -9,6 +9,24 @@ namespace CCluster.Mathematics;
 
 public static partial class math
 {
+
+    /// <summary>transmute uint memory to float memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float as_float(this uint val) => val.Transmute<uint, float>();
+
+    /// <summary>transmute uint memory to float memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float asfloat(uint val) => as_float(val);
+
+    /// <summary>transmute uint memory to int memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int as_int(this uint val) => val.Transmute<uint, int>();
+
+    /// <summary>transmute uint memory to int memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int asint(uint val) => as_int(val);
+
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static uint min(uint x, uint y) => uint.Min(x, y);
 

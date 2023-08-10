@@ -177,6 +177,13 @@ public unsafe partial struct long3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static explicit operator Half3a(long3 self) => new((Half)self.x, (Half)self.y, (Half)self.z);
 
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator long3(Vector256<long> vector) => new(vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static implicit operator Vector256<long>(long3 self) => self.vector;
+
     #endregion
 
     //////////////////////////////////////////////////////////////////////////////////////////////////// Equals
@@ -266,28 +273,16 @@ public unsafe partial struct long3 :
 
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator +(long3 left, long3 right)
-    {
-        return new(left.vector + right.vector);
-    }
+    public static long3 operator +(long3 left, long3 right) => new(left.vector + right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator -(long3 left, long3 right)
-    {
-        return new(left.vector - right.vector);
-    }
+    public static long3 operator -(long3 left, long3 right) => new(left.vector - right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator *(long3 left, long3 right)
-    {
-        return new(left.vector * right.vector);
-    }
+    public static long3 operator *(long3 left, long3 right) => new(left.vector * right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long3 operator /(long3 left, long3 right)
-    {
-        return new(left.vector / right.vector);
-    }
+    public static long3 operator /(long3 left, long3 right) => new(left.vector / right.vector);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static long3 operator %(long3 left, long3 right) => new(left.x % right.x, left.y % right.y, left.z % right.z);
@@ -338,6 +333,28 @@ public unsafe partial struct long3 :
     #endregion
 
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////// BitOpers
+
+    #region BitOpers
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 operator &(long3 left, long3 right) => new(left.vector & right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 operator |(long3 left, long3 right) => new(left.vector | right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 operator ^(long3 left, long3 right) => new(left.vector ^ right.vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 operator ~(long3 self) => new(~self.vector);
+
+
+
+
+    #endregion
+
     //////////////////////////////////////////////////////////////////////////////////////////////////// ToString
 
     #region ToString
@@ -347,6 +364,46 @@ public unsafe partial struct long3 :
 
     #endregion
 }
+
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 long3(Vector256<long> vector) => new(vector);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 long3(long value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 long3(long x, long y, long z) => new(x, y, z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 long3(long2 xy, long z) => new(xy, z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long3 long3(long x, long2 yz) => new(x, yz);
+
+
+
+    /// <summary>transmute long3 memory to double3 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 as_double(this long3 val) => new(val.vector.As<long, double>());
+
+    /// <summary>transmute long3 memory to double3 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3 asdouble(long3 val) => as_double(val);
+
+    /// <summary>transmute long3 memory to ulong3 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3 as_ulong(this long3 val) => new(val.vector.As<long, ulong>());
+
+    /// <summary>transmute long3 memory to ulong3 memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3 asulong(long3 val) => as_ulong(val);
+
+
+} // vectors
 
 public static unsafe partial class math
 {

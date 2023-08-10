@@ -144,6 +144,9 @@ public unsafe partial struct double3x3 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double3x3 RowMajor(double m00, double m01, double m02, double m10, double m11, double m12, double m20, double m21, double m22) => new(m00, m10, m20, m01, m11, m21, m02, m12, m22);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public double3x3(double value)
     {
         Unsafe.SkipInit(out this);

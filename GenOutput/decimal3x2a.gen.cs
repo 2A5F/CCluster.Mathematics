@@ -115,6 +115,9 @@ public unsafe partial struct decimal3x2a :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x2a RowMajor(decimal m00, decimal m01, decimal m10, decimal m11, decimal m20, decimal m21) => new(m00, m10, m20, m01, m11, m21);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public decimal3x2a(decimal value)
     {
         Unsafe.SkipInit(out this);

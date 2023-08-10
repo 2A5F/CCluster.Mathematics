@@ -14,18 +14,61 @@ public class GenScalarNumbers : Base
         public bool Float { get; set; }
         public bool Decimal { get; set; }
         public bool Unsigned { get; set; }
+
+        public int Size { get; set; }
     }
 
     private static Dictionary<string, TypeMeta> types = new()
     {
-        { "Half", new("", "Half.Zero", "Half.One", "(Half.One + Half.One)") { Float = true, Half = true, } },
-        { "float", new("f", "0f", "1f", "2f") { Float = true, } },
-        { "double", new("d", "0d", "1d", "2d") { Float = true, } },
-        { "decimal", new("m", "0m", "1m", "2m") { Decimal = true, } },
-        { "int", new("", "0", "1", "2") { } },
-        { "uint", new("u", "0u", "1u", "2u") { Unsigned = true, } },
-        { "long", new("L", "0L", "1L", "2L") { } },
-        { "ulong", new("UL", "0UL", "1UL", "2UL") { Unsigned = true, } },
+        {
+            "Half",
+            new("", "Half.Zero", "Half.One", "(Half.One + Half.One)")
+            {
+                Float = true, Half = true, Size = sizeof(ushort),
+            }
+        },
+        {
+            "float", new("f", "0f", "1f", "2f")
+            {
+                Float = true, Size = sizeof(float),
+            }
+        },
+        {
+            "double", new("d", "0d", "1d", "2d")
+            {
+                Float = true, Size = sizeof(double),
+            }
+        },
+        {
+            "decimal", new("m", "0m", "1m", "2m")
+            {
+                Decimal = true, Size = sizeof(decimal),
+            }
+        },
+        {
+            "int", new("", "0", "1", "2")
+            {
+                Size = sizeof(int),
+            }
+        },
+        {
+            "uint", new("u", "0u", "1u", "2u")
+            {
+                Unsigned = true, Size = sizeof(uint),
+            }
+        },
+        {
+            "long", new("L", "0L", "1L", "2L")
+            {
+                Size = sizeof(long),
+            }
+        },
+        {
+            "ulong", new("UL", "0UL", "1UL", "2UL")
+            {
+                Unsigned = true, Size = sizeof(ulong),
+            }
+        },
     };
 
     public override async Task Gen()
@@ -34,6 +77,31 @@ public class GenScalarNumbers : Base
         {
             var type = tm.Key;
             var meta = tm.Value;
+
+            #region transmutes
+            
+            var transmutes = new StringBuilder();
+
+            foreach (var ttm in types)
+            {
+                var t_type = ttm.Key;
+                var t_meta = ttm.Value;
+                
+                if (t_meta.Size != meta.Size) continue;
+                if (t_type == type) continue;
+
+                transmutes.Append($@"
+    /// <summary>transmute {type} memory to {t_type} memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {t_type} as_{t_type}(this {type} val) => val.Transmute<{type}, {t_type}>();
+
+    /// <summary>transmute {type} memory to {t_type} memory</summary>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static {t_type} as{t_type}({type} val) => as_{t_type}(val);
+");
+            }
+            
+            #endregion
 
             var source = $@"using System;
 using System.Numerics;
@@ -46,6 +114,8 @@ namespace CCluster.Mathematics;
 
 public static partial class math
 {{
+{transmutes}
+
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static {type} min({type} x, {type} y) => {type}.Min(x, y);
 

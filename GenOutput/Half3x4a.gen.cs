@@ -151,6 +151,9 @@ public unsafe partial struct Half3x4a :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4a RowMajor(Half m00, Half m01, Half m02, Half m03, Half m10, Half m11, Half m12, Half m13, Half m20, Half m21, Half m22, Half m23) => new(m00, m10, m20, m01, m11, m21, m02, m12, m22, m03, m13, m23);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public Half3x4a(Half value)
     {
         Unsafe.SkipInit(out this);

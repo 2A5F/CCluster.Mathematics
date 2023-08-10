@@ -135,6 +135,9 @@ public unsafe partial struct double2x4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static double2x4 RowMajor(double m00, double m01, double m02, double m03, double m10, double m11, double m12, double m13) => new(m00, m10, m01, m11, m02, m12, m03, m13);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public double2x4(double value)
     {
         Unsafe.SkipInit(out this);
