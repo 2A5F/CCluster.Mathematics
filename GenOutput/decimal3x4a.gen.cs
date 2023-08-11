@@ -151,7 +151,8 @@ public unsafe partial struct decimal3x4a :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal3x4a RowMajor(decimal m00, decimal m01, decimal m02, decimal m03, decimal m10, decimal m11, decimal m12, decimal m13, decimal m20, decimal m21, decimal m22, decimal m23) => new(m00, m10, m20, m01, m11, m21, m02, m12, m22, m03, m13, m23);
+    public static decimal3x4a RowMajor(decimal m00, decimal m01, decimal m02, decimal m03, decimal m10, decimal m11, decimal m12, decimal m13, decimal m20, decimal m21, decimal m22, decimal m23) 
+        => new(m00, m10, m20, m01, m11, m21, m02, m12, m22, m03, m13, m23);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public decimal3x4a(decimal value)
@@ -278,6 +279,24 @@ public unsafe partial struct decimal3x4a :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool3x4a VNe(decimal3x4a other) 
         => new(this.c0 != other.c0, this.c1 != other.c1, this.c2 != other.c2, this.c3 != other.c3);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x4a operator >(decimal3x4a left, decimal3x4a right) => new(left.c0 > right.c0, left.c1 > right.c1, left.c2 > right.c2, left.c3 > right.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x4a operator <(decimal3x4a left, decimal3x4a right) => new(left.c0 < right.c0, left.c1 < right.c1, left.c2 < right.c2, left.c3 < right.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x4a operator >=(decimal3x4a left, decimal3x4a right) => new(left.c0 >= right.c0, left.c1 >= right.c1, left.c2 >= right.c2, left.c3 >= right.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x4a operator <=(decimal3x4a left, decimal3x4a right) => new(left.c0 <= right.c0, left.c1 <= right.c1, left.c2 <= right.c2, left.c3 <= right.c3);
+
+
+
+
 
     #endregion
 
@@ -422,6 +441,26 @@ public unsafe partial struct decimal3x4a :
     #endregion
 }
 
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a decimal3x4a(decimal3a c0, decimal3a c1, decimal3a c2, decimal3a c3) => new(c0, c1, c2, c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a decimal3x4a(decimal m00, decimal m10, decimal m20, decimal m01, decimal m11, decimal m21, decimal m02, decimal m12, decimal m22, decimal m03, decimal m13, decimal m23) 
+        => new(m00, m10, m20, m01, m11, m21, m02, m12, m22, m03, m13, m23);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a decimal3x4a(decimal value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a decimal3x4a(decimal3a value) => new(value);
+
+
+} // vectors
+
 public static unsafe partial class math
 {
 
@@ -454,6 +493,60 @@ public static unsafe partial class math
     );
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a min(decimal3x4a x, decimal3x4a y) => new(min(x.c0, y.c0), min(x.c1, y.c1), min(x.c2, y.c2), min(x.c3, y.c3));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a max(decimal3x4a x, decimal3x4a y) => new(max(x.c0, y.c0), max(x.c1, y.c1), max(x.c2, y.c2), max(x.c3, y.c3));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a min(decimal3x4a x, decimal3x4a y, decimal3x4a z) => new(min(x.c0, y.c0, z.c0), min(x.c1, y.c1, z.c1), min(x.c2, y.c2, z.c2), min(x.c3, y.c3, z.c3));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a max(decimal3x4a x, decimal3x4a y, decimal3x4a z) => new(max(x.c0, y.c0, z.c0), max(x.c1, y.c1, z.c1), max(x.c2, y.c2, z.c2), max(x.c3, y.c3, z.c3));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a abs(decimal3x4a x) => new(abs(x.c0), abs(x.c1), abs(x.c2), abs(x.c3));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a lerp(decimal3x4a s, decimal3x4a x, decimal3x4a y) => x + s * (y - x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a unlerp(decimal3x4a x, decimal3x4a a, decimal3x4a b) => (x - a) / (b - a);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a remap(decimal3x4a x, decimal3x4a a, decimal3x4a b, decimal3x4a c, decimal3x4a d) => lerp(c, d, unlerp(a, b, x));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a floor(decimal3x4a x) => new(floor(x.c0), floor(x.c1), floor(x.c2), floor(x.c3));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a ceil(decimal3x4a x) => new(ceil(x.c0), ceil(x.c1), ceil(x.c2), ceil(x.c3));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3x4a round(decimal3x4a x) => new(round(x.c0), round(x.c1), round(x.c2), round(x.c3));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3a csum(decimal3x4a x) => x.c0 + x.c1 + x.c2 + x.c3;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal3a rsum(decimal3x4a x) => new(x.c0.x + x.c1.x + x.c2.x + x.c3.x, x.c0.y + x.c1.y + x.c2.y + x.c3.y, x.c0.z + x.c1.z + x.c2.z + x.c3.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal msum(decimal3x4a x) => csum(csum(x));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3x4a pop_cnt(decimal3x4a x) => new(pop_cnt(x.c0), pop_cnt(x.c1), pop_cnt(x.c2), pop_cnt(x.c3));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(decimal3x4a x) => msum(pop_cnt(x));
 
 } // class math
 

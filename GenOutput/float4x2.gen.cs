@@ -123,7 +123,8 @@ public unsafe partial struct float4x2 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float4x2 RowMajor(float m00, float m01, float m10, float m11, float m20, float m21, float m30, float m31) => new(m00, m10, m20, m30, m01, m11, m21, m31);
+    public static float4x2 RowMajor(float m00, float m01, float m10, float m11, float m20, float m21, float m30, float m31) 
+        => new(m00, m10, m20, m30, m01, m11, m21, m31);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public float4x2(float value)
@@ -219,6 +220,24 @@ public unsafe partial struct float4x2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool4x2 VNe(float4x2 other) 
         => new(this.c0 != other.c0, this.c1 != other.c1);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4x2 operator >(float4x2 left, float4x2 right) => new(left.c0 > right.c0, left.c1 > right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4x2 operator <(float4x2 left, float4x2 right) => new(left.c0 < right.c0, left.c1 < right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4x2 operator >=(float4x2 left, float4x2 right) => new(left.c0 >= right.c0, left.c1 >= right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4x2 operator <=(float4x2 left, float4x2 right) => new(left.c0 <= right.c0, left.c1 <= right.c1);
+
+
+
+
 
     #endregion
 
@@ -361,6 +380,26 @@ public unsafe partial struct float4x2 :
     #endregion
 }
 
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 float4x2(float4 c0, float4 c1) => new(c0, c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 float4x2(float m00, float m10, float m20, float m30, float m01, float m11, float m21, float m31) 
+        => new(m00, m10, m20, m30, m01, m11, m21, m31);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 float4x2(float value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 float4x2(float4 value) => new(value);
+
+
+} // vectors
+
 public static unsafe partial class math
 {
 
@@ -393,6 +432,60 @@ public static unsafe partial class math
     );
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 min(float4x2 x, float4x2 y) => new(min(x.c0, y.c0), min(x.c1, y.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 max(float4x2 x, float4x2 y) => new(max(x.c0, y.c0), max(x.c1, y.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 min(float4x2 x, float4x2 y, float4x2 z) => new(min(x.c0, y.c0, z.c0), min(x.c1, y.c1, z.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 max(float4x2 x, float4x2 y, float4x2 z) => new(max(x.c0, y.c0, z.c0), max(x.c1, y.c1, z.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 abs(float4x2 x) => new(abs(x.c0), abs(x.c1));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 lerp(float4x2 s, float4x2 x, float4x2 y) => x + s * (y - x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 unlerp(float4x2 x, float4x2 a, float4x2 b) => (x - a) / (b - a);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 remap(float4x2 x, float4x2 a, float4x2 b, float4x2 c, float4x2 d) => lerp(c, d, unlerp(a, b, x));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 floor(float4x2 x) => new(floor(x.c0), floor(x.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 ceil(float4x2 x) => new(ceil(x.c0), ceil(x.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4x2 round(float4x2 x) => new(round(x.c0), round(x.c1));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4 csum(float4x2 x) => x.c0 + x.c1;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float4 rsum(float4x2 x) => new(x.c0.x + x.c1.x, x.c0.y + x.c1.y, x.c0.z + x.c1.z, x.c0.w + x.c1.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float msum(float4x2 x) => csum(csum(x));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x2 pop_cnt(float4x2 x) => new(pop_cnt(x.c0), pop_cnt(x.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(float4x2 x) => msum(pop_cnt(x));
 
 } // class math
 

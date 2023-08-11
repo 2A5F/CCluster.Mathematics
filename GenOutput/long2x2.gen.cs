@@ -117,7 +117,8 @@ public unsafe partial struct long2x2 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static long2x2 RowMajor(long m00, long m01, long m10, long m11) => new(m00, m10, m01, m11);
+    public static long2x2 RowMajor(long m00, long m01, long m10, long m11) 
+        => new(m00, m10, m01, m11);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public long2x2(long value)
@@ -133,6 +134,13 @@ public unsafe partial struct long2x2 :
         Unsafe.SkipInit(out this);
         this.c0.vector = value.vector;
         this.c1.vector = value.vector;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public long2x2(long3x3 m)
+    {
+        this.c0 = m.c0.xy;
+        this.c1 = m.c1.xy;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -213,6 +221,24 @@ public unsafe partial struct long2x2 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool2x2 VNe(long2x2 other) 
         => new(this.c0 != other.c0, this.c1 != other.c1);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x2 operator >(long2x2 left, long2x2 right) => new(left.c0 > right.c0, left.c1 > right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x2 operator <(long2x2 left, long2x2 right) => new(left.c0 < right.c0, left.c1 < right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x2 operator >=(long2x2 left, long2x2 right) => new(left.c0 >= right.c0, left.c1 >= right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x2 operator <=(long2x2 left, long2x2 right) => new(left.c0 <= right.c0, left.c1 <= right.c1);
+
+
+
+
 
     #endregion
 
@@ -355,6 +381,29 @@ public unsafe partial struct long2x2 :
     #endregion
 }
 
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long2x2 long2x2(long2 c0, long2 c1) => new(c0, c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long2x2 long2x2(long m00, long m10, long m01, long m11) 
+        => new(m00, m10, m01, m11);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long2x2 long2x2(long value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long2x2 long2x2(long2 value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long2x2 long2x2(long3x3 m) => new(m);
+
+
+} // vectors
+
 public static unsafe partial class math
 {
 
@@ -387,6 +436,39 @@ public static unsafe partial class math
     );
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long2x2 min(long2x2 x, long2x2 y) => new(min(x.c0, y.c0), min(x.c1, y.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long2x2 max(long2x2 x, long2x2 y) => new(max(x.c0, y.c0), max(x.c1, y.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long2x2 min(long2x2 x, long2x2 y, long2x2 z) => new(min(x.c0, y.c0, z.c0), min(x.c1, y.c1, z.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long2x2 max(long2x2 x, long2x2 y, long2x2 z) => new(max(x.c0, y.c0, z.c0), max(x.c1, y.c1, z.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long2x2 abs(long2x2 x) => new(abs(x.c0), abs(x.c1));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long2 csum(long2x2 x) => x.c0 + x.c1;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long2 rsum(long2x2 x) => new(x.c0.x + x.c1.x, x.c0.y + x.c1.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static long msum(long2x2 x) => csum(csum(x));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int2x2 pop_cnt(long2x2 x) => new(pop_cnt(x.c0), pop_cnt(x.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(long2x2 x) => msum(pop_cnt(x));
 
 } // class math
 

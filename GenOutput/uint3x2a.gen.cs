@@ -115,7 +115,8 @@ public unsafe partial struct uint3x2a :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static uint3x2a RowMajor(uint m00, uint m01, uint m10, uint m11, uint m20, uint m21) => new(m00, m10, m20, m01, m11, m21);
+    public static uint3x2a RowMajor(uint m00, uint m01, uint m10, uint m11, uint m20, uint m21) 
+        => new(m00, m10, m20, m01, m11, m21);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public uint3x2a(uint value)
@@ -238,6 +239,24 @@ public unsafe partial struct uint3x2a :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool3x2a VNe(uint3x2a other) 
         => new(this.c0 != other.c0, this.c1 != other.c1);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x2a operator >(uint3x2a left, uint3x2a right) => new(left.c0 > right.c0, left.c1 > right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x2a operator <(uint3x2a left, uint3x2a right) => new(left.c0 < right.c0, left.c1 < right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x2a operator >=(uint3x2a left, uint3x2a right) => new(left.c0 >= right.c0, left.c1 >= right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x2a operator <=(uint3x2a left, uint3x2a right) => new(left.c0 <= right.c0, left.c1 <= right.c1);
+
+
+
+
 
     #endregion
 
@@ -377,6 +396,26 @@ public unsafe partial struct uint3x2a :
     #endregion
 }
 
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3x2a uint3x2a(uint3a c0, uint3a c1) => new(c0, c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3x2a uint3x2a(uint m00, uint m10, uint m20, uint m01, uint m11, uint m21) 
+        => new(m00, m10, m20, m01, m11, m21);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3x2a uint3x2a(uint value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3x2a uint3x2a(uint3a value) => new(value);
+
+
+} // vectors
+
 public static unsafe partial class math
 {
 
@@ -409,6 +448,39 @@ public static unsafe partial class math
     );
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3x2a min(uint3x2a x, uint3x2a y) => new(min(x.c0, y.c0), min(x.c1, y.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3x2a max(uint3x2a x, uint3x2a y) => new(max(x.c0, y.c0), max(x.c1, y.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3x2a min(uint3x2a x, uint3x2a y, uint3x2a z) => new(min(x.c0, y.c0, z.c0), min(x.c1, y.c1, z.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3x2a max(uint3x2a x, uint3x2a y, uint3x2a z) => new(max(x.c0, y.c0, z.c0), max(x.c1, y.c1, z.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3x2a abs(uint3x2a x) => new(abs(x.c0), abs(x.c1));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3a csum(uint3x2a x) => x.c0 + x.c1;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint3a rsum(uint3x2a x) => new(x.c0.x + x.c1.x, x.c0.y + x.c1.y, x.c0.z + x.c1.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static uint msum(uint3x2a x) => csum(csum(x));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3x2a pop_cnt(uint3x2a x) => new(pop_cnt(x.c0), pop_cnt(x.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(uint3x2a x) => msum(pop_cnt(x));
 
 } // class math
 

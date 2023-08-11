@@ -115,7 +115,8 @@ public unsafe partial struct ulong3x2a :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static ulong3x2a RowMajor(ulong m00, ulong m01, ulong m10, ulong m11, ulong m20, ulong m21) => new(m00, m10, m20, m01, m11, m21);
+    public static ulong3x2a RowMajor(ulong m00, ulong m01, ulong m10, ulong m11, ulong m20, ulong m21) 
+        => new(m00, m10, m20, m01, m11, m21);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public ulong3x2a(ulong value)
@@ -238,6 +239,24 @@ public unsafe partial struct ulong3x2a :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool3x2a VNe(ulong3x2a other) 
         => new(this.c0 != other.c0, this.c1 != other.c1);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x2a operator >(ulong3x2a left, ulong3x2a right) => new(left.c0 > right.c0, left.c1 > right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x2a operator <(ulong3x2a left, ulong3x2a right) => new(left.c0 < right.c0, left.c1 < right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x2a operator >=(ulong3x2a left, ulong3x2a right) => new(left.c0 >= right.c0, left.c1 >= right.c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x2a operator <=(ulong3x2a left, ulong3x2a right) => new(left.c0 <= right.c0, left.c1 <= right.c1);
+
+
+
+
 
     #endregion
 
@@ -377,6 +396,26 @@ public unsafe partial struct ulong3x2a :
     #endregion
 }
 
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3x2a ulong3x2a(ulong3a c0, ulong3a c1) => new(c0, c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3x2a ulong3x2a(ulong m00, ulong m10, ulong m20, ulong m01, ulong m11, ulong m21) 
+        => new(m00, m10, m20, m01, m11, m21);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3x2a ulong3x2a(ulong value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3x2a ulong3x2a(ulong3a value) => new(value);
+
+
+} // vectors
+
 public static unsafe partial class math
 {
 
@@ -409,6 +448,39 @@ public static unsafe partial class math
     );
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3x2a min(ulong3x2a x, ulong3x2a y) => new(min(x.c0, y.c0), min(x.c1, y.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3x2a max(ulong3x2a x, ulong3x2a y) => new(max(x.c0, y.c0), max(x.c1, y.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3x2a min(ulong3x2a x, ulong3x2a y, ulong3x2a z) => new(min(x.c0, y.c0, z.c0), min(x.c1, y.c1, z.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3x2a max(ulong3x2a x, ulong3x2a y, ulong3x2a z) => new(max(x.c0, y.c0, z.c0), max(x.c1, y.c1, z.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3x2a abs(ulong3x2a x) => new(abs(x.c0), abs(x.c1));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3a csum(ulong3x2a x) => x.c0 + x.c1;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong3a rsum(ulong3x2a x) => new(x.c0.x + x.c1.x, x.c0.y + x.c1.y, x.c0.z + x.c1.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static ulong msum(ulong3x2a x) => csum(csum(x));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3x2a pop_cnt(ulong3x2a x) => new(pop_cnt(x.c0), pop_cnt(x.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(ulong3x2a x) => msum(pop_cnt(x));
 
 } // class math
 

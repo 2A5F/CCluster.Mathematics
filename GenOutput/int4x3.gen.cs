@@ -145,7 +145,8 @@ public unsafe partial struct int4x3 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static int4x3 RowMajor(int m00, int m01, int m02, int m10, int m11, int m12, int m20, int m21, int m22, int m30, int m31, int m32) => new(m00, m10, m20, m30, m01, m11, m21, m31, m02, m12, m22, m32);
+    public static int4x3 RowMajor(int m00, int m01, int m02, int m10, int m11, int m12, int m20, int m21, int m22, int m30, int m31, int m32) 
+        => new(m00, m10, m20, m30, m01, m11, m21, m31, m02, m12, m22, m32);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public int4x3(int value)
@@ -243,6 +244,24 @@ public unsafe partial struct int4x3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool4x3 VNe(int4x3 other) 
         => new(this.c0 != other.c0, this.c1 != other.c1, this.c2 != other.c2);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4x3 operator >(int4x3 left, int4x3 right) => new(left.c0 > right.c0, left.c1 > right.c1, left.c2 > right.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4x3 operator <(int4x3 left, int4x3 right) => new(left.c0 < right.c0, left.c1 < right.c1, left.c2 < right.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4x3 operator >=(int4x3 left, int4x3 right) => new(left.c0 >= right.c0, left.c1 >= right.c1, left.c2 >= right.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool4x3 operator <=(int4x3 left, int4x3 right) => new(left.c0 <= right.c0, left.c1 <= right.c1, left.c2 <= right.c2);
+
+
+
+
 
     #endregion
 
@@ -386,6 +405,26 @@ public unsafe partial struct int4x3 :
     #endregion
 }
 
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x3 int4x3(int4 c0, int4 c1, int4 c2) => new(c0, c1, c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x3 int4x3(int m00, int m10, int m20, int m30, int m01, int m11, int m21, int m31, int m02, int m12, int m22, int m32) 
+        => new(m00, m10, m20, m30, m01, m11, m21, m31, m02, m12, m22, m32);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x3 int4x3(int value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x3 int4x3(int4 value) => new(value);
+
+
+} // vectors
+
 public static unsafe partial class math
 {
 
@@ -418,6 +457,39 @@ public static unsafe partial class math
     );
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x3 min(int4x3 x, int4x3 y) => new(min(x.c0, y.c0), min(x.c1, y.c1), min(x.c2, y.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x3 max(int4x3 x, int4x3 y) => new(max(x.c0, y.c0), max(x.c1, y.c1), max(x.c2, y.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x3 min(int4x3 x, int4x3 y, int4x3 z) => new(min(x.c0, y.c0, z.c0), min(x.c1, y.c1, z.c1), min(x.c2, y.c2, z.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x3 max(int4x3 x, int4x3 y, int4x3 z) => new(max(x.c0, y.c0, z.c0), max(x.c1, y.c1, z.c1), max(x.c2, y.c2, z.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x3 abs(int4x3 x) => new(abs(x.c0), abs(x.c1), abs(x.c2));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4 csum(int4x3 x) => x.c0 + x.c1 + x.c2;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4 rsum(int4x3 x) => new(x.c0.x + x.c1.x + x.c2.x, x.c0.y + x.c1.y + x.c2.y, x.c0.z + x.c1.z + x.c2.z, x.c0.w + x.c1.w + x.c2.w);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int msum(int4x3 x) => csum(csum(x));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int4x3 pop_cnt(int4x3 x) => new(pop_cnt(x.c0), pop_cnt(x.c1), pop_cnt(x.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(int4x3 x) => msum(pop_cnt(x));
 
 } // class math
 

@@ -18,8 +18,9 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, this.vector, 0));
-            return new(this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L)));
+
         }
     }
     public double2 xy
@@ -27,8 +28,9 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, this.vector, 2));
-            return new(this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -41,8 +43,9 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, this.vector, 1));
-            return new(this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -55,8 +58,9 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, this.vector, 3));
-            return new(this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L)));
+
         }
     }
     public double2 rr
@@ -64,8 +68,9 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, this.vector, 0));
-            return new(this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L)));
+
         }
     }
     public double2 rg
@@ -73,8 +78,9 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, this.vector, 2));
-            return new(this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -87,8 +93,9 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, this.vector, 1));
-            return new(this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -101,8 +108,9 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, this.vector, 3));
-            return new(this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L)));
+
         }
     }
     public double3 xxx
@@ -110,10 +118,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.x, this.x, this.x);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 xxy
@@ -121,10 +130,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.x, this.x, this.y);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 xyx
@@ -132,10 +142,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.x, this.y, this.x);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 xyy
@@ -143,10 +154,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.x, this.y, this.y);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 yxx
@@ -154,10 +166,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.y, this.x, this.x);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 yxy
@@ -165,10 +178,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.y, this.x, this.y);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 yyx
@@ -176,10 +190,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.y, this.y, this.x);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 yyy
@@ -187,10 +202,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.y, this.y, this.y);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 rrr
@@ -198,10 +214,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.r, this.r, this.r);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 rrg
@@ -209,10 +226,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.r, this.r, this.g);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 rgr
@@ -220,10 +238,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.r, this.g, this.r);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 rgg
@@ -231,10 +250,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.r, this.g, this.g);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 grr
@@ -242,10 +262,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.g, this.r, this.r);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 grg
@@ -253,10 +274,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.g, this.r, this.g);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 ggr
@@ -264,10 +286,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.g, this.g, this.r);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double3 ggg
@@ -275,10 +298,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            
-            return new(this.g, this.g, this.g);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b) & math.v3_iz_double256);
+
         }
     }
     public double4 xxxx
@@ -286,10 +310,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.x, this.x, this.x, this.x);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 xxxy
@@ -297,10 +322,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.x, this.x, this.x, this.y);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 xxyx
@@ -308,10 +334,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.x, this.x, this.y, this.x);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 xxyy
@@ -319,10 +346,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.x, this.x, this.y, this.y);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 xyxx
@@ -330,10 +358,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.x, this.y, this.x, this.x);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 xyxy
@@ -341,10 +370,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.x, this.y, this.x, this.y);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 xyyx
@@ -352,10 +382,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.x, this.y, this.y, this.x);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 xyyy
@@ -363,10 +394,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.x, this.y, this.y, this.y);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 yxxx
@@ -374,10 +406,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.y, this.x, this.x, this.x);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 yxxy
@@ -385,10 +418,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.y, this.x, this.x, this.y);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 yxyx
@@ -396,10 +430,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.y, this.x, this.y, this.x);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 yxyy
@@ -407,10 +442,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.y, this.x, this.y, this.y);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 yyxx
@@ -418,10 +454,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.y, this.y, this.x, this.x);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 yyxy
@@ -429,10 +466,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.y, this.y, this.x, this.y);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 yyyx
@@ -440,10 +478,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.y, this.y, this.y, this.x);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 yyyy
@@ -451,10 +490,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.y, this.y, this.y, this.y);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 rrrr
@@ -462,10 +502,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.r, this.r, this.r, this.r);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 rrrg
@@ -473,10 +514,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.r, this.r, this.r, this.g);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 rrgr
@@ -484,10 +526,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.r, this.r, this.g, this.r);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 rrgg
@@ -495,10 +538,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.r, this.r, this.g, this.g);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 rgrr
@@ -506,10 +550,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.r, this.g, this.r, this.r);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 rgrg
@@ -517,10 +562,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.r, this.g, this.r, this.g);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 rggr
@@ -528,10 +574,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.r, this.g, this.g, this.r);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 rggg
@@ -539,10 +586,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.r, this.g, this.g, this.g);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 grrr
@@ -550,10 +598,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.g, this.r, this.r, this.r);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 grrg
@@ -561,10 +610,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.g, this.r, this.r, this.g);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 grgr
@@ -572,10 +622,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.g, this.r, this.g, this.r);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 grgg
@@ -583,10 +634,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.g, this.r, this.g, this.g);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 ggrr
@@ -594,10 +646,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.g, this.g, this.r, this.r);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 ggrg
@@ -605,10 +658,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.g, this.g, this.r, this.g);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(0L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 gggr
@@ -616,10 +670,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.g, this.g, this.g, this.r);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 0L));
+            return new(Vector256.Create(a, b));
+
         }
     }
     public double4 gggg
@@ -627,10 +682,11 @@ public partial struct double2
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            
-            return new(this.g, this.g, this.g, this.g);
+
+            var a = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            var b = Vector128.Shuffle(this.vector, Vector128.Create(1L, 1L));
+            return new(Vector256.Create(a, b));
+
         }
     }
 

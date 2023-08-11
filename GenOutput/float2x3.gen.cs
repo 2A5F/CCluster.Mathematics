@@ -121,7 +121,8 @@ public unsafe partial struct float2x3 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static float2x3 RowMajor(float m00, float m01, float m02, float m10, float m11, float m12) => new(m00, m10, m01, m11, m02, m12);
+    public static float2x3 RowMajor(float m00, float m01, float m02, float m10, float m11, float m12) 
+        => new(m00, m10, m01, m11, m02, m12);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public float2x3(float value)
@@ -219,6 +220,24 @@ public unsafe partial struct float2x3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool2x3 VNe(float2x3 other) 
         => new(this.c0 != other.c0, this.c1 != other.c1, this.c2 != other.c2);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x3 operator >(float2x3 left, float2x3 right) => new(left.c0 > right.c0, left.c1 > right.c1, left.c2 > right.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x3 operator <(float2x3 left, float2x3 right) => new(left.c0 < right.c0, left.c1 < right.c1, left.c2 < right.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x3 operator >=(float2x3 left, float2x3 right) => new(left.c0 >= right.c0, left.c1 >= right.c1, left.c2 >= right.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x3 operator <=(float2x3 left, float2x3 right) => new(left.c0 <= right.c0, left.c1 <= right.c1, left.c2 <= right.c2);
+
+
+
+
 
     #endregion
 
@@ -362,6 +381,26 @@ public unsafe partial struct float2x3 :
     #endregion
 }
 
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 float2x3(float2 c0, float2 c1, float2 c2) => new(c0, c1, c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 float2x3(float m00, float m10, float m01, float m11, float m02, float m12) 
+        => new(m00, m10, m01, m11, m02, m12);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 float2x3(float value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 float2x3(float2 value) => new(value);
+
+
+} // vectors
+
 public static unsafe partial class math
 {
 
@@ -394,6 +433,60 @@ public static unsafe partial class math
     );
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 min(float2x3 x, float2x3 y) => new(min(x.c0, y.c0), min(x.c1, y.c1), min(x.c2, y.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 max(float2x3 x, float2x3 y) => new(max(x.c0, y.c0), max(x.c1, y.c1), max(x.c2, y.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 min(float2x3 x, float2x3 y, float2x3 z) => new(min(x.c0, y.c0, z.c0), min(x.c1, y.c1, z.c1), min(x.c2, y.c2, z.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 max(float2x3 x, float2x3 y, float2x3 z) => new(max(x.c0, y.c0, z.c0), max(x.c1, y.c1, z.c1), max(x.c2, y.c2, z.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 abs(float2x3 x) => new(abs(x.c0), abs(x.c1), abs(x.c2));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 lerp(float2x3 s, float2x3 x, float2x3 y) => x + s * (y - x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 unlerp(float2x3 x, float2x3 a, float2x3 b) => (x - a) / (b - a);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 remap(float2x3 x, float2x3 a, float2x3 b, float2x3 c, float2x3 d) => lerp(c, d, unlerp(a, b, x));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 floor(float2x3 x) => new(floor(x.c0), floor(x.c1), floor(x.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 ceil(float2x3 x) => new(ceil(x.c0), ceil(x.c1), ceil(x.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2x3 round(float2x3 x) => new(round(x.c0), round(x.c1), round(x.c2));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 csum(float2x3 x) => x.c0 + x.c1 + x.c2;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float2 rsum(float2x3 x) => new(x.c0.x + x.c1.x + x.c2.x, x.c0.y + x.c1.y + x.c2.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static float msum(float2x3 x) => csum(csum(x));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int2x3 pop_cnt(float2x3 x) => new(pop_cnt(x.c0), pop_cnt(x.c1), pop_cnt(x.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(float2x3 x) => msum(pop_cnt(x));
 
 } // class math
 

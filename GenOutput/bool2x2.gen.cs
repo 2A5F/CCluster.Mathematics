@@ -111,7 +111,8 @@ public unsafe partial struct bool2x2 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static bool2x2 RowMajor(bool m00, bool m01, bool m10, bool m11) => new(m00, m10, m01, m11);
+    public static bool2x2 RowMajor(bool m00, bool m01, bool m10, bool m11) 
+        => new(m00, m10, m01, m11);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool2x2(bool value)
@@ -127,6 +128,13 @@ public unsafe partial struct bool2x2 :
         Unsafe.SkipInit(out this);
         this.c0 = value;
         this.c1 = value;
+    }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public bool2x2(bool3x3 m)
+    {
+        this.c0 = m.c0.xy;
+        this.c1 = m.c1.xy;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -187,6 +195,34 @@ public unsafe partial struct bool2x2 :
     public bool2x2 VNe(bool2x2 other) 
         => new(this.c0 != other.c0, this.c1 != other.c1);
 
+
+
+
+    public bool AllTrue
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => this.c0.AllTrue && this.c1.AllTrue;
+    }
+
+    public bool AllFalse
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => this.c0.AllFalse && this.c1.AllFalse;
+    }
+
+    public bool AnyTrue
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => this.c0.AnyTrue || this.c1.AnyTrue;
+    }
+
+    public bool AnyFalse
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+        get => this.c0.AnyTrue || this.c1.AnyTrue;
+    }
+
+
     #endregion
 
 
@@ -217,8 +253,38 @@ public unsafe partial struct bool2x2 :
     #endregion
 }
 
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x2 bool2x2(bool2 c0, bool2 c1) => new(c0, c1);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x2 bool2x2(bool m00, bool m10, bool m01, bool m11) 
+        => new(m00, m10, m01, m11);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x2 bool2x2(bool value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x2 bool2x2(bool2 value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x2 bool2x2(bool3x3 m) => new(m);
+
+
+} // vectors
+
 public static unsafe partial class math
 {
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int2x2 pop_cnt(bool2x2 x) => new(pop_cnt(x.c0), pop_cnt(x.c1));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(bool2x2 x) => msum(pop_cnt(x));
 
 } // class math
 

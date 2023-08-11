@@ -151,7 +151,8 @@ public unsafe partial struct Half3x4 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static Half3x4 RowMajor(Half m00, Half m01, Half m02, Half m03, Half m10, Half m11, Half m12, Half m13, Half m20, Half m21, Half m22, Half m23) => new(m00, m10, m20, m01, m11, m21, m02, m12, m22, m03, m13, m23);
+    public static Half3x4 RowMajor(Half m00, Half m01, Half m02, Half m03, Half m10, Half m11, Half m12, Half m13, Half m20, Half m21, Half m22, Half m23) 
+        => new(m00, m10, m20, m01, m11, m21, m02, m12, m22, m03, m13, m23);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public Half3x4(Half value)
@@ -272,6 +273,24 @@ public unsafe partial struct Half3x4 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool3x4 VNe(Half3x4 other) 
         => new(this.c0 != other.c0, this.c1 != other.c1, this.c2 != other.c2, this.c3 != other.c3);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x4 operator >(Half3x4 left, Half3x4 right) => new(left.c0 > right.c0, left.c1 > right.c1, left.c2 > right.c2, left.c3 > right.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x4 operator <(Half3x4 left, Half3x4 right) => new(left.c0 < right.c0, left.c1 < right.c1, left.c2 < right.c2, left.c3 < right.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x4 operator >=(Half3x4 left, Half3x4 right) => new(left.c0 >= right.c0, left.c1 >= right.c1, left.c2 >= right.c2, left.c3 >= right.c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool3x4 operator <=(Half3x4 left, Half3x4 right) => new(left.c0 <= right.c0, left.c1 <= right.c1, left.c2 <= right.c2, left.c3 <= right.c3);
+
+
+
+
 
     #endregion
 
@@ -416,6 +435,26 @@ public unsafe partial struct Half3x4 :
     #endregion
 }
 
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 Half3x4(Half3 c0, Half3 c1, Half3 c2, Half3 c3) => new(c0, c1, c2, c3);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 Half3x4(Half m00, Half m10, Half m20, Half m01, Half m11, Half m21, Half m02, Half m12, Half m22, Half m03, Half m13, Half m23) 
+        => new(m00, m10, m20, m01, m11, m21, m02, m12, m22, m03, m13, m23);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 Half3x4(Half value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 Half3x4(Half3 value) => new(value);
+
+
+} // vectors
+
 public static unsafe partial class math
 {
 
@@ -448,6 +487,60 @@ public static unsafe partial class math
     );
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 min(Half3x4 x, Half3x4 y) => new(min(x.c0, y.c0), min(x.c1, y.c1), min(x.c2, y.c2), min(x.c3, y.c3));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 max(Half3x4 x, Half3x4 y) => new(max(x.c0, y.c0), max(x.c1, y.c1), max(x.c2, y.c2), max(x.c3, y.c3));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 min(Half3x4 x, Half3x4 y, Half3x4 z) => new(min(x.c0, y.c0, z.c0), min(x.c1, y.c1, z.c1), min(x.c2, y.c2, z.c2), min(x.c3, y.c3, z.c3));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 max(Half3x4 x, Half3x4 y, Half3x4 z) => new(max(x.c0, y.c0, z.c0), max(x.c1, y.c1, z.c1), max(x.c2, y.c2, z.c2), max(x.c3, y.c3, z.c3));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 abs(Half3x4 x) => new(abs(x.c0), abs(x.c1), abs(x.c2), abs(x.c3));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 lerp(Half3x4 s, Half3x4 x, Half3x4 y) => x + s * (y - x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 unlerp(Half3x4 x, Half3x4 a, Half3x4 b) => (x - a) / (b - a);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 remap(Half3x4 x, Half3x4 a, Half3x4 b, Half3x4 c, Half3x4 d) => lerp(c, d, unlerp(a, b, x));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 floor(Half3x4 x) => new(floor(x.c0), floor(x.c1), floor(x.c2), floor(x.c3));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 ceil(Half3x4 x) => new(ceil(x.c0), ceil(x.c1), ceil(x.c2), ceil(x.c3));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3x4 round(Half3x4 x) => new(round(x.c0), round(x.c1), round(x.c2), round(x.c3));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 csum(Half3x4 x) => x.c0 + x.c1 + x.c2 + x.c3;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half3 rsum(Half3x4 x) => new(x.c0.x + x.c1.x + x.c2.x + x.c3.x, x.c0.y + x.c1.y + x.c2.y + x.c3.y, x.c0.z + x.c1.z + x.c2.z + x.c3.z);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static Half msum(Half3x4 x) => csum(csum(x));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int3x4 pop_cnt(Half3x4 x) => new(pop_cnt(x.c0), pop_cnt(x.c1), pop_cnt(x.c2), pop_cnt(x.c3));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(Half3x4 x) => msum(pop_cnt(x));
 
 } // class math
 

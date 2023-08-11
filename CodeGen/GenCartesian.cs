@@ -10,6 +10,22 @@ public class GenCartesian : Base
         { 'r', 0 }, { 'g', 1 }, { 'b', 2 }, { 'a', 3 },
     };
 
+    public static string VectorShuffleMask(char x, char y, char z, char w, string unit)
+    {
+        var a = CompIndex[x];
+        var b = CompIndex[y];
+        var c = CompIndex[z];
+        var d = CompIndex[w];
+        return $"{a}{unit}, {b}{unit}, {c}{unit}, {d}{unit}";
+    }
+    
+    public static string VectorShuffle2Mask(char x, char y, string unit)
+    {
+        var a = CompIndex[x];
+        var b = CompIndex[y];
+        return $"{a}{unit}, {b}{unit}";
+    }
+
     public static string SseShuffleMask(char x, char y, char z, char w)
     {
         var a = CompIndex[x] & 0b11;
@@ -51,6 +67,15 @@ public class GenCartesian : Base
                 var simd = !no_align && meta.Simd && bitSize is 64 or 128 or 256;
 
                 var v3_iz = $" & math.v3_iz_{type}{bitSize}";
+                var v3_iz2 = $" & math.v3_iz_{type}{bitSize * 2}";
+
+                var unit = type switch
+                {
+                    "uint" => "u",
+                    "long" or "double" => "L",
+                    "ulong" => "UL",
+                    _ => "",
+                };
 
                 var cartesian = new StringBuilder();
                 var xyzw1 = ParallelEnumerable.Range(0, n * n).AsOrdered().Select(i => GetXyzwCartesian2(n, i));
@@ -64,8 +89,11 @@ public class GenCartesian : Base
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {{
-            {(type is "double" && bitSize is 128 ? $"if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, this.vector, {SseShuffle2Mask(ab.a, ab.b)}));" : "")}
+{(n is 2 ? $@"
+            return new(Vector{bitSize}.Shuffle(this.vector, Vector{bitSize}.Create({VectorShuffle2Mask(ab.a, ab.b, unit)})));
+" : $@"
             return new(this.{ab.a}, this.{ab.b});
+")}
         }}{(ab.u ? $@"
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -102,10 +130,15 @@ public class GenCartesian : Base
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {{
-            {(type is "float" && bitSize is 128 ? $"if (Sse.IsSupported) return new(Sse.Shuffle(this.vector, this.vector, {SseShuffleMask(abc.a, abc.b, abc.c, 'x')}){v3_iz});" : "")}
-            {(type is "int" or "uint" && bitSize is 128 ? $"if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, {SseShuffleMask(abc.a, abc.b, abc.c, 'x')}){v3_iz});" : "")}
-            {(type is "double" or "long" or "ulong" && bitSize is 256 ? $"if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, {SseShuffleMask(abc.a, abc.b, abc.c, 'x')}){v3_iz});" : "")}
+{(n is 3 or 4 ? $@"
+            return new(Vector{bitSize}.Shuffle(this.vector, Vector{bitSize}.Create({VectorShuffleMask(abc.a, abc.b, abc.c, 'x', unit)})){v3_iz});
+" : n is 2 ? $@"
+            var a = Vector{bitSize}.Shuffle(this.vector, Vector{bitSize}.Create({VectorShuffle2Mask(abc.a, abc.b, unit)}));
+            var b = Vector{bitSize}.Shuffle(this.vector, Vector{bitSize}.Create({VectorShuffle2Mask(abc.c, 'x', unit)}));
+            return new(Vector{bitSize * 2}.Create(a, b){v3_iz2});
+" : $@"
             return new(this.{abc.a}, this.{abc.b}, this.{abc.c});
+")}
         }}{(abc.u ? $@"
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -143,10 +176,15 @@ public class GenCartesian : Base
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {{
-            {(type is "float" && bitSize is 128 ? $"if (Sse.IsSupported) return new(Sse.Shuffle(this.vector, this.vector, {SseShuffleMask(abcd.a, abcd.b, abcd.c, abcd.d)}));" : "")}
-            {(type is "int" or "uint" && bitSize is 128 ? $"if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, {SseShuffleMask(abcd.a, abcd.b, abcd.c, abcd.d)}));" : "")}
-            {(type is "double" or "long" or "ulong" && bitSize is 256 ? $"if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, {SseShuffleMask(abcd.a, abcd.b, abcd.c, abcd.d)}));" : "")}
+{(n is 3 or 4 ? $@"
+            return new(Vector{bitSize}.Shuffle(this.vector, Vector{bitSize}.Create({VectorShuffleMask(abcd.a, abcd.b, abcd.c, abcd.d, unit)})));
+" : n is 2 ? $@"
+            var a = Vector{bitSize}.Shuffle(this.vector, Vector{bitSize}.Create({VectorShuffle2Mask(abcd.a, abcd.b, unit)}));
+            var b = Vector{bitSize}.Shuffle(this.vector, Vector{bitSize}.Create({VectorShuffle2Mask(abcd.c, abcd.d, unit)}));
+            return new(Vector{bitSize * 2}.Create(a, b));
+" : $@"
             return new(this.{abcd.a}, this.{abcd.b}, this.{abcd.c}, this.{abcd.d});
+")}
         }}{(abcd.u ? $@"
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 

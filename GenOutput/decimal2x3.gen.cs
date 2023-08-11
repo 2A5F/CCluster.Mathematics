@@ -121,7 +121,8 @@ public unsafe partial struct decimal2x3 :
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
-    public static decimal2x3 RowMajor(decimal m00, decimal m01, decimal m02, decimal m10, decimal m11, decimal m12) => new(m00, m10, m01, m11, m02, m12);
+    public static decimal2x3 RowMajor(decimal m00, decimal m01, decimal m02, decimal m10, decimal m11, decimal m12) 
+        => new(m00, m10, m01, m11, m02, m12);
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public decimal2x3(decimal value)
@@ -219,6 +220,24 @@ public unsafe partial struct decimal2x3 :
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public bool2x3 VNe(decimal2x3 other) 
         => new(this.c0 != other.c0, this.c1 != other.c1, this.c2 != other.c2);
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x3 operator >(decimal2x3 left, decimal2x3 right) => new(left.c0 > right.c0, left.c1 > right.c1, left.c2 > right.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x3 operator <(decimal2x3 left, decimal2x3 right) => new(left.c0 < right.c0, left.c1 < right.c1, left.c2 < right.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x3 operator >=(decimal2x3 left, decimal2x3 right) => new(left.c0 >= right.c0, left.c1 >= right.c1, left.c2 >= right.c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static bool2x3 operator <=(decimal2x3 left, decimal2x3 right) => new(left.c0 <= right.c0, left.c1 <= right.c1, left.c2 <= right.c2);
+
+
+
+
 
     #endregion
 
@@ -362,6 +381,26 @@ public unsafe partial struct decimal2x3 :
     #endregion
 }
 
+public static unsafe partial class vectors
+{
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 decimal2x3(decimal2 c0, decimal2 c1, decimal2 c2) => new(c0, c1, c2);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 decimal2x3(decimal m00, decimal m10, decimal m01, decimal m11, decimal m02, decimal m12) 
+        => new(m00, m10, m01, m11, m02, m12);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 decimal2x3(decimal value) => new(value);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 decimal2x3(decimal2 value) => new(value);
+
+
+} // vectors
+
 public static unsafe partial class math
 {
 
@@ -394,6 +433,60 @@ public static unsafe partial class math
     );
 
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 min(decimal2x3 x, decimal2x3 y) => new(min(x.c0, y.c0), min(x.c1, y.c1), min(x.c2, y.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 max(decimal2x3 x, decimal2x3 y) => new(max(x.c0, y.c0), max(x.c1, y.c1), max(x.c2, y.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 min(decimal2x3 x, decimal2x3 y, decimal2x3 z) => new(min(x.c0, y.c0, z.c0), min(x.c1, y.c1, z.c1), min(x.c2, y.c2, z.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 max(decimal2x3 x, decimal2x3 y, decimal2x3 z) => new(max(x.c0, y.c0, z.c0), max(x.c1, y.c1, z.c1), max(x.c2, y.c2, z.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 abs(decimal2x3 x) => new(abs(x.c0), abs(x.c1), abs(x.c2));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 lerp(decimal2x3 s, decimal2x3 x, decimal2x3 y) => x + s * (y - x);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 unlerp(decimal2x3 x, decimal2x3 a, decimal2x3 b) => (x - a) / (b - a);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 remap(decimal2x3 x, decimal2x3 a, decimal2x3 b, decimal2x3 c, decimal2x3 d) => lerp(c, d, unlerp(a, b, x));
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 floor(decimal2x3 x) => new(floor(x.c0), floor(x.c1), floor(x.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 ceil(decimal2x3 x) => new(ceil(x.c0), ceil(x.c1), ceil(x.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2x3 round(decimal2x3 x) => new(round(x.c0), round(x.c1), round(x.c2));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 csum(decimal2x3 x) => x.c0 + x.c1 + x.c2;
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal2 rsum(decimal2x3 x) => new(x.c0.x + x.c1.x + x.c2.x, x.c0.y + x.c1.y + x.c2.y);
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static decimal msum(decimal2x3 x) => csum(csum(x));
+
+
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int2x3 pop_cnt(decimal2x3 x) => new(pop_cnt(x.c0), pop_cnt(x.c1), pop_cnt(x.c2));
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
+    public static int count_bits(decimal2x3 x) => msum(pop_cnt(x));
 
 } // class math
 

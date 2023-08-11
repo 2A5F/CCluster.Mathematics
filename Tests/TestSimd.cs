@@ -77,7 +77,7 @@ public class TestSimd
         Console.WriteLine($"{r}");
         Assert.That(r, Is.EqualTo(60));
     }
-    
+
     [Test]
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public void TestDot3()
@@ -219,6 +219,24 @@ public class TestSimd
 
     [Test]
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public void TestShuffle6()
+    {
+        var a = new float2(1, 2);
+        var xy = a.xy;
+        var xyx = a.xyx;
+        var xyxy = a.xyxy;
+
+        Console.WriteLine($"{xy}");
+        Console.WriteLine($"{xyx}");
+        Console.WriteLine($"{xyxy}");
+
+        Assert.That(xy, Is.EqualTo(new float2(1, 2)));
+        Assert.That(xyx, Is.EqualTo(new float3(1, 2, 1)));
+        Assert.That(xyxy, Is.EqualTo(new float4(1, 2, 1, 2)));
+    }
+
+    [Test]
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public void TestCSum1()
     {
         Console.WriteLine($"Ssse3.IsSupported = {Ssse3.IsSupported}");
@@ -227,7 +245,7 @@ public class TestSimd
         Console.WriteLine(r);
         Assert.That(r, Is.EqualTo(1 + 2 + 3 + 4));
     }
-    
+
     [Test]
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public void TestCSum2()
@@ -238,7 +256,7 @@ public class TestSimd
         Console.WriteLine(r);
         Assert.That(r, Is.EqualTo(1 + 2 + 3));
     }
-    
+
     [Test]
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public void TestCSum3()
@@ -249,7 +267,7 @@ public class TestSimd
         Console.WriteLine(r);
         Assert.That(r, Is.EqualTo(1f + 2 + 3));
     }
-    
+
     [Test]
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public void TestCSum4()
@@ -260,7 +278,7 @@ public class TestSimd
         Console.WriteLine(r);
         Assert.That(r, Is.EqualTo(1f + 2 + 3 + 4));
     }
-    
+
     [Test]
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public void TestCSum5()
@@ -270,7 +288,7 @@ public class TestSimd
         Console.WriteLine(r);
         Assert.That(r, Is.EqualTo(1 + 2 + 3 + 4));
     }
-    
+
     [Test]
     [MethodImpl(MethodImplOptions.AggressiveOptimization)]
     public void TestMinMax1()

@@ -18,8 +18,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.x, this.x);
+
         }
     }
     public int2 xy
@@ -27,8 +28,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.x, this.y);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -41,8 +43,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.x, this.z);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -55,8 +58,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.x, this.w);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -69,8 +73,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.y, this.x);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -83,8 +88,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.y, this.y);
+
         }
     }
     public int2 yz
@@ -92,8 +98,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.y, this.z);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -106,8 +113,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.y, this.w);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -120,8 +128,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.z, this.x);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -134,8 +143,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.z, this.y);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -148,8 +158,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.z, this.z);
+
         }
     }
     public int2 zw
@@ -157,8 +168,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.z, this.w);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -171,8 +183,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.w, this.x);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -185,8 +198,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.w, this.y);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -199,8 +213,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.w, this.z);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -213,8 +228,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.w, this.w);
+
         }
     }
     public int2 rr
@@ -222,8 +238,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.r, this.r);
+
         }
     }
     public int2 rg
@@ -231,8 +248,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.r, this.g);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -245,8 +263,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.r, this.b);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -259,8 +278,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.r, this.a);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -273,8 +293,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.g, this.r);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -287,8 +308,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.g, this.g);
+
         }
     }
     public int2 gb
@@ -296,8 +318,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.g, this.b);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -310,8 +333,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.g, this.a);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -324,8 +348,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.b, this.r);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -338,8 +363,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.b, this.g);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -352,8 +378,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.b, this.b);
+
         }
     }
     public int2 ba
@@ -361,8 +388,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.b, this.a);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -375,8 +403,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.a, this.r);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -389,8 +418,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.a, this.g);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -403,8 +433,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.a, this.b);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -417,8 +448,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.a, this.a);
+
         }
     }
     public int3 xxx
@@ -426,10 +458,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 0) & math.v3_iz_int128);
-            
-            return new(this.x, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 xxy
@@ -437,10 +468,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 16) & math.v3_iz_int128);
-            
-            return new(this.x, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 xxz
@@ -448,10 +478,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 32) & math.v3_iz_int128);
-            
-            return new(this.x, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 xxw
@@ -459,10 +488,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 48) & math.v3_iz_int128);
-            
-            return new(this.x, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 xyx
@@ -470,10 +498,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 4) & math.v3_iz_int128);
-            
-            return new(this.x, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 xyy
@@ -481,10 +508,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 20) & math.v3_iz_int128);
-            
-            return new(this.x, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 xyz
@@ -492,10 +518,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 36) & math.v3_iz_int128);
-            
-            return new(this.x, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 2, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -508,10 +533,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 52) & math.v3_iz_int128);
-            
-            return new(this.x, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 3, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -524,10 +548,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 8) & math.v3_iz_int128);
-            
-            return new(this.x, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 xzy
@@ -535,10 +558,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 24) & math.v3_iz_int128);
-            
-            return new(this.x, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 1, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -551,10 +573,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 40) & math.v3_iz_int128);
-            
-            return new(this.x, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 xzw
@@ -562,10 +583,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 56) & math.v3_iz_int128);
-            
-            return new(this.x, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 3, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -578,10 +598,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 12) & math.v3_iz_int128);
-            
-            return new(this.x, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 xwy
@@ -589,10 +608,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 28) & math.v3_iz_int128);
-            
-            return new(this.x, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 1, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -605,10 +623,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 44) & math.v3_iz_int128);
-            
-            return new(this.x, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 2, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -621,10 +638,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 60) & math.v3_iz_int128);
-            
-            return new(this.x, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 yxx
@@ -632,10 +648,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 1) & math.v3_iz_int128);
-            
-            return new(this.y, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 yxy
@@ -643,10 +658,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 17) & math.v3_iz_int128);
-            
-            return new(this.y, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 yxz
@@ -654,10 +668,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 33) & math.v3_iz_int128);
-            
-            return new(this.y, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 2, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -670,10 +683,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 49) & math.v3_iz_int128);
-            
-            return new(this.y, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 3, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -686,10 +698,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 5) & math.v3_iz_int128);
-            
-            return new(this.y, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 yyy
@@ -697,10 +708,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 21) & math.v3_iz_int128);
-            
-            return new(this.y, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 yyz
@@ -708,10 +718,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 37) & math.v3_iz_int128);
-            
-            return new(this.y, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 yyw
@@ -719,10 +728,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 53) & math.v3_iz_int128);
-            
-            return new(this.y, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 yzx
@@ -730,10 +738,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 9) & math.v3_iz_int128);
-            
-            return new(this.y, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 0, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -746,10 +753,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 25) & math.v3_iz_int128);
-            
-            return new(this.y, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 yzz
@@ -757,10 +763,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 41) & math.v3_iz_int128);
-            
-            return new(this.y, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 yzw
@@ -768,10 +773,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 57) & math.v3_iz_int128);
-            
-            return new(this.y, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 3, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -784,10 +788,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 13) & math.v3_iz_int128);
-            
-            return new(this.y, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 0, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -800,10 +803,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 29) & math.v3_iz_int128);
-            
-            return new(this.y, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 ywz
@@ -811,10 +813,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 45) & math.v3_iz_int128);
-            
-            return new(this.y, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 2, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -827,10 +828,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 61) & math.v3_iz_int128);
-            
-            return new(this.y, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 zxx
@@ -838,10 +838,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 2) & math.v3_iz_int128);
-            
-            return new(this.z, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 zxy
@@ -849,10 +848,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 18) & math.v3_iz_int128);
-            
-            return new(this.z, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 1, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -865,10 +863,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 34) & math.v3_iz_int128);
-            
-            return new(this.z, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 zxw
@@ -876,10 +873,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 50) & math.v3_iz_int128);
-            
-            return new(this.z, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 3, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -892,10 +888,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 6) & math.v3_iz_int128);
-            
-            return new(this.z, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 0, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -908,10 +903,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 22) & math.v3_iz_int128);
-            
-            return new(this.z, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 zyz
@@ -919,10 +913,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 38) & math.v3_iz_int128);
-            
-            return new(this.z, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 zyw
@@ -930,10 +923,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 54) & math.v3_iz_int128);
-            
-            return new(this.z, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 3, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -946,10 +938,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 10) & math.v3_iz_int128);
-            
-            return new(this.z, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 zzy
@@ -957,10 +948,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 26) & math.v3_iz_int128);
-            
-            return new(this.z, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 zzz
@@ -968,10 +958,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 42) & math.v3_iz_int128);
-            
-            return new(this.z, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 zzw
@@ -979,10 +968,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 58) & math.v3_iz_int128);
-            
-            return new(this.z, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 zwx
@@ -990,10 +978,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 14) & math.v3_iz_int128);
-            
-            return new(this.z, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 0, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1006,10 +993,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 30) & math.v3_iz_int128);
-            
-            return new(this.z, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 1, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1022,10 +1008,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 46) & math.v3_iz_int128);
-            
-            return new(this.z, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 zww
@@ -1033,10 +1018,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 62) & math.v3_iz_int128);
-            
-            return new(this.z, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 wxx
@@ -1044,10 +1028,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 3) & math.v3_iz_int128);
-            
-            return new(this.w, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 wxy
@@ -1055,10 +1038,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 19) & math.v3_iz_int128);
-            
-            return new(this.w, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 1, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1071,10 +1053,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 35) & math.v3_iz_int128);
-            
-            return new(this.w, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 2, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1087,10 +1068,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 51) & math.v3_iz_int128);
-            
-            return new(this.w, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 wyx
@@ -1098,10 +1078,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 7) & math.v3_iz_int128);
-            
-            return new(this.w, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 0, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1114,10 +1093,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 23) & math.v3_iz_int128);
-            
-            return new(this.w, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 wyz
@@ -1125,10 +1103,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 39) & math.v3_iz_int128);
-            
-            return new(this.w, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 2, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1141,10 +1118,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 55) & math.v3_iz_int128);
-            
-            return new(this.w, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 wzx
@@ -1152,10 +1128,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 11) & math.v3_iz_int128);
-            
-            return new(this.w, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 0, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1168,10 +1143,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 27) & math.v3_iz_int128);
-            
-            return new(this.w, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 1, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1184,10 +1158,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 43) & math.v3_iz_int128);
-            
-            return new(this.w, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 wzw
@@ -1195,10 +1168,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 59) & math.v3_iz_int128);
-            
-            return new(this.w, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 wwx
@@ -1206,10 +1178,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 15) & math.v3_iz_int128);
-            
-            return new(this.w, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 wwy
@@ -1217,10 +1188,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 31) & math.v3_iz_int128);
-            
-            return new(this.w, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 wwz
@@ -1228,10 +1198,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 47) & math.v3_iz_int128);
-            
-            return new(this.w, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 www
@@ -1239,10 +1208,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 63) & math.v3_iz_int128);
-            
-            return new(this.w, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 rrr
@@ -1250,10 +1218,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 0) & math.v3_iz_int128);
-            
-            return new(this.r, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 rrg
@@ -1261,10 +1228,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 16) & math.v3_iz_int128);
-            
-            return new(this.r, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 rrb
@@ -1272,10 +1238,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 32) & math.v3_iz_int128);
-            
-            return new(this.r, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 rra
@@ -1283,10 +1248,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 48) & math.v3_iz_int128);
-            
-            return new(this.r, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 rgr
@@ -1294,10 +1258,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 4) & math.v3_iz_int128);
-            
-            return new(this.r, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 rgg
@@ -1305,10 +1268,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 20) & math.v3_iz_int128);
-            
-            return new(this.r, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 rgb
@@ -1316,10 +1278,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 36) & math.v3_iz_int128);
-            
-            return new(this.r, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 2, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1332,10 +1293,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 52) & math.v3_iz_int128);
-            
-            return new(this.r, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 3, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1348,10 +1308,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 8) & math.v3_iz_int128);
-            
-            return new(this.r, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 rbg
@@ -1359,10 +1318,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 24) & math.v3_iz_int128);
-            
-            return new(this.r, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 1, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1375,10 +1333,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 40) & math.v3_iz_int128);
-            
-            return new(this.r, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 rba
@@ -1386,10 +1343,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 56) & math.v3_iz_int128);
-            
-            return new(this.r, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 3, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1402,10 +1358,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 12) & math.v3_iz_int128);
-            
-            return new(this.r, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 rag
@@ -1413,10 +1368,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 28) & math.v3_iz_int128);
-            
-            return new(this.r, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 1, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1429,10 +1383,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 44) & math.v3_iz_int128);
-            
-            return new(this.r, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 2, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1445,10 +1398,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 60) & math.v3_iz_int128);
-            
-            return new(this.r, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 grr
@@ -1456,10 +1408,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 1) & math.v3_iz_int128);
-            
-            return new(this.g, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 grg
@@ -1467,10 +1418,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 17) & math.v3_iz_int128);
-            
-            return new(this.g, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 grb
@@ -1478,10 +1428,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 33) & math.v3_iz_int128);
-            
-            return new(this.g, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 2, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1494,10 +1443,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 49) & math.v3_iz_int128);
-            
-            return new(this.g, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 3, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1510,10 +1458,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 5) & math.v3_iz_int128);
-            
-            return new(this.g, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 ggg
@@ -1521,10 +1468,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 21) & math.v3_iz_int128);
-            
-            return new(this.g, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 ggb
@@ -1532,10 +1478,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 37) & math.v3_iz_int128);
-            
-            return new(this.g, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 gga
@@ -1543,10 +1488,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 53) & math.v3_iz_int128);
-            
-            return new(this.g, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 gbr
@@ -1554,10 +1498,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 9) & math.v3_iz_int128);
-            
-            return new(this.g, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 0, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1570,10 +1513,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 25) & math.v3_iz_int128);
-            
-            return new(this.g, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 gbb
@@ -1581,10 +1523,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 41) & math.v3_iz_int128);
-            
-            return new(this.g, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 gba
@@ -1592,10 +1533,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 57) & math.v3_iz_int128);
-            
-            return new(this.g, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 3, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1608,10 +1548,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 13) & math.v3_iz_int128);
-            
-            return new(this.g, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 0, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1624,10 +1563,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 29) & math.v3_iz_int128);
-            
-            return new(this.g, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 gab
@@ -1635,10 +1573,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 45) & math.v3_iz_int128);
-            
-            return new(this.g, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 2, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1651,10 +1588,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 61) & math.v3_iz_int128);
-            
-            return new(this.g, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 brr
@@ -1662,10 +1598,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 2) & math.v3_iz_int128);
-            
-            return new(this.b, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 brg
@@ -1673,10 +1608,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 18) & math.v3_iz_int128);
-            
-            return new(this.b, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 1, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1689,10 +1623,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 34) & math.v3_iz_int128);
-            
-            return new(this.b, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 bra
@@ -1700,10 +1633,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 50) & math.v3_iz_int128);
-            
-            return new(this.b, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 3, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1716,10 +1648,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 6) & math.v3_iz_int128);
-            
-            return new(this.b, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 0, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1732,10 +1663,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 22) & math.v3_iz_int128);
-            
-            return new(this.b, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 bgb
@@ -1743,10 +1673,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 38) & math.v3_iz_int128);
-            
-            return new(this.b, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 bga
@@ -1754,10 +1683,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 54) & math.v3_iz_int128);
-            
-            return new(this.b, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 3, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1770,10 +1698,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 10) & math.v3_iz_int128);
-            
-            return new(this.b, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 bbg
@@ -1781,10 +1708,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 26) & math.v3_iz_int128);
-            
-            return new(this.b, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 bbb
@@ -1792,10 +1718,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 42) & math.v3_iz_int128);
-            
-            return new(this.b, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 bba
@@ -1803,10 +1728,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 58) & math.v3_iz_int128);
-            
-            return new(this.b, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 bar
@@ -1814,10 +1738,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 14) & math.v3_iz_int128);
-            
-            return new(this.b, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 0, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1830,10 +1753,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 30) & math.v3_iz_int128);
-            
-            return new(this.b, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 1, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1846,10 +1768,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 46) & math.v3_iz_int128);
-            
-            return new(this.b, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 baa
@@ -1857,10 +1778,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 62) & math.v3_iz_int128);
-            
-            return new(this.b, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 arr
@@ -1868,10 +1788,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 3) & math.v3_iz_int128);
-            
-            return new(this.a, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 arg
@@ -1879,10 +1798,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 19) & math.v3_iz_int128);
-            
-            return new(this.a, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 1, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1895,10 +1813,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 35) & math.v3_iz_int128);
-            
-            return new(this.a, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 2, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1911,10 +1828,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 51) & math.v3_iz_int128);
-            
-            return new(this.a, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 agr
@@ -1922,10 +1838,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 7) & math.v3_iz_int128);
-            
-            return new(this.a, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 0, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1938,10 +1853,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 23) & math.v3_iz_int128);
-            
-            return new(this.a, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 agb
@@ -1949,10 +1863,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 39) & math.v3_iz_int128);
-            
-            return new(this.a, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 2, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1965,10 +1878,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 55) & math.v3_iz_int128);
-            
-            return new(this.a, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 abr
@@ -1976,10 +1888,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 11) & math.v3_iz_int128);
-            
-            return new(this.a, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 0, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -1992,10 +1903,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 27) & math.v3_iz_int128);
-            
-            return new(this.a, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 1, 0)) & math.v3_iz_int128);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -2008,10 +1918,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 43) & math.v3_iz_int128);
-            
-            return new(this.a, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 aba
@@ -2019,10 +1928,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 59) & math.v3_iz_int128);
-            
-            return new(this.a, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 aar
@@ -2030,10 +1938,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 15) & math.v3_iz_int128);
-            
-            return new(this.a, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 0, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 aag
@@ -2041,10 +1948,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 31) & math.v3_iz_int128);
-            
-            return new(this.a, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 1, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 aab
@@ -2052,10 +1958,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 47) & math.v3_iz_int128);
-            
-            return new(this.a, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 2, 0)) & math.v3_iz_int128);
+
         }
     }
     public int3 aaa
@@ -2063,10 +1968,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 63) & math.v3_iz_int128);
-            
-            return new(this.a, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 3, 0)) & math.v3_iz_int128);
+
         }
     }
     public int4 xxxx
@@ -2074,10 +1978,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 0));
-            
-            return new(this.x, this.x, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 0, 0)));
+
         }
     }
     public int4 xxxy
@@ -2085,10 +1988,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 64));
-            
-            return new(this.x, this.x, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 0, 1)));
+
         }
     }
     public int4 xxxz
@@ -2096,10 +1998,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 128));
-            
-            return new(this.x, this.x, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 0, 2)));
+
         }
     }
     public int4 xxxw
@@ -2107,10 +2008,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 192));
-            
-            return new(this.x, this.x, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 0, 3)));
+
         }
     }
     public int4 xxyx
@@ -2118,10 +2018,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 16));
-            
-            return new(this.x, this.x, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 1, 0)));
+
         }
     }
     public int4 xxyy
@@ -2129,10 +2028,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 80));
-            
-            return new(this.x, this.x, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 1, 1)));
+
         }
     }
     public int4 xxyz
@@ -2140,10 +2038,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 144));
-            
-            return new(this.x, this.x, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 1, 2)));
+
         }
     }
     public int4 xxyw
@@ -2151,10 +2048,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 208));
-            
-            return new(this.x, this.x, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 1, 3)));
+
         }
     }
     public int4 xxzx
@@ -2162,10 +2058,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 32));
-            
-            return new(this.x, this.x, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 2, 0)));
+
         }
     }
     public int4 xxzy
@@ -2173,10 +2068,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 96));
-            
-            return new(this.x, this.x, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 2, 1)));
+
         }
     }
     public int4 xxzz
@@ -2184,10 +2078,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 160));
-            
-            return new(this.x, this.x, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 2, 2)));
+
         }
     }
     public int4 xxzw
@@ -2195,10 +2088,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 224));
-            
-            return new(this.x, this.x, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 2, 3)));
+
         }
     }
     public int4 xxwx
@@ -2206,10 +2098,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 48));
-            
-            return new(this.x, this.x, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 3, 0)));
+
         }
     }
     public int4 xxwy
@@ -2217,10 +2108,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 112));
-            
-            return new(this.x, this.x, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 3, 1)));
+
         }
     }
     public int4 xxwz
@@ -2228,10 +2118,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 176));
-            
-            return new(this.x, this.x, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 3, 2)));
+
         }
     }
     public int4 xxww
@@ -2239,10 +2128,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 240));
-            
-            return new(this.x, this.x, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 3, 3)));
+
         }
     }
     public int4 xyxx
@@ -2250,10 +2138,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 4));
-            
-            return new(this.x, this.y, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 0, 0)));
+
         }
     }
     public int4 xyxy
@@ -2261,10 +2148,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 68));
-            
-            return new(this.x, this.y, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 0, 1)));
+
         }
     }
     public int4 xyxz
@@ -2272,10 +2158,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 132));
-            
-            return new(this.x, this.y, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 0, 2)));
+
         }
     }
     public int4 xyxw
@@ -2283,10 +2168,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 196));
-            
-            return new(this.x, this.y, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 0, 3)));
+
         }
     }
     public int4 xyyx
@@ -2294,10 +2178,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 20));
-            
-            return new(this.x, this.y, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 1, 0)));
+
         }
     }
     public int4 xyyy
@@ -2305,10 +2188,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 84));
-            
-            return new(this.x, this.y, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 1, 1)));
+
         }
     }
     public int4 xyyz
@@ -2316,10 +2198,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 148));
-            
-            return new(this.x, this.y, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 1, 2)));
+
         }
     }
     public int4 xyyw
@@ -2327,10 +2208,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 212));
-            
-            return new(this.x, this.y, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 1, 3)));
+
         }
     }
     public int4 xyzx
@@ -2338,10 +2218,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 36));
-            
-            return new(this.x, this.y, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 2, 0)));
+
         }
     }
     public int4 xyzy
@@ -2349,10 +2228,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 100));
-            
-            return new(this.x, this.y, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 2, 1)));
+
         }
     }
     public int4 xyzz
@@ -2360,10 +2238,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 164));
-            
-            return new(this.x, this.y, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 2, 2)));
+
         }
     }
     public int4 xyzw
@@ -2371,10 +2248,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 228));
-            
-            return new(this.x, this.y, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 2, 3)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -2387,10 +2263,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 52));
-            
-            return new(this.x, this.y, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 3, 0)));
+
         }
     }
     public int4 xywy
@@ -2398,10 +2273,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 116));
-            
-            return new(this.x, this.y, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 3, 1)));
+
         }
     }
     public int4 xywz
@@ -2409,10 +2283,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 180));
-            
-            return new(this.x, this.y, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 3, 2)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -2425,10 +2298,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 244));
-            
-            return new(this.x, this.y, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 3, 3)));
+
         }
     }
     public int4 xzxx
@@ -2436,10 +2308,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 8));
-            
-            return new(this.x, this.z, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 0, 0)));
+
         }
     }
     public int4 xzxy
@@ -2447,10 +2318,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 72));
-            
-            return new(this.x, this.z, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 0, 1)));
+
         }
     }
     public int4 xzxz
@@ -2458,10 +2328,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 136));
-            
-            return new(this.x, this.z, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 0, 2)));
+
         }
     }
     public int4 xzxw
@@ -2469,10 +2338,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 200));
-            
-            return new(this.x, this.z, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 0, 3)));
+
         }
     }
     public int4 xzyx
@@ -2480,10 +2348,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 24));
-            
-            return new(this.x, this.z, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 1, 0)));
+
         }
     }
     public int4 xzyy
@@ -2491,10 +2358,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 88));
-            
-            return new(this.x, this.z, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 1, 1)));
+
         }
     }
     public int4 xzyz
@@ -2502,10 +2368,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 152));
-            
-            return new(this.x, this.z, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 1, 2)));
+
         }
     }
     public int4 xzyw
@@ -2513,10 +2378,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 216));
-            
-            return new(this.x, this.z, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 1, 3)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -2529,10 +2393,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 40));
-            
-            return new(this.x, this.z, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 2, 0)));
+
         }
     }
     public int4 xzzy
@@ -2540,10 +2403,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 104));
-            
-            return new(this.x, this.z, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 2, 1)));
+
         }
     }
     public int4 xzzz
@@ -2551,10 +2413,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 168));
-            
-            return new(this.x, this.z, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 2, 2)));
+
         }
     }
     public int4 xzzw
@@ -2562,10 +2423,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 232));
-            
-            return new(this.x, this.z, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 2, 3)));
+
         }
     }
     public int4 xzwx
@@ -2573,10 +2433,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 56));
-            
-            return new(this.x, this.z, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 3, 0)));
+
         }
     }
     public int4 xzwy
@@ -2584,10 +2443,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 120));
-            
-            return new(this.x, this.z, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 3, 1)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -2600,10 +2458,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 184));
-            
-            return new(this.x, this.z, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 3, 2)));
+
         }
     }
     public int4 xzww
@@ -2611,10 +2468,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 248));
-            
-            return new(this.x, this.z, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 3, 3)));
+
         }
     }
     public int4 xwxx
@@ -2622,10 +2478,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 12));
-            
-            return new(this.x, this.w, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 0, 0)));
+
         }
     }
     public int4 xwxy
@@ -2633,10 +2488,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 76));
-            
-            return new(this.x, this.w, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 0, 1)));
+
         }
     }
     public int4 xwxz
@@ -2644,10 +2498,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 140));
-            
-            return new(this.x, this.w, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 0, 2)));
+
         }
     }
     public int4 xwxw
@@ -2655,10 +2508,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 204));
-            
-            return new(this.x, this.w, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 0, 3)));
+
         }
     }
     public int4 xwyx
@@ -2666,10 +2518,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 28));
-            
-            return new(this.x, this.w, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 1, 0)));
+
         }
     }
     public int4 xwyy
@@ -2677,10 +2528,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 92));
-            
-            return new(this.x, this.w, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 1, 1)));
+
         }
     }
     public int4 xwyz
@@ -2688,10 +2538,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 156));
-            
-            return new(this.x, this.w, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 1, 2)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -2704,10 +2553,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 220));
-            
-            return new(this.x, this.w, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 1, 3)));
+
         }
     }
     public int4 xwzx
@@ -2715,10 +2563,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 44));
-            
-            return new(this.x, this.w, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 2, 0)));
+
         }
     }
     public int4 xwzy
@@ -2726,10 +2573,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 108));
-            
-            return new(this.x, this.w, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 2, 1)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -2742,10 +2588,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 172));
-            
-            return new(this.x, this.w, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 2, 2)));
+
         }
     }
     public int4 xwzw
@@ -2753,10 +2598,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 236));
-            
-            return new(this.x, this.w, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 2, 3)));
+
         }
     }
     public int4 xwwx
@@ -2764,10 +2608,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 60));
-            
-            return new(this.x, this.w, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 3, 0)));
+
         }
     }
     public int4 xwwy
@@ -2775,10 +2618,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 124));
-            
-            return new(this.x, this.w, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 3, 1)));
+
         }
     }
     public int4 xwwz
@@ -2786,10 +2628,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 188));
-            
-            return new(this.x, this.w, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 3, 2)));
+
         }
     }
     public int4 xwww
@@ -2797,10 +2638,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 252));
-            
-            return new(this.x, this.w, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 3, 3)));
+
         }
     }
     public int4 yxxx
@@ -2808,10 +2648,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 1));
-            
-            return new(this.y, this.x, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 0, 0)));
+
         }
     }
     public int4 yxxy
@@ -2819,10 +2658,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 65));
-            
-            return new(this.y, this.x, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 0, 1)));
+
         }
     }
     public int4 yxxz
@@ -2830,10 +2668,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 129));
-            
-            return new(this.y, this.x, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 0, 2)));
+
         }
     }
     public int4 yxxw
@@ -2841,10 +2678,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 193));
-            
-            return new(this.y, this.x, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 0, 3)));
+
         }
     }
     public int4 yxyx
@@ -2852,10 +2688,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 17));
-            
-            return new(this.y, this.x, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 1, 0)));
+
         }
     }
     public int4 yxyy
@@ -2863,10 +2698,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 81));
-            
-            return new(this.y, this.x, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 1, 1)));
+
         }
     }
     public int4 yxyz
@@ -2874,10 +2708,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 145));
-            
-            return new(this.y, this.x, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 1, 2)));
+
         }
     }
     public int4 yxyw
@@ -2885,10 +2718,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 209));
-            
-            return new(this.y, this.x, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 1, 3)));
+
         }
     }
     public int4 yxzx
@@ -2896,10 +2728,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 33));
-            
-            return new(this.y, this.x, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 2, 0)));
+
         }
     }
     public int4 yxzy
@@ -2907,10 +2738,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 97));
-            
-            return new(this.y, this.x, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 2, 1)));
+
         }
     }
     public int4 yxzz
@@ -2918,10 +2748,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 161));
-            
-            return new(this.y, this.x, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 2, 2)));
+
         }
     }
     public int4 yxzw
@@ -2929,10 +2758,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 225));
-            
-            return new(this.y, this.x, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 2, 3)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -2945,10 +2773,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 49));
-            
-            return new(this.y, this.x, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 3, 0)));
+
         }
     }
     public int4 yxwy
@@ -2956,10 +2783,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 113));
-            
-            return new(this.y, this.x, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 3, 1)));
+
         }
     }
     public int4 yxwz
@@ -2967,10 +2793,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 177));
-            
-            return new(this.y, this.x, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 3, 2)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -2983,10 +2808,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 241));
-            
-            return new(this.y, this.x, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 3, 3)));
+
         }
     }
     public int4 yyxx
@@ -2994,10 +2818,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 5));
-            
-            return new(this.y, this.y, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 0, 0)));
+
         }
     }
     public int4 yyxy
@@ -3005,10 +2828,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 69));
-            
-            return new(this.y, this.y, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 0, 1)));
+
         }
     }
     public int4 yyxz
@@ -3016,10 +2838,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 133));
-            
-            return new(this.y, this.y, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 0, 2)));
+
         }
     }
     public int4 yyxw
@@ -3027,10 +2848,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 197));
-            
-            return new(this.y, this.y, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 0, 3)));
+
         }
     }
     public int4 yyyx
@@ -3038,10 +2858,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 21));
-            
-            return new(this.y, this.y, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 1, 0)));
+
         }
     }
     public int4 yyyy
@@ -3049,10 +2868,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 85));
-            
-            return new(this.y, this.y, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 1, 1)));
+
         }
     }
     public int4 yyyz
@@ -3060,10 +2878,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 149));
-            
-            return new(this.y, this.y, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 1, 2)));
+
         }
     }
     public int4 yyyw
@@ -3071,10 +2888,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 213));
-            
-            return new(this.y, this.y, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 1, 3)));
+
         }
     }
     public int4 yyzx
@@ -3082,10 +2898,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 37));
-            
-            return new(this.y, this.y, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 2, 0)));
+
         }
     }
     public int4 yyzy
@@ -3093,10 +2908,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 101));
-            
-            return new(this.y, this.y, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 2, 1)));
+
         }
     }
     public int4 yyzz
@@ -3104,10 +2918,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 165));
-            
-            return new(this.y, this.y, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 2, 2)));
+
         }
     }
     public int4 yyzw
@@ -3115,10 +2928,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 229));
-            
-            return new(this.y, this.y, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 2, 3)));
+
         }
     }
     public int4 yywx
@@ -3126,10 +2938,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 53));
-            
-            return new(this.y, this.y, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 3, 0)));
+
         }
     }
     public int4 yywy
@@ -3137,10 +2948,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 117));
-            
-            return new(this.y, this.y, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 3, 1)));
+
         }
     }
     public int4 yywz
@@ -3148,10 +2958,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 181));
-            
-            return new(this.y, this.y, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 3, 2)));
+
         }
     }
     public int4 yyww
@@ -3159,10 +2968,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 245));
-            
-            return new(this.y, this.y, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 3, 3)));
+
         }
     }
     public int4 yzxx
@@ -3170,10 +2978,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 9));
-            
-            return new(this.y, this.z, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 0, 0)));
+
         }
     }
     public int4 yzxy
@@ -3181,10 +2988,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 73));
-            
-            return new(this.y, this.z, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 0, 1)));
+
         }
     }
     public int4 yzxz
@@ -3192,10 +2998,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 137));
-            
-            return new(this.y, this.z, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 0, 2)));
+
         }
     }
     public int4 yzxw
@@ -3203,10 +3008,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 201));
-            
-            return new(this.y, this.z, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 0, 3)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -3219,10 +3023,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 25));
-            
-            return new(this.y, this.z, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 1, 0)));
+
         }
     }
     public int4 yzyy
@@ -3230,10 +3033,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 89));
-            
-            return new(this.y, this.z, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 1, 1)));
+
         }
     }
     public int4 yzyz
@@ -3241,10 +3043,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 153));
-            
-            return new(this.y, this.z, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 1, 2)));
+
         }
     }
     public int4 yzyw
@@ -3252,10 +3053,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 217));
-            
-            return new(this.y, this.z, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 1, 3)));
+
         }
     }
     public int4 yzzx
@@ -3263,10 +3063,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 41));
-            
-            return new(this.y, this.z, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 2, 0)));
+
         }
     }
     public int4 yzzy
@@ -3274,10 +3073,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 105));
-            
-            return new(this.y, this.z, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 2, 1)));
+
         }
     }
     public int4 yzzz
@@ -3285,10 +3083,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 169));
-            
-            return new(this.y, this.z, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 2, 2)));
+
         }
     }
     public int4 yzzw
@@ -3296,10 +3093,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 233));
-            
-            return new(this.y, this.z, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 2, 3)));
+
         }
     }
     public int4 yzwx
@@ -3307,10 +3103,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 57));
-            
-            return new(this.y, this.z, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 3, 0)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -3323,10 +3118,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 121));
-            
-            return new(this.y, this.z, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 3, 1)));
+
         }
     }
     public int4 yzwz
@@ -3334,10 +3128,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 185));
-            
-            return new(this.y, this.z, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 3, 2)));
+
         }
     }
     public int4 yzww
@@ -3345,10 +3138,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 249));
-            
-            return new(this.y, this.z, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 3, 3)));
+
         }
     }
     public int4 ywxx
@@ -3356,10 +3148,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 13));
-            
-            return new(this.y, this.w, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 0, 0)));
+
         }
     }
     public int4 ywxy
@@ -3367,10 +3158,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 77));
-            
-            return new(this.y, this.w, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 0, 1)));
+
         }
     }
     public int4 ywxz
@@ -3378,10 +3168,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 141));
-            
-            return new(this.y, this.w, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 0, 2)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -3394,10 +3183,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 205));
-            
-            return new(this.y, this.w, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 0, 3)));
+
         }
     }
     public int4 ywyx
@@ -3405,10 +3193,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 29));
-            
-            return new(this.y, this.w, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 1, 0)));
+
         }
     }
     public int4 ywyy
@@ -3416,10 +3203,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 93));
-            
-            return new(this.y, this.w, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 1, 1)));
+
         }
     }
     public int4 ywyz
@@ -3427,10 +3213,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 157));
-            
-            return new(this.y, this.w, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 1, 2)));
+
         }
     }
     public int4 ywyw
@@ -3438,10 +3223,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 221));
-            
-            return new(this.y, this.w, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 1, 3)));
+
         }
     }
     public int4 ywzx
@@ -3449,10 +3233,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 45));
-            
-            return new(this.y, this.w, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 2, 0)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -3465,10 +3248,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 109));
-            
-            return new(this.y, this.w, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 2, 1)));
+
         }
     }
     public int4 ywzz
@@ -3476,10 +3258,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 173));
-            
-            return new(this.y, this.w, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 2, 2)));
+
         }
     }
     public int4 ywzw
@@ -3487,10 +3268,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 237));
-            
-            return new(this.y, this.w, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 2, 3)));
+
         }
     }
     public int4 ywwx
@@ -3498,10 +3278,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 61));
-            
-            return new(this.y, this.w, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 3, 0)));
+
         }
     }
     public int4 ywwy
@@ -3509,10 +3288,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 125));
-            
-            return new(this.y, this.w, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 3, 1)));
+
         }
     }
     public int4 ywwz
@@ -3520,10 +3298,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 189));
-            
-            return new(this.y, this.w, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 3, 2)));
+
         }
     }
     public int4 ywww
@@ -3531,10 +3308,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 253));
-            
-            return new(this.y, this.w, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 3, 3)));
+
         }
     }
     public int4 zxxx
@@ -3542,10 +3318,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 2));
-            
-            return new(this.z, this.x, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 0, 0)));
+
         }
     }
     public int4 zxxy
@@ -3553,10 +3328,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 66));
-            
-            return new(this.z, this.x, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 0, 1)));
+
         }
     }
     public int4 zxxz
@@ -3564,10 +3338,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 130));
-            
-            return new(this.z, this.x, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 0, 2)));
+
         }
     }
     public int4 zxxw
@@ -3575,10 +3348,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 194));
-            
-            return new(this.z, this.x, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 0, 3)));
+
         }
     }
     public int4 zxyx
@@ -3586,10 +3358,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 18));
-            
-            return new(this.z, this.x, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 1, 0)));
+
         }
     }
     public int4 zxyy
@@ -3597,10 +3368,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 82));
-            
-            return new(this.z, this.x, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 1, 1)));
+
         }
     }
     public int4 zxyz
@@ -3608,10 +3378,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 146));
-            
-            return new(this.z, this.x, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 1, 2)));
+
         }
     }
     public int4 zxyw
@@ -3619,10 +3388,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 210));
-            
-            return new(this.z, this.x, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 1, 3)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -3635,10 +3403,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 34));
-            
-            return new(this.z, this.x, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 2, 0)));
+
         }
     }
     public int4 zxzy
@@ -3646,10 +3413,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 98));
-            
-            return new(this.z, this.x, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 2, 1)));
+
         }
     }
     public int4 zxzz
@@ -3657,10 +3423,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 162));
-            
-            return new(this.z, this.x, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 2, 2)));
+
         }
     }
     public int4 zxzw
@@ -3668,10 +3433,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 226));
-            
-            return new(this.z, this.x, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 2, 3)));
+
         }
     }
     public int4 zxwx
@@ -3679,10 +3443,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 50));
-            
-            return new(this.z, this.x, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 3, 0)));
+
         }
     }
     public int4 zxwy
@@ -3690,10 +3453,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 114));
-            
-            return new(this.z, this.x, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 3, 1)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -3706,10 +3468,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 178));
-            
-            return new(this.z, this.x, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 3, 2)));
+
         }
     }
     public int4 zxww
@@ -3717,10 +3478,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 242));
-            
-            return new(this.z, this.x, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 3, 3)));
+
         }
     }
     public int4 zyxx
@@ -3728,10 +3488,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 6));
-            
-            return new(this.z, this.y, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 0, 0)));
+
         }
     }
     public int4 zyxy
@@ -3739,10 +3498,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 70));
-            
-            return new(this.z, this.y, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 0, 1)));
+
         }
     }
     public int4 zyxz
@@ -3750,10 +3508,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 134));
-            
-            return new(this.z, this.y, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 0, 2)));
+
         }
     }
     public int4 zyxw
@@ -3761,10 +3518,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 198));
-            
-            return new(this.z, this.y, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 0, 3)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -3777,10 +3533,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 22));
-            
-            return new(this.z, this.y, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 1, 0)));
+
         }
     }
     public int4 zyyy
@@ -3788,10 +3543,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 86));
-            
-            return new(this.z, this.y, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 1, 1)));
+
         }
     }
     public int4 zyyz
@@ -3799,10 +3553,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 150));
-            
-            return new(this.z, this.y, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 1, 2)));
+
         }
     }
     public int4 zyyw
@@ -3810,10 +3563,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 214));
-            
-            return new(this.z, this.y, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 1, 3)));
+
         }
     }
     public int4 zyzx
@@ -3821,10 +3573,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 38));
-            
-            return new(this.z, this.y, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 2, 0)));
+
         }
     }
     public int4 zyzy
@@ -3832,10 +3583,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 102));
-            
-            return new(this.z, this.y, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 2, 1)));
+
         }
     }
     public int4 zyzz
@@ -3843,10 +3593,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 166));
-            
-            return new(this.z, this.y, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 2, 2)));
+
         }
     }
     public int4 zyzw
@@ -3854,10 +3603,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 230));
-            
-            return new(this.z, this.y, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 2, 3)));
+
         }
     }
     public int4 zywx
@@ -3865,10 +3613,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 54));
-            
-            return new(this.z, this.y, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 3, 0)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -3881,10 +3628,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 118));
-            
-            return new(this.z, this.y, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 3, 1)));
+
         }
     }
     public int4 zywz
@@ -3892,10 +3638,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 182));
-            
-            return new(this.z, this.y, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 3, 2)));
+
         }
     }
     public int4 zyww
@@ -3903,10 +3648,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 246));
-            
-            return new(this.z, this.y, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 3, 3)));
+
         }
     }
     public int4 zzxx
@@ -3914,10 +3658,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 10));
-            
-            return new(this.z, this.z, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 0, 0)));
+
         }
     }
     public int4 zzxy
@@ -3925,10 +3668,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 74));
-            
-            return new(this.z, this.z, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 0, 1)));
+
         }
     }
     public int4 zzxz
@@ -3936,10 +3678,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 138));
-            
-            return new(this.z, this.z, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 0, 2)));
+
         }
     }
     public int4 zzxw
@@ -3947,10 +3688,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 202));
-            
-            return new(this.z, this.z, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 0, 3)));
+
         }
     }
     public int4 zzyx
@@ -3958,10 +3698,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 26));
-            
-            return new(this.z, this.z, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 1, 0)));
+
         }
     }
     public int4 zzyy
@@ -3969,10 +3708,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 90));
-            
-            return new(this.z, this.z, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 1, 1)));
+
         }
     }
     public int4 zzyz
@@ -3980,10 +3718,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 154));
-            
-            return new(this.z, this.z, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 1, 2)));
+
         }
     }
     public int4 zzyw
@@ -3991,10 +3728,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 218));
-            
-            return new(this.z, this.z, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 1, 3)));
+
         }
     }
     public int4 zzzx
@@ -4002,10 +3738,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 42));
-            
-            return new(this.z, this.z, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 2, 0)));
+
         }
     }
     public int4 zzzy
@@ -4013,10 +3748,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 106));
-            
-            return new(this.z, this.z, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 2, 1)));
+
         }
     }
     public int4 zzzz
@@ -4024,10 +3758,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 170));
-            
-            return new(this.z, this.z, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 2, 2)));
+
         }
     }
     public int4 zzzw
@@ -4035,10 +3768,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 234));
-            
-            return new(this.z, this.z, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 2, 3)));
+
         }
     }
     public int4 zzwx
@@ -4046,10 +3778,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 58));
-            
-            return new(this.z, this.z, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 3, 0)));
+
         }
     }
     public int4 zzwy
@@ -4057,10 +3788,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 122));
-            
-            return new(this.z, this.z, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 3, 1)));
+
         }
     }
     public int4 zzwz
@@ -4068,10 +3798,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 186));
-            
-            return new(this.z, this.z, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 3, 2)));
+
         }
     }
     public int4 zzww
@@ -4079,10 +3808,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 250));
-            
-            return new(this.z, this.z, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 3, 3)));
+
         }
     }
     public int4 zwxx
@@ -4090,10 +3818,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 14));
-            
-            return new(this.z, this.w, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 0, 0)));
+
         }
     }
     public int4 zwxy
@@ -4101,10 +3828,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 78));
-            
-            return new(this.z, this.w, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 0, 1)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -4117,10 +3843,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 142));
-            
-            return new(this.z, this.w, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 0, 2)));
+
         }
     }
     public int4 zwxw
@@ -4128,10 +3853,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 206));
-            
-            return new(this.z, this.w, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 0, 3)));
+
         }
     }
     public int4 zwyx
@@ -4139,10 +3863,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 30));
-            
-            return new(this.z, this.w, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 1, 0)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -4155,10 +3878,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 94));
-            
-            return new(this.z, this.w, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 1, 1)));
+
         }
     }
     public int4 zwyz
@@ -4166,10 +3888,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 158));
-            
-            return new(this.z, this.w, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 1, 2)));
+
         }
     }
     public int4 zwyw
@@ -4177,10 +3898,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 222));
-            
-            return new(this.z, this.w, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 1, 3)));
+
         }
     }
     public int4 zwzx
@@ -4188,10 +3908,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 46));
-            
-            return new(this.z, this.w, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 2, 0)));
+
         }
     }
     public int4 zwzy
@@ -4199,10 +3918,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 110));
-            
-            return new(this.z, this.w, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 2, 1)));
+
         }
     }
     public int4 zwzz
@@ -4210,10 +3928,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 174));
-            
-            return new(this.z, this.w, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 2, 2)));
+
         }
     }
     public int4 zwzw
@@ -4221,10 +3938,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 238));
-            
-            return new(this.z, this.w, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 2, 3)));
+
         }
     }
     public int4 zwwx
@@ -4232,10 +3948,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 62));
-            
-            return new(this.z, this.w, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 3, 0)));
+
         }
     }
     public int4 zwwy
@@ -4243,10 +3958,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 126));
-            
-            return new(this.z, this.w, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 3, 1)));
+
         }
     }
     public int4 zwwz
@@ -4254,10 +3968,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 190));
-            
-            return new(this.z, this.w, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 3, 2)));
+
         }
     }
     public int4 zwww
@@ -4265,10 +3978,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 254));
-            
-            return new(this.z, this.w, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 3, 3)));
+
         }
     }
     public int4 wxxx
@@ -4276,10 +3988,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 3));
-            
-            return new(this.w, this.x, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 0, 0)));
+
         }
     }
     public int4 wxxy
@@ -4287,10 +3998,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 67));
-            
-            return new(this.w, this.x, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 0, 1)));
+
         }
     }
     public int4 wxxz
@@ -4298,10 +4008,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 131));
-            
-            return new(this.w, this.x, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 0, 2)));
+
         }
     }
     public int4 wxxw
@@ -4309,10 +4018,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 195));
-            
-            return new(this.w, this.x, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 0, 3)));
+
         }
     }
     public int4 wxyx
@@ -4320,10 +4028,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 19));
-            
-            return new(this.w, this.x, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 1, 0)));
+
         }
     }
     public int4 wxyy
@@ -4331,10 +4038,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 83));
-            
-            return new(this.w, this.x, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 1, 1)));
+
         }
     }
     public int4 wxyz
@@ -4342,10 +4048,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 147));
-            
-            return new(this.w, this.x, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 1, 2)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -4358,10 +4063,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 211));
-            
-            return new(this.w, this.x, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 1, 3)));
+
         }
     }
     public int4 wxzx
@@ -4369,10 +4073,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 35));
-            
-            return new(this.w, this.x, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 2, 0)));
+
         }
     }
     public int4 wxzy
@@ -4380,10 +4083,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 99));
-            
-            return new(this.w, this.x, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 2, 1)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -4396,10 +4098,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 163));
-            
-            return new(this.w, this.x, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 2, 2)));
+
         }
     }
     public int4 wxzw
@@ -4407,10 +4108,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 227));
-            
-            return new(this.w, this.x, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 2, 3)));
+
         }
     }
     public int4 wxwx
@@ -4418,10 +4118,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 51));
-            
-            return new(this.w, this.x, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 3, 0)));
+
         }
     }
     public int4 wxwy
@@ -4429,10 +4128,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 115));
-            
-            return new(this.w, this.x, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 3, 1)));
+
         }
     }
     public int4 wxwz
@@ -4440,10 +4138,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 179));
-            
-            return new(this.w, this.x, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 3, 2)));
+
         }
     }
     public int4 wxww
@@ -4451,10 +4148,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 243));
-            
-            return new(this.w, this.x, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 3, 3)));
+
         }
     }
     public int4 wyxx
@@ -4462,10 +4158,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 7));
-            
-            return new(this.w, this.y, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 0, 0)));
+
         }
     }
     public int4 wyxy
@@ -4473,10 +4168,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 71));
-            
-            return new(this.w, this.y, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 0, 1)));
+
         }
     }
     public int4 wyxz
@@ -4484,10 +4178,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 135));
-            
-            return new(this.w, this.y, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 0, 2)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -4500,10 +4193,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 199));
-            
-            return new(this.w, this.y, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 0, 3)));
+
         }
     }
     public int4 wyyx
@@ -4511,10 +4203,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 23));
-            
-            return new(this.w, this.y, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 1, 0)));
+
         }
     }
     public int4 wyyy
@@ -4522,10 +4213,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 87));
-            
-            return new(this.w, this.y, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 1, 1)));
+
         }
     }
     public int4 wyyz
@@ -4533,10 +4223,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 151));
-            
-            return new(this.w, this.y, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 1, 2)));
+
         }
     }
     public int4 wyyw
@@ -4544,10 +4233,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 215));
-            
-            return new(this.w, this.y, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 1, 3)));
+
         }
     }
     public int4 wyzx
@@ -4555,10 +4243,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 39));
-            
-            return new(this.w, this.y, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 2, 0)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -4571,10 +4258,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 103));
-            
-            return new(this.w, this.y, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 2, 1)));
+
         }
     }
     public int4 wyzz
@@ -4582,10 +4268,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 167));
-            
-            return new(this.w, this.y, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 2, 2)));
+
         }
     }
     public int4 wyzw
@@ -4593,10 +4278,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 231));
-            
-            return new(this.w, this.y, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 2, 3)));
+
         }
     }
     public int4 wywx
@@ -4604,10 +4288,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 55));
-            
-            return new(this.w, this.y, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 3, 0)));
+
         }
     }
     public int4 wywy
@@ -4615,10 +4298,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 119));
-            
-            return new(this.w, this.y, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 3, 1)));
+
         }
     }
     public int4 wywz
@@ -4626,10 +4308,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 183));
-            
-            return new(this.w, this.y, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 3, 2)));
+
         }
     }
     public int4 wyww
@@ -4637,10 +4318,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 247));
-            
-            return new(this.w, this.y, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 3, 3)));
+
         }
     }
     public int4 wzxx
@@ -4648,10 +4328,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 11));
-            
-            return new(this.w, this.z, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 0, 0)));
+
         }
     }
     public int4 wzxy
@@ -4659,10 +4338,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 75));
-            
-            return new(this.w, this.z, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 0, 1)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -4675,10 +4353,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 139));
-            
-            return new(this.w, this.z, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 0, 2)));
+
         }
     }
     public int4 wzxw
@@ -4686,10 +4363,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 203));
-            
-            return new(this.w, this.z, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 0, 3)));
+
         }
     }
     public int4 wzyx
@@ -4697,10 +4373,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 27));
-            
-            return new(this.w, this.z, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 1, 0)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -4713,10 +4388,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 91));
-            
-            return new(this.w, this.z, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 1, 1)));
+
         }
     }
     public int4 wzyz
@@ -4724,10 +4398,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 155));
-            
-            return new(this.w, this.z, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 1, 2)));
+
         }
     }
     public int4 wzyw
@@ -4735,10 +4408,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 219));
-            
-            return new(this.w, this.z, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 1, 3)));
+
         }
     }
     public int4 wzzx
@@ -4746,10 +4418,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 43));
-            
-            return new(this.w, this.z, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 2, 0)));
+
         }
     }
     public int4 wzzy
@@ -4757,10 +4428,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 107));
-            
-            return new(this.w, this.z, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 2, 1)));
+
         }
     }
     public int4 wzzz
@@ -4768,10 +4438,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 171));
-            
-            return new(this.w, this.z, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 2, 2)));
+
         }
     }
     public int4 wzzw
@@ -4779,10 +4448,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 235));
-            
-            return new(this.w, this.z, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 2, 3)));
+
         }
     }
     public int4 wzwx
@@ -4790,10 +4458,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 59));
-            
-            return new(this.w, this.z, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 3, 0)));
+
         }
     }
     public int4 wzwy
@@ -4801,10 +4468,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 123));
-            
-            return new(this.w, this.z, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 3, 1)));
+
         }
     }
     public int4 wzwz
@@ -4812,10 +4478,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 187));
-            
-            return new(this.w, this.z, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 3, 2)));
+
         }
     }
     public int4 wzww
@@ -4823,10 +4488,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 251));
-            
-            return new(this.w, this.z, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 3, 3)));
+
         }
     }
     public int4 wwxx
@@ -4834,10 +4498,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 15));
-            
-            return new(this.w, this.w, this.x, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 0, 0)));
+
         }
     }
     public int4 wwxy
@@ -4845,10 +4508,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 79));
-            
-            return new(this.w, this.w, this.x, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 0, 1)));
+
         }
     }
     public int4 wwxz
@@ -4856,10 +4518,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 143));
-            
-            return new(this.w, this.w, this.x, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 0, 2)));
+
         }
     }
     public int4 wwxw
@@ -4867,10 +4528,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 207));
-            
-            return new(this.w, this.w, this.x, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 0, 3)));
+
         }
     }
     public int4 wwyx
@@ -4878,10 +4538,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 31));
-            
-            return new(this.w, this.w, this.y, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 1, 0)));
+
         }
     }
     public int4 wwyy
@@ -4889,10 +4548,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 95));
-            
-            return new(this.w, this.w, this.y, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 1, 1)));
+
         }
     }
     public int4 wwyz
@@ -4900,10 +4558,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 159));
-            
-            return new(this.w, this.w, this.y, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 1, 2)));
+
         }
     }
     public int4 wwyw
@@ -4911,10 +4568,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 223));
-            
-            return new(this.w, this.w, this.y, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 1, 3)));
+
         }
     }
     public int4 wwzx
@@ -4922,10 +4578,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 47));
-            
-            return new(this.w, this.w, this.z, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 2, 0)));
+
         }
     }
     public int4 wwzy
@@ -4933,10 +4588,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 111));
-            
-            return new(this.w, this.w, this.z, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 2, 1)));
+
         }
     }
     public int4 wwzz
@@ -4944,10 +4598,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 175));
-            
-            return new(this.w, this.w, this.z, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 2, 2)));
+
         }
     }
     public int4 wwzw
@@ -4955,10 +4608,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 239));
-            
-            return new(this.w, this.w, this.z, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 2, 3)));
+
         }
     }
     public int4 wwwx
@@ -4966,10 +4618,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 63));
-            
-            return new(this.w, this.w, this.w, this.x);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 3, 0)));
+
         }
     }
     public int4 wwwy
@@ -4977,10 +4628,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 127));
-            
-            return new(this.w, this.w, this.w, this.y);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 3, 1)));
+
         }
     }
     public int4 wwwz
@@ -4988,10 +4638,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 191));
-            
-            return new(this.w, this.w, this.w, this.z);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 3, 2)));
+
         }
     }
     public int4 wwww
@@ -4999,10 +4648,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 255));
-            
-            return new(this.w, this.w, this.w, this.w);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 3, 3)));
+
         }
     }
     public int4 rrrr
@@ -5010,10 +4658,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 0));
-            
-            return new(this.r, this.r, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 0, 0)));
+
         }
     }
     public int4 rrrg
@@ -5021,10 +4668,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 64));
-            
-            return new(this.r, this.r, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 0, 1)));
+
         }
     }
     public int4 rrrb
@@ -5032,10 +4678,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 128));
-            
-            return new(this.r, this.r, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 0, 2)));
+
         }
     }
     public int4 rrra
@@ -5043,10 +4688,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 192));
-            
-            return new(this.r, this.r, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 0, 3)));
+
         }
     }
     public int4 rrgr
@@ -5054,10 +4698,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 16));
-            
-            return new(this.r, this.r, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 1, 0)));
+
         }
     }
     public int4 rrgg
@@ -5065,10 +4708,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 80));
-            
-            return new(this.r, this.r, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 1, 1)));
+
         }
     }
     public int4 rrgb
@@ -5076,10 +4718,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 144));
-            
-            return new(this.r, this.r, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 1, 2)));
+
         }
     }
     public int4 rrga
@@ -5087,10 +4728,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 208));
-            
-            return new(this.r, this.r, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 1, 3)));
+
         }
     }
     public int4 rrbr
@@ -5098,10 +4738,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 32));
-            
-            return new(this.r, this.r, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 2, 0)));
+
         }
     }
     public int4 rrbg
@@ -5109,10 +4748,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 96));
-            
-            return new(this.r, this.r, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 2, 1)));
+
         }
     }
     public int4 rrbb
@@ -5120,10 +4758,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 160));
-            
-            return new(this.r, this.r, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 2, 2)));
+
         }
     }
     public int4 rrba
@@ -5131,10 +4768,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 224));
-            
-            return new(this.r, this.r, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 2, 3)));
+
         }
     }
     public int4 rrar
@@ -5142,10 +4778,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 48));
-            
-            return new(this.r, this.r, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 3, 0)));
+
         }
     }
     public int4 rrag
@@ -5153,10 +4788,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 112));
-            
-            return new(this.r, this.r, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 3, 1)));
+
         }
     }
     public int4 rrab
@@ -5164,10 +4798,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 176));
-            
-            return new(this.r, this.r, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 3, 2)));
+
         }
     }
     public int4 rraa
@@ -5175,10 +4808,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 240));
-            
-            return new(this.r, this.r, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 0, 3, 3)));
+
         }
     }
     public int4 rgrr
@@ -5186,10 +4818,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 4));
-            
-            return new(this.r, this.g, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 0, 0)));
+
         }
     }
     public int4 rgrg
@@ -5197,10 +4828,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 68));
-            
-            return new(this.r, this.g, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 0, 1)));
+
         }
     }
     public int4 rgrb
@@ -5208,10 +4838,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 132));
-            
-            return new(this.r, this.g, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 0, 2)));
+
         }
     }
     public int4 rgra
@@ -5219,10 +4848,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 196));
-            
-            return new(this.r, this.g, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 0, 3)));
+
         }
     }
     public int4 rggr
@@ -5230,10 +4858,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 20));
-            
-            return new(this.r, this.g, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 1, 0)));
+
         }
     }
     public int4 rggg
@@ -5241,10 +4868,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 84));
-            
-            return new(this.r, this.g, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 1, 1)));
+
         }
     }
     public int4 rggb
@@ -5252,10 +4878,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 148));
-            
-            return new(this.r, this.g, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 1, 2)));
+
         }
     }
     public int4 rgga
@@ -5263,10 +4888,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 212));
-            
-            return new(this.r, this.g, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 1, 3)));
+
         }
     }
     public int4 rgbr
@@ -5274,10 +4898,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 36));
-            
-            return new(this.r, this.g, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 2, 0)));
+
         }
     }
     public int4 rgbg
@@ -5285,10 +4908,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 100));
-            
-            return new(this.r, this.g, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 2, 1)));
+
         }
     }
     public int4 rgbb
@@ -5296,10 +4918,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 164));
-            
-            return new(this.r, this.g, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 2, 2)));
+
         }
     }
     public int4 rgba
@@ -5307,10 +4928,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 228));
-            
-            return new(this.r, this.g, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 2, 3)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -5323,10 +4943,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 52));
-            
-            return new(this.r, this.g, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 3, 0)));
+
         }
     }
     public int4 rgag
@@ -5334,10 +4953,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 116));
-            
-            return new(this.r, this.g, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 3, 1)));
+
         }
     }
     public int4 rgab
@@ -5345,10 +4963,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 180));
-            
-            return new(this.r, this.g, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 3, 2)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -5361,10 +4978,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 244));
-            
-            return new(this.r, this.g, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 1, 3, 3)));
+
         }
     }
     public int4 rbrr
@@ -5372,10 +4988,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 8));
-            
-            return new(this.r, this.b, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 0, 0)));
+
         }
     }
     public int4 rbrg
@@ -5383,10 +4998,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 72));
-            
-            return new(this.r, this.b, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 0, 1)));
+
         }
     }
     public int4 rbrb
@@ -5394,10 +5008,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 136));
-            
-            return new(this.r, this.b, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 0, 2)));
+
         }
     }
     public int4 rbra
@@ -5405,10 +5018,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 200));
-            
-            return new(this.r, this.b, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 0, 3)));
+
         }
     }
     public int4 rbgr
@@ -5416,10 +5028,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 24));
-            
-            return new(this.r, this.b, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 1, 0)));
+
         }
     }
     public int4 rbgg
@@ -5427,10 +5038,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 88));
-            
-            return new(this.r, this.b, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 1, 1)));
+
         }
     }
     public int4 rbgb
@@ -5438,10 +5048,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 152));
-            
-            return new(this.r, this.b, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 1, 2)));
+
         }
     }
     public int4 rbga
@@ -5449,10 +5058,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 216));
-            
-            return new(this.r, this.b, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 1, 3)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -5465,10 +5073,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 40));
-            
-            return new(this.r, this.b, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 2, 0)));
+
         }
     }
     public int4 rbbg
@@ -5476,10 +5083,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 104));
-            
-            return new(this.r, this.b, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 2, 1)));
+
         }
     }
     public int4 rbbb
@@ -5487,10 +5093,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 168));
-            
-            return new(this.r, this.b, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 2, 2)));
+
         }
     }
     public int4 rbba
@@ -5498,10 +5103,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 232));
-            
-            return new(this.r, this.b, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 2, 3)));
+
         }
     }
     public int4 rbar
@@ -5509,10 +5113,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 56));
-            
-            return new(this.r, this.b, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 3, 0)));
+
         }
     }
     public int4 rbag
@@ -5520,10 +5123,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 120));
-            
-            return new(this.r, this.b, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 3, 1)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -5536,10 +5138,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 184));
-            
-            return new(this.r, this.b, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 3, 2)));
+
         }
     }
     public int4 rbaa
@@ -5547,10 +5148,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 248));
-            
-            return new(this.r, this.b, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 2, 3, 3)));
+
         }
     }
     public int4 rarr
@@ -5558,10 +5158,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 12));
-            
-            return new(this.r, this.a, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 0, 0)));
+
         }
     }
     public int4 rarg
@@ -5569,10 +5168,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 76));
-            
-            return new(this.r, this.a, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 0, 1)));
+
         }
     }
     public int4 rarb
@@ -5580,10 +5178,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 140));
-            
-            return new(this.r, this.a, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 0, 2)));
+
         }
     }
     public int4 rara
@@ -5591,10 +5188,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 204));
-            
-            return new(this.r, this.a, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 0, 3)));
+
         }
     }
     public int4 ragr
@@ -5602,10 +5198,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 28));
-            
-            return new(this.r, this.a, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 1, 0)));
+
         }
     }
     public int4 ragg
@@ -5613,10 +5208,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 92));
-            
-            return new(this.r, this.a, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 1, 1)));
+
         }
     }
     public int4 ragb
@@ -5624,10 +5218,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 156));
-            
-            return new(this.r, this.a, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 1, 2)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -5640,10 +5233,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 220));
-            
-            return new(this.r, this.a, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 1, 3)));
+
         }
     }
     public int4 rabr
@@ -5651,10 +5243,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 44));
-            
-            return new(this.r, this.a, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 2, 0)));
+
         }
     }
     public int4 rabg
@@ -5662,10 +5253,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 108));
-            
-            return new(this.r, this.a, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 2, 1)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -5678,10 +5268,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 172));
-            
-            return new(this.r, this.a, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 2, 2)));
+
         }
     }
     public int4 raba
@@ -5689,10 +5278,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 236));
-            
-            return new(this.r, this.a, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 2, 3)));
+
         }
     }
     public int4 raar
@@ -5700,10 +5288,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 60));
-            
-            return new(this.r, this.a, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 3, 0)));
+
         }
     }
     public int4 raag
@@ -5711,10 +5298,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 124));
-            
-            return new(this.r, this.a, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 3, 1)));
+
         }
     }
     public int4 raab
@@ -5722,10 +5308,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 188));
-            
-            return new(this.r, this.a, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 3, 2)));
+
         }
     }
     public int4 raaa
@@ -5733,10 +5318,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 252));
-            
-            return new(this.r, this.a, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(0, 3, 3, 3)));
+
         }
     }
     public int4 grrr
@@ -5744,10 +5328,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 1));
-            
-            return new(this.g, this.r, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 0, 0)));
+
         }
     }
     public int4 grrg
@@ -5755,10 +5338,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 65));
-            
-            return new(this.g, this.r, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 0, 1)));
+
         }
     }
     public int4 grrb
@@ -5766,10 +5348,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 129));
-            
-            return new(this.g, this.r, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 0, 2)));
+
         }
     }
     public int4 grra
@@ -5777,10 +5358,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 193));
-            
-            return new(this.g, this.r, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 0, 3)));
+
         }
     }
     public int4 grgr
@@ -5788,10 +5368,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 17));
-            
-            return new(this.g, this.r, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 1, 0)));
+
         }
     }
     public int4 grgg
@@ -5799,10 +5378,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 81));
-            
-            return new(this.g, this.r, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 1, 1)));
+
         }
     }
     public int4 grgb
@@ -5810,10 +5388,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 145));
-            
-            return new(this.g, this.r, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 1, 2)));
+
         }
     }
     public int4 grga
@@ -5821,10 +5398,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 209));
-            
-            return new(this.g, this.r, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 1, 3)));
+
         }
     }
     public int4 grbr
@@ -5832,10 +5408,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 33));
-            
-            return new(this.g, this.r, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 2, 0)));
+
         }
     }
     public int4 grbg
@@ -5843,10 +5418,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 97));
-            
-            return new(this.g, this.r, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 2, 1)));
+
         }
     }
     public int4 grbb
@@ -5854,10 +5428,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 161));
-            
-            return new(this.g, this.r, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 2, 2)));
+
         }
     }
     public int4 grba
@@ -5865,10 +5438,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 225));
-            
-            return new(this.g, this.r, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 2, 3)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -5881,10 +5453,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 49));
-            
-            return new(this.g, this.r, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 3, 0)));
+
         }
     }
     public int4 grag
@@ -5892,10 +5463,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 113));
-            
-            return new(this.g, this.r, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 3, 1)));
+
         }
     }
     public int4 grab
@@ -5903,10 +5473,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 177));
-            
-            return new(this.g, this.r, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 3, 2)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -5919,10 +5488,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 241));
-            
-            return new(this.g, this.r, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 0, 3, 3)));
+
         }
     }
     public int4 ggrr
@@ -5930,10 +5498,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 5));
-            
-            return new(this.g, this.g, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 0, 0)));
+
         }
     }
     public int4 ggrg
@@ -5941,10 +5508,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 69));
-            
-            return new(this.g, this.g, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 0, 1)));
+
         }
     }
     public int4 ggrb
@@ -5952,10 +5518,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 133));
-            
-            return new(this.g, this.g, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 0, 2)));
+
         }
     }
     public int4 ggra
@@ -5963,10 +5528,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 197));
-            
-            return new(this.g, this.g, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 0, 3)));
+
         }
     }
     public int4 gggr
@@ -5974,10 +5538,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 21));
-            
-            return new(this.g, this.g, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 1, 0)));
+
         }
     }
     public int4 gggg
@@ -5985,10 +5548,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 85));
-            
-            return new(this.g, this.g, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 1, 1)));
+
         }
     }
     public int4 gggb
@@ -5996,10 +5558,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 149));
-            
-            return new(this.g, this.g, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 1, 2)));
+
         }
     }
     public int4 ggga
@@ -6007,10 +5568,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 213));
-            
-            return new(this.g, this.g, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 1, 3)));
+
         }
     }
     public int4 ggbr
@@ -6018,10 +5578,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 37));
-            
-            return new(this.g, this.g, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 2, 0)));
+
         }
     }
     public int4 ggbg
@@ -6029,10 +5588,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 101));
-            
-            return new(this.g, this.g, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 2, 1)));
+
         }
     }
     public int4 ggbb
@@ -6040,10 +5598,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 165));
-            
-            return new(this.g, this.g, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 2, 2)));
+
         }
     }
     public int4 ggba
@@ -6051,10 +5608,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 229));
-            
-            return new(this.g, this.g, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 2, 3)));
+
         }
     }
     public int4 ggar
@@ -6062,10 +5618,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 53));
-            
-            return new(this.g, this.g, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 3, 0)));
+
         }
     }
     public int4 ggag
@@ -6073,10 +5628,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 117));
-            
-            return new(this.g, this.g, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 3, 1)));
+
         }
     }
     public int4 ggab
@@ -6084,10 +5638,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 181));
-            
-            return new(this.g, this.g, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 3, 2)));
+
         }
     }
     public int4 ggaa
@@ -6095,10 +5648,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 245));
-            
-            return new(this.g, this.g, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 1, 3, 3)));
+
         }
     }
     public int4 gbrr
@@ -6106,10 +5658,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 9));
-            
-            return new(this.g, this.b, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 0, 0)));
+
         }
     }
     public int4 gbrg
@@ -6117,10 +5668,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 73));
-            
-            return new(this.g, this.b, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 0, 1)));
+
         }
     }
     public int4 gbrb
@@ -6128,10 +5678,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 137));
-            
-            return new(this.g, this.b, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 0, 2)));
+
         }
     }
     public int4 gbra
@@ -6139,10 +5688,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 201));
-            
-            return new(this.g, this.b, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 0, 3)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -6155,10 +5703,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 25));
-            
-            return new(this.g, this.b, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 1, 0)));
+
         }
     }
     public int4 gbgg
@@ -6166,10 +5713,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 89));
-            
-            return new(this.g, this.b, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 1, 1)));
+
         }
     }
     public int4 gbgb
@@ -6177,10 +5723,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 153));
-            
-            return new(this.g, this.b, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 1, 2)));
+
         }
     }
     public int4 gbga
@@ -6188,10 +5733,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 217));
-            
-            return new(this.g, this.b, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 1, 3)));
+
         }
     }
     public int4 gbbr
@@ -6199,10 +5743,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 41));
-            
-            return new(this.g, this.b, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 2, 0)));
+
         }
     }
     public int4 gbbg
@@ -6210,10 +5753,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 105));
-            
-            return new(this.g, this.b, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 2, 1)));
+
         }
     }
     public int4 gbbb
@@ -6221,10 +5763,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 169));
-            
-            return new(this.g, this.b, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 2, 2)));
+
         }
     }
     public int4 gbba
@@ -6232,10 +5773,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 233));
-            
-            return new(this.g, this.b, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 2, 3)));
+
         }
     }
     public int4 gbar
@@ -6243,10 +5783,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 57));
-            
-            return new(this.g, this.b, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 3, 0)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -6259,10 +5798,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 121));
-            
-            return new(this.g, this.b, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 3, 1)));
+
         }
     }
     public int4 gbab
@@ -6270,10 +5808,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 185));
-            
-            return new(this.g, this.b, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 3, 2)));
+
         }
     }
     public int4 gbaa
@@ -6281,10 +5818,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 249));
-            
-            return new(this.g, this.b, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 2, 3, 3)));
+
         }
     }
     public int4 garr
@@ -6292,10 +5828,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 13));
-            
-            return new(this.g, this.a, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 0, 0)));
+
         }
     }
     public int4 garg
@@ -6303,10 +5838,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 77));
-            
-            return new(this.g, this.a, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 0, 1)));
+
         }
     }
     public int4 garb
@@ -6314,10 +5848,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 141));
-            
-            return new(this.g, this.a, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 0, 2)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -6330,10 +5863,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 205));
-            
-            return new(this.g, this.a, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 0, 3)));
+
         }
     }
     public int4 gagr
@@ -6341,10 +5873,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 29));
-            
-            return new(this.g, this.a, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 1, 0)));
+
         }
     }
     public int4 gagg
@@ -6352,10 +5883,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 93));
-            
-            return new(this.g, this.a, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 1, 1)));
+
         }
     }
     public int4 gagb
@@ -6363,10 +5893,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 157));
-            
-            return new(this.g, this.a, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 1, 2)));
+
         }
     }
     public int4 gaga
@@ -6374,10 +5903,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 221));
-            
-            return new(this.g, this.a, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 1, 3)));
+
         }
     }
     public int4 gabr
@@ -6385,10 +5913,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 45));
-            
-            return new(this.g, this.a, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 2, 0)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -6401,10 +5928,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 109));
-            
-            return new(this.g, this.a, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 2, 1)));
+
         }
     }
     public int4 gabb
@@ -6412,10 +5938,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 173));
-            
-            return new(this.g, this.a, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 2, 2)));
+
         }
     }
     public int4 gaba
@@ -6423,10 +5948,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 237));
-            
-            return new(this.g, this.a, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 2, 3)));
+
         }
     }
     public int4 gaar
@@ -6434,10 +5958,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 61));
-            
-            return new(this.g, this.a, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 3, 0)));
+
         }
     }
     public int4 gaag
@@ -6445,10 +5968,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 125));
-            
-            return new(this.g, this.a, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 3, 1)));
+
         }
     }
     public int4 gaab
@@ -6456,10 +5978,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 189));
-            
-            return new(this.g, this.a, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 3, 2)));
+
         }
     }
     public int4 gaaa
@@ -6467,10 +5988,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 253));
-            
-            return new(this.g, this.a, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(1, 3, 3, 3)));
+
         }
     }
     public int4 brrr
@@ -6478,10 +5998,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 2));
-            
-            return new(this.b, this.r, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 0, 0)));
+
         }
     }
     public int4 brrg
@@ -6489,10 +6008,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 66));
-            
-            return new(this.b, this.r, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 0, 1)));
+
         }
     }
     public int4 brrb
@@ -6500,10 +6018,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 130));
-            
-            return new(this.b, this.r, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 0, 2)));
+
         }
     }
     public int4 brra
@@ -6511,10 +6028,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 194));
-            
-            return new(this.b, this.r, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 0, 3)));
+
         }
     }
     public int4 brgr
@@ -6522,10 +6038,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 18));
-            
-            return new(this.b, this.r, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 1, 0)));
+
         }
     }
     public int4 brgg
@@ -6533,10 +6048,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 82));
-            
-            return new(this.b, this.r, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 1, 1)));
+
         }
     }
     public int4 brgb
@@ -6544,10 +6058,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 146));
-            
-            return new(this.b, this.r, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 1, 2)));
+
         }
     }
     public int4 brga
@@ -6555,10 +6068,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 210));
-            
-            return new(this.b, this.r, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 1, 3)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -6571,10 +6083,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 34));
-            
-            return new(this.b, this.r, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 2, 0)));
+
         }
     }
     public int4 brbg
@@ -6582,10 +6093,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 98));
-            
-            return new(this.b, this.r, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 2, 1)));
+
         }
     }
     public int4 brbb
@@ -6593,10 +6103,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 162));
-            
-            return new(this.b, this.r, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 2, 2)));
+
         }
     }
     public int4 brba
@@ -6604,10 +6113,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 226));
-            
-            return new(this.b, this.r, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 2, 3)));
+
         }
     }
     public int4 brar
@@ -6615,10 +6123,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 50));
-            
-            return new(this.b, this.r, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 3, 0)));
+
         }
     }
     public int4 brag
@@ -6626,10 +6133,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 114));
-            
-            return new(this.b, this.r, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 3, 1)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -6642,10 +6148,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 178));
-            
-            return new(this.b, this.r, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 3, 2)));
+
         }
     }
     public int4 braa
@@ -6653,10 +6158,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 242));
-            
-            return new(this.b, this.r, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 0, 3, 3)));
+
         }
     }
     public int4 bgrr
@@ -6664,10 +6168,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 6));
-            
-            return new(this.b, this.g, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 0, 0)));
+
         }
     }
     public int4 bgrg
@@ -6675,10 +6178,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 70));
-            
-            return new(this.b, this.g, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 0, 1)));
+
         }
     }
     public int4 bgrb
@@ -6686,10 +6188,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 134));
-            
-            return new(this.b, this.g, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 0, 2)));
+
         }
     }
     public int4 bgra
@@ -6697,10 +6198,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 198));
-            
-            return new(this.b, this.g, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 0, 3)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -6713,10 +6213,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 22));
-            
-            return new(this.b, this.g, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 1, 0)));
+
         }
     }
     public int4 bggg
@@ -6724,10 +6223,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 86));
-            
-            return new(this.b, this.g, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 1, 1)));
+
         }
     }
     public int4 bggb
@@ -6735,10 +6233,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 150));
-            
-            return new(this.b, this.g, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 1, 2)));
+
         }
     }
     public int4 bgga
@@ -6746,10 +6243,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 214));
-            
-            return new(this.b, this.g, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 1, 3)));
+
         }
     }
     public int4 bgbr
@@ -6757,10 +6253,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 38));
-            
-            return new(this.b, this.g, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 2, 0)));
+
         }
     }
     public int4 bgbg
@@ -6768,10 +6263,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 102));
-            
-            return new(this.b, this.g, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 2, 1)));
+
         }
     }
     public int4 bgbb
@@ -6779,10 +6273,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 166));
-            
-            return new(this.b, this.g, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 2, 2)));
+
         }
     }
     public int4 bgba
@@ -6790,10 +6283,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 230));
-            
-            return new(this.b, this.g, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 2, 3)));
+
         }
     }
     public int4 bgar
@@ -6801,10 +6293,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 54));
-            
-            return new(this.b, this.g, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 3, 0)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -6817,10 +6308,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 118));
-            
-            return new(this.b, this.g, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 3, 1)));
+
         }
     }
     public int4 bgab
@@ -6828,10 +6318,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 182));
-            
-            return new(this.b, this.g, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 3, 2)));
+
         }
     }
     public int4 bgaa
@@ -6839,10 +6328,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 246));
-            
-            return new(this.b, this.g, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 1, 3, 3)));
+
         }
     }
     public int4 bbrr
@@ -6850,10 +6338,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 10));
-            
-            return new(this.b, this.b, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 0, 0)));
+
         }
     }
     public int4 bbrg
@@ -6861,10 +6348,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 74));
-            
-            return new(this.b, this.b, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 0, 1)));
+
         }
     }
     public int4 bbrb
@@ -6872,10 +6358,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 138));
-            
-            return new(this.b, this.b, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 0, 2)));
+
         }
     }
     public int4 bbra
@@ -6883,10 +6368,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 202));
-            
-            return new(this.b, this.b, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 0, 3)));
+
         }
     }
     public int4 bbgr
@@ -6894,10 +6378,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 26));
-            
-            return new(this.b, this.b, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 1, 0)));
+
         }
     }
     public int4 bbgg
@@ -6905,10 +6388,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 90));
-            
-            return new(this.b, this.b, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 1, 1)));
+
         }
     }
     public int4 bbgb
@@ -6916,10 +6398,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 154));
-            
-            return new(this.b, this.b, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 1, 2)));
+
         }
     }
     public int4 bbga
@@ -6927,10 +6408,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 218));
-            
-            return new(this.b, this.b, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 1, 3)));
+
         }
     }
     public int4 bbbr
@@ -6938,10 +6418,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 42));
-            
-            return new(this.b, this.b, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 2, 0)));
+
         }
     }
     public int4 bbbg
@@ -6949,10 +6428,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 106));
-            
-            return new(this.b, this.b, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 2, 1)));
+
         }
     }
     public int4 bbbb
@@ -6960,10 +6438,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 170));
-            
-            return new(this.b, this.b, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 2, 2)));
+
         }
     }
     public int4 bbba
@@ -6971,10 +6448,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 234));
-            
-            return new(this.b, this.b, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 2, 3)));
+
         }
     }
     public int4 bbar
@@ -6982,10 +6458,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 58));
-            
-            return new(this.b, this.b, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 3, 0)));
+
         }
     }
     public int4 bbag
@@ -6993,10 +6468,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 122));
-            
-            return new(this.b, this.b, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 3, 1)));
+
         }
     }
     public int4 bbab
@@ -7004,10 +6478,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 186));
-            
-            return new(this.b, this.b, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 3, 2)));
+
         }
     }
     public int4 bbaa
@@ -7015,10 +6488,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 250));
-            
-            return new(this.b, this.b, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 2, 3, 3)));
+
         }
     }
     public int4 barr
@@ -7026,10 +6498,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 14));
-            
-            return new(this.b, this.a, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 0, 0)));
+
         }
     }
     public int4 barg
@@ -7037,10 +6508,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 78));
-            
-            return new(this.b, this.a, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 0, 1)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -7053,10 +6523,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 142));
-            
-            return new(this.b, this.a, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 0, 2)));
+
         }
     }
     public int4 bara
@@ -7064,10 +6533,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 206));
-            
-            return new(this.b, this.a, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 0, 3)));
+
         }
     }
     public int4 bagr
@@ -7075,10 +6543,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 30));
-            
-            return new(this.b, this.a, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 1, 0)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -7091,10 +6558,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 94));
-            
-            return new(this.b, this.a, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 1, 1)));
+
         }
     }
     public int4 bagb
@@ -7102,10 +6568,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 158));
-            
-            return new(this.b, this.a, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 1, 2)));
+
         }
     }
     public int4 baga
@@ -7113,10 +6578,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 222));
-            
-            return new(this.b, this.a, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 1, 3)));
+
         }
     }
     public int4 babr
@@ -7124,10 +6588,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 46));
-            
-            return new(this.b, this.a, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 2, 0)));
+
         }
     }
     public int4 babg
@@ -7135,10 +6598,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 110));
-            
-            return new(this.b, this.a, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 2, 1)));
+
         }
     }
     public int4 babb
@@ -7146,10 +6608,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 174));
-            
-            return new(this.b, this.a, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 2, 2)));
+
         }
     }
     public int4 baba
@@ -7157,10 +6618,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 238));
-            
-            return new(this.b, this.a, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 2, 3)));
+
         }
     }
     public int4 baar
@@ -7168,10 +6628,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 62));
-            
-            return new(this.b, this.a, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 3, 0)));
+
         }
     }
     public int4 baag
@@ -7179,10 +6638,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 126));
-            
-            return new(this.b, this.a, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 3, 1)));
+
         }
     }
     public int4 baab
@@ -7190,10 +6648,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 190));
-            
-            return new(this.b, this.a, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 3, 2)));
+
         }
     }
     public int4 baaa
@@ -7201,10 +6658,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 254));
-            
-            return new(this.b, this.a, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(2, 3, 3, 3)));
+
         }
     }
     public int4 arrr
@@ -7212,10 +6668,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 3));
-            
-            return new(this.a, this.r, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 0, 0)));
+
         }
     }
     public int4 arrg
@@ -7223,10 +6678,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 67));
-            
-            return new(this.a, this.r, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 0, 1)));
+
         }
     }
     public int4 arrb
@@ -7234,10 +6688,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 131));
-            
-            return new(this.a, this.r, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 0, 2)));
+
         }
     }
     public int4 arra
@@ -7245,10 +6698,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 195));
-            
-            return new(this.a, this.r, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 0, 3)));
+
         }
     }
     public int4 argr
@@ -7256,10 +6708,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 19));
-            
-            return new(this.a, this.r, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 1, 0)));
+
         }
     }
     public int4 argg
@@ -7267,10 +6718,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 83));
-            
-            return new(this.a, this.r, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 1, 1)));
+
         }
     }
     public int4 argb
@@ -7278,10 +6728,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 147));
-            
-            return new(this.a, this.r, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 1, 2)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -7294,10 +6743,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 211));
-            
-            return new(this.a, this.r, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 1, 3)));
+
         }
     }
     public int4 arbr
@@ -7305,10 +6753,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 35));
-            
-            return new(this.a, this.r, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 2, 0)));
+
         }
     }
     public int4 arbg
@@ -7316,10 +6763,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 99));
-            
-            return new(this.a, this.r, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 2, 1)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -7332,10 +6778,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 163));
-            
-            return new(this.a, this.r, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 2, 2)));
+
         }
     }
     public int4 arba
@@ -7343,10 +6788,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 227));
-            
-            return new(this.a, this.r, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 2, 3)));
+
         }
     }
     public int4 arar
@@ -7354,10 +6798,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 51));
-            
-            return new(this.a, this.r, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 3, 0)));
+
         }
     }
     public int4 arag
@@ -7365,10 +6808,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 115));
-            
-            return new(this.a, this.r, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 3, 1)));
+
         }
     }
     public int4 arab
@@ -7376,10 +6818,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 179));
-            
-            return new(this.a, this.r, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 3, 2)));
+
         }
     }
     public int4 araa
@@ -7387,10 +6828,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 243));
-            
-            return new(this.a, this.r, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 0, 3, 3)));
+
         }
     }
     public int4 agrr
@@ -7398,10 +6838,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 7));
-            
-            return new(this.a, this.g, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 0, 0)));
+
         }
     }
     public int4 agrg
@@ -7409,10 +6848,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 71));
-            
-            return new(this.a, this.g, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 0, 1)));
+
         }
     }
     public int4 agrb
@@ -7420,10 +6858,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 135));
-            
-            return new(this.a, this.g, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 0, 2)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -7436,10 +6873,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 199));
-            
-            return new(this.a, this.g, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 0, 3)));
+
         }
     }
     public int4 aggr
@@ -7447,10 +6883,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 23));
-            
-            return new(this.a, this.g, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 1, 0)));
+
         }
     }
     public int4 aggg
@@ -7458,10 +6893,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 87));
-            
-            return new(this.a, this.g, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 1, 1)));
+
         }
     }
     public int4 aggb
@@ -7469,10 +6903,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 151));
-            
-            return new(this.a, this.g, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 1, 2)));
+
         }
     }
     public int4 agga
@@ -7480,10 +6913,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 215));
-            
-            return new(this.a, this.g, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 1, 3)));
+
         }
     }
     public int4 agbr
@@ -7491,10 +6923,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 39));
-            
-            return new(this.a, this.g, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 2, 0)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -7507,10 +6938,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 103));
-            
-            return new(this.a, this.g, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 2, 1)));
+
         }
     }
     public int4 agbb
@@ -7518,10 +6948,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 167));
-            
-            return new(this.a, this.g, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 2, 2)));
+
         }
     }
     public int4 agba
@@ -7529,10 +6958,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 231));
-            
-            return new(this.a, this.g, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 2, 3)));
+
         }
     }
     public int4 agar
@@ -7540,10 +6968,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 55));
-            
-            return new(this.a, this.g, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 3, 0)));
+
         }
     }
     public int4 agag
@@ -7551,10 +6978,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 119));
-            
-            return new(this.a, this.g, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 3, 1)));
+
         }
     }
     public int4 agab
@@ -7562,10 +6988,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 183));
-            
-            return new(this.a, this.g, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 3, 2)));
+
         }
     }
     public int4 agaa
@@ -7573,10 +6998,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 247));
-            
-            return new(this.a, this.g, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 1, 3, 3)));
+
         }
     }
     public int4 abrr
@@ -7584,10 +7008,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 11));
-            
-            return new(this.a, this.b, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 0, 0)));
+
         }
     }
     public int4 abrg
@@ -7595,10 +7018,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 75));
-            
-            return new(this.a, this.b, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 0, 1)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -7611,10 +7033,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 139));
-            
-            return new(this.a, this.b, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 0, 2)));
+
         }
     }
     public int4 abra
@@ -7622,10 +7043,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 203));
-            
-            return new(this.a, this.b, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 0, 3)));
+
         }
     }
     public int4 abgr
@@ -7633,10 +7053,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 27));
-            
-            return new(this.a, this.b, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 1, 0)));
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -7649,10 +7068,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 91));
-            
-            return new(this.a, this.b, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 1, 1)));
+
         }
     }
     public int4 abgb
@@ -7660,10 +7078,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 155));
-            
-            return new(this.a, this.b, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 1, 2)));
+
         }
     }
     public int4 abga
@@ -7671,10 +7088,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 219));
-            
-            return new(this.a, this.b, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 1, 3)));
+
         }
     }
     public int4 abbr
@@ -7682,10 +7098,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 43));
-            
-            return new(this.a, this.b, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 2, 0)));
+
         }
     }
     public int4 abbg
@@ -7693,10 +7108,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 107));
-            
-            return new(this.a, this.b, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 2, 1)));
+
         }
     }
     public int4 abbb
@@ -7704,10 +7118,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 171));
-            
-            return new(this.a, this.b, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 2, 2)));
+
         }
     }
     public int4 abba
@@ -7715,10 +7128,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 235));
-            
-            return new(this.a, this.b, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 2, 3)));
+
         }
     }
     public int4 abar
@@ -7726,10 +7138,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 59));
-            
-            return new(this.a, this.b, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 3, 0)));
+
         }
     }
     public int4 abag
@@ -7737,10 +7148,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 123));
-            
-            return new(this.a, this.b, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 3, 1)));
+
         }
     }
     public int4 abab
@@ -7748,10 +7158,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 187));
-            
-            return new(this.a, this.b, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 3, 2)));
+
         }
     }
     public int4 abaa
@@ -7759,10 +7168,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 251));
-            
-            return new(this.a, this.b, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 2, 3, 3)));
+
         }
     }
     public int4 aarr
@@ -7770,10 +7178,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 15));
-            
-            return new(this.a, this.a, this.r, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 0, 0)));
+
         }
     }
     public int4 aarg
@@ -7781,10 +7188,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 79));
-            
-            return new(this.a, this.a, this.r, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 0, 1)));
+
         }
     }
     public int4 aarb
@@ -7792,10 +7198,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 143));
-            
-            return new(this.a, this.a, this.r, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 0, 2)));
+
         }
     }
     public int4 aara
@@ -7803,10 +7208,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 207));
-            
-            return new(this.a, this.a, this.r, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 0, 3)));
+
         }
     }
     public int4 aagr
@@ -7814,10 +7218,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 31));
-            
-            return new(this.a, this.a, this.g, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 1, 0)));
+
         }
     }
     public int4 aagg
@@ -7825,10 +7228,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 95));
-            
-            return new(this.a, this.a, this.g, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 1, 1)));
+
         }
     }
     public int4 aagb
@@ -7836,10 +7238,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 159));
-            
-            return new(this.a, this.a, this.g, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 1, 2)));
+
         }
     }
     public int4 aaga
@@ -7847,10 +7248,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 223));
-            
-            return new(this.a, this.a, this.g, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 1, 3)));
+
         }
     }
     public int4 aabr
@@ -7858,10 +7258,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 47));
-            
-            return new(this.a, this.a, this.b, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 2, 0)));
+
         }
     }
     public int4 aabg
@@ -7869,10 +7268,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 111));
-            
-            return new(this.a, this.a, this.b, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 2, 1)));
+
         }
     }
     public int4 aabb
@@ -7880,10 +7278,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 175));
-            
-            return new(this.a, this.a, this.b, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 2, 2)));
+
         }
     }
     public int4 aaba
@@ -7891,10 +7288,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 239));
-            
-            return new(this.a, this.a, this.b, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 2, 3)));
+
         }
     }
     public int4 aaar
@@ -7902,10 +7298,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 63));
-            
-            return new(this.a, this.a, this.a, this.r);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 3, 0)));
+
         }
     }
     public int4 aaag
@@ -7913,10 +7308,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 127));
-            
-            return new(this.a, this.a, this.a, this.g);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 3, 1)));
+
         }
     }
     public int4 aaab
@@ -7924,10 +7318,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 191));
-            
-            return new(this.a, this.a, this.a, this.b);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 3, 2)));
+
         }
     }
     public int4 aaaa
@@ -7935,10 +7328,9 @@ public partial struct int4
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            if (Sse2.IsSupported) return new(Sse2.Shuffle(this.vector, 255));
-            
-            return new(this.a, this.a, this.a, this.a);
+
+            return new(Vector128.Shuffle(this.vector, Vector128.Create(3, 3, 3, 3)));
+
         }
     }
 

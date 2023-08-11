@@ -18,8 +18,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.x, this.x);
+
         }
     }
     public long2 xy
@@ -27,8 +28,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.x, this.y);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -41,8 +43,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.x, this.z);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -55,8 +58,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.y, this.x);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -69,8 +73,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.y, this.y);
+
         }
     }
     public long2 yz
@@ -78,8 +83,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.y, this.z);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -92,8 +98,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.z, this.x);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -106,8 +113,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.z, this.y);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -120,8 +128,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.z, this.z);
+
         }
     }
     public long2 rr
@@ -129,8 +138,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.r, this.r);
+
         }
     }
     public long2 rg
@@ -138,8 +148,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.r, this.g);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -152,8 +163,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.r, this.b);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -166,8 +178,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.g, this.r);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -180,8 +193,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.g, this.g);
+
         }
     }
     public long2 gb
@@ -189,8 +203,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.g, this.b);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -203,8 +218,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.b, this.r);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -217,8 +233,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.b, this.g);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -231,8 +248,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
+
             return new(this.b, this.b);
+
         }
     }
     public long3 xxx
@@ -240,10 +258,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 0) & math.v3_iz_long256);
-            return new(this.x, this.x, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 0L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 xxy
@@ -251,10 +268,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 16) & math.v3_iz_long256);
-            return new(this.x, this.x, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 1L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 xxz
@@ -262,10 +278,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 32) & math.v3_iz_long256);
-            return new(this.x, this.x, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 2L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 xyx
@@ -273,10 +288,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 4) & math.v3_iz_long256);
-            return new(this.x, this.y, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 0L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 xyy
@@ -284,10 +298,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 20) & math.v3_iz_long256);
-            return new(this.x, this.y, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 1L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 xyz
@@ -295,10 +308,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 36) & math.v3_iz_long256);
-            return new(this.x, this.y, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 2L, 0L)) & math.v3_iz_long256);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -311,10 +323,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 8) & math.v3_iz_long256);
-            return new(this.x, this.z, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 0L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 xzy
@@ -322,10 +333,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 24) & math.v3_iz_long256);
-            return new(this.x, this.z, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 1L, 0L)) & math.v3_iz_long256);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -338,10 +348,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 40) & math.v3_iz_long256);
-            return new(this.x, this.z, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 2L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 yxx
@@ -349,10 +358,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 1) & math.v3_iz_long256);
-            return new(this.y, this.x, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 0L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 yxy
@@ -360,10 +368,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 17) & math.v3_iz_long256);
-            return new(this.y, this.x, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 1L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 yxz
@@ -371,10 +378,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 33) & math.v3_iz_long256);
-            return new(this.y, this.x, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 2L, 0L)) & math.v3_iz_long256);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -387,10 +393,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 5) & math.v3_iz_long256);
-            return new(this.y, this.y, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 0L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 yyy
@@ -398,10 +403,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 21) & math.v3_iz_long256);
-            return new(this.y, this.y, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 1L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 yyz
@@ -409,10 +413,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 37) & math.v3_iz_long256);
-            return new(this.y, this.y, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 2L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 yzx
@@ -420,10 +423,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 9) & math.v3_iz_long256);
-            return new(this.y, this.z, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 0L, 0L)) & math.v3_iz_long256);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -436,10 +438,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 25) & math.v3_iz_long256);
-            return new(this.y, this.z, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 1L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 yzz
@@ -447,10 +448,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 41) & math.v3_iz_long256);
-            return new(this.y, this.z, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 2L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 zxx
@@ -458,10 +458,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 2) & math.v3_iz_long256);
-            return new(this.z, this.x, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 0L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 zxy
@@ -469,10 +468,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 18) & math.v3_iz_long256);
-            return new(this.z, this.x, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 1L, 0L)) & math.v3_iz_long256);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -485,10 +483,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 34) & math.v3_iz_long256);
-            return new(this.z, this.x, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 2L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 zyx
@@ -496,10 +493,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 6) & math.v3_iz_long256);
-            return new(this.z, this.y, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 0L, 0L)) & math.v3_iz_long256);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -512,10 +508,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 22) & math.v3_iz_long256);
-            return new(this.z, this.y, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 1L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 zyz
@@ -523,10 +518,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 38) & math.v3_iz_long256);
-            return new(this.z, this.y, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 2L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 zzx
@@ -534,10 +528,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 10) & math.v3_iz_long256);
-            return new(this.z, this.z, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 0L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 zzy
@@ -545,10 +538,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 26) & math.v3_iz_long256);
-            return new(this.z, this.z, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 1L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 zzz
@@ -556,10 +548,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 42) & math.v3_iz_long256);
-            return new(this.z, this.z, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 2L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 rrr
@@ -567,10 +558,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 0) & math.v3_iz_long256);
-            return new(this.r, this.r, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 0L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 rrg
@@ -578,10 +568,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 16) & math.v3_iz_long256);
-            return new(this.r, this.r, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 1L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 rrb
@@ -589,10 +578,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 32) & math.v3_iz_long256);
-            return new(this.r, this.r, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 2L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 rgr
@@ -600,10 +588,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 4) & math.v3_iz_long256);
-            return new(this.r, this.g, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 0L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 rgg
@@ -611,10 +598,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 20) & math.v3_iz_long256);
-            return new(this.r, this.g, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 1L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 rgb
@@ -622,10 +608,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 36) & math.v3_iz_long256);
-            return new(this.r, this.g, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 2L, 0L)) & math.v3_iz_long256);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -638,10 +623,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 8) & math.v3_iz_long256);
-            return new(this.r, this.b, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 0L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 rbg
@@ -649,10 +633,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 24) & math.v3_iz_long256);
-            return new(this.r, this.b, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 1L, 0L)) & math.v3_iz_long256);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -665,10 +648,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 40) & math.v3_iz_long256);
-            return new(this.r, this.b, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 2L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 grr
@@ -676,10 +658,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 1) & math.v3_iz_long256);
-            return new(this.g, this.r, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 0L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 grg
@@ -687,10 +668,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 17) & math.v3_iz_long256);
-            return new(this.g, this.r, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 1L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 grb
@@ -698,10 +678,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 33) & math.v3_iz_long256);
-            return new(this.g, this.r, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 2L, 0L)) & math.v3_iz_long256);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -714,10 +693,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 5) & math.v3_iz_long256);
-            return new(this.g, this.g, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 0L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 ggg
@@ -725,10 +703,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 21) & math.v3_iz_long256);
-            return new(this.g, this.g, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 1L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 ggb
@@ -736,10 +713,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 37) & math.v3_iz_long256);
-            return new(this.g, this.g, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 2L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 gbr
@@ -747,10 +723,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 9) & math.v3_iz_long256);
-            return new(this.g, this.b, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 0L, 0L)) & math.v3_iz_long256);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -763,10 +738,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 25) & math.v3_iz_long256);
-            return new(this.g, this.b, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 1L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 gbb
@@ -774,10 +748,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 41) & math.v3_iz_long256);
-            return new(this.g, this.b, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 2L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 brr
@@ -785,10 +758,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 2) & math.v3_iz_long256);
-            return new(this.b, this.r, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 0L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 brg
@@ -796,10 +768,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 18) & math.v3_iz_long256);
-            return new(this.b, this.r, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 1L, 0L)) & math.v3_iz_long256);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -812,10 +783,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 34) & math.v3_iz_long256);
-            return new(this.b, this.r, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 2L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 bgr
@@ -823,10 +793,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 6) & math.v3_iz_long256);
-            return new(this.b, this.g, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 0L, 0L)) & math.v3_iz_long256);
+
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         set 
@@ -839,10 +808,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 22) & math.v3_iz_long256);
-            return new(this.b, this.g, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 1L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 bgb
@@ -850,10 +818,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 38) & math.v3_iz_long256);
-            return new(this.b, this.g, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 2L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 bbr
@@ -861,10 +828,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 10) & math.v3_iz_long256);
-            return new(this.b, this.b, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 0L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 bbg
@@ -872,10 +838,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 26) & math.v3_iz_long256);
-            return new(this.b, this.b, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 1L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long3 bbb
@@ -883,10 +848,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get 
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 42) & math.v3_iz_long256);
-            return new(this.b, this.b, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 2L, 0L)) & math.v3_iz_long256);
+
         }
     }
     public long4 xxxx
@@ -894,10 +858,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 0));
-            return new(this.x, this.x, this.x, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 0L, 0L)));
+
         }
     }
     public long4 xxxy
@@ -905,10 +868,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 64));
-            return new(this.x, this.x, this.x, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 0L, 1L)));
+
         }
     }
     public long4 xxxz
@@ -916,10 +878,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 128));
-            return new(this.x, this.x, this.x, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 0L, 2L)));
+
         }
     }
     public long4 xxyx
@@ -927,10 +888,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 16));
-            return new(this.x, this.x, this.y, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 1L, 0L)));
+
         }
     }
     public long4 xxyy
@@ -938,10 +898,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 80));
-            return new(this.x, this.x, this.y, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 1L, 1L)));
+
         }
     }
     public long4 xxyz
@@ -949,10 +908,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 144));
-            return new(this.x, this.x, this.y, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 1L, 2L)));
+
         }
     }
     public long4 xxzx
@@ -960,10 +918,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 32));
-            return new(this.x, this.x, this.z, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 2L, 0L)));
+
         }
     }
     public long4 xxzy
@@ -971,10 +928,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 96));
-            return new(this.x, this.x, this.z, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 2L, 1L)));
+
         }
     }
     public long4 xxzz
@@ -982,10 +938,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 160));
-            return new(this.x, this.x, this.z, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 2L, 2L)));
+
         }
     }
     public long4 xyxx
@@ -993,10 +948,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 4));
-            return new(this.x, this.y, this.x, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 0L, 0L)));
+
         }
     }
     public long4 xyxy
@@ -1004,10 +958,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 68));
-            return new(this.x, this.y, this.x, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 0L, 1L)));
+
         }
     }
     public long4 xyxz
@@ -1015,10 +968,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 132));
-            return new(this.x, this.y, this.x, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 0L, 2L)));
+
         }
     }
     public long4 xyyx
@@ -1026,10 +978,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 20));
-            return new(this.x, this.y, this.y, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 1L, 0L)));
+
         }
     }
     public long4 xyyy
@@ -1037,10 +988,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 84));
-            return new(this.x, this.y, this.y, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 1L, 1L)));
+
         }
     }
     public long4 xyyz
@@ -1048,10 +998,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 148));
-            return new(this.x, this.y, this.y, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 1L, 2L)));
+
         }
     }
     public long4 xyzx
@@ -1059,10 +1008,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 36));
-            return new(this.x, this.y, this.z, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 2L, 0L)));
+
         }
     }
     public long4 xyzy
@@ -1070,10 +1018,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 100));
-            return new(this.x, this.y, this.z, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 2L, 1L)));
+
         }
     }
     public long4 xyzz
@@ -1081,10 +1028,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 164));
-            return new(this.x, this.y, this.z, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 2L, 2L)));
+
         }
     }
     public long4 xzxx
@@ -1092,10 +1038,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 8));
-            return new(this.x, this.z, this.x, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 0L, 0L)));
+
         }
     }
     public long4 xzxy
@@ -1103,10 +1048,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 72));
-            return new(this.x, this.z, this.x, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 0L, 1L)));
+
         }
     }
     public long4 xzxz
@@ -1114,10 +1058,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 136));
-            return new(this.x, this.z, this.x, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 0L, 2L)));
+
         }
     }
     public long4 xzyx
@@ -1125,10 +1068,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 24));
-            return new(this.x, this.z, this.y, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 1L, 0L)));
+
         }
     }
     public long4 xzyy
@@ -1136,10 +1078,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 88));
-            return new(this.x, this.z, this.y, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 1L, 1L)));
+
         }
     }
     public long4 xzyz
@@ -1147,10 +1088,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 152));
-            return new(this.x, this.z, this.y, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 1L, 2L)));
+
         }
     }
     public long4 xzzx
@@ -1158,10 +1098,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 40));
-            return new(this.x, this.z, this.z, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 2L, 0L)));
+
         }
     }
     public long4 xzzy
@@ -1169,10 +1108,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 104));
-            return new(this.x, this.z, this.z, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 2L, 1L)));
+
         }
     }
     public long4 xzzz
@@ -1180,10 +1118,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 168));
-            return new(this.x, this.z, this.z, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 2L, 2L)));
+
         }
     }
     public long4 yxxx
@@ -1191,10 +1128,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 1));
-            return new(this.y, this.x, this.x, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 0L, 0L)));
+
         }
     }
     public long4 yxxy
@@ -1202,10 +1138,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 65));
-            return new(this.y, this.x, this.x, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 0L, 1L)));
+
         }
     }
     public long4 yxxz
@@ -1213,10 +1148,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 129));
-            return new(this.y, this.x, this.x, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 0L, 2L)));
+
         }
     }
     public long4 yxyx
@@ -1224,10 +1158,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 17));
-            return new(this.y, this.x, this.y, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 1L, 0L)));
+
         }
     }
     public long4 yxyy
@@ -1235,10 +1168,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 81));
-            return new(this.y, this.x, this.y, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 1L, 1L)));
+
         }
     }
     public long4 yxyz
@@ -1246,10 +1178,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 145));
-            return new(this.y, this.x, this.y, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 1L, 2L)));
+
         }
     }
     public long4 yxzx
@@ -1257,10 +1188,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 33));
-            return new(this.y, this.x, this.z, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 2L, 0L)));
+
         }
     }
     public long4 yxzy
@@ -1268,10 +1198,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 97));
-            return new(this.y, this.x, this.z, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 2L, 1L)));
+
         }
     }
     public long4 yxzz
@@ -1279,10 +1208,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 161));
-            return new(this.y, this.x, this.z, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 2L, 2L)));
+
         }
     }
     public long4 yyxx
@@ -1290,10 +1218,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 5));
-            return new(this.y, this.y, this.x, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 0L, 0L)));
+
         }
     }
     public long4 yyxy
@@ -1301,10 +1228,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 69));
-            return new(this.y, this.y, this.x, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 0L, 1L)));
+
         }
     }
     public long4 yyxz
@@ -1312,10 +1238,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 133));
-            return new(this.y, this.y, this.x, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 0L, 2L)));
+
         }
     }
     public long4 yyyx
@@ -1323,10 +1248,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 21));
-            return new(this.y, this.y, this.y, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 1L, 0L)));
+
         }
     }
     public long4 yyyy
@@ -1334,10 +1258,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 85));
-            return new(this.y, this.y, this.y, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 1L, 1L)));
+
         }
     }
     public long4 yyyz
@@ -1345,10 +1268,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 149));
-            return new(this.y, this.y, this.y, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 1L, 2L)));
+
         }
     }
     public long4 yyzx
@@ -1356,10 +1278,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 37));
-            return new(this.y, this.y, this.z, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 2L, 0L)));
+
         }
     }
     public long4 yyzy
@@ -1367,10 +1288,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 101));
-            return new(this.y, this.y, this.z, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 2L, 1L)));
+
         }
     }
     public long4 yyzz
@@ -1378,10 +1298,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 165));
-            return new(this.y, this.y, this.z, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 2L, 2L)));
+
         }
     }
     public long4 yzxx
@@ -1389,10 +1308,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 9));
-            return new(this.y, this.z, this.x, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 0L, 0L)));
+
         }
     }
     public long4 yzxy
@@ -1400,10 +1318,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 73));
-            return new(this.y, this.z, this.x, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 0L, 1L)));
+
         }
     }
     public long4 yzxz
@@ -1411,10 +1328,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 137));
-            return new(this.y, this.z, this.x, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 0L, 2L)));
+
         }
     }
     public long4 yzyx
@@ -1422,10 +1338,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 25));
-            return new(this.y, this.z, this.y, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 1L, 0L)));
+
         }
     }
     public long4 yzyy
@@ -1433,10 +1348,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 89));
-            return new(this.y, this.z, this.y, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 1L, 1L)));
+
         }
     }
     public long4 yzyz
@@ -1444,10 +1358,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 153));
-            return new(this.y, this.z, this.y, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 1L, 2L)));
+
         }
     }
     public long4 yzzx
@@ -1455,10 +1368,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 41));
-            return new(this.y, this.z, this.z, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 2L, 0L)));
+
         }
     }
     public long4 yzzy
@@ -1466,10 +1378,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 105));
-            return new(this.y, this.z, this.z, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 2L, 1L)));
+
         }
     }
     public long4 yzzz
@@ -1477,10 +1388,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 169));
-            return new(this.y, this.z, this.z, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 2L, 2L)));
+
         }
     }
     public long4 zxxx
@@ -1488,10 +1398,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 2));
-            return new(this.z, this.x, this.x, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 0L, 0L)));
+
         }
     }
     public long4 zxxy
@@ -1499,10 +1408,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 66));
-            return new(this.z, this.x, this.x, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 0L, 1L)));
+
         }
     }
     public long4 zxxz
@@ -1510,10 +1418,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 130));
-            return new(this.z, this.x, this.x, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 0L, 2L)));
+
         }
     }
     public long4 zxyx
@@ -1521,10 +1428,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 18));
-            return new(this.z, this.x, this.y, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 1L, 0L)));
+
         }
     }
     public long4 zxyy
@@ -1532,10 +1438,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 82));
-            return new(this.z, this.x, this.y, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 1L, 1L)));
+
         }
     }
     public long4 zxyz
@@ -1543,10 +1448,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 146));
-            return new(this.z, this.x, this.y, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 1L, 2L)));
+
         }
     }
     public long4 zxzx
@@ -1554,10 +1458,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 34));
-            return new(this.z, this.x, this.z, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 2L, 0L)));
+
         }
     }
     public long4 zxzy
@@ -1565,10 +1468,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 98));
-            return new(this.z, this.x, this.z, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 2L, 1L)));
+
         }
     }
     public long4 zxzz
@@ -1576,10 +1478,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 162));
-            return new(this.z, this.x, this.z, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 2L, 2L)));
+
         }
     }
     public long4 zyxx
@@ -1587,10 +1488,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 6));
-            return new(this.z, this.y, this.x, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 0L, 0L)));
+
         }
     }
     public long4 zyxy
@@ -1598,10 +1498,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 70));
-            return new(this.z, this.y, this.x, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 0L, 1L)));
+
         }
     }
     public long4 zyxz
@@ -1609,10 +1508,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 134));
-            return new(this.z, this.y, this.x, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 0L, 2L)));
+
         }
     }
     public long4 zyyx
@@ -1620,10 +1518,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 22));
-            return new(this.z, this.y, this.y, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 1L, 0L)));
+
         }
     }
     public long4 zyyy
@@ -1631,10 +1528,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 86));
-            return new(this.z, this.y, this.y, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 1L, 1L)));
+
         }
     }
     public long4 zyyz
@@ -1642,10 +1538,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 150));
-            return new(this.z, this.y, this.y, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 1L, 2L)));
+
         }
     }
     public long4 zyzx
@@ -1653,10 +1548,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 38));
-            return new(this.z, this.y, this.z, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 2L, 0L)));
+
         }
     }
     public long4 zyzy
@@ -1664,10 +1558,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 102));
-            return new(this.z, this.y, this.z, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 2L, 1L)));
+
         }
     }
     public long4 zyzz
@@ -1675,10 +1568,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 166));
-            return new(this.z, this.y, this.z, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 2L, 2L)));
+
         }
     }
     public long4 zzxx
@@ -1686,10 +1578,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 10));
-            return new(this.z, this.z, this.x, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 0L, 0L)));
+
         }
     }
     public long4 zzxy
@@ -1697,10 +1588,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 74));
-            return new(this.z, this.z, this.x, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 0L, 1L)));
+
         }
     }
     public long4 zzxz
@@ -1708,10 +1598,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 138));
-            return new(this.z, this.z, this.x, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 0L, 2L)));
+
         }
     }
     public long4 zzyx
@@ -1719,10 +1608,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 26));
-            return new(this.z, this.z, this.y, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 1L, 0L)));
+
         }
     }
     public long4 zzyy
@@ -1730,10 +1618,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 90));
-            return new(this.z, this.z, this.y, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 1L, 1L)));
+
         }
     }
     public long4 zzyz
@@ -1741,10 +1628,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 154));
-            return new(this.z, this.z, this.y, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 1L, 2L)));
+
         }
     }
     public long4 zzzx
@@ -1752,10 +1638,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 42));
-            return new(this.z, this.z, this.z, this.x);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 2L, 0L)));
+
         }
     }
     public long4 zzzy
@@ -1763,10 +1648,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 106));
-            return new(this.z, this.z, this.z, this.y);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 2L, 1L)));
+
         }
     }
     public long4 zzzz
@@ -1774,10 +1658,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 170));
-            return new(this.z, this.z, this.z, this.z);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 2L, 2L)));
+
         }
     }
     public long4 rrrr
@@ -1785,10 +1668,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 0));
-            return new(this.r, this.r, this.r, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 0L, 0L)));
+
         }
     }
     public long4 rrrg
@@ -1796,10 +1678,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 64));
-            return new(this.r, this.r, this.r, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 0L, 1L)));
+
         }
     }
     public long4 rrrb
@@ -1807,10 +1688,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 128));
-            return new(this.r, this.r, this.r, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 0L, 2L)));
+
         }
     }
     public long4 rrgr
@@ -1818,10 +1698,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 16));
-            return new(this.r, this.r, this.g, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 1L, 0L)));
+
         }
     }
     public long4 rrgg
@@ -1829,10 +1708,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 80));
-            return new(this.r, this.r, this.g, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 1L, 1L)));
+
         }
     }
     public long4 rrgb
@@ -1840,10 +1718,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 144));
-            return new(this.r, this.r, this.g, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 1L, 2L)));
+
         }
     }
     public long4 rrbr
@@ -1851,10 +1728,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 32));
-            return new(this.r, this.r, this.b, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 2L, 0L)));
+
         }
     }
     public long4 rrbg
@@ -1862,10 +1738,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 96));
-            return new(this.r, this.r, this.b, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 2L, 1L)));
+
         }
     }
     public long4 rrbb
@@ -1873,10 +1748,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 160));
-            return new(this.r, this.r, this.b, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 0L, 2L, 2L)));
+
         }
     }
     public long4 rgrr
@@ -1884,10 +1758,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 4));
-            return new(this.r, this.g, this.r, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 0L, 0L)));
+
         }
     }
     public long4 rgrg
@@ -1895,10 +1768,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 68));
-            return new(this.r, this.g, this.r, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 0L, 1L)));
+
         }
     }
     public long4 rgrb
@@ -1906,10 +1778,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 132));
-            return new(this.r, this.g, this.r, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 0L, 2L)));
+
         }
     }
     public long4 rggr
@@ -1917,10 +1788,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 20));
-            return new(this.r, this.g, this.g, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 1L, 0L)));
+
         }
     }
     public long4 rggg
@@ -1928,10 +1798,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 84));
-            return new(this.r, this.g, this.g, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 1L, 1L)));
+
         }
     }
     public long4 rggb
@@ -1939,10 +1808,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 148));
-            return new(this.r, this.g, this.g, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 1L, 2L)));
+
         }
     }
     public long4 rgbr
@@ -1950,10 +1818,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 36));
-            return new(this.r, this.g, this.b, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 2L, 0L)));
+
         }
     }
     public long4 rgbg
@@ -1961,10 +1828,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 100));
-            return new(this.r, this.g, this.b, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 2L, 1L)));
+
         }
     }
     public long4 rgbb
@@ -1972,10 +1838,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 164));
-            return new(this.r, this.g, this.b, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 1L, 2L, 2L)));
+
         }
     }
     public long4 rbrr
@@ -1983,10 +1848,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 8));
-            return new(this.r, this.b, this.r, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 0L, 0L)));
+
         }
     }
     public long4 rbrg
@@ -1994,10 +1858,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 72));
-            return new(this.r, this.b, this.r, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 0L, 1L)));
+
         }
     }
     public long4 rbrb
@@ -2005,10 +1868,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 136));
-            return new(this.r, this.b, this.r, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 0L, 2L)));
+
         }
     }
     public long4 rbgr
@@ -2016,10 +1878,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 24));
-            return new(this.r, this.b, this.g, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 1L, 0L)));
+
         }
     }
     public long4 rbgg
@@ -2027,10 +1888,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 88));
-            return new(this.r, this.b, this.g, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 1L, 1L)));
+
         }
     }
     public long4 rbgb
@@ -2038,10 +1898,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 152));
-            return new(this.r, this.b, this.g, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 1L, 2L)));
+
         }
     }
     public long4 rbbr
@@ -2049,10 +1908,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 40));
-            return new(this.r, this.b, this.b, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 2L, 0L)));
+
         }
     }
     public long4 rbbg
@@ -2060,10 +1918,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 104));
-            return new(this.r, this.b, this.b, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 2L, 1L)));
+
         }
     }
     public long4 rbbb
@@ -2071,10 +1928,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 168));
-            return new(this.r, this.b, this.b, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(0L, 2L, 2L, 2L)));
+
         }
     }
     public long4 grrr
@@ -2082,10 +1938,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 1));
-            return new(this.g, this.r, this.r, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 0L, 0L)));
+
         }
     }
     public long4 grrg
@@ -2093,10 +1948,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 65));
-            return new(this.g, this.r, this.r, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 0L, 1L)));
+
         }
     }
     public long4 grrb
@@ -2104,10 +1958,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 129));
-            return new(this.g, this.r, this.r, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 0L, 2L)));
+
         }
     }
     public long4 grgr
@@ -2115,10 +1968,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 17));
-            return new(this.g, this.r, this.g, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 1L, 0L)));
+
         }
     }
     public long4 grgg
@@ -2126,10 +1978,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 81));
-            return new(this.g, this.r, this.g, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 1L, 1L)));
+
         }
     }
     public long4 grgb
@@ -2137,10 +1988,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 145));
-            return new(this.g, this.r, this.g, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 1L, 2L)));
+
         }
     }
     public long4 grbr
@@ -2148,10 +1998,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 33));
-            return new(this.g, this.r, this.b, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 2L, 0L)));
+
         }
     }
     public long4 grbg
@@ -2159,10 +2008,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 97));
-            return new(this.g, this.r, this.b, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 2L, 1L)));
+
         }
     }
     public long4 grbb
@@ -2170,10 +2018,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 161));
-            return new(this.g, this.r, this.b, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 0L, 2L, 2L)));
+
         }
     }
     public long4 ggrr
@@ -2181,10 +2028,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 5));
-            return new(this.g, this.g, this.r, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 0L, 0L)));
+
         }
     }
     public long4 ggrg
@@ -2192,10 +2038,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 69));
-            return new(this.g, this.g, this.r, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 0L, 1L)));
+
         }
     }
     public long4 ggrb
@@ -2203,10 +2048,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 133));
-            return new(this.g, this.g, this.r, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 0L, 2L)));
+
         }
     }
     public long4 gggr
@@ -2214,10 +2058,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 21));
-            return new(this.g, this.g, this.g, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 1L, 0L)));
+
         }
     }
     public long4 gggg
@@ -2225,10 +2068,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 85));
-            return new(this.g, this.g, this.g, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 1L, 1L)));
+
         }
     }
     public long4 gggb
@@ -2236,10 +2078,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 149));
-            return new(this.g, this.g, this.g, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 1L, 2L)));
+
         }
     }
     public long4 ggbr
@@ -2247,10 +2088,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 37));
-            return new(this.g, this.g, this.b, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 2L, 0L)));
+
         }
     }
     public long4 ggbg
@@ -2258,10 +2098,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 101));
-            return new(this.g, this.g, this.b, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 2L, 1L)));
+
         }
     }
     public long4 ggbb
@@ -2269,10 +2108,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 165));
-            return new(this.g, this.g, this.b, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 1L, 2L, 2L)));
+
         }
     }
     public long4 gbrr
@@ -2280,10 +2118,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 9));
-            return new(this.g, this.b, this.r, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 0L, 0L)));
+
         }
     }
     public long4 gbrg
@@ -2291,10 +2128,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 73));
-            return new(this.g, this.b, this.r, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 0L, 1L)));
+
         }
     }
     public long4 gbrb
@@ -2302,10 +2138,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 137));
-            return new(this.g, this.b, this.r, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 0L, 2L)));
+
         }
     }
     public long4 gbgr
@@ -2313,10 +2148,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 25));
-            return new(this.g, this.b, this.g, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 1L, 0L)));
+
         }
     }
     public long4 gbgg
@@ -2324,10 +2158,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 89));
-            return new(this.g, this.b, this.g, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 1L, 1L)));
+
         }
     }
     public long4 gbgb
@@ -2335,10 +2168,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 153));
-            return new(this.g, this.b, this.g, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 1L, 2L)));
+
         }
     }
     public long4 gbbr
@@ -2346,10 +2178,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 41));
-            return new(this.g, this.b, this.b, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 2L, 0L)));
+
         }
     }
     public long4 gbbg
@@ -2357,10 +2188,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 105));
-            return new(this.g, this.b, this.b, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 2L, 1L)));
+
         }
     }
     public long4 gbbb
@@ -2368,10 +2198,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 169));
-            return new(this.g, this.b, this.b, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(1L, 2L, 2L, 2L)));
+
         }
     }
     public long4 brrr
@@ -2379,10 +2208,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 2));
-            return new(this.b, this.r, this.r, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 0L, 0L)));
+
         }
     }
     public long4 brrg
@@ -2390,10 +2218,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 66));
-            return new(this.b, this.r, this.r, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 0L, 1L)));
+
         }
     }
     public long4 brrb
@@ -2401,10 +2228,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 130));
-            return new(this.b, this.r, this.r, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 0L, 2L)));
+
         }
     }
     public long4 brgr
@@ -2412,10 +2238,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 18));
-            return new(this.b, this.r, this.g, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 1L, 0L)));
+
         }
     }
     public long4 brgg
@@ -2423,10 +2248,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 82));
-            return new(this.b, this.r, this.g, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 1L, 1L)));
+
         }
     }
     public long4 brgb
@@ -2434,10 +2258,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 146));
-            return new(this.b, this.r, this.g, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 1L, 2L)));
+
         }
     }
     public long4 brbr
@@ -2445,10 +2268,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 34));
-            return new(this.b, this.r, this.b, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 2L, 0L)));
+
         }
     }
     public long4 brbg
@@ -2456,10 +2278,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 98));
-            return new(this.b, this.r, this.b, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 2L, 1L)));
+
         }
     }
     public long4 brbb
@@ -2467,10 +2288,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 162));
-            return new(this.b, this.r, this.b, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 0L, 2L, 2L)));
+
         }
     }
     public long4 bgrr
@@ -2478,10 +2298,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 6));
-            return new(this.b, this.g, this.r, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 0L, 0L)));
+
         }
     }
     public long4 bgrg
@@ -2489,10 +2308,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 70));
-            return new(this.b, this.g, this.r, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 0L, 1L)));
+
         }
     }
     public long4 bgrb
@@ -2500,10 +2318,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 134));
-            return new(this.b, this.g, this.r, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 0L, 2L)));
+
         }
     }
     public long4 bggr
@@ -2511,10 +2328,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 22));
-            return new(this.b, this.g, this.g, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 1L, 0L)));
+
         }
     }
     public long4 bggg
@@ -2522,10 +2338,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 86));
-            return new(this.b, this.g, this.g, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 1L, 1L)));
+
         }
     }
     public long4 bggb
@@ -2533,10 +2348,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 150));
-            return new(this.b, this.g, this.g, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 1L, 2L)));
+
         }
     }
     public long4 bgbr
@@ -2544,10 +2358,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 38));
-            return new(this.b, this.g, this.b, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 2L, 0L)));
+
         }
     }
     public long4 bgbg
@@ -2555,10 +2368,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 102));
-            return new(this.b, this.g, this.b, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 2L, 1L)));
+
         }
     }
     public long4 bgbb
@@ -2566,10 +2378,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 166));
-            return new(this.b, this.g, this.b, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 1L, 2L, 2L)));
+
         }
     }
     public long4 bbrr
@@ -2577,10 +2388,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 10));
-            return new(this.b, this.b, this.r, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 0L, 0L)));
+
         }
     }
     public long4 bbrg
@@ -2588,10 +2398,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 74));
-            return new(this.b, this.b, this.r, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 0L, 1L)));
+
         }
     }
     public long4 bbrb
@@ -2599,10 +2408,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 138));
-            return new(this.b, this.b, this.r, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 0L, 2L)));
+
         }
     }
     public long4 bbgr
@@ -2610,10 +2418,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 26));
-            return new(this.b, this.b, this.g, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 1L, 0L)));
+
         }
     }
     public long4 bbgg
@@ -2621,10 +2428,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 90));
-            return new(this.b, this.b, this.g, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 1L, 1L)));
+
         }
     }
     public long4 bbgb
@@ -2632,10 +2438,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 154));
-            return new(this.b, this.b, this.g, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 1L, 2L)));
+
         }
     }
     public long4 bbbr
@@ -2643,10 +2448,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 42));
-            return new(this.b, this.b, this.b, this.r);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 2L, 0L)));
+
         }
     }
     public long4 bbbg
@@ -2654,10 +2458,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 106));
-            return new(this.b, this.b, this.b, this.g);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 2L, 1L)));
+
         }
     }
     public long4 bbbb
@@ -2665,10 +2468,9 @@ public partial struct long3
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         get
         {
-            
-            
-            if (Avx2.IsSupported) return new(Avx2.Permute4x64(this.vector, 170));
-            return new(this.b, this.b, this.b, this.b);
+
+            return new(Vector256.Shuffle(this.vector, Vector256.Create(2L, 2L, 2L, 2L)));
+
         }
     }
 
